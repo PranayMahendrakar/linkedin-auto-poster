@@ -16,12 +16,6 @@ def get_user_id():
     url = "https://api.linkedin.com/v2/userinfo"
     headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
     response = requests.get(url, headers=headers)
-    if response.status_code == 401:
-        print("ERROR: LinkedIn access token is invalid or has expired (401 Unauthorized).")
-        print("ACTION REQUIRED: Generate a new LinkedIn access token and update the")
-        print("  LINKEDIN_ACCESS_TOKEN secret in your GitHub repository settings:")
-        print("  https://github.com/PranayMahendrakar/linkedin-auto-poster/settings/secrets/actions")
-    exit(1)
     response.raise_for_status()
     return response.json()["sub"]
 
@@ -39,8 +33,8 @@ def post_to_linkedin(user_id, text):
         "lifecycleState": "PUBLISHED",
         "specificContent": {
             "com.linkedin.ugc.ShareContent": {
-                                "shareCommentary": {"text": text},
-                                "shareMediaCategory": "NONE",
+                "shareCommentary": {"text": text},
+                "shareMediaCategory": "NONE",
             }
         },
         "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
@@ -58,8 +52,8 @@ def load_posts(csv_file):
             text = row["post_text"].strip()
             hashtags = row.get("hashtags", "").strip()
             if hashtags:
-                                text += f"\n\n{hashtags}"
-                            posts.append({
+                text += f"\n\n{hashtags}"
+            posts.append({
                 "number": row.get("post_number", ""),
                 "category": row.get("category", ""),
                 "text": text,
@@ -89,11 +83,11 @@ def save_progress(index):
 def post_next():
     """Post the next unposted item from CSV and update progress."""
     print("=" * 55)
-    print("LinkedIn Auto-Poster — GitHub Actions Edition")
+    print("LinkedIn Auto-Poster \u2014 GitHub Actions Edition")
     print("=" * 55)
 
     if not ACCESS_TOKEN:
-      print("ERROR: LINKEDIN_ACCESS_TOKEN not set!")
+        print("ERROR: LINKEDIN_ACCESS_TOKEN not set!")
         exit(1)
 
     # Authenticate
@@ -111,11 +105,11 @@ def post_next():
 
     if current_index >= total:
         print("All posts have been published! Resetting to start...")
-    current_index = 0
+        current_index = 0
 
     # Get the next post
     post = posts[current_index]
-    print(f"\nPosting #{post['number']} — {post['category']}")
+    print(f"\nPosting #{post['number']} \u2014 {post['category']}")
     print(f"Preview: {post['text'][:100]}...")
 
     # Post it
@@ -123,17 +117,17 @@ def post_next():
 
     if status == 201:
         print(f"SUCCESS! Posted! ID: {response.get('id')}")
-    current_index += 1
-    save_progress(current_index)
-    print(f"Progress updated: {current_index}/{total}")
-else:
-    print(f"FAILED! Status {status}: {response}")
-    exit(1)
+        current_index += 1
+        save_progress(current_index)
+        print(f"Progress updated: {current_index}/{total}")
+    else:
+        print(f"FAILED! Status {status}: {response}")
+        exit(1)
 
     if current_index < total:
         print(f"\nNext post will be #{current_index + 1}")
-else:
-    print("\nAll posts completed!")
+    else:
+        print("\nAll posts completed!")
     print("=" * 55)
 
 
