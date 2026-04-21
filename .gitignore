@@ -1,3 +1,5 @@
+# Generated image (regenerated every run, never commit)
+output.png
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
