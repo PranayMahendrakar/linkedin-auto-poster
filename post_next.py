@@ -1,15 +1,11 @@
 """
-LinkedIn Auto-Poster (text + AI-composed image).
+LinkedIn Auto-Poster (text + AI-composed image with style rotation).
 
-For each post: asks Qwen (your HF Space) to generate a concrete visual
-scene description from the post content, wraps it in a style template,
-sends to Pollinations for image generation, then (optionally) uploads
-to LinkedIn.
+Scene chain: Pollinations text → Qwen runner → content-aware fallback.
+Style rotation: 8 distinct visual styles, selected deterministically by post number.
+Each post always picks the same style on retry, but styles rotate across posts.
 
-Fallback chain:
-  Qwen down  → use category-only scene (still produces an image)
-  Image gen fails → post text-only
-  Set POST_TO_LINKEDIN = False → generate only, don't post
+Set POST_TO_LINKEDIN = False for dry-run (image only, no posting).
 """
 
 import os
@@ -17,6 +13,7 @@ import csv
 import json
 import re
 import time
+import random
 from datetime import datetime
 from urllib.parse import quote
 
@@ -25,7 +22,7 @@ import requests
 
 # ============ CONFIGURATION ============
 # ⬇⬇⬇ MASTER TOGGLE ⬇⬇⬇
-POST_TO_LINKEDIN = True   # False = safe mode (generate image only, don't post)
+POST_TO_LINKEDIN = True
 # ⬆⬆⬆ MASTER TOGGLE ⬆⬆⬆
 
 ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
@@ -33,51 +30,166 @@ CSV_FILE = "linkedin_posts.csv"
 PROGRESS_FILE = "post_progress.json"
 IMAGE_FILE = "output.png"
 
-# Pollinations config
-POLLINATIONS_BASE = "https://image.pollinations.ai/prompt/"
+POLLINATIONS_IMAGE = "https://image.pollinations.ai/prompt/"
 IMAGE_WIDTH = 1024
 IMAGE_HEIGHT = 1024
 IMAGE_MODEL = "flux"
 IMAGE_TIMEOUT = 180
 
-# Qwen config — your own LLM endpoint via api_url.json service registry
+POLLINATIONS_TEXT = "https://text.pollinations.ai/openai"
+TEXT_MODEL = "openai"
+TEXT_TIMEOUT = 45
+
 QWEN_URL_REGISTRY = "https://raw.githubusercontent.com/PranayMahendrakar/qwen-runner/main/api_url.json"
 QWEN_TIMEOUT_WAKE = 90
-QWEN_TIMEOUT_WARM = 45
 
 
-# ============ STYLE TEMPLATE (aesthetics only — NO semantics) ============
-STYLE_WRAPPER = (
-    "No text. No words. No letters. No numbers. No labels. No logos. "
-    "No watermarks. No typography. No human faces, no portraits, no anime characters. "
-    "Isometric 3D conceptual tech illustration, clean modern render. "
-    "Scene: {scene}. "
-    "Color palette: deep navy blue background, teal, amber gold, soft cyan glows. "
-    "Composition: centered hero concept, clean negative space, professional depth, "
-    "soft rim lighting, subtle glow, cinematic atmosphere, polished 3D finish. "
-    "1:1 square composition, high detail."
+# ============ STYLE LIBRARY ============
+# Each style = (style_hint for LLM scene, full wrapper for image prompt)
+# "Universal negatives" stay the same across all styles: no text, no faces.
+UNIVERSAL_NEGATIVES = (
+    "No text, no words, no letters, no numbers, no labels, no logos, no watermarks, "
+    "no typography, no human faces, no portraits, no close-up people."
 )
 
+STYLES = {
+    "flat_editorial": {
+        "scene_hint": "think editorial magazine illustration with simple iconic shapes",
+        "wrapper": (
+            "Bold flat vector editorial illustration, New Yorker meets tech magazine cover style. "
+            "Simple geometric shapes, limited color palette, confident composition. "
+            "Scene: {scene}. "
+            "Colors: muted navy, warm orange, cream, soft teal accents. "
+            "Minimalist, sophisticated, hand-crafted feel, slight texture. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+    "synthwave": {
+        "scene_hint": "think 80s arcade, neon chrome retro-futurism",
+        "wrapper": (
+            "Retro synthwave illustration, 1980s Miami aesthetic, Blade Runner neon, vaporwave poster. "
+            "Grid floor, chrome reflections, sunset gradients, glowing neon outlines. "
+            "Scene: {scene}. "
+            "Colors: hot pink, electric cyan, deep purple, golden yellow horizon. "
+            "High contrast, dreamy atmosphere, film grain, nostalgic energy. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+    "cyberpunk_photo": {
+        "scene_hint": "think gritty near-future city at night, cinematic realism",
+        "wrapper": (
+            "Cinematic cyberpunk photorealistic scene, Blade Runner 2049 aesthetic. "
+            "Wet streets, neon signs, rain, volumetric fog, dramatic atmospheric lighting. "
+            "Scene: {scene}. "
+            "Colors: deep teal shadows, magenta and amber neon highlights, cool blue midtones. "
+            "Photographic depth of field, shallow focus, cinematic anamorphic lens. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+    "blueprint": {
+        "scene_hint": "think engineering schematic, annotated with simple line callouts (no readable text)",
+        "wrapper": (
+            "Technical blueprint schematic illustration, engineering drawing aesthetic. "
+            "White and cyan line art on deep navy blue paper, drafting grid, "
+            "measurement markers, construction lines, exploded view. "
+            "Scene: {scene}. "
+            "Colors: navy blue background, crisp white and cyan lines, occasional amber highlight. "
+            "Precise, clean, designed-by-an-engineer feel. "
+            f"{UNIVERSAL_NEGATIVES} No readable text or numbers on the blueprint. "
+            "1:1 square composition."
+        ),
+    },
+    "paper_collage": {
+        "scene_hint": "think physical cut-paper collage, torn magazine scraps",
+        "wrapper": (
+            "Mixed-media paper collage illustration, cut-paper and torn-edge style. "
+            "Layered paper textures, visible ripped edges, hand-drawn pencil strokes, "
+            "halftone dot patterns, subtle shadows suggesting physical depth. "
+            "Scene: {scene}. "
+            "Colors: warm cream background, navy blue, muted orange, soft teal, occasional gold leaf. "
+            "Tactile, human, imperfect, handmade quality. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+    "oil_painting": {
+        "scene_hint": "think expressive oil painting with emotional mood",
+        "wrapper": (
+            "Expressive oil painting, thick impasto brushstrokes, impressionist technique. "
+            "Visible canvas texture, bold painterly marks, dramatic light and shadow. "
+            "Scene: {scene}. "
+            "Colors: deep navy and teal shadows, warm amber and ochre highlights, "
+            "rich dark tones, atmospheric mood. "
+            "Fine art gallery quality, emotional weight, museum-piece aesthetic. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+    "dark_minimalist": {
+        "scene_hint": "think Apple product render, single hero object, lots of empty space",
+        "wrapper": (
+            "Premium dark minimalist product render, Apple keynote aesthetic. "
+            "Single hero subject floating in deep black void, dramatic studio lighting, "
+            "sharp specular highlights, soft shadows, polished surfaces. "
+            "Scene: {scene}. "
+            "Colors: pure black background, subtle teal rim light, amber gold accent glow, white highlights. "
+            "Expensive, refined, designed-with-intention feel. Massive negative space. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+    "low_poly": {
+        "scene_hint": "think Monument Valley game, faceted geometric forms",
+        "wrapper": (
+            "Low-poly 3D illustration, Monument Valley video game aesthetic. "
+            "Faceted triangular geometry, flat-shaded surfaces, playful isometric perspective, "
+            "clean edges, stylized simplified forms. "
+            "Scene: {scene}. "
+            "Colors: soft pastel palette with navy, teal, coral, cream, and golden yellow. "
+            "Charming, dreamlike, slightly whimsical, modern indie game art. "
+            f"{UNIVERSAL_NEGATIVES} "
+            "1:1 square composition."
+        ),
+    },
+}
 
-# ============ QWEN PROMPT ENGINEERING ============
-QWEN_SYSTEM = (
-    "You are a visual prompt designer for an AI image generator. "
-    "Given a LinkedIn post's topic and excerpt, you will:\n"
-    "1. First, understand what the topic SPECIFICALLY means (read the excerpt carefully)\n"
-    "2. Then write ONE concrete visual scene that represents it\n\n"
-    "Rules for the scene:\n"
-    "- Use SPECIFIC objects: machines, buildings, devices, geometric shapes, tech hardware\n"
-    "- Use symbolic VISUAL metaphor grounded in the actual topic content\n"
-    "- NO vague words: 'vibrant', 'innovation', 'efficiency', 'seamless', 'dynamic', "
-    "'collective intelligence', 'agnostic' are BANNED\n"
-    "- NO human faces, NO text/words in the image, NO abstract adjective-soup\n"
-    "- NO style/lighting/color instructions (handled separately)\n"
-    "- ONE sentence, 20-40 words, concrete nouns only\n"
-    "- Start directly with the scene, no preamble like 'Here is' or 'Scene:'\n\n"
-    "Think: if a stranger saw this image, would they guess the topic? If not, be more specific."
-)
+STYLE_KEYS = list(STYLES.keys())
 
-QWEN_FEWSHOT = [
+
+def pick_style(seed: int) -> str:
+    """Deterministically pick a style based on post number."""
+    rng = random.Random(seed)
+    return rng.choice(STYLE_KEYS)
+
+
+def build_image_prompt(scene: str, style_key: str) -> str:
+    return STYLES[style_key]["wrapper"].format(scene=scene)
+
+
+# ============ LLM SCENE PROMPTING ============
+def build_scene_system(style_hint: str) -> str:
+    return (
+        "You are a visual prompt designer for an AI image generator. "
+        "Given a LinkedIn post's topic and excerpt, you will:\n"
+        "1. First, understand what the topic SPECIFICALLY means (read the excerpt carefully)\n"
+        "2. Then write ONE concrete visual scene that represents it\n\n"
+        f"Style guidance: {style_hint}. "
+        "But do NOT include style/lighting/color words — describe only the subject matter.\n\n"
+        "Rules for the scene:\n"
+        "- Use SPECIFIC objects: machines, buildings, devices, geometric shapes, tech hardware\n"
+        "- Use symbolic VISUAL metaphor grounded in the actual topic content\n"
+        "- NO vague words: 'vibrant', 'innovation', 'efficiency', 'seamless', 'dynamic' are BANNED\n"
+        "- NO human faces, NO text/words in the image\n"
+        "- ONE sentence, 20-40 words, concrete nouns only\n"
+        "- Start directly with the scene, no preamble\n\n"
+        "Think: if a stranger saw this image, would they guess the topic? If not, be more specific."
+    )
+
+
+SCENE_FEWSHOT = [
     {
         "role": "user",
         "content": (
@@ -89,8 +201,8 @@ QWEN_FEWSHOT = [
     {
         "role": "assistant",
         "content": (
-            "Glowing logistics network of interconnected warehouses, cargo ships and delivery drones "
-            "flowing along luminous routes across a stylized world map, with data streams bridging every node."
+            "Interconnected warehouses, cargo ships, and delivery drones flowing along routes "
+            "across a stylized world map, with data streams bridging every node."
         ),
     },
     {
@@ -104,9 +216,8 @@ QWEN_FEWSHOT = [
     {
         "role": "assistant",
         "content": (
-            "Five glowing geometric pillars rising in timeline sequence — small cube, neural sphere, "
-            "transformer stack, large language model core, and a constellation of connected agent nodes "
-            "— linked by a light trail."
+            "Five pillars rising in timeline sequence — small cube, neural sphere, transformer stack, "
+            "large language model core, and a constellation of connected agent nodes, linked by a path."
         ),
     },
     {
@@ -114,23 +225,63 @@ QWEN_FEWSHOT = [
         "content": (
             "Topic: Agentic Enterprise\n"
             "Excerpt: The enterprise software market is about to be rebuilt around AI agents. "
-            "Instead of employees doing repetitive work, autonomous AI agents handle tasks like "
-            "emails, scheduling, data entry, and reporting."
+            "Instead of employees doing repetitive work, autonomous AI agents handle tasks."
         ),
     },
     {
         "role": "assistant",
         "content": (
-            "An empty modern office with dozens of translucent robotic agent silhouettes seated at desks, "
-            "each handling different tasks — one with floating emails, one with calendars, one with "
-            "spreadsheets — connected by glowing data streams."
+            "An empty modern office with dozens of robotic agent silhouettes at desks, "
+            "each handling different tasks — emails, calendars, spreadsheets — connected by data streams."
         ),
     },
 ]
 
 
+def build_llm_messages(category: str, excerpt: str, style_hint: str) -> list:
+    msgs = [{"role": "system", "content": build_scene_system(style_hint)}]
+    msgs.extend(SCENE_FEWSHOT)
+    msgs.append({
+        "role": "user",
+        "content": f"Topic: {category}\nExcerpt: {excerpt[:800]}",
+    })
+    return msgs
+
+
+def clean_scene(raw: str) -> str:
+    s = (raw or "").strip()
+    s = re.sub(r"^(scene|here is|here's|sure,? here is|visual scene)[\s:\-—]+", "", s, flags=re.IGNORECASE).strip()
+    s = s.strip('"\'`').strip()
+    s = re.sub(r"\*+", "", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    s = re.split(r"(?<=[.!])\s", s, maxsplit=1)[0]
+    return s
+
+
+# ============ PROVIDER 1: POLLINATIONS TEXT ============
+def ask_pollinations_for_scene(category: str, excerpt: str, style_hint: str) -> str:
+    messages = build_llm_messages(category, excerpt, style_hint)
+    try:
+        r = requests.post(
+            POLLINATIONS_TEXT,
+            json={"model": TEXT_MODEL, "messages": messages, "temperature": 0.7, "max_tokens": 120},
+            timeout=TEXT_TIMEOUT,
+        )
+        r.raise_for_status()
+        data = r.json()
+        content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+        scene = clean_scene(content)
+        if 10 <= len(scene) <= 500:
+            return scene
+        print(f"Pollinations text returned unusable scene: {scene!r}")
+        return ""
+    except Exception as e:
+        print(f"Pollinations text request failed: {e}")
+        return ""
+
+
+# ============ PROVIDER 2: QWEN RUNNER ============
 def get_qwen_url():
-    """Fetch current Qwen Space URL from GitHub service registry."""
     try:
         r = requests.get(f"{QWEN_URL_REGISTRY}?t={int(time.time())}", timeout=10)
         r.raise_for_status()
@@ -141,50 +292,102 @@ def get_qwen_url():
         return None
 
 
-def clean_scene(raw: str) -> str:
-    """Strip preambles, quotes, and markdown from Qwen's response."""
-    s = (raw or "").strip()
-    s = re.sub(r"^(scene|here is|here's|sure,? here is|visual scene)[\s:\-—]+", "", s, flags=re.IGNORECASE).strip()
-    s = s.strip('"\'`').strip()
-    s = re.sub(r"\*+", "", s)
-    s = re.sub(r"\s+", " ", s).strip()
-    s = re.split(r"(?<=[.!])\s", s, maxsplit=1)[0]
-    return s
+def qwen_health_check(qwen_url: str) -> bool:
+    try:
+        r = requests.get(f"{qwen_url}/", timeout=8)
+        return r.status_code == 200
+    except Exception:
+        return False
 
 
-def ask_qwen_for_scene(qwen_url: str, category: str, excerpt: str) -> str:
-    """Call Qwen to generate a concrete visual scene for the topic. Returns '' on failure."""
-    if not qwen_url:
+def ask_qwen_for_scene(qwen_url: str, category: str, excerpt: str, style_hint: str) -> str:
+    if not qwen_url or not qwen_health_check(qwen_url):
+        print("[Qwen] Space is unreachable.")
         return ""
 
-    messages = [{"role": "system", "content": QWEN_SYSTEM}]
-    messages.extend(QWEN_FEWSHOT)
-    messages.append({
-        "role": "user",
-        "content": f"Topic: {category}\nExcerpt: {excerpt[:800]}",
-    })
-
+    messages = build_llm_messages(category, excerpt, style_hint)
     try:
-        r = requests.post(
-            f"{qwen_url}/chat",
-            json={"messages": messages},
-            timeout=QWEN_TIMEOUT_WAKE,
-        )
+        r = requests.post(f"{qwen_url}/chat", json={"messages": messages}, timeout=QWEN_TIMEOUT_WAKE)
         r.raise_for_status()
         data = r.json()
         scene = clean_scene(data.get("response", ""))
-        if len(scene) < 10 or len(scene) > 500:
-            print(f"Qwen returned unusable scene (len={len(scene)}): {scene!r}")
-            return ""
-        return scene
+        if 10 <= len(scene) <= 500:
+            return scene
+        print(f"Qwen returned unusable scene (len={len(scene)}): {scene!r}")
+        return ""
     except Exception as e:
         print(f"Qwen request failed: {e}")
         return ""
 
 
-# ============ PROMPT BUILDER ============
+# ============ PROVIDER 3: CONTENT-AWARE FALLBACK ============
+_STOPWORDS = {
+    "the","this","that","these","those","and","but","for","with","from",
+    "into","onto","your","you","we","our","they","their","them","a","an",
+    "is","are","was","were","be","been","being","have","has","had",
+    "will","would","should","could","can","may","might","must",
+    "on","in","at","of","to","as","by","or","if","it","its",
+    "about","over","under","more","most","less","least","just","only",
+    "also","too","very","really","actually","even","still","now","then",
+    "here","there","when","where","which","what","while","why","how",
+    "2024","2025","2026","2027","2028","2029","2030",
+    "biggest","smart","modern","hidden","backbone","invested","companies",
+}
+
+
+def content_aware_fallback(category: str, post_text: str) -> str:
+    text = post_text[:2000]
+    sentences = re.split(r"[.!?\n]+", text)
+    mid_sentence_text = " ".join(
+        " ".join(s.strip().split()[1:]) for s in sentences if len(s.strip().split()) > 1
+    )
+    multi_caps = re.findall(r"\b[A-Z][a-z]+(?:\s[A-Z][a-z]+)+\b", mid_sentence_text)
+    single_caps = re.findall(r"\b[A-Z][A-Za-z0-9]{2,}\b", mid_sentence_text)
+    amounts = re.findall(r"\$?\d+[KMB]\+?|\d+%", text)
+    lower_words = re.findall(r"\b[a-z]{5,}\b", text.lower())
+    lower_words = [w for w in lower_words if w not in _STOPWORDS]
+
+    seen = set()
+    def dedupe(items):
+        out = []
+        for x in items:
+            key = x.lower()
+            if key not in seen and key not in _STOPWORDS:
+                seen.add(key)
+                out.append(x)
+        return out
+
+    picks = dedupe(multi_caps)[:3] + dedupe(single_caps)[:4] + dedupe(amounts)[:2] + dedupe(lower_words)[:4]
+    keyword_phrase = ", ".join(picks[:8]) if picks else ""
+    if keyword_phrase:
+        return (
+            f"Conceptual visualization representing '{category}' — "
+            f"depicting key elements: {keyword_phrase}. "
+            f"Abstract shapes, tech objects, data flows, connecting lines."
+        )
+    return f"Symbolic visualization of '{category}', abstract shapes, tech objects, data flows."
+
+
+def resolve_scene(category: str, excerpt: str, post_text: str, style_hint: str) -> tuple:
+    print("\n[Scene] Trying Pollinations text API...")
+    scene = ask_pollinations_for_scene(category, excerpt, style_hint)
+    if scene:
+        return scene, "pollinations_text"
+
+    print("[Scene] Pollinations text unavailable. Trying Qwen runner...")
+    qwen_url = get_qwen_url()
+    if qwen_url:
+        print(f"[Scene] Qwen URL: {qwen_url}")
+        scene = ask_qwen_for_scene(qwen_url, category, excerpt, style_hint)
+        if scene:
+            return scene, "qwen"
+
+    print("[Scene] Both LLMs unavailable. Using content-aware fallback.")
+    return content_aware_fallback(category, post_text), "content_fallback"
+
+
+# ============ HELPERS ============
 def extract_excerpt(post_text: str, max_chars: int = 800) -> str:
-    """Get enough of the post for Qwen to understand the topic (first 2 paragraphs)."""
     if not post_text:
         return ""
     paragraphs = post_text.strip().split("\n\n")
@@ -192,18 +395,6 @@ def extract_excerpt(post_text: str, max_chars: int = 800) -> str:
     if len(chunk) > max_chars:
         chunk = chunk[:max_chars].rsplit(" ", 1)[0] + "..."
     return chunk
-
-
-def build_image_prompt(scene: str) -> str:
-    return STYLE_WRAPPER.format(scene=scene)
-
-
-def fallback_scene(category: str) -> str:
-    """Used when Qwen is unavailable — generic but on-topic scene."""
-    return (
-        f"symbolic conceptual tech visualization of '{category}', "
-        f"abstract geometric shapes, floating tech objects, circuit patterns, data flows"
-    )
 
 
 # ============ LINKEDIN ============
@@ -217,20 +408,15 @@ def get_user_id():
 
 def register_image_upload(user_id):
     url = "https://api.linkedin.com/v2/assets?action=registerUpload"
-    headers = {
-        "Authorization": f"Bearer {ACCESS_TOKEN}",
-        "Content-Type": "application/json",
-    }
+    headers = {"Authorization": f"Bearer {ACCESS_TOKEN}", "Content-Type": "application/json"}
     payload = {
         "registerUploadRequest": {
             "recipes": ["urn:li:digitalmediaRecipe:feedshare-image"],
             "owner": f"urn:li:person:{user_id}",
-            "serviceRelationships": [
-                {
-                    "relationshipType": "OWNER",
-                    "identifier": "urn:li:userGeneratedContent",
-                }
-            ],
+            "serviceRelationships": [{
+                "relationshipType": "OWNER",
+                "identifier": "urn:li:userGeneratedContent",
+            }],
         }
     }
     response = requests.post(url, headers=headers, json=payload, timeout=30)
@@ -261,9 +447,7 @@ def post_to_linkedin(user_id, text, asset_urn=None):
         "Content-Type": "application/json",
         "X-Restli-Protocol-Version": "2.0.0",
     }
-
     share_content = {"shareCommentary": {"text": text}, "shareMediaCategory": "NONE"}
-
     if asset_urn:
         share_content["shareMediaCategory"] = "IMAGE"
         share_content["media"] = [{
@@ -272,7 +456,6 @@ def post_to_linkedin(user_id, text, asset_urn=None):
             "media": asset_urn,
             "title": {"text": ""},
         }]
-
     payload = {
         "author": f"urn:li:person:{user_id}",
         "lifecycleState": "PUBLISHED",
@@ -286,7 +469,7 @@ def post_to_linkedin(user_id, text, asset_urn=None):
 # ============ IMAGE GENERATION ============
 def generate_image(prompt, seed, out_path=IMAGE_FILE):
     url = (
-        f"{POLLINATIONS_BASE}{quote(prompt)}"
+        f"{POLLINATIONS_IMAGE}{quote(prompt)}"
         f"?width={IMAGE_WIDTH}&height={IMAGE_HEIGHT}"
         f"&model={IMAGE_MODEL}&seed={seed}&nologo=true"
     )
@@ -343,7 +526,7 @@ def save_progress(index):
 # ============ MAIN ============
 def post_next():
     print("=" * 55)
-    print("LinkedIn Auto-Poster — Qwen Scene + Flux Image")
+    print("LinkedIn Auto-Poster — Multi-Style Edition")
     print(f"POST_TO_LINKEDIN = {POST_TO_LINKEDIN}")
     if not POST_TO_LINKEDIN:
         print("*** SAFE MODE: image will be generated but NOT posted ***")
@@ -364,48 +547,43 @@ def post_next():
     print(f"\nPreviewing #{post['number']} — {post['category']}")
     print(f"Post text preview: {post['text'][:100]}...")
 
-    # ---- Step 1: Ask Qwen for a scene (with fallback) ----
-    scene = ""
-    if post["category"]:
-        excerpt = extract_excerpt(post["raw_text"])
-        print("\n[Qwen] Fetching URL from registry...")
-        qwen_url = get_qwen_url()
-        if qwen_url:
-            print(f"[Qwen] URL: {qwen_url}")
-            print("[Qwen] Requesting scene description...")
-            scene = ask_qwen_for_scene(qwen_url, post["category"], excerpt)
-            if scene:
-                print(f"[Qwen] Scene: {scene}")
-            else:
-                print("[Qwen] No usable response. Using fallback scene.")
-        else:
-            print("[Qwen] Offline. Using fallback scene.")
-
-        if not scene:
-            scene = fallback_scene(post["category"])
-            print(f"[Fallback] Scene: {scene}")
-
-        # ---- Step 2: Build final image prompt and generate ----
-        image_prompt = build_image_prompt(scene)
+    if not post["category"]:
+        print("\nNo category. Skipping image.")
+        if not POST_TO_LINKEDIN:
+            print("SAFE MODE: exiting without posting.")
+            return
+        asset_urn = None
+    else:
         try:
             seed = int(post["number"]) if post["number"] else current_index
         except ValueError:
             seed = current_index
 
-        print(f"\n[Flux] Generating image (seed={seed}, prompt len={len(image_prompt)})")
+        # Pick style deterministically based on post number
+        style_key = pick_style(seed)
+        style_hint = STYLES[style_key]["scene_hint"]
+        print(f"\n[Style] Selected: {style_key}")
+
+        excerpt = extract_excerpt(post["raw_text"])
+        scene, scene_source = resolve_scene(post["category"], excerpt, post["raw_text"], style_hint)
+        print(f"[Scene] Source: {scene_source}")
+        print(f"[Scene] {scene}")
+
+        image_prompt = build_image_prompt(scene, style_key)
+        print(f"\n[Flux] Generating image (seed={seed}, style={style_key}, prompt len={len(image_prompt)})")
         image_ok = generate_image(image_prompt, seed=seed)
 
-        # ---- SAFE MODE exit ----
         if not POST_TO_LINKEDIN:
             if image_ok:
                 print(f"\n*** SAFE MODE complete. Image saved to {IMAGE_FILE} ***")
-                print(f"*** Scene used: {scene}")
+                print(f"*** Style:  {style_key}")
+                print(f"*** Source: {scene_source}")
+                print(f"*** Scene:  {scene}")
                 print("*** No LinkedIn post was made. No progress was updated. ***")
             else:
                 print("\n*** SAFE MODE: image generation failed. ***")
             return
 
-        # ---- Step 3: Upload to LinkedIn ----
         asset_urn = None
         if image_ok:
             try:
@@ -426,14 +604,7 @@ def post_next():
                 asset_urn = None
         else:
             print("Image gen failed. Falling back to text-only post.")
-    else:
-        print("\nNo category. Skipping image.")
-        if not POST_TO_LINKEDIN:
-            print("SAFE MODE: exiting without posting.")
-            return
-        asset_urn = None
 
-    # ---- Step 4: Publish ----
     if not ACCESS_TOKEN:
         print("ERROR: LINKEDIN_ACCESS_TOKEN not set!")
         exit(1)
