@@ -28,7 +28,7 @@ POST_TO_LINKEDIN = True
 # ⬇⬇⬇ IMAGE TOGGLE ⬇⬇⬇
 # True  -> post includes an AI-composed image
 # False -> post is published as text-only (no image generated or attached)
-POST_WITH_IMAGE = False
+POST_WITH_IMAGE = False 
 # ⬆⬆⬆ IMAGE TOGGLE ⬆⬆⬆
 
 ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
