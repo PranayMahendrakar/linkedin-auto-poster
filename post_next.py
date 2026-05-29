@@ -25,6 +25,12 @@ import requests
 POST_TO_LINKEDIN = True
 # ⬆⬆⬆ MASTER TOGGLE ⬆⬆⬆
 
+# ⬇⬇⬇ IMAGE TOGGLE ⬇⬇⬇
+# True  -> post includes an AI-composed image
+# False -> post is published as text-only (no image generated or attached)
+POST_WITH_IMAGE = False
+# ⬆⬆⬆ IMAGE TOGGLE ⬆⬆⬆
+
 ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
 CSV_FILE = "linkedin_posts.csv"
 PROGRESS_FILE = "post_progress.json"
@@ -547,8 +553,11 @@ def post_next():
     print(f"\nPreviewing #{post['number']} — {post['category']}")
     print(f"Post text preview: {post['text'][:100]}...")
 
-    if not post["category"]:
-        print("\nNo category. Skipping image.")
+    if not post["category"] or not POST_WITH_IMAGE:
+        if not post["category"]:
+            print("\nNo category. Skipping image.")
+        else:
+            print("\nPOST_WITH_IMAGE is False. Posting text-only (no image).")
         if not POST_TO_LINKEDIN:
             print("SAFE MODE: exiting without posting.")
             return
