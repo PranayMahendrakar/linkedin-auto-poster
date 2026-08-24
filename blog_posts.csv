@@ -1,0 +1,46 @@
+date,post_number,topic,title,url,body,hashtags
+2026-08-24,405,Agent Browser Runtimes,We spent a decade pushing AI to the edge. The agent stack is quietly pulling it back.,https://pranaymahendrakar.com/blog/we-spent-a-decade-pushing-ai-to-the-edge-the-agent-stack-is-quietly-pu,"Cloudflare shipped a web browser this month that no human will ever look at.
+
+It's called Kitesurf. It runs entirely in V8 isolates on Cloudflare Workers, and it exists for one reason: agents were driving Chromium, and Chromium is a terrible thing to hand an agent.
+
+The numbers back that up. On screenshots and HTML extraction, Cloudflare's published benchmarks show roughly 3 to 4 times less CPU and up to 7 times less memory than Chromium. It passes more than 215,000 Web Platform Tests. It speaks Chrome DevTools Protocol, so existing Puppeteer, Playwright, and MCP clients work with a parameter change.
+
+As engineering, I like it. It's built in Rust on Blitz and Stylo, it's stateless by design, and it is honest about the tradeoff: wall-clock time is roughly 1.8 times slower than Chromium. Cheaper, not faster. That's a spec sheet written by people who ran the benchmark rather than the marketing deck.
+
+Two days before that, the same company launched wallets for agents: programmable spending limits over the x402 protocol, which staples a payment onto an HTTP request so an agent can pay for an API call in the same round trip that makes it.
+
+So inside one week, agents got a runtime and a bank account.
+
+Here's my problem, and it isn't with Cloudflare.
+
+I've spent most of my career arguing that models should run where the data is. Offline, on-device, under the operator's control. I've built multilingual avatars that run with no network at all, and threat detection for defence and policing where ""it works when the link is up"" is not a sentence anyone accepts. Every one of those systems started with the same question: what leaves the building?
+
+For years the answer kept getting better. Quantization got good. Small models got genuinely capable. We won the argument about where inference runs. You can put something useful on hardware you own.
+
+Then the agent stack showed up and quietly moved the boundary somewhere else.
+
+Because it doesn't matter much where your model runs if the browser it drives runs on someone else's network. An agent browsing on your behalf is holding authenticated cookies, form contents, internal dashboards, whatever sits behind the login. The session is the payload. That isn't inference. That's your data, in flight, rendered on infrastructure you don't operate.
+
+I want to be precise here, because this is where the takes get lazy.
+
+Cloudflare's design is better than what most teams are shipping. Stateless, sandboxed, network egress isolated, no persistent authenticated sessions in beta. That is a more careful architecture than a half-configured Chromium container, which is what a lot of agentic pipelines are actually running right now.
+
+The point isn't that this product is unsafe. The point is that the industry just moved the part of the stack that touches real data off the device again, and almost nobody framed it as a sovereignty decision.
+
+It got framed as a performance decision. 7 times less memory. Free during beta.
+
+That is how centralization always wins. Not by argument. By being cheaper and easier on a Tuesday.
+
+Add the wallet and it compounds. An agent that can render your session and spend your money is a different threat surface than an agent that returns text.
+
+None of which means don't use it. I'd point it at public pages at scale tomorrow. That's exactly what it's good at, and running my own Chromium fleet for that job is a waste of a life.
+
+What I'd say to anyone wiring this into production: draw the line by session, not by model.
+
+Go through your agent's tasks and mark which ones touch an authenticated context. Route those through infrastructure you control, even if the public-web ones go to the edge. Two paths is more work. It is also the only version of this where you can answer a compliance question honestly.
+
+And build the audit trail before you build the agent, not after. The production incidents that hurt most are the ones where nobody can reconstruct what the system actually did.
+
+We got very good at asking where the weights live. That was the last war.
+
+The question now is where the session lives, and most teams haven't asked it yet.",#AgenticAI #EdgeAI #DataSovereignty #AIInfrastructure #ProductionAI
