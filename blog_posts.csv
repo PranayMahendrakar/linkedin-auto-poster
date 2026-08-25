@@ -44,3 +44,36 @@ And build the audit trail before you build the agent, not after. The production 
 We got very good at asking where the weights live. That was the last war.
 
 The question now is where the session lives, and most teams haven't asked it yet.",#AgenticAI #EdgeAI #DataSovereignty #AIInfrastructure #ProductionAI
+2026-08-25,406,Model Deprecation Wave,"OpenAI retires o3 tomorrow. In production, a model is a dependency with an expiry date.",https://pranaymahendrakar.com/blog/openai-retires-o3-tomorrow-in-production-a-model-is-a-dependency-with-,"Tomorrow, 26 August, OpenAI takes o3 out of the ChatGPT model picker. It is the end of a 90-day sunset announced on 28 May. The same day, the Assistants API retires in favour of the Responses and Conversations APIs.
+
+Neither of those is a disaster on its own. Put them on a calendar with the rest of the year and the shape changes.
+
+On 23 October, sixteen more models go dark in a single wave, including gpt-4 and gpt-3.5-turbo. That batch came from a deprecation notice covering more than twenty-five model IDs, published on 22 April, with the first hard cutoff on 23 July — roughly fifty-three days of warning. The o3 and o3-pro API snapshots follow on 11 December.
+
+So the model that made most of the world believe in this technology gets switched off in eight weeks.
+
+Let me be fair to OpenAI first. Serving old models forever is genuinely expensive, and they publish their dates properly: there is a deprecations page, the shutdown dates are on it, and recommended replacements are listed next to each retired ID. That is better lifecycle hygiene than most infrastructure I have integrated against.
+
+The problem was never the notice. It is what ""just change the model string"" actually costs downstream.
+
+A model is not a component you replace. It is a component your entire system has been shaped around. Across the 250-odd AI systems I have shipped, the pattern is the same every time: the prompt is fitted to one model's specific failure modes. The eval suite is calibrated against one baseline. The retrieval chunk size, the temperature, the parser you wrapped around that model's habit of adding a preamble, the guardrail thresholds you retuned after three months of real traffic — none of that transfers cleanly to a successor. And the replacement mappings are not cost-equivalent, which means the finance case gets reopened alongside the engineering one.
+
+That is the comfortable version, where you control the deployment.
+
+Now take the uncomfortable one. On defence and automotive work, validation cycles are measured in months, not days. Certification is granted against a system, and a model swap is a system change — you do not get to quietly substitute the thing that makes the decisions and keep the sign-off. A vendor's product calendar and a safety review board's calendar are not the same calendar, and only one of them moves. Fifty-three days is not a migration window in that world. It is barely enough to book the meeting.
+
+I wrote and published a model drift detector because silent behavioural change is the failure mode teams miss — the model still returns valid JSON, still passes the smoke test, and is quietly worse at the one thing you actually deployed it for. Deprecation is drift with a date attached. That honestly makes it the easy version. At least you get told.
+
+Here is my one opinion, and it is not the ideological one people expect from me.
+
+The strongest practical argument for holding weights you control is not privacy, and it is not cost. It is continuity. An open-weights model on hardware you own runs until you decide it stops. Nobody emails you a sunset notice. Nobody reorganises your release plan from another continent, on a schedule set by their margins rather than your certification cycle.
+
+I am not pretending that is free. Self-hosting means you own the serving stack, the security patching, the hardware refresh, the on-call rotation. You trade a vendor's calendar for your own maintenance burden. The difference is that the second bill is one you get to schedule.
+
+So the practical version, whichever side of that line you sit on.
+
+Treat every hosted model as a dependency with a version and an end-of-life date, because that is exactly what it is. Pin dated snapshots rather than floating aliases, so a change is something you choose rather than something you discover. Keep a golden eval set that any candidate model must clear before it goes near production. Put migration hours in the quarterly budget the way you would for a database upgrade, because that is the correct comparison.
+
+And go and find out which of your deployed systems would still work if the vendor turned a model off next Tuesday. If you cannot answer that in an afternoon, you have not found a scheduling problem. You have found an architecture one.
+
+You do not own a capability you cannot renew. Go and check the expiry dates on yours.",#AI #LLM #MLOps #ProductionAI #EdgeAI

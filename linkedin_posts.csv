@@ -6414,3 +6414,34 @@ That's how centralization always wins. Not by argument. By being cheaper on a Tu
 My rule: draw the line by session, not by model. Anything touching an authenticated context routes through infrastructure you control.
 
 Where does your agent's browser actually run, and do you know what it's carrying?",#AgenticAI #EdgeAI #DataSovereignty #AIInfrastructure #ProductionAI
+406,Model Deprecation Wave,"Tomorrow OpenAI takes o3 out of ChatGPT. The same day, the Assistants API retires.
+
+In October, sixteen more models go dark in a single wave — including gpt-4 and gpt-3.5-turbo.
+
+The model that convinced the world this technology was real gets switched off in eight weeks.
+
+To be fair to OpenAI: they publish their dates properly. The deprecations page is public and replacements are listed.
+
+The notice was never the problem.
+
+""Just change the model string"" is the problem.
+
+Your prompt is fitted to one model's failure modes. Your eval suite is calibrated against one baseline. That parser exists because of one model's habit of adding a preamble.
+
+None of it transfers cleanly.
+
+And on defence or automotive work, validation runs in months. Certification is granted against a system — and a model swap is a system change.
+
+That batch went out with roughly fifty-three days before the first cutoff. In that world, that is not a migration window. It is barely enough to book the meeting.
+
+So here is my real argument for open weights. It is not privacy and not cost.
+
+It is continuity.
+
+A model on hardware you own runs until you decide it stops. Nobody emails you a sunset notice.
+
+Self-hosting isn't free — you take on the serving stack, the patching, the hardware. But that bill is one you get to schedule.
+
+So: if your vendor switched off your model next Tuesday, how long until you were back in production?
+
+If you can't answer that today, that is the finding.",#AI #LLM #MLOps #ProductionAI #EdgeAI
