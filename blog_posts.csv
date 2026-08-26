@@ -77,3 +77,34 @@ Treat every hosted model as a dependency with a version and an end-of-life date,
 And go and find out which of your deployed systems would still work if the vendor turned a model off next Tuesday. If you cannot answer that in an afternoon, you have not found a scheduling problem. You have found an architecture one.
 
 You do not own a capability you cannot renew. Go and check the expiry dates on yours.",#AI #LLM #MLOps #ProductionAI #EdgeAI
+2026-08-26,407,Alibaba Closes Wan Weights,Alibaba open-sourced one video model this month and closed the other. That's the strategy.,https://pranaymahendrakar.com/blog/alibaba-open-sourced-one-video-model-this-month-and-closed-the-other-t,"On August 7, Alibaba's Tongyi Lab put Wan-Animate-2 on GitHub and Hugging Face under Apache 2.0. Weights, inference scripts, the technical paper. Quantised INT8 and BF16 builds, distilled speed variants, ComfyUI integration, and a lite variant that streams in real time. Everything you need to run it on your own hardware, in your own building.
+
+On August 24, the same company launched Wan 3.0. Thirty-second clips generated in a single pass, up to 1080p at 30 frames per second, audio produced in the same run, and inputs that now include not just text and images but video, audio, webpages and documents — PDFs, decks, spreadsheets. No weights. API only, through Alibaba Cloud's Model Studio, billed by the second of output.
+
+Seventeen days apart. Both releases are Alibaba being perfectly consistent with itself, and most people are reading only one of them.
+
+Alibaba's last open-weight video flagship is Wan 2.2, from July 2025, Apache 2.0. Every flagship generation since has shipped closed. The company that built its reputation in this field by giving models away has not stopped giving models away. It has stopped giving away the one at the top.
+
+That isn't hypocrisy. It's segmentation, and it's the cleanest example of it I've seen this year. The components feed the ecosystem. The flagship sends an invoice.
+
+I've shipped somewhere north of 250 AI systems, and the ones I'd defend hardest have one thing in common: the model runs where the data already is. An offline multilingual avatar that had to work with no connectivity at all. Real-time drone threat detection for a defence deployment where the frames never leave the site.
+
+Those aren't architecture preferences. They're the requirement, written down before anyone opens a benchmark table.
+
+For that class of work, ""API only"" is not a worse option. It is not an option. There is nothing to deploy. The capability may as well not exist.
+
+And when connectivity does exist, geography still decides. Wan 3.0 is documented as serving from Beijing, Singapore and US East. Nothing in India. So for a team in Bengaluru, using it means every piece of source material crosses a border before the first frame comes back — and remember, the input list now includes your documents. Your internal deck is the prompt.
+
+For a good share of the work I do, that ends the conversation before anyone gets to the quality comparison.
+
+So here is the practical change I'd make in how you think about this. Stop treating openness as a property of a company. It is a property of a specific model version, on a specific date, under a specific licence. ""Alibaba is open"" was a fair description in July 2025. In August 2026 it is a brand impression doing work the facts no longer support. Qwen's licence tells you nothing about Wan 3.0.
+
+Put it in the dependency register next to the version pin: which model, which weights, which licence, and can you hold the file. If the answer to that last one is no, you don't have a model. You have a vendor relationship, and it is priced per second.
+
+None of which makes Wan 3.0 a bad model. Thirty seconds of coherent video with synchronised audio in a single pass is a genuinely hard problem, and generating a clip directly out of a spreadsheet is a better product idea than most things I have watched ship this year. If your work is a marketing team turning cloud-hosted assets into clips, buy it. That is what it is for.
+
+Just be honest with yourself about which of the two August releases your architecture actually depends on.
+
+Because here is the number I keep coming back to. Thirteen months after Wan 2.2, the open ceiling in video generation is still Wan 2.2. The frontier has moved several generations past it. Everything above that ceiling now needs a credit card and a border crossing.
+
+The gap between what you can run and what you can only rent is the honest measure of how open this field is. Right now, in video, that gap is not closing. It is being managed.",#AI #OpenWeights #EdgeAI #DataSovereignty #GenerativeAI

@@ -6445,3 +6445,26 @@ Self-hosting isn't free — you take on the serving stack, the patching, the har
 So: if your vendor switched off your model next Tuesday, how long until you were back in production?
 
 If you can't answer that today, that is the finding.",#AI #LLM #MLOps #ProductionAI #EdgeAI
+407,Alibaba Closes Wan Weights,"Alibaba released two video models this month.
+
+August 7: Wan-Animate-2. Apache 2.0. Weights, inference code, quantised builds, ComfyUI nodes. Run it on your own hardware.
+
+August 24: Wan 3.0. Thirty-second clips, 1080p, audio generated in the same pass, and it builds video straight from your PDFs and decks. No weights. API only, billed by the second.
+
+Seventeen days apart. That is not a contradiction. That is a strategy.
+
+The last open-weight Wan flagship is 2.2, from July 2025. Every flagship since has shipped closed. The components still feed the ecosystem. The one at the top sends an invoice.
+
+I've shipped 250+ AI systems, and the ones I care most about run where the data already is. An offline avatar with no connectivity. Drone threat detection for a defence deployment where the frames never leave the site.
+
+For that work, ""API only"" isn't a worse option. It isn't an option.
+
+And Wan 3.0 serves from Beijing, Singapore and US East. Nothing in India. So for a team in Bengaluru, every source document crosses a border before the first frame comes back.
+
+Here is what I'd change. Stop treating ""open"" as a property of a company. It is a property of one model version, on one date, under one licence.
+
+Put it in your dependency register. Which weights. Which licence. Can you hold the file.
+
+If not, you don't have a model. You have a vendor.
+
+What is in your stack right now that you could not run if the API disappeared tomorrow?",#AI #OpenWeights #EdgeAI #DataSovereignty #GenerativeAI
