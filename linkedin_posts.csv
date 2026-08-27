@@ -6468,3 +6468,28 @@ Put it in your dependency register. Which weights. Which licence. Can you hold t
 If not, you don't have a model. You have a vendor.
 
 What is in your stack right now that you could not run if the API disappeared tomorrow?",#AI #OpenWeights #EdgeAI #DataSovereignty #GenerativeAI
+408,Thomson Reuters Domain Model,"Thomson Reuters spent $40 million building its own model.
+
+The final training run cost about $450,000.
+
+So where did the other 99% go?
+
+Into the corpus, and into the people who know what correct looks like inside it. Their own engineers say it outright: compute was never the binding constraint.
+
+I have shipped 250+ AI systems across automotive, defence and education. Not once has a GPU been the thing standing in my way.
+
+What stops projects is a dirty corpus, and the absence of the one expert who can settle a disagreement between two plausible outputs.
+
+On the drone threat detection work I did for the Army and Police, 94% precision did not come from the architecture. It came from people who could look at a frame and say, without hedging, whether that was a threat.
+
+Two more things everyone is skipping.
+
+They built it on somebody else's open weights, and they have swapped that base repeatedly as better open models landed.
+
+And they shipped it into exactly one feature. CoCounsel stays multimodel. Most teams, having spent $40 million, would have put the new model everywhere just to justify the invoice.
+
+It wins on their content. It is not the leader on the open web. They published both halves. That honesty is the product.
+
+So: does your organisation actually have a corpus nobody else can touch? Or are you about to pay frontier prices for a fine-tune with a press release?
+
+Tell me which one you are looking at right now.",#AI #LLM #EnterpriseAI #FineTuning #ProductionAI

@@ -108,3 +108,34 @@ Just be honest with yourself about which of the two August releases your archite
 Because here is the number I keep coming back to. Thirteen months after Wan 2.2, the open ceiling in video generation is still Wan 2.2. The frontier has moved several generations past it. Everything above that ceiling now needs a credit card and a border crossing.
 
 The gap between what you can run and what you can only rent is the honest measure of how open this field is. Right now, in video, that gap is not closing. It is being managed.",#AI #OpenWeights #EdgeAI #DataSovereignty #GenerativeAI
+2026-08-27,408,Thomson Reuters Domain Model,Thomson Reuters spent $40M on a model. The training run cost $450K. That gap is the lesson.,https://pranaymahendrakar.com/blog/thomson-reuters-spent-40m-on-a-model-the-training-run-cost-450k-that-g,"Two years of work. Forty million dollars. And when the team finally kicked off the training run that produced the model they actually shipped, that run cost about four hundred and fifty thousand.
+
+Thomson Reuters launched Thomson on 24 August: its own frontier model, built for legal and tax work. It debuted inside exactly one feature, the Tabular Analysis tool in CoCounsel Legal, which is high-volume structured document review. The foundation is somebody else's open weights. The most recent base reported at launch was Qwen 3.5, and by their own account they have changed the root model many times over the project and expect to keep changing it as better open models appear.
+
+Everything that makes it theirs sits on top of that base: continued pre-training on Westlaw, Practical Law, Checkpoint and Reuters, preference data collected from working lawyers, red-teaming for safety and bias, and internal deployment used as a feedback loop.
+
+The number that should stop you is not the forty million. It is the ratio.
+
+Roughly 99% of that spend went somewhere other than the final compute bill. Their own engineering write-up says it without flinching: the compute is not the binding constraint. The corpus is, and so are the people who know what correct looks like inside it.
+
+I have shipped somewhere north of 250 AI systems across automotive, defence and education, and I have never once been stopped by a GPU. I have been stopped, repeatedly, by not having a clean corpus, and by not having the one person in the building who can settle a disagreement between two plausible-looking outputs. On the drone threat detection work I did for the Army and Police, the 94% precision did not come out of the architecture. It came from people who could look at a frame and say, without hedging, whether that was a threat.
+
+Compute is a purchase order. Domain truth is a hiring problem plus a decade of accumulated data. Only one of those can be procured on a Tuesday.
+
+There is a second detail in that write-up that most of the coverage skipped. They had to do explicit work on catastrophic forgetting. Specialise a model hard enough and it quietly loses the general capability it arrived with. I have published on exactly this failure mode in RLHF, and it remains the most under-priced risk in enterprise fine-tuning. Teams measure the thing they trained for. Almost nobody measures what fell out on the way.
+
+Thomson Reuters measured it, and then published the shape of the answer. On their own Deep Research benchmark, with their content in the loop, Thomson beat GPT 5.4 and Claude Sonnet 5 on completeness and factuality. On web-only content, they describe it as within the range of the other models but not the leader yet.
+
+Both halves of that sentence are the product. That is what a domain model actually is. Not better. Better here, worse there, and honest about where the boundary sits.
+
+Which is why the deployment decision matters more than the training decision. They did not tear the frontier models out of CoCounsel. It stays multimodel by design. Thomson becomes the default for one task where it has a demonstrated edge, and the stated plan is for it to take a growing share of tokens as that edge widens into other work.
+
+Most teams I advise would have done the opposite. Having spent forty million dollars, they would put the new model everywhere, because that is how you justify the invoice. That instinct has killed more enterprise AI programmes than any benchmark result ever has.
+
+The last piece is the one I care about most. Their framing is a model you own rather than rent, pointed at the problems you choose, improving on your schedule rather than somebody else's. That is not a cost argument. It is a control argument, and it is the same argument I make for running models on-device: your data, your hardware, your roadmap, your upgrade calendar.
+
+Be honest about who can copy this, though. Thomson Reuters has used less than 10% of its own content so far. Less than a tenth, and it is already competitive on its home turf. That is not a strategy you can adopt next quarter. That is a corpus you either spent forty years building or you did not.
+
+If you have a proprietary dataset nobody else can legally touch, and enough volume on a single task to amortise the work, this playbook is now proven and considerably cheaper than the headline number suggests. If you do not, the thing you are contemplating is not a frontier model. It is a fine-tune with a press release attached.
+
+The moat was never the weights. It never will be. Open weights are swappable, and they get better for free while you sleep. What forty million dollars bought here was the right to point somebody else's open foundation at a corpus nobody else has, and to employ the people who could tell it when it was wrong.",#AI #LLM #EnterpriseAI #FineTuning #ProductionAI
