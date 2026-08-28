@@ -6493,3 +6493,30 @@ It wins on their content. It is not the leader on the open web. They published b
 So: does your organisation actually have a corpus nobody else can touch? Or are you about to pay frontier prices for a fine-tune with a press release?
 
 Tell me which one you are looking at right now.",#AI #LLM #EnterpriseAI #FineTuning #ProductionAI
+409,Anthropic Model Hardware Standard,"Anthropic previewed a standard yesterday for AI agents to operate physical machines. Microscopes, robotic arms, lasers.
+
+Everyone quoted the same line: integration drops from weeks to hours.
+
+I keep looking at a different number.
+
+At QuEra, four engineers spent months on a script that recovered a laser's lock 58% of the time, in 150 seconds. Claude iterated overnight and produced something that hit 99.3% across 700 blind trials, in six seconds.
+
+Look at what actually shipped. A decision tree.
+
+The model was in the loop while it was being built. It is out of the loop when it runs.
+
+That is the difference between a demo and a deployment. Almost nobody covering this drew the line.
+
+I have shipped AI onto drone feeds for defence users, and into vehicles with no network. You do not put a probabilistic system inside a control loop that moves mass or emits energy.
+
+Wiring was never the hard part. Any decent engineer can do that in a week.
+
+The hard part is the envelope: what the machine refuses to do regardless of what the model asks.
+
+Anthropic got that right, and it is the least-quoted part. Limits live in the driver, not the prompt. A driver cannot be argued with. A prompt can.
+
+My worry is the convenience. Weeks of integration used to force an engineer to sit with the device and learn its failure modes. That friction was a safety mechanism.
+
+Put the model in the design loop, not the control loop.
+
+Where would you draw that line on your own hardware?",#AI #PhysicalAI #AIAgents #EdgeAI #Robotics

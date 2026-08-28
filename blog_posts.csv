@@ -139,3 +139,32 @@ Be honest about who can copy this, though. Thomson Reuters has used less than 10
 If you have a proprietary dataset nobody else can legally touch, and enough volume on a single task to amortise the work, this playbook is now proven and considerably cheaper than the headline number suggests. If you do not, the thing you are contemplating is not a frontier model. It is a fine-tune with a press release attached.
 
 The moat was never the weights. It never will be. Open weights are swappable, and they get better for free while you sleep. What forty million dollars bought here was the right to point somebody else's open foundation at a corpus nobody else has, and to employ the people who could tell it when it was wrong.",#AI #LLM #EnterpriseAI #FineTuning #ProductionAI
+2026-08-28,409,Anthropic Model Hardware Standard,Claude took a laser from 58% to 99.3%. What it shipped was a decision tree.,https://pranaymahendrakar.com/blog/claude-took-a-laser-from-58-to-993-what-it-shipped-was-a-decision-tree,"Anthropic previewed the Model Hardware Standard yesterday, a common interface that lets AI agents operate physical equipment. Microscopes, liquid handlers, robotic arms, the lasers inside a quantum computer. The framing everyone picked up was USB-C for machines, and integration time falling from weeks to hours.
+
+That framing undersells it, and the number I keep coming back to is not the integration time.
+
+At QuEra, four engineers had spent months on a bespoke script that recovered a laser's lock 58% of the time, in about 150 seconds. With MHS, Claude iterated on the problem overnight and produced a controller that hit a 99.3% success rate across 700 blind trials, in six seconds.
+
+Read what actually shipped there. The artifact is a decision tree. The model was in the loop while the thing was being built, and out of the loop when it runs. That distinction is the whole difference between a demo and a deployment, and almost nobody covering this announcement drew the line.
+
+I have built systems that touch the physical world. Real-time threat detection running on drone feeds for defence users. Offline multilingual assistants sitting inside vehicles, with no connectivity assumed. The same constraint applies to both. You do not put a probabilistic system inside a control loop that moves mass or emits energy and then reason about it afterwards. The control loop has to be deterministic, bounded, and readable at 3 a.m. by someone who did not write it.
+
+So the interesting question about MHS is not whether an agent can reach the hardware. Wiring was never the hard part. Any competent engineer can put a device behind an API in a week. The hard part is the envelope: what the machine will refuse to do regardless of what the model asks it to.
+
+To Anthropic's credit, that is in the spec, and it is the part being quoted least. Safety limits are enforced by the driver, not the prompt. Devices carry natural-language tags describing their own constraints. Pre-execution checks block unsafe calls, and high-risk actions escalate to a human.
+
+That ordering matters. Constraints belong in the layer closest to the metal, because that layer cannot be argued with. A prompt can. Anyone who has watched a well-behaved model produce a confidently wrong tool call knows exactly why you do not put the guardrail in the text.
+
+Anthropic also says the standard is model-agnostic, reachable by any agent harness over standard protocols like MCP, and that they will open source it after the preview once more safety work is done. They state plainly that language models still lack physical intuition, having learned about the physical world from text and images. Publishing that sentence next to a spec for driving industrial machinery is more honest than most launches, and The Register was right to lean on it.
+
+Here is my caution, and it is not about safety theatre.
+
+A standard this convenient will get used the lazy way. The moment integration takes twenty minutes instead of six weeks, the incentive to think carefully about the envelope collapses. Weeks of integration work used to be an accidental safety mechanism. It forced an engineer to sit with the device, learn its failure modes, and encode them. Remove the friction and you remove the forcing function too. Constraint tags do not write themselves, and they are only ever as good as the person who was in a hurry.
+
+There is a second thing the coverage missed. Every one of these deployments assumes the agent can reach a datacentre. A lab bench can. A drone at four hundred feet over a border cannot, and neither can a vehicle in a tunnel or a machine on a factory floor with an air gap. Physical systems tend to live exactly where the network does not. If this standard matures the way MCP did, the version that matters for most of the world is the one where the reasoning runs on the device. Small, quantised, offline, under the operator's control.
+
+That is not a criticism of the preview. Labs and advanced manufacturing are the right first target: good networks, trained staff, contained blast radius. It is a note about what has to come next, and it is where the interesting engineering is.
+
+For now, take the QuEra result as the template rather than the headline. Let the model explore the space, iterate against real hardware, and hand you an artifact you can read. Then run the artifact. A language model is a very fast engineer with no physical intuition, and you should treat it like one.
+
+Put the model in the design loop, not the control loop.",#AI #PhysicalAI #AIAgents #EdgeAI #Robotics
