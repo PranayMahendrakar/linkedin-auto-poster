@@ -168,3 +168,36 @@ That is not a criticism of the preview. Labs and advanced manufacturing are the 
 For now, take the QuEra result as the template rather than the headline. Let the model explore the space, iterate against real hardware, and hand you an artifact you can read. Then run the artifact. A language model is a very fast engineer with no physical intuition, and you should treat it like one.
 
 Put the model in the design loop, not the control loop.",#AI #PhysicalAI #AIAgents #EdgeAI #Robotics
+2026-08-29,410,Open Robotics Hardware Economics,A $399 robot duck and a $1.1B hardware fund landed the same week. Only one changes the field.,https://pranaymahendrakar.com/blog/a-399-robot-duck-and-a-11b-hardware-fund-landed-the-same-week-only-one,"Hugging Face's Pollen Robotics division opened pre-orders this week for Microduck: a 25-centimetre biped with 15 motors, a camera, lidar, dual IMUs, and an articulated beak that doubles as a gripper. It ships with seven pre-trained behaviours and a full reinforcement learning stack on GitHub. Train a policy in simulation, flash it, run it on the robot. Three hundred and ninety-nine dollars.
+
+The next day, Andreessen Horowitz announced a $1.1 billion fund called Machine Age, pointed at the physical buildout of AI: processors, memory, networking, storage, data centres, robotics. Their argument is that hardware supply chains grow twenty to thirty percent a year while demand grows in triple digits. Something has to give.
+
+Both announcements are about the same bottleneck. They propose opposite solutions.
+
+I have spent most of my career on the constrained end of this problem. Real-time drone threat detection for a defence deployment. An offline multilingual avatar that had to run on a machine sitting on a showroom floor with no guarantee of a network. In none of those projects was the model the thing that held us up.
+
+What held us up was access to hardware. Not compute in a data centre. The actual device, in the actual room, with the actual sensors bolted to it, available to whoever was writing the policy that week.
+
+That is the part of embodied AI people consistently underrate. A vision-language-action model is a research artefact until somebody can iterate against real actuators at real speed. Simulation gets you to a plausible policy. It does not get you to a shipped one. The gap between those two is filled by boring, repetitive contact with physical hardware, and the price of that hardware decides how many people are allowed to close it.
+
+Which is why I think the $399 number matters more than the $1.1 billion.
+
+At $1.1 billion you fund a few dozen companies that build the substrate everyone else rents. That is necessary work, and I am not dismissing it. Power, memory and networking really are constrained, and no amount of clever engineering routes around a supply chain that cannot deliver. But it concentrates the field. The people who get to experiment are the people inside the funded companies.
+
+At $399 you change the population. A university lab can buy thirty units for the price of one research arm. A student trains a gait in simulation on a laptop, flashes it, watches the thing fall over, and learns what you cannot learn from a paper: that the sim-to-real gap is not a number in a results table. It is a specific robot behaving badly on a specific floor.
+
+I have watched this transition happen once already. When I started, running a decent vision model meant booking time on shared hardware. Then the boards got cheap and the tooling got open, and within a few years students were doing on a single-board computer what used to require an institution. The field did not accelerate because the models improved in isolation. It accelerated because the number of people who could touch a working system went up by orders of magnitude.
+
+Robotics has been stuck on the wrong side of that transition for a decade. Not for lack of models. For lack of cheap, honest, repairable hardware with an open stack sitting on top of it.
+
+There is a caveat I would be dishonest to skip. A desktop duck is not a warehouse robot. Fifteen small motors will teach you nothing about payload dynamics, industrial safety envelopes, or what happens to a joint after eighteen months of two-shift operation. Anyone claiming this collapses the distance to production robotics is selling something.
+
+But that was never the claim. The claim is that the entry ticket just moved from institutional to personal, and the stack you learn on is the same stack you would reach for later, because it is open.
+
+My bias here is well documented and I will not pretend otherwise. I think models should run where the data is: on the device, offline, under the control of whoever owns the problem. A robot is the purest form of that argument. There is no graceful fallback to an API when a machine has to keep its balance in forty milliseconds. Whatever policy you trained has to live on board, and it has to be small enough and fast enough to survive there.
+
+That constraint is a feature. It forces the discipline that most LLM work gets to skip, because a robot that is too slow does not degrade politely. It falls over in front of you.
+
+So both bets get placed, and both are probably right. Capital solves the supply constraint. Cheap open hardware solves the participation constraint. Only one of them puts a working system in the hands of someone who was not already invited.
+
+History suggests that is where the surprises come from. Watch what people build with the ducks.",#EmbodiedAI #Robotics #EdgeAI #OpenSource #AIEngineering

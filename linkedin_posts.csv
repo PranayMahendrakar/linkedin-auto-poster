@@ -6520,3 +6520,28 @@ My worry is the convenience. Weeks of integration used to force an engineer to s
 Put the model in the design loop, not the control loop.
 
 Where would you draw that line on your own hardware?",#AI #PhysicalAI #AIAgents #EdgeAI #Robotics
+410,Open Robotics Hardware Economics,"Two AI hardware announcements landed a day apart this week.
+
+Hugging Face opened pre-orders for Microduck: a 25cm biped robot. 15 motors, camera, lidar, an articulated beak that doubles as a gripper. Full reinforcement learning stack on GitHub. $399.
+
+The next day, a16z announced a $1.1 billion fund for the physical buildout of AI. Chips, memory, networking, data centres, robotics.
+
+Same bottleneck. Opposite solutions.
+
+I've spent most of my career on the constrained end of this. Drone threat detection for a defence deployment. An offline multilingual avatar running on a machine with no guaranteed network.
+
+The model was never what held us up.
+
+What held us up was access to the actual device, in the actual room, with the actual sensors bolted to it.
+
+A vision-language-action model is a research artefact until someone can iterate against real actuators at real speed. Simulation gets you a plausible policy. It does not get you a shipped one.
+
+That gap gets closed by boring, repetitive contact with physical hardware. The price of the hardware decides how many people are allowed to close it.
+
+At $1.1B you fund a few dozen companies that build the substrate everyone else rents.
+
+At $399 you change who gets to participate at all.
+
+A desktop duck is not a warehouse robot, and nobody should pretend otherwise. But the entry ticket just moved from institutional to personal, and the stack you learn on is open.
+
+Which constraint do you think is actually holding embodied AI back right now: capital, or access?",#EmbodiedAI #Robotics #EdgeAI #OpenSource #AIEngineering
