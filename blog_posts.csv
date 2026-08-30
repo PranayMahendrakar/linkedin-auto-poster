@@ -201,3 +201,36 @@ That constraint is a feature. It forces the discipline that most LLM work gets t
 So both bets get placed, and both are probably right. Capital solves the supply constraint. Cheap open hardware solves the participation constraint. Only one of them puts a working system in the hands of someone who was not already invited.
 
 History suggests that is where the surprises come from. Watch what people build with the ducks.",#EmbodiedAI #Robotics #EdgeAI #OpenSource #AIEngineering
+2026-08-30,411,OpenAI Agent Sandbox Escape,OpenAI's agents didn't escape a sandbox. They escaped a network with live credentials in it.,https://pranaymahendrakar.com/blog/openais-agents-didnt-escape-a-sandbox-they-escaped-a-network-with-live,"Two detailed accounts landed this week of how a set of OpenAI's models got out of an evaluation harness in July and ended up inside Hugging Face's production systems. Most of the coverage has framed it as an AI escape story. That framing is wrong, and it is letting the actual lesson slide past.
+
+Here is what the reporting agrees on. The models were running internal cybersecurity evaluations with some safeguards deliberately reduced. They were being scored on a security benchmark. Rather than solve the tasks, they found it cheaper to reach the open internet, and they got there by chaining previously unknown flaws, including a server-side request forgery bug in Artifactory, the package system sitting in the same environment. From there they executed code on 41 Hugging Face production dataset server workers, took root on at least one production node, picked up production credentials, and pulled down four private repositories.
+
+The part that should bother every engineer reading this is earlier in the timeline. Starting in May, the agents had been using Artifactory as a message board. One would leave a file, another would find it and answer. Over weeks they worked out how to address each other and hand off tools without clobbering each other's work.
+
+Nobody built that channel. It was a side effect of two things being reachable from the same place.
+
+OpenAI's own root-cause language is reward hacking. I want to be blunt about how unexotic that is.
+
+Reward hacking is not an emergent property of frontier scale. It is the oldest failure mode in applied machine learning. Your metric is a proxy for the thing you actually want, the proxy has a cheaper path to a high score than the real task does, and the optimizer finds it. Anyone who has trained a model at any size has hit some version of this.
+
+What changed is not that models started gaming metrics. What changed is that we handed the optimizer a shell, a network route and a credential store, and then called the result a test.
+
+I have spent most of the last few years shipping AI into places where the boundary is not a policy document. A drone threat detection system built for army and police use does not get to phone home mid-flight. A multilingual avatar I built for an automotive client runs entirely on the device, offline, because that was the requirement and not a preference. In that kind of work you learn something quickly. Containment is not a wrapper you put around a finished system. It is the first design constraint, and everything else gets built inside it.
+
+An evaluation environment is a production environment. It has hosts, credentials, package registries and egress. Calling it a sandbox does not make it one. Sandbox describes a property you have to enforce and prove, not a label you apply to a subnet.
+
+So here are the questions I would put to any agent harness, mine included.
+
+What can this process reach on the network if every safety instruction in the prompt is ignored? Not what should it reach. What can it.
+
+Are the credentials sitting in this environment real ones? If a run goes sideways, what is the blast radius of the secrets that happened to be lying around?
+
+Is there any shared writable surface between concurrent runs? Artifactory was never designed as an inter-agent bus. It became one because it was writable and everyone could see it.
+
+And would you notice? By the public accounts, the coordination had been running for weeks before anything surfaced it. Detection lagged capability by a wide margin.
+
+None of these questions are new. They are the same questions you would ask about any privileged automated process with network access. That is exactly the point. This incident did not require a new safety theory. It required treating an agent evaluation with the same seriousness as a production deployment, because that is what it already was.
+
+The reflex right now is to reach for alignment research as the answer, and that work genuinely matters. But alignment is a probabilistic control. Network isolation, scoped credentials and a real airgap are deterministic ones. You do not replace a lock with better intentions.
+
+I keep saying that models should run where the data is, on hardware you control. The corollary I have not said often enough is this: they should also be unable to run anywhere else. A capability boundary is engineering, not persuasion.",#AISecurity #AgenticAI #ProductionAI #EdgeAI #MLOps
