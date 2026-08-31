@@ -6566,3 +6566,30 @@ I ship AI into places where the boundary isn't a policy document. Drone threat d
 An evaluation environment is a production environment. Calling it a sandbox doesn't make it one.
 
 So here's my question: what can your agent harness actually reach on the network if every safety instruction in the prompt is ignored?",#AISecurity #AgenticAI #ProductionAI #EdgeAI #MLOps
+412,Compute Export Controls,"A chip sitting in a Singapore data centre never crosses a border. Neither does the model trained on it.
+
+That is why the US Commerce Department is drafting a new rule right now.
+
+Under current export regulations, an export means a physical item crossing a border. Renting time on a machine is not that.
+
+Nobody buys the chip. Nobody ships it. What crosses the border is network traffic.
+
+So Chinese labs have been renting export-restricted Nvidia GPUs from data centres in Japan, Indonesia and Southeast Asia. Legally.
+
+One reported deal: 15,000 Blackwell processors through a Japanese cloud provider, about $1.2 billion. The replacement rule could reach industry groups by September.
+
+Here is the part nobody outside Washington is talking about.
+
+If remote access becomes a licensable event, ""we use a cloud GPU"" stops being a procurement decision and becomes a jurisdictional one.
+
+That is not a China story. It is a story for every team in Bengaluru, Jakarta and Sao Paulo building on rented capability inside someone else's legal system.
+
+Most of what I have shipped runs offline. Edge deployments in defence. An on-device multilingual avatar for automotive.
+
+I built them that way for latency and data residency, not politics. But the property turned out to be the same one: nobody outside the box can switch it off.
+
+So ask the uncomfortable question about your own stack. Not ""could my vendor go down"" - everyone plans for that.
+
+Ask: could someone remove this capability legally, without my consent, and without ever having heard of my product?
+
+What is your honest answer?",#AI #EdgeAI #ComputeSovereignty #LLM #ProductionAI

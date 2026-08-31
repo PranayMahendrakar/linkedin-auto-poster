@@ -234,3 +234,36 @@ None of these questions are new. They are the same questions you would ask about
 The reflex right now is to reach for alignment research as the answer, and that work genuinely matters. But alignment is a probabilistic control. Network isolation, scoped credentials and a real airgap are deterministic ones. You do not replace a lock with better intentions.
 
 I keep saying that models should run where the data is, on hardware you control. The corollary I have not said often enough is this: they should also be unable to run anywhere else. A capability boundary is engineering, not persuasion.",#AISecurity #AgenticAI #ProductionAI #EdgeAI #MLOps
+2026-08-31,412,Compute Export Controls,The chips never crossed the border. That is the whole problem with controlling compute.,https://pranaymahendrakar.com/blog/the-chips-never-crossed-the-border-that-is-the-whole-problem-with-cont,"Washington spent years building an export-control regime around a physical object. The object has stopped mattering.
+
+The Bureau of Industry and Security is drafting a rule aimed at a gap it cannot close under the regulations as they are currently written: Chinese AI firms renting export-restricted Nvidia GPUs from data centres located outside China. Reporting over the last few days says a trimmed-down replacement for the rescinded AI diffusion rule could go out to industry groups for comment as early as September. Thailand, Singapore, Japan and Indonesia keep appearing as the routing points.
+
+The mechanics are almost boring, which is what makes them worth reading twice.
+
+Under the Export Administration Regulations, an export is the transfer of a physical item across a border. Renting time on a machine is not that. The chip stays bolted into a rack in Singapore. Nobody buys it, nobody ships it, title never changes hands. What crosses the border is network traffic.
+
+So the arrangements are, as of today, legal. Moonshot is reported to run a substantial share of its Kimi training on roughly 20,000 Nvidia Hopper chips under a compute agreement with Alibaba. Tencent is reported to have secured around 15,000 Blackwell processors through a Japanese cloud provider on contracts worth about $1.2 billion. A Shanghai startup, INF Tech, is reported to have rented around 2,300 Blackwell GPUs from an Indonesian telecom operator for roughly $100 million. The Remote Access Security Act, which would write remote access into the statute as its own controlled category, passed the House 369-22 and has been sitting in the Senate ever since.
+
+I am not interested in who wins that argument. I am interested in what the argument concedes.
+
+This is the first time a government has had to put in writing that compute has come unstuck from location. Everything downstream of that is a design constraint, and it applies to you whether or not you are the target.
+
+Most of what I have shipped runs offline. An offline multilingual AI avatar for an automotive client in Germany. Real-time drone threat detection for defence and police units in India, running at the edge, because there is no reliable uplink standing at a perimeter. I did not build those on-device for political reasons. I built them that way because the latency budget and the connectivity were non-negotiable, and because the data was not allowed to leave.
+
+But the property I ended up buying is exactly the one now being negotiated in Washington. Nobody outside that box can switch it off.
+
+Here is my actual position. The remote-access gap is not a loophole. A loophole implies somebody was careless. This is a category error: an attempt to control a utility by controlling its geography, at the precise moment the utility stopped caring where it sits. You can close this particular door, and I expect they will, and the shape of the problem will not change. The thing being restricted is a service, and services reroute.
+
+What changes is the paperwork for everyone else.
+
+If remote access becomes a separately licensable event, then ""we use a cloud GPU"" stops being a procurement line and becomes a jurisdictional one. That is not a China story. That is a story for every team in Bengaluru, Jakarta, Sao Paulo and Warsaw that has quietly built its product on rented capability sitting inside someone else's legal system.
+
+So run the audit. Not the vendor-reliability one, everybody has done that. Run the harder one.
+
+List the capabilities your product cannot function without. For each one, ask who could remove it without your consent and without breaking any law. Not ""would they"" but ""could they."" A vendor going down is an outage, and you can engineer around an outage. A vendor being told by a regulator that you are no longer an eligible customer is not an outage. It is the end of that feature.
+
+For a lot of teams, the honest answer is that a meaningful part of what they sell is a passthrough for a decision made in a building they will never enter.
+
+I am not arguing that everything should run on-device. Frontier training will not, and pretending otherwise is a fantasy. I am arguing something narrower and harder to dismiss: the layer your product's core promise depends on should be a layer you can hold. For most applied work, the retrieval and the classification and the extraction and the speech, the unglamorous eighty percent, that is already achievable on hardware you own, at a quality your users will not notice the difference in.
+
+The export-control fight is about which chips China can reach. The lesson underneath it is smaller, and it applies to all of us. Rented capability is borrowed capability, and the terms are set by people who have never heard of your product.",#AI #EdgeAI #ComputeSovereignty #LLM #ProductionAI
