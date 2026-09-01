@@ -267,3 +267,36 @@ For a lot of teams, the honest answer is that a meaningful part of what they sel
 I am not arguing that everything should run on-device. Frontier training will not, and pretending otherwise is a fantasy. I am arguing something narrower and harder to dismiss: the layer your product's core promise depends on should be a layer you can hold. For most applied work, the retrieval and the classification and the extraction and the speech, the unglamorous eighty percent, that is already achievable on hardware you own, at a quality your users will not notice the difference in.
 
 The export-control fight is about which chips China can reach. The lesson underneath it is smaller, and it applies to all of us. Rented capability is borrowed capability, and the terms are set by people who have never heard of your product.",#AI #EdgeAI #ComputeSovereignty #LLM #ProductionAI
+2026-09-01,413,Pentagon GenAI Portal,"Three million users, three approved models. The model list was never the hard part.",https://pranaymahendrakar.com/blog/three-million-users-three-approved-models-the-model-list-was-never-the,"On Monday the Pentagon switched on ChatGPT Mil and Grok for Government inside GenAI.mil, its central generative AI portal, alongside Google's Gemini. The platform has onboarded more than 1.7 million unique users out of a department of roughly three million people. Both new models cleared Impact Level 5, the highest authorization for handling non-public, sensitive unclassified data.
+
+The coverage went where coverage always goes: who is in and who is out. Anthropic's Claude is out, after the department designated the company a supply-chain risk. A federal judge later called that designation illegal and baseless.
+
+I want to talk about a different sentence in the announcement. The department said it will continue to build an architecture that prevents AI vendor lock and ensures long-term flexibility.
+
+That is the correct goal. A list of three approved chat products is not how you reach it.
+
+I have shipped systems into defence environments. Real-time threat detection on constrained hardware, in the field, judged on precision rather than on how the demo looked. The lesson from that work is boring and it has never changed: the model is the easiest component to replace. The boundary around it is the actual product.
+
+A boundary is a set of unglamorous answers. Where does the prompt physically land. What does the logging retain, and for how long. Which network segment is this allowed to touch. What is the failure behaviour when the link drops for four hours. Getting a model authorized at IL5 is not a modelling achievement, it is an answer to those questions written down and signed. Which is why the authorization attaches to the model and the environment together, and why it took months rather than an afternoon.
+
+Now apply that to vendor lock.
+
+Having three vendors behind one URL does not make a vendor swappable. What makes a vendor swappable is whether the thing you built on top of it survives the swap. If your prompts, your retrieval layer, your evaluation harness and your audit trail are yours, then losing a provider is a configuration change and a week of regression testing. If your workflows live inside one vendor's product surface as custom assistants and uploaded files, then the portal is the lock. It is just a lock with a nicer front door.
+
+The Claude episode is the proof, and it cuts both ways. A vendor can be removed by policy in a single memo. A court can rule that removal illegal months later. Neither event should be able to touch a deployment that was built to be portable, and both events would wreck one that was not. Three million users are currently building habits inside product surfaces that a procurement dispute can revoke.
+
+There is a second thing worth saying, and it is the part I care most about.
+
+IL5 unclassified means administrative work, logistics, planning and policy documents. That is genuinely useful. It is also the easy half. Every one of those users is a person sitting near a network that works.
+
+The half I have spent my career on does not get a portal, because there is no link to the portal. A system watching for threats in the field does not get to wait on a round trip to a data centre, and it does not get to fail open when the connection goes. It has to be small enough to run where it sits and honest enough to be measured there. That is not a philosophical preference about on-device AI. It is a constraint that announces itself the moment you leave the building.
+
+So the shape of institutional AI right now is a portal that serves the documented, connected, unclassified work extremely well, and an edge that still has to be engineered one deployment at a time. Those are two different disciplines. Confusing the first for a complete strategy is how organisations end up with a very good chat interface and nothing that works during an outage.
+
+If you are running enterprise AI, you are already running a version of this play. One gateway, an approved model list, a compliance boundary, adoption numbers in the internal deck. It is a good play. Ask it two questions before you call it an architecture.
+
+First: if your primary model were banned tomorrow, by a regulator, a security review, or a vendor's own policy change, how many days until you are running on the substitute? If you do not have a number, you have a dependency, not a portfolio.
+
+Second: what still works when the network does not? For a lot of document workflows the honest answer is nothing, and that is fine. For anything operational, that answer is a design flaw you have not paid for yet.
+
+The Pentagon is right that vendor lock is the risk worth naming. It just is not solved by a longer list of vendors. It is solved by owning everything that sits between your data and whichever model happens to be approved this quarter.",#AI #EdgeAI #DefenceTech #EnterpriseAI #ProductionAI

@@ -6593,3 +6593,32 @@ So ask the uncomfortable question about your own stack. Not ""could my vendor go
 Ask: could someone remove this capability legally, without my consent, and without ever having heard of my product?
 
 What is your honest answer?",#AI #EdgeAI #ComputeSovereignty #LLM #ProductionAI
+413,Pentagon GenAI Portal,"The Pentagon added ChatGPT and Grok to its internal AI portal on Monday. 1.7 million users onboarded, out of three million people.
+
+Everyone read it as a scoreboard. Who is in, who is out.
+
+The interesting line: the department says it is building an architecture that prevents AI vendor lock.
+
+Right goal. A list of three approved chat products is not how you get there.
+
+I have shipped AI into defence environments. The model was always the easiest part to replace. The boundary around it was the product.
+
+Where does the prompt land. What does the logging keep. What happens when the link drops for four hours.
+
+Answer those and the model becomes a swappable component. Skip them and your portal is just a lock with a nicer front door.
+
+A vendor can be removed by a single memo. Anthropic just was, and a judge later called that removal illegal. Neither event should break a portable system.
+
+And there is a harder half. That portal serves people sitting next to a working network.
+
+A system watching for threats in the field does not get a round trip to a data centre. It has to run where the data is.
+
+Two questions for anyone running enterprise AI.
+
+If your primary model were banned tomorrow, how many days until you are running on the substitute?
+
+And what in your stack still works when the network does not?
+
+If you cannot answer the first with a number, you do not have a portfolio. You have a dependency.
+
+What is your number?",#AI #EdgeAI #DefenceTech #EnterpriseAI #ProductionAI
