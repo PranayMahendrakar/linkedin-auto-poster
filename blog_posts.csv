@@ -300,3 +300,40 @@ First: if your primary model were banned tomorrow, by a regulator, a security re
 Second: what still works when the network does not? For a lot of document workflows the honest answer is nothing, and that is fine. For anything operational, that answer is a design flaw you have not paid for yet.
 
 The Pentagon is right that vendor lock is the risk worth naming. It just is not solved by a longer list of vendors. It is solved by owning everything that sits between your data and whichever model happens to be approved this quarter.",#AI #EdgeAI #DefenceTech #EnterpriseAI #ProductionAI
+2026-09-02,414,Open-Weight Model Licensing,"Same lab, two days apart. One model is MIT. The other has a $10 billion clause.",https://pranaymahendrakar.com/blog/same-lab-two-days-apart-one-model-is-mit-the-other-has-a-10-billion-cl,"Z.ai published GLM-5.3-Flash on 26 August under the plain MIT licence. Two days later it published GLM-5.3, the larger flagship, under a bespoke licence written for the occasion.
+
+I read both. The Flash terms are the four paragraphs of MIT boilerplate you already know. The GLM-5.3 terms add a clause: if you or your affiliates operate a Model-as-a-Service business, and aggregate revenue across the licensee and its affiliates exceeds ten billion US dollars over any consecutive twelve months, you must pass Z.AI's security review before deploying commercially.
+
+Ten billion, counted across the whole company and its affiliates, not just the model business. That is four or five firms on the planet. If you are reading this, it almost certainly is not you.
+
+So the obvious reaction is: doesn't apply to me, move on. That reaction is correct about today and wrong about the direction.
+
+Moonshot's Kimi K3 licence already asks anyone running it as a service above twenty million dollars in trailing revenue to negotiate a separate agreement, and requires products past a hundred million monthly users to print the model name in the interface. Alibaba's 2.4-trillion-parameter Qwen3.8-Max ships its own bespoke terms with a fifty-million-dollar threshold. Hugging Face's summer survey of open releases found that Chinese labs shipping models above twenty billion parameters have historically gone 59% Apache, 22% MIT, with almost nothing carrying commercial restrictions. The exceptions are all recent, and they are all at the top of the parameter count.
+
+Ten billion. Fifty million. Twenty million. The direction of that line matters more than any single number on it.
+
+Here is why I care, and it has nothing to do with hyperscalers.
+
+I ship models that run offline. An avatar that has to work on a showroom floor with no uplink. Detection running on a box in a field where the nearest data centre is a policy problem, not a latency problem. Research platforms living inside institutional networks that will not route out. In every one of those, the entire argument for open weights is that once the file is on the disk, the vendor is out of the loop. No API to deprecate, no pricing page to re-read, no account to suspend.
+
+That argument was never really about the weights. It was about the licence. The weights were only ever the delivery mechanism.
+
+And a licence is a dependency with a very particular failure mode. An API dependency fails loudly, at runtime, on a Tuesday, and you know within minutes. A licence dependency fails silently. You find out during a compliance review, or during due diligence, or when a client's legal team opens the LICENSE file eighteen months after you shipped, which is usually the first time anyone opens it at all.
+
+The part of the GLM-5.3 licence I would actually flag is not the number. It is that the security review has no published criteria, no timeline, and no appeal. The text says the scope is reasonably determined by Z.AI. That is not a threshold, it is a gate with a person behind it. A number you can plan around. A discretionary review you cannot.
+
+So, the practical changes, all of which are cheap:
+
+Pin the licence, not just the checkpoint. The commit hash of the weights and the text of the LICENSE file as it stood the day you pulled it, both committed, both in the build artefact. Terms get revised between releases. Yours should not.
+
+Read the affiliate language before you read the revenue number. GLM-5.3 aggregates the licensee and its affiliates. If you are a subsidiary of something large, your threshold is not your own revenue, and you may be closer to it than your P&L suggests.
+
+Check whether the clause binds your deployment shape at all. Most of these terms target Model-as-a-Service specifically: third parties exercising meaningful control over inputs, parameters, or training data. An embedded feature inside a product usually is not that. Usually is not a legal opinion, which is exactly the point. Somebody should form one before you ship, not after.
+
+And put the licence in the evaluation table, next to the benchmark scores and the memory footprint. It is the only column in that table that can change after you deploy.
+
+The industry spent three years arguing about what counts as open. That argument is settled enough for working purposes: almost none of it is open source by any strict definition, most of it is open weights, and the useful question was always the narrower one. Not is this open, but what can be taken back, and by whom, and on whose say-so.
+
+For GLM-5.3, today, the honest answer is: nothing, unless you are one of about five companies. Fine. Write it down anyway.
+
+Ten billion dollars is not a law of physics. It is a decision somebody made in August. Decisions get made again.",#OpenWeights #LLM #EdgeAI #AIGovernance #MLOps

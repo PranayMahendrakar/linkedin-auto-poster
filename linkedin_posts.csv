@@ -6622,3 +6622,28 @@ And what in your stack still works when the network does not?
 If you cannot answer the first with a number, you do not have a portfolio. You have a dependency.
 
 What is your number?",#AI #EdgeAI #DefenceTech #EnterpriseAI #ProductionAI
+414,Open-Weight Model Licensing,"Z.ai shipped two models two days apart last week.
+
+GLM-5.3-Flash went out under plain MIT. GLM-5.3, the bigger one, under a licence written specially for it.
+
+The new clause: run it as a service, and if your company and its affiliates clear ten billion dollars in revenue over any twelve months, you need Z.ai's security review first.
+
+That is four or five companies on earth. Almost certainly not yours.
+
+Most people will read that and move on. Wrong read.
+
+Moonshot's Kimi K3 sets its threshold at twenty million. Alibaba's Qwen3.8-Max, at fifty million. Every one of those clauses is new, and sits on the lab's biggest model.
+
+I build systems that run offline. Showroom floors with no uplink. A box in a field. Networks that will not route out.
+
+The whole reason we use open weights there is that once the file is on the disk, the vendor is out of the loop.
+
+That was never a property of the weights. It was a property of the licence.
+
+And a licence fails differently from an API. An API breaks loudly at runtime; you know in minutes. A licence breaks silently, and you find out in a compliance review eighteen months later.
+
+Cheapest fix I know: pin the LICENSE file next to the model hash in your repo. Put licence terms in the evaluation table, beside the benchmark scores.
+
+It is the only column in that table that can change after you deploy.
+
+Has anyone on your team opened the LICENSE file for the weights you run in production?",#OpenWeights #LLM #EdgeAI #AIGovernance #MLOps
