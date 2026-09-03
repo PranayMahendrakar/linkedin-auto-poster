@@ -6647,3 +6647,32 @@ Cheapest fix I know: pin the LICENSE file next to the model hash in your repo. P
 It is the only column in that table that can change after you deploy.
 
 Has anyone on your team opened the LICENSE file for the weights you run in production?",#OpenWeights #LLM #EdgeAI #AIGovernance #MLOps
+415,NYC Schools AI Ban,"Everyone read the New York schools story as ""the biggest district in America banned AI.""
+
+I read the policy. The most interesting line in it has nothing to do with children.
+
+Teachers can use approved AI for lesson planning, translation, and drafting communications.
+
+They cannot use it for grading, behaviour monitoring, counselling, or special education plans.
+
+That split is not about capability. The same model does both jobs.
+
+It is about who stays accountable when the output is wrong.
+
+Draft, yes. Decide, no.
+
+I have argued for that exact line in every system I have shipped that touches a person's record. The decide side is always where somebody points at the cost savings.
+
+But here is what a moratorium cannot fix.
+
+You cannot ban a technology. You can only ban the vendors who admit they use one.
+
+The reading app, the maths tutor, the browser. Half of them already ship a model, and the child's work still leaves the building.
+
+That is not a pedagogy problem. It is an architecture problem.
+
+Spend the year on studies and you get a literature review in 2027.
+
+Spend it deciding where inference actually runs and you get control.
+
+Where is the line in your organisation between a model that drafts and a model that decides?",#AI #EdTech #AIGovernance #EdgeAI #MachineLearning

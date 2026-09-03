@@ -337,3 +337,44 @@ The industry spent three years arguing about what counts as open. That argument 
 For GLM-5.3, today, the honest answer is: nothing, unless you are one of about five companies. Fine. Write it down anyway.
 
 Ten billion dollars is not a law of physics. It is a decision somebody made in August. Decisions get made again.",#OpenWeights #LLM #EdgeAI #AIGovernance #MLOps
+2026-09-03,415,NYC Schools AI Ban,New York banned AI for half a million kids. The best clause is the one nobody quoted.,https://pranaymahendrakar.com/blog/new-york-banned-ai-for-half-a-million-kids-the-best-clause-is-the-one-,"The coverage all landed on the same word. Ban.
+
+New York City Public Schools is putting a one-year moratorium on generative AI for students from pre-K through eighth grade, more than half a million children, in the largest district in the country. Companion chatbots go further: prohibited at every grade, high school included. The screen-time rules landed alongside it. Thirty minutes a day on an individual device in grades three to five, forty-five in middle school, no personal screens at all before third grade.
+
+Read as a headline, it is a district losing its nerve about a technology.
+
+Read as a document, it is a deployment policy. And it is a better one than most of what I see inside companies.
+
+Here is the clause that got almost no coverage. Teachers may use approved AI tools for lesson planning, translation, and drafting communications. They may not use it for grading, behaviour monitoring, counselling, or writing special education plans.
+
+Look at what separates those two lists. It is not capability. A model that can draft a parent email can produce a grade, and it will produce one that reads perfectly defensible. The line is not what the system is able to do. The line is whether a human stays accountable for the output.
+
+Draft, yes. Decide, no.
+
+I have written that same boundary into every deployment I have shipped that touched a person's record, and I have argued about it every time, because the decide side is always where the labour savings look biggest. A defence deployment I worked on runs threat detection at high precision. It still surfaces to a human operator. Not because the model is weak. Because when a call is consequential and contested, ""the system flagged it"" is not an answer anybody can be held to.
+
+A school district wrote that down before most enterprise AI programmes have.
+
+Now the part I think they will get wrong.
+
+You cannot ban a technology. You can only ban the vendors you can see. Generative AI in a school is not one product to be switched off. It is a capability that has already been absorbed into the word processor, the reading app, the maths tutor, the browser. Some vendors will disclose it. Some will call it a personalisation feature and keep the endpoint open. The district's enforcement surface is procurement paperwork.
+
+And the child's homework still leaves the building either way.
+
+That is the real problem, and it is not a pedagogy problem. It is an architecture problem. When a classroom tool sends a nine-year-old's writing to a third-party endpoint, nobody in that building can audit what came back, what was retained, or how the behaviour changed between September and March. You cannot inspect it. You cannot version it. You cannot reproduce the bad output a parent is complaining about.
+
+Models should run where the data is. In a school that is not a philosophical preference, it is the only configuration under which a district can actually enforce a policy it wrote. A model on hardware the district controls can be frozen, logged, evaluated, and rolled back. A model behind somebody else's API changes on their release schedule and tells you afterwards, if at all.
+
+I build offline systems for exactly this reason, and I will be honest about the cost: you give up some capability. An on-device model will not match the best hosted system on open-ended reasoning. For a fifth-grade reading tutor, that gap is close to irrelevant, and I would take the auditability every time.
+
+So the year is the thing to watch, not the ban.
+
+A moratorium buys time. The question is what it buys time for. If the district spends twelve months commissioning studies on whether AI helps or harms learning outcomes, it arrives in late 2027 with a literature review, no infrastructure, and less leverage than it has today, because by then every vendor in the catalogue will have shipped the feature anyway.
+
+If it spends the year building the boring part, an approved-model list, a place where inference actually runs, logging, an evaluation harness, a procurement clause with teeth, then the ban was not a retreat. It was a year spent building the control plane before the thing it controls.
+
+Most organisations do this in the opposite order. They deploy, discover they cannot answer a basic question about what the system did, and write the policy after the incident.
+
+A school district just wrote the policy first and gave itself a year to build the plumbing underneath it.
+
+Judge it in September 2027 on what got built, not on what got banned.",#AI #EdTech #AIGovernance #EdgeAI #MachineLearning
