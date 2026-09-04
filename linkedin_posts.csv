@@ -6676,3 +6676,26 @@ Spend the year on studies and you get a literature review in 2027.
 Spend it deciding where inference actually runs and you get control.
 
 Where is the line in your organisation between a model that drafts and a model that decides?",#AI #EdTech #AIGovernance #EdgeAI #MachineLearning
+416,Nvidia Acquires Hugging Face,"Nvidia is buying Hugging Face for $12.9 billion.
+
+Everyone is debating whether the platform stays neutral. I think it does. That is not the interesting question.
+
+The interesting question is what your build script does at 3am.
+
+I have shipped systems that are not allowed to touch the internet. An offline avatar for an automotive client. Drone threat detection running on-device for defence and police users, where losing the uplink is the normal case, not the edge case.
+
+Every one of them started with a line that downloaded weights from one registry.
+
+That is the gap nobody puts on the architecture diagram. The model runs offline. The model does not arrive offline. Inference is local, the supply chain is not.
+
+Eighteen million developers use that hub. Two hundred thousand companies. It stopped being a repository a long time ago and became default infrastructure, and default infrastructure is exactly what people stop auditing.
+
+The rule I have landed on after enough field deployments: an openness promise is a governance control, and governance controls change owners. A local mirror does not.
+
+So pin by hash, not by tag. Keep weights in an artifact store you own. Then run the only test that matters: unplug the build agent and see if it still ships.
+
+Most teams have never run that test. Most teams fail it.
+
+Nothing broke this week. That is precisely why it is cheap to fix now.
+
+Have you actually tried building your stack with the network off?",#OpenWeights #EdgeAI #MLOps #ProductionAI #AISupplyChain
