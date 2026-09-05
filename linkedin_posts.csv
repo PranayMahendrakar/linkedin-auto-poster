@@ -6699,3 +6699,26 @@ Most teams have never run that test. Most teams fail it.
 Nothing broke this week. That is precisely why it is cheap to fix now.
 
 Have you actually tried building your stack with the network off?",#OpenWeights #EdgeAI #MLOps #ProductionAI #AISupplyChain
+417,Purpose-Built Security Models,"Two offensive AI models landed this week. Everyone is talking about the wrong one.
+
+OpenAI declared GPT-6 Astra the first model to cross the ""Critical"" cybersecurity threshold in its own framework. Perfect score on ExploitBench. Found two unknown vulnerabilities on its own.
+
+Impressive. Also gated behind a vetted-defender programme, with the public version refusing to write exploits.
+
+Days earlier, CrowdStrike shipped SafeMind: two purpose-built models trained on fifteen years of its own incident-response data. One attacks a digital twin of your environment. One patches what it finds.
+
+One of those is a capability announcement. The other is a deployment architecture.
+
+Here is the question no security team is actually asking: can a model find a zero-day?
+
+Here is the question they are all asking: will legal let me stream production telemetry to an API in another jurisdiction so it can try?
+
+I have never seen that answered yes on the first pass.
+
+I have run drone threat detection at 94% precision on hardware someone carries into a field. A smarter model two thousand kilometres away is not a system. It is a demo with latency.
+
+The digital twin is the real product in that launch, not the models. It is a place where the dangerous thing is allowed to run.
+
+Capability stopped being the scarce resource a while ago. Permission to sit next to the data is the scarce resource now.
+
+Which constraint is actually blocking your AI security work right now: the model, or the data policy?",#AI #LLM #CyberSecurity #EdgeAI #MachineLearning
