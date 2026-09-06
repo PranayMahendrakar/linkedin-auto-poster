@@ -6722,3 +6722,24 @@ The digital twin is the real product in that launch, not the models. It is a pla
 Capability stopped being the scarce resource a while ago. Permission to sit next to the data is the scarce resource now.
 
 Which constraint is actually blocking your AI security work right now: the model, or the data policy?",#AI #LLM #CyberSecurity #EdgeAI #MachineLearning
+418,Enterprise AI Data Custody,"A frontier lab just admitted what every enterprise AI deal has danced around for two years.
+
+You cannot catch misuse without keeping the data.
+
+Anthropic shipped Enterprise Frontier Safeguards this week. Misuse detection now runs against activity data sitting in your own S3, Azure Blob or GCS bucket, under your keys and access policies. Flags route to your team. Nobody at the lab reads them.
+
+The reasoning is the interesting part. Real abuse spreads across many sessions and accounts, so detection needs a window of stored traffic to correlate against. A classifier that forgets each prompt sees nothing.
+
+So ""we store nothing"" was never compatible with ""we catch misuse."" The industry just stopped pretending.
+
+Be precise about what moved. EFS moves the storage boundary. It does not move the compute boundary.
+
+Your prompts still leave your network and still run on someone else's hardware. Only the derived logs come home. That is real progress on custody. It is not data locality.
+
+Two questions before enabling it. What is the retention window, in writing? Short, and spacing an attack out defeats it. Long, and you are defending a month of raw prompt traffic yourself.
+
+Who triages the flags on your side? No rota means you bought a queue nobody watches.
+
+I have shipped offline systems for defence and automotive where the data physically cannot leave the vehicle. Nobody in those rooms asked for a promise. They asked whether it runs where the data is.
+
+If your prompts had to stay inside your network tomorrow, would your AI stack survive it?",#AI #LLM #AISecurity #EdgeAI #MachineLearning

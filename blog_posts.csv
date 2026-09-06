@@ -440,3 +440,34 @@ The other caution is one I keep repeating and will keep repeating. Neither of th
 Still, the direction is right, and it is the direction I have been arguing for since the days when running anything locally meant quantising until the output was gibberish. Domain data beats general capability for narrow work. Proximity to the data beats raw intelligence when the data cannot move.
 
 Capability was the scarce resource for about three years. It is not the scarce resource now. Permission to sit next to the data is. Build for that, not for the leaderboard.",#AI #LLM #CyberSecurity #EdgeAI #MachineLearning
+2026-09-06,418,Enterprise AI Data Custody,A frontier lab just moved the logs into your cloud. The model still runs in theirs.,https://pranaymahendrakar.com/blog/a-frontier-lab-just-moved-the-logs-into-your-cloud-the-model-still-run,"Hot take: the most important sentence in this week's Enterprise Frontier Safeguards announcement is the one that quietly admits misuse detection does not work unless somebody keeps your data.
+
+Here is what actually shipped on September 2. Anthropic announced Enterprise Frontier Safeguards, or EFS. The pitch is that you get zero data retention and state-of-the-art misuse detection at once, two things that have been mutually exclusive in every enterprise deal I have watched. The mechanism is straightforward. The activity data used for misuse detection lands in your own S3, Azure Blob, or Google Cloud Storage bucket, under your encryption keys, your access policies, your audit logging. Automated systems scan it for attempts to build offensive cyber or biological capability and for signs of stolen or leaked credentials. When something trips, the flag routes to your team. Nobody at the lab reads it.
+
+It rolls out in phases with broad availability targeted for later this fall. They built it alongside more than a hundred customers across financial services, healthcare, manufacturing, telecom, law and the public sector, with AWS, Google Cloud and Azure as partners.
+
+Take the engineering seriously, because it is good work. But read the reasoning underneath it, because that is the part that should change how you architect.
+
+The stated rationale is that effective misuse detection requires storing data for a meaningful period so it can be correlated across time and accounts. Sophisticated abuse spreads across many tasks, sessions and accounts. A classifier that inspects one prompt and forgets it cannot see the shape of an attack assembled over three weeks from four service accounts. That is an honest admission, and it kills a comfortable fiction: that ""we store nothing"" was ever compatible with ""we catch misuse."" It was not. The industry just stopped pretending.
+
+I have spent most of my career on the other side of this line. An offline multilingual avatar for an automotive deployment in Germany. Real-time drone threat detection for defence and policing, where the footage does not leave the vehicle because there is no link to leave over. Research platforms inside institutions where the compliance answer is not a contract clause, it is a network diagram. In none of those rooms did anyone ask whether the vendor promised not to keep the data. They asked whether the thing could run where the data already was.
+
+So here is my one objection, and it is the whole point. EFS moves the storage boundary. It does not move the compute boundary.
+
+Your prompts still leave your network. They are still processed on someone else's hardware. What comes home to your bucket is the derived activity data, after the fact. That is a real improvement in custody, it will unblock procurement conversations that have been stuck for two years, and I expect competitors to copy it within a quarter. It is not data locality. Do not let a clean architecture diagram convince your risk committee otherwise, because the diagram will be shown to people who cannot tell the difference.
+
+The second thing to interrogate is the window. Thirty day retention was introduced with the previous model generation specifically for detection quality. Under EFS the description is a rolling window of traffic, with no stated length. That number is the entire security property. Short, and an attacker who spaces activity out walks straight through it. Long, and you are the one holding a month of raw prompt traffic in a bucket you now have to defend, including everything your engineers pasted in at eleven at night. The liability moved to you along with the custody. That is probably the right trade. Just say it out loud before you sign.
+
+Three things I would do before enabling this in production.
+
+Treat that bucket as security infrastructure, not as logging. Lifecycle policy, key rotation, access review, alerting on reads. It contains your prompts, which means it contains your secrets, your customer records and your unreleased roadmap. It deserves the same paranoia as a credential store.
+
+Staff the triage. ""Nobody at the lab reads it"" means somebody at your company does. If there is no rota, no severity model and no escalation path, you have not bought a safeguard, you have bought a queue nobody is watching. That is worse than no alerting, because it looks like coverage in an audit.
+
+Ask for the window length in writing, and ask what happens to detection quality when your own retention policy is shorter than theirs. If the honest answer is that detection degrades, that is a fine answer. It is a design constraint, not a scandal. You just need it before the contract, not after the incident.
+
+None of this makes EFS a bad release. It is the most serious attempt yet to reconcile two requirements that genuinely conflict, and the fact that a frontier lab shipped a design where its own staff cannot look at the flags is a bigger concession than the press coverage suggests.
+
+But notice the direction. Custody is migrating toward the customer's boundary because that is where the regulated buyers were always going to force it. Logs first. Compute follows, or the buyers who cannot move their data will keep building their own stack, the way the ones I work with already do.
+
+Control follows the data, not the contract. When the data cannot move, the model has to. Everything else is a storage location.",#AI #LLM #AISecurity #EdgeAI #MachineLearning
