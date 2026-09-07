@@ -471,3 +471,30 @@ None of this makes EFS a bad release. It is the most serious attempt yet to reco
 But notice the direction. Custody is migrating toward the customer's boundary because that is where the regulated buyers were always going to force it. Logs first. Compute follows, or the buyers who cannot move their data will keep building their own stack, the way the ones I work with already do.
 
 Control follows the data, not the contract. When the data cannot move, the model has to. Everything else is a storage location.",#AI #LLM #AISecurity #EdgeAI #MachineLearning
+2026-09-07,419,AI Formal Verification,Claude wrote 13 million lines of Lean in 11 days. The part that matters is the checker.,https://pranaymahendrakar.com/blog/claude-wrote-13-million-lines-of-lean-in-11-days-the-part-that-matters,"Hot take: the most important component in Anthropic's Fermat's Last Theorem run was not the model. It was Lean.
+
+A few days ago Anthropic published the result. Dozens of Claude agents, working largely autonomously for eleven days, produced the first end-to-end machine-checked proof of Fermat's Last Theorem. Thirteen million lines of Lean. Around 29,500 intermediate theorems in the final proof. Roughly six billion output tokens. Mathematicians had estimated that formalizing Wiles' proof would take years.
+
+Every headline I have seen frames this as a model capability story. I think that reading gets the architecture backwards.
+
+Here is what actually happened. The agents were dropped into an environment where every step they produced was checked by a compiler that does not negotiate. Lean either accepts a proof term or it does not. There is no partial credit, no plausible-sounding output, no reviewer who is tired at 6pm. The final artifact was verified against Lean's three standard axioms, and a separate comparator confirmed that the theorem statement matched the one in Mathlib, rather than some weaker cousin the agents had quietly drifted toward.
+
+That last detail is the one I would put on a wall. They did not just check the proof. They checked that the thing being proved was the thing they meant.
+
+The coordination layer matters just as much. The harness held a directed acyclic graph of theorem statements, so agents could work in parallel on nodes whose dependencies were already discharged. That is not a prompting trick. That is a build system. The model supplied search, the graph supplied state, the compiler supplied truth. Remove either of the last two and eleven days of agents gives you thirteen million lines of confident garbage.
+
+There is evidence for that in the writeup itself. Early attempts failed because agents lost track of the project's state, and abandoned work still accounts for roughly seven percent of the non-boilerplate lines. Even inside a fully verified pipeline, a meaningful slice of the output was wasted motion. The verifier is what made that waste harmless instead of load-bearing.
+
+I have spent years building systems under exactly the opposite conditions.
+
+In a defence deployment I worked on, the model flagged threats in a live feed. There is no compiler for that. Ground truth arrives seconds later, sometimes never, and the cost of a confident wrong answer is not a red squiggle in your editor. In an offline multilingual avatar running on-device for an automotive client, there is no oracle at all. The system says something to a person in a language the operator may not speak, and if it is wrong, nobody finds out for weeks.
+
+That gap is the whole story of production LLM engineering. Formal mathematics is the rare domain that ships with a total, cheap, machine-executable verifier. Almost nothing else does. I have written a paper on formal verification and I maintain a hallucination-detection package on PyPI, and I will say plainly that the second one exists because the first one's guarantees do not generalize.
+
+So the correct lesson here is not ""agents can now do research-grade work for eleven days unsupervised."" It is narrower and more useful. Agents can do research-grade work for eleven days unsupervised when every step can be checked for free.
+
+That turns the engineering question around. Instead of asking how to make the model more reliable, ask what in your domain can be made checkable. Types instead of strings. Schemas instead of free text. Unit tests instead of eyeballed diffs. Constraint solvers, database transactions, simulators, replayed production traffic, a second model scoring against a rubric you wrote. Every one of those is a small, local Lean. None of them will cover your whole problem, and that is fine. Coverage is the number you are actually optimizing, and most teams have never measured it.
+
+This is also why I keep arguing that models should run where the data is. A verifier you control, on hardware you control, next to data you control, is a stronger reliability story than any benchmark number from a lab. The Fermat run is the most impressive demonstration of that principle I have seen, and it happens to come from a frontier lab that would probably prefer you took away a different message.
+
+Thirteen million lines is the headline. Three axioms is the result.",#AI #LLMOps #FormalVerification #AIEngineering #ProductionAI

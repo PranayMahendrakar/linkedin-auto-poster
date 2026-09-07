@@ -6743,3 +6743,22 @@ Who triages the flags on your side? No rota means you bought a queue nobody watc
 I have shipped offline systems for defence and automotive where the data physically cannot leave the vehicle. Nobody in those rooms asked for a promise. They asked whether it runs where the data is.
 
 If your prompts had to stay inside your network tomorrow, would your AI stack survive it?",#AI #LLM #AISecurity #EdgeAI #MachineLearning
+419,AI Formal Verification,"Everyone is reading the Fermat's Last Theorem result as a model story. I think that gets the architecture backwards.
+
+Dozens of Claude agents. Eleven days, largely autonomous. Thirteen million lines of Lean, around 29,500 theorems, roughly six billion output tokens. Mathematicians expected it to take years.
+
+But look at what the agents were actually sitting inside.
+
+Every step was checked by a compiler that does not negotiate. Lean accepts a proof term or it rejects it. No partial credit. No plausible-sounding output. No reviewer who is tired at 6pm.
+
+They even ran a comparator to confirm the theorem statement matched Mathlib's, not some weaker version the agents had quietly drifted toward. They did not just check the proof. They checked that the thing being proved was the thing they meant.
+
+The model supplied search. The graph of dependencies supplied state. The compiler supplied truth. Take away either of the last two and eleven days of agents gives you thirteen million lines of confident garbage.
+
+I have shipped systems under the opposite conditions. Threat detection on a live feed, where ground truth arrives seconds later or never. Offline avatars on-device, where a wrong answer surfaces weeks later, if at all.
+
+Formal mathematics is the rare domain with a total, cheap, machine-executable verifier. Almost nothing in production has one.
+
+So the real lesson is narrower: agents work unsupervised for eleven days when every step can be checked for free.
+
+Which part of your pipeline is actually checkable today, and which part is just vibes and a dashboard?",#AI #LLMOps #FormalVerification #AIEngineering #ProductionAI
