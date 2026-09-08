@@ -498,3 +498,38 @@ That turns the engineering question around. Instead of asking how to make the mo
 This is also why I keep arguing that models should run where the data is. A verifier you control, on hardware you control, next to data you control, is a stronger reliability story than any benchmark number from a lab. The Fermat run is the most impressive demonstration of that principle I have seen, and it happens to come from a frontier lab that would probably prefer you took away a different message.
 
 Thirteen million lines is the headline. Three axioms is the result.",#AI #LLMOps #FormalVerification #AIEngineering #ProductionAI
+2026-09-08,420,Local Trillion-Parameter Hardware,AMD put 576GB of HBM on a desk. The number that matters is the one you don't need.,https://pranaymahendrakar.com/blog/amd-put-576gb-of-hbm-on-a-desk-the-number-that-matters-is-the-one-you-,"At IFA in Berlin this month AMD unveiled the Threadripper Halo Station. A 96-core Threadripper PRO 9995WX, up to four Instinct MI350P accelerators at 144GB of HBM3e each, 576GB of accelerator memory in total, and up to 2TB of DDR5 behind it. AMD's pitch is one sentence long: load and run models with more than a trillion parameters entirely on-device.
+
+There is no confirmed price and no confirmed ship date. Both will matter later. Neither is the interesting part today.
+
+The interesting part is that the argument is over.
+
+For years the counter to on-device inference has been a capacity argument. Anything serious lives in a datacentre, because anything serious is too big for a room. Above a certain size you rent. That ceiling was the entire case for sending your data somewhere else, and most people arguing it had convinced themselves it was a law of physics rather than a temporary fact about memory.
+
+A chassis you can put under a desk with 576GB of high-bandwidth memory on it removes the ceiling. Do the arithmetic yourself: a trillion parameters at 4-bit precision is roughly 500GB of weights. It closes inside one box now.
+
+So the capacity objection is dead, and what is left is the objection nobody selling cloud inference wanted to argue on the merits: whose building is the data in.
+
+I have spent most of my career on the wrong side of that question, by choice. An offline multilingual avatar that had to work with no connectivity at all. Drone threat detection for defence and policing, where the frames do not leave the perimeter, full stop. Research platforms inside institutes with their own rules about where lab and student data sits.
+
+In none of those rooms did anyone ask me for a trillion parameters. They asked whether the thing still works when the link drops, and whether the data stays.
+
+Which brings me to the part I think most people will get wrong this month.
+
+They will read 576GB and size their hardware for the largest model they can imagine running. That is backwards. You do not size for the ceiling. You size for the smallest model that passes your evaluation set.
+
+I say this as someone who has shipped a lot of systems that were quietly much smaller than the demo suggested. The pattern repeats almost every time. Someone specs the biggest model available, the pilot is impressive, and then latency, cost and thermal reality all arrive together in the same week as deployment. The model that survives contact with production is usually several sizes down from the one that won the bake-off, because the bake-off was scored on impressions and production is scored on p99.
+
+The correct order of operations has not changed because AMD built a bigger box.
+
+Write the evaluation set first, from real inputs, with your real failure cases in it. Then find the floor: the smallest model that clears the bar you just wrote down. Then size hardware for that floor with honest headroom, not for the largest number in the vendor's announcement. A 576GB machine is a wonderful thing to grow into and an expensive way to avoid doing the evaluation.
+
+There is a second-order effect I care about more than the specifications.
+
+Hardware like this changes who gets to build sovereign systems. If a frontier-scale model can live in a rack in Bengaluru, or inside a defence facility, or in a university basement, then the question of which country's servers your citizens' data crosses becomes an engineering choice rather than a diplomatic one. That is a far bigger deal for Indian institutions than another point on a benchmark.
+
+Every serious conversation I have had about AI in government, defence and education over the last two years has stalled on exactly that question. Not one of them stalled on model quality.
+
+The ceiling coming down to desk height is not permission to run the biggest model. It is permission to stop pretending you never had a choice about where your data lives.
+
+Buy the box for sovereignty. Size it for your floor.",#EdgeAI #OnDeviceAI #AIInfrastructure #LLMOps #AISovereignty
