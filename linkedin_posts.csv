@@ -6785,3 +6785,26 @@ Write the evaluation set first. Find the smallest model that clears your bar. Si
 Buy the box for sovereignty. Size it for your floor.
 
 So what is actually stopping you from running your production model on your own hardware right now: capability, or habit?",#EdgeAI #OnDeviceAI #AIInfrastructure #LLMOps #AISovereignty
+421,Diffusion LLM Inference Speed,"A diffusion language model hit 1,107 tokens per second yesterday, on ordinary NVIDIA GPUs.
+
+Everyone is reading that as a speed record. I read it as a budget.
+
+Inception's Mercury 2.5 does not sit at the frontier, and does not claim to. It lands in the cost-optimised tier, next to Gemini 3.5 Flash-Lite and Claude Haiku 4.5, at $0.20 in and $0.75 out per million tokens.
+
+Most people call that an anticlimax. I think it is the point.
+
+In production, the model is almost never the bottleneck. The loop around it is.
+
+On a defence deployment I worked on, the constraint was never how clever the network was. It was that the decision had to finish before the situation it described stopped being true.
+
+We did not need a smarter model. We needed room to check the one we had.
+
+That is what raw decode speed actually buys you. Generate twice and diff. Run a real verification pass instead of trusting the output. Re-decode under a hard schema when the JSON comes back broken.
+
+Three checked passes of a small model beat one unchecked pass of a large one more often than benchmark culture wants to admit.
+
+The failure that hurts in production is not the model being dumb. It is the model being confidently wrong once, in a path nobody re-reads.
+
+A second pass catches that. A bigger model just fails the same way with better grammar.
+
+So tell me: how much of your latency budget goes to generating, and how much to checking?",#AI #LLM #EdgeAI #ProductionAI #MachineLearning

@@ -533,3 +533,34 @@ Every serious conversation I have had about AI in government, defence and educat
 The ceiling coming down to desk height is not permission to run the biggest model. It is permission to stop pretending you never had a choice about where your data lives.
 
 Buy the box for sovereignty. Size it for your floor.",#EdgeAI #OnDeviceAI #AIInfrastructure #LLMOps #AISovereignty
+2026-09-09,421,Diffusion LLM Inference Speed,"A diffusion LLM hit 1,107 tokens a second. Speed is a budget, not a benchmark.",https://pranaymahendrakar.com/blog/a-diffusion-llm-hit-1107-tokens-a-second-speed-is-a-budget-not-a-bench,"Inception shipped Mercury 2.5 yesterday, and the number on the page is 1,107 tokens per second on widely available NVIDIA GPUs. Not a custom inference chip. Not a research cluster. The kind of card you can already rent by the hour.
+
+Two things are true about that number at the same time, and most of the commentary I have read only holds one of them.
+
+The first is that it is architectural, not a tuning win. Mercury 2.5 is a diffusion language model. It does not emit one token, condition on it, and emit the next. It generates in parallel and refines. That is a different decode loop, not a faster version of the same loop, which is why you cannot reach this number by renting a better GPU for an autoregressive model.
+
+The second is that it does not land at the frontier, and Inception does not claim it does. The company positions it against cost-optimised models — GPT-5.6 Luna (Low), Gemini 3.5 Flash-Lite, Claude Haiku 4.5 — with a claimed 40% intelligence gain over Mercury 2. Context is 260K. Pricing is $0.20 per million input and $0.75 per million output, discounted 80% at launch to $0.04 and $0.15.
+
+So: a good small model that is very, very fast. Most people will read that as an anticlimax. I read it as the entire point.
+
+Here is what I keep running into in production. The model is almost never the bottleneck. The loop around it is.
+
+On a drone threat-detection system I worked on for a defence deployment, the hard constraint was never how clever the network was. It was that a decision had to be complete before the situation it described stopped being true. Every millisecond of decode was a millisecond not spent on confirming the call. We did not need a smarter model. We needed room in the budget to check the one we had.
+
+That is what a number like 1,107 tokens per second actually buys you. Not a faster demo. Headroom.
+
+Think about what you can afford when a pass costs a fraction of a second. You can generate twice and diff the two answers. You can run a dedicated verification pass over the output instead of trusting it. You can re-decode under a hard schema constraint when the JSON comes back malformed, rather than shipping a repair heuristic and hoping. You can do self-consistency on the three questions in your pipeline that genuinely matter.
+
+Three checked passes of a small model beat one unchecked pass of a large one more often than the benchmark culture wants to admit. I have spent enough time building tooling for hallucination detection to be blunt about why: the failure that hurts in production is rarely the model being dumb. It is the model being confidently wrong once, in a path nobody re-reads. A second pass catches that. A bigger model does not, because it fails the same way with better grammar.
+
+Latency also changes what is buildable, not just what is pleasant. Below a certain threshold an interface changes category — it stops being request-and-wait and starts being conversation. An offline multilingual avatar I built for an automotive customer in Germany lived or died on whether the response began before the person had finished expecting it. No benchmark score captures that. Decode speed does.
+
+Two caveats, because I would rather be useful than excited.
+
+Diffusion LLMs are early, and the entire serving ecosystem assumes autoregression. KV-cache tricks do not map cleanly. Streaming semantics are different. Quantisation and inference-server support are thinner than you are used to. Budget engineering time for that, and evaluate on your own tasks rather than on the comparison set — a cost-optimised tier is exactly the tier where task fit varies wildly between teams.
+
+And Mercury 2.5 is API-first today, served through Inception's own endpoint and partners like Baseten and OpenRouter. Which means the speed, right now, is on someone else's GPU. My interest in parallel decoding is strongest precisely where I cannot scale horizontally: a box inside a vehicle, a machine on a factory floor, a device in a building with no reliable uplink. That is where you do not get to add a replica when p99 drifts, and where three cheap passes are the only reliability strategy available. The day this architecture ships weights I can hold, it stops being a pricing story and becomes an engineering one.
+
+Until then, the useful shift is in how you read the spec sheet. Throughput is not a leaderboard position. It is a budget, and most teams are spending all of it on a single hopeful pass.
+
+Stop asking how smart a model is. Ask what you can afford to do twice.",#AI #LLM #EdgeAI #ProductionAI #MachineLearning
