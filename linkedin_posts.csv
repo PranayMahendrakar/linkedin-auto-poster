@@ -6808,3 +6808,28 @@ The failure that hurts in production is not the model being dumb. It is the mode
 A second pass catches that. A bigger model just fails the same way with better grammar.
 
 So tell me: how much of your latency budget goes to generating, and how much to checking?",#AI #LLM #EdgeAI #ProductionAI #MachineLearning
+422,California AI Auditor Registry,"California just created the first state registry of AI auditors.
+
+It does not open until January 1, 2029.
+
+Two bills were signed yesterday. One sets up independent verification organizations that can assess AI systems for compliance with state law. The other builds the register those auditors must sit on, with independence standards written into statute.
+
+Most teams will read ""2029"" and file it under not-my-problem. That is the mistake.
+
+2029 is when the auditors get licensed. It is not when your system becomes auditable.
+
+An audit is a claim about the past. What your system was, and what it did, on a specific day, to a specific person.
+
+That evidence is being generated, or quietly lost, this week.
+
+Across a few hundred systems I have shipped in automotive, defence and education, bad reviews never came from a weak model. They came from nobody being able to reconstruct the run.
+
+Which weights were live. Which prompt template. Which index version. Who moved the threshold on a Friday.
+
+Here is the part nobody wants to hear: the offline, on-device systems are the easy ones to audit. The weights are a file you can hash. The model does not change underneath you overnight.
+
+Rent the capability from an API and your evidence chain stops at the boundary. Your compliance story becomes somebody else's compliance story.
+
+Do not build for the registry. Build for the reconstruction.
+
+Question for the builders here: if a regulator asked what your system did last March, could you show them, or would you be doing archaeology?",#AIRegulation #AIGovernance #EdgeAI #MLOps #ResponsibleAI

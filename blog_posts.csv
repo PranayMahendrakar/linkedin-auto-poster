@@ -564,3 +564,34 @@ And Mercury 2.5 is API-first today, served through Inception's own endpoint and 
 Until then, the useful shift is in how you read the spec sheet. Throughput is not a leaderboard position. It is a budget, and most teams are spending all of it on a single hopeful pass.
 
 Stop asking how smart a model is. Ask what you can afford to do twice.",#AI #LLM #EdgeAI #ProductionAI #MachineLearning
+2026-09-10,422,California AI Auditor Registry,California created the first registry of AI auditors. It doesn't open until 2029.,https://pranaymahendrakar.com/blog/california-created-the-first-registry-of-ai-auditors-it-doesnt-open-un,"California signed the first real audit regime for AI into law yesterday, and then set the alarm for 2029.
+
+Two bills. SB 813 creates a framework for independent verification organizations, outside bodies that can assess AI systems and models for compliance with state law. AB 1405 creates the register those auditors have to sit on, administered by the state's Government Operations Agency, with standards written into statute for independence, transparency and integrity. The stated aim is that companies should not be the only ones evaluating their own systems, and the signing came with a call for the federal government to do the same nationally.
+
+Now the part that did not make the headlines. The bill text gives the agency until January 1, 2029 to stand the registry up. The prohibition, that no unregistered person may offer, sell or conduct a covered AI audit, commences on the same date. That is a little over two years from today.
+
+I have watched enough teams read a date like that as permission to stop reading. That is the mistake I want to argue against.
+
+Here is the asymmetry. 2029 is when the auditors get licensed. It is not when your system becomes auditable. An audit is a claim about the past. About what your system was, and what it did, on a specific day, to a specific person. The evidence for a 2029 audit is being generated, or quietly lost, this week.
+
+Across the systems I have shipped, a few hundred now, spanning automotive, defence and education, the reviews that went badly never went badly because the model was weak. They went badly because nobody could reconstruct the run. Which weights were live. Which prompt template. Which version of the retrieval index. What the confidence threshold was before someone nudged it on a Friday afternoon. Who approved that nudge.
+
+None of this is exotic infrastructure. It is a build manifest, a change log, and the discipline to version the parts of your stack that are not code. Teams skip it because it does not show up in a demo.
+
+The second thing worth saying is where this collides with something I have argued for years: models should run where the data is.
+
+An offline system is usually assumed to be the hard one to govern. In audit terms it is the easy one. On a drone-side detection stack, or an on-device avatar running with no network at all, the entire artefact is in your building. The weights are a file you can hash. The behaviour is reproducible, because the inputs are yours and the model does not change underneath you overnight.
+
+Rent that capability from an API instead and your evidence chain stops at the boundary. You can log the request you sent and the response you got back. You cannot show an auditor what the model was on the day in question, because you never held it, and it has probably been swapped twice since. Your compliance story quietly becomes somebody else's compliance story, and you find that out at the worst possible moment.
+
+This is not an argument against hosted models. Plenty of good products are built on them, including ones I would defend. It is an argument for knowing, feature by feature, which side of that line you are standing on, and for pushing the features that carry legal weight to the side you control.
+
+A third point, on scarcity. Most of the commentary on this law is asking how many auditors California will end up registering. That is the wrong question. There is a fee, an application and a deadline, so supply will arrive. What will actually be short in 2029 is auditable systems, the ones that can answer a precise question about last March without a week of archaeology.
+
+I would also not bet on the date holding. Effective dates move, and other jurisdictions tend to copy the idea long before they copy the timeline. If your product ships into more than one market, the date that binds you is the earliest one anywhere you sell, not the one in Sacramento.
+
+So the practical read, for anyone shipping into a regulated sector. Do not build for the registry. Build for the reconstruction.
+
+Version your weights, your prompts, your indexes and your thresholds the way you version code, because from an auditor's chair that is exactly what they are. Write down who is allowed to change each one, and keep the record where a stranger can follow it.
+
+The registry opens in 2029. The evidence it will ask for is being written tonight, by whoever is on call.",#AIRegulation #AIGovernance #EdgeAI #MLOps #ResponsibleAI
