@@ -595,3 +595,46 @@ So the practical read, for anyone shipping into a regulated sector. Do not build
 Version your weights, your prompts, your indexes and your thresholds the way you version code, because from an auditor's chair that is exactly what they are. Write down who is allowed to change each one, and keep the record where a stranger can follow it.
 
 The registry opens in 2029. The evidence it will ask for is being written tonight, by whoever is on call.",#AIRegulation #AIGovernance #EdgeAI #MLOps #ResponsibleAI
+2026-09-11,423,NASA Lunar Foundation Model,NASA open-sourced a Moon model. The headline is 23%. The real artifact is the dataset.,https://pranaymahendrakar.com/blog/nasa-open-sourced-a-moon-model-the-headline-is-23-the-real-artifact-is,"NASA and IBM open-sourced a foundation model for the Moon yesterday. Almost every write-up led with the same number: up to 23 percent better than widely used methods at spotting craters, volcanic terrain and likely ice.
+
+That number is real. It is also the least interesting thing in the release.
+
+Look at what actually shipped. The encoder is a ViT-B. 768 dimensions, twelve layers, twelve attention heads, a twelve-layer decoder, trained from scratch. By 2026 standards that is a small model. It is the kind of thing you fine-tune on one workstation GPU over a weekend.
+
+And it beat SwinV2-B, a general-purpose vision backbone, on the tasks that matter to lunar science.
+
+So the win did not come from scale. It came from the data.
+
+The release included SomBench: roughly two million co-registered tile bundles, more than thirty spatially aligned layers, nine instruments across four missions, including the Lunar Reconnaissance Orbiter, GRAIL, and Japan's Kaguya. Just under 964,000 wide-angle tiles at 38 terabytes, and just over a million narrow-angle tiles at 1.4 terabytes. It is out under CC BY 4.0.
+
+Co-registered is doing the heavy lifting in that sentence.
+
+I am a nodal coordinator at IIRS-ISRO, and I have shipped enough multi-sensor systems to know that lining up layers from instruments that flew on different platforms, at different resolutions, under different geometry, is not preprocessing. It is the project. The model is what you build after that problem is already solved.
+
+The second thing they did is the one I would steal. They fed acquisition geometry, illumination angle, solar anchors and tile footprint, into the encoder as explicit tokens. They did not make the model infer lighting conditions from pixels. They told it.
+
+That is domain knowledge as an input. It is why a compact encoder can outrun a general backbone that has seen far more of the world.
+
+Now the part almost nobody quoted. Read the benchmark table.
+
+Polar ice prospectivity: RMSE of 0.0293, against 0.0377 for the baseline. That is the headline number.
+
+Irregular mare patch segmentation: IoU of 0.5709, against 0.5687. That is a rounding error.
+
+Crater detection on wide-angle imagery: mAP of 0.2581, against 0.2420, using LoRA. Better, and both numbers are low in absolute terms.
+
+One task carried the press release. The other two say the model is competitive, not transformative. That is a perfectly good result. It is just not the result the coverage described.
+
+The model card is more candid than the coverage, too. It says the ice output regresses a knowledge-driven prior rather than measured ice. It says the system is not a scientific-grade product, has no geodetic reference validation, and should not drive operational calls like landing-site certification.
+
+I wish more releases wrote that paragraph. In a defence deployment I worked on, the distance between a detection score and an operational decision was the entire engineering budget. Everything after the benchmark is where the work lives: the false positives at dawn, the sensor that drifts, the case where an operator has to act in seconds. A team that writes down what its model must not be used for has at least thought about that boundary.
+
+There is one more reason this release matters, and it has nothing to do with the Moon.
+
+Thirty-eight terabytes does not move. Bandwidth off an orbiter is scarce, bandwidth off an archive is expensive, and the moment your pipeline depends on shipping raw observations to someone else's inference endpoint, you have handed latency and sovereignty to a vendor. A ViT-B under Apache-2.0 does move. You pull the weights, you run them next to the archive, and nothing leaves.
+
+That is the pattern I keep arguing for, and it is not a lunar pattern. It is the same argument for a factory floor, a hospital network, a border sensor, a phone.
+
+The frontier gets the attention. The useful work is small models sitting on top of data somebody bothered to align.
+
+The dataset is the moat. The model is just the download.",#AI #FoundationModels #RemoteSensing #EdgeAI #MachineLearning

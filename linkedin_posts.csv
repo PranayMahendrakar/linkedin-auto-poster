@@ -6833,3 +6833,30 @@ Rent the capability from an API and your evidence chain stops at the boundary. Y
 Do not build for the registry. Build for the reconstruction.
 
 Question for the builders here: if a regulator asked what your system did last March, could you show them, or would you be doing archaeology?",#AIRegulation #AIGovernance #EdgeAI #MLOps #ResponsibleAI
+423,NASA Lunar Foundation Model,"NASA and IBM open-sourced a Moon model yesterday, and everyone quoted the same number: 23 percent better at finding ice and craters.
+
+I read the benchmark table instead.
+
+One task carried that headline. Polar ice prospectivity, RMSE 0.0293 against 0.0377 for the baseline. Genuinely good.
+
+The other two? Mare patch segmentation came in at 0.5709 IoU against 0.5687. That is a rounding error, not a breakthrough.
+
+Here is what actually matters.
+
+The encoder is a ViT-B. Small. Trained from scratch. It beat SwinV2-B, a general-purpose vision backbone with far more of the world behind it.
+
+The win was not scale. It was the dataset.
+
+Two million co-registered tile bundles. Thirty-plus aligned layers. Nine instruments, four missions. Out under CC BY 4.0.
+
+As a nodal coordinator at IIRS-ISRO, I will say the quiet part: co-registering multi-sensor data is not preprocessing. It is the project. The model is what you build after that is solved.
+
+They also fed acquisition geometry into the encoder as explicit tokens instead of making the model infer lighting from pixels. Domain knowledge as an input. More teams should do this.
+
+And 38 terabytes does not move. A ViT-B under Apache-2.0 does. Pull the weights, run them next to the archive, nothing leaves.
+
+Factory floor, hospital network, border sensor, phone. Same argument.
+
+The dataset is the moat. The model is just the download.
+
+What is the last release you saw where the data was the real contribution and nobody noticed?",#AI #FoundationModels #RemoteSensing #EdgeAI #MachineLearning
