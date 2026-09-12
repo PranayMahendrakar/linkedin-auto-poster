@@ -6860,3 +6860,26 @@ Factory floor, hospital network, border sensor, phone. Same argument.
 The dataset is the moat. The model is just the download.
 
 What is the last release you saw where the data was the real contribution and nobody noticed?",#AI #FoundationModels #RemoteSensing #EdgeAI #MachineLearning
+424,Learned Model Routing,"A model just beat the frontier labs on benchmarks without being allowed to call their models.
+
+Sakana AI's Fugu Ultra v2 shipped this week. It isn't a bigger model. It's a learned orchestrator that reads your query, builds a scaffold on the fly, and routes the work across a pool of other models.
+
+Chartography: 48.3. Opus 5 scored 27.3. Fable 5 scored 29.5.
+
+DeepSWE: 74.3, ahead of models costing three to five times more per token.
+
+And Fable 5, Fable 5.1 and GPT-6-Astra are not in its agent pool.
+
+I've shipped 250+ AI systems across automotive, defence and education. In almost every procurement meeting, the first question is ""which model are we using?"" — as if the model were the architecture.
+
+It isn't. On a defence deployment I worked on, we rewrote the scaffolding many times. We swapped the model once.
+
+So take the win, but read the fine print. A hosted router is still someone else's control plane. Your traffic still leaves your network. When they change the pool, your system changes without you touching a line of code.
+
+The lesson isn't ""use this router.""
+
+The lesson is that the router is the product now — and you can build your own.
+
+Most teams can't tell you which of their requests actually need the expensive model. That's exactly why the inference bill looks the way it does.
+
+Can yours?",#AI #LLM #AIEngineering #MachineLearning #MLOps

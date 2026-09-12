@@ -638,3 +638,32 @@ That is the pattern I keep arguing for, and it is not a lunar pattern. It is the
 The frontier gets the attention. The useful work is small models sitting on top of data somebody bothered to align.
 
 The dataset is the moat. The model is just the download.",#AI #FoundationModels #RemoteSensing #EdgeAI #MachineLearning
+2026-09-12,424,Learned Model Routing,A router beat the frontier models it wasn't allowed to call. The scaffold is the product.,https://pranaymahendrakar.com/blog/a-router-beat-the-frontier-models-it-wasnt-allowed-to-call-the-scaffol,"Sakana AI shipped something this week that should change how you argue about your model budget. Fugu Ultra v2 is not a bigger model. It is a learned orchestrator: a system that reads a query, builds an agentic scaffold for it on the fly, and routes the work across a pool of other models behind a single API.
+
+On the Chartography benchmark it scored 48.3. Opus 5 scored 27.3. Fable 5 scored 29.5. On DeepSWE it scored 74.3, ahead of models that cost three to five times more per token.
+
+Now the line I keep rereading. Fable 5, Fable 5.1 and GPT-6-Astra are not in Fugu Ultra v2's agent pool.
+
+It beat them without using them.
+
+I have shipped somewhere north of 250 AI systems across automotive, defence and education, and I have sat through the same procurement conversation in almost every one of them. Which model are we using? Asked as though the model were the architecture. As though a hard problem could be answered with a model card.
+
+It almost never is. The distance between a demo and a product is not the base model. It is everything wrapped around it: what gets retrieved, what gets routed where, what gets checked before a human sees it, and what the system does at two in the morning when the wrong answer arrives with full confidence.
+
+On a defence deployment I worked on, the real constraints were latency and the box it had to run on. The model choice was close to the least interesting decision in the project. What decided whether it shipped was the scaffolding: the thresholds, the fallbacks, the verification layer that caught the confident mistakes before an operator acted on one. We rewrote that scaffolding many times. We swapped the model once.
+
+That is why the Sakana result reads as a milestone rather than a benchmark press release. Routing, decomposition and per-task model selection are not new. Every serious team has hand-built some version of them, badly, in a hurry, with a config file nobody wants to own. What is new is that someone trained the router instead of writing it, and the trained router is now beating the frontier models it is not allowed to call.
+
+There is a second reading, and it is the one that matters commercially. If a pool of open-weight and specialised models, orchestrated well, reaches the frontier on real tasks, then the frontier stops being a place you buy access to. It becomes a configuration you assemble. Capability starts migrating out of the model licence and into the system design.
+
+I have been saying a version of this for years, usually to polite scepticism. Most production systems do not need a frontier-class model. They need the right model for each step, a retrieval layer that actually retrieves, and something that catches hallucinations before a user does. The Fugu numbers are the first time I have seen that argument made as a scoreboard rather than an opinion.
+
+So take the win, but read the fine print.
+
+A hosted router is still a dependency. You have not escaped a control plane; you have changed which company operates it. Your traffic still leaves your network, your task decomposition still happens on someone else's machine, and when they change the pool, your system's behaviour changes without a line of your code changing. Sakana does not offer the service in the EU and EEA at all, which tells you exactly how much of this is a product decision and how much is a jurisdictional one.
+
+For a lot of the work I do, that settles it. When the data cannot leave the site, or the device, or the country, a routing API is still a network call, and a network call is still a dependency you do not control. The right lesson is not ""use this router"". The right lesson is that the router is the product now, and you can build one.
+
+That is the part I would spend the next quarter on. Not upgrading your model. Instrumenting your system well enough to know which requests actually need the expensive model, which need a small local one, and which need no model at all. Most teams cannot answer that question today, which is precisely why their inference bill looks the way it does.
+
+The frontier just got beaten by a system that was not allowed to use it. Stop shopping for a model and start designing the thing around it.",#AI #LLM #AIEngineering #MachineLearning #MLOps
