@@ -6883,3 +6883,30 @@ The lesson is that the router is the product now — and you can build your own.
 Most teams can't tell you which of their requests actually need the expensive model. That's exactly why the inference bill looks the way it does.
 
 Can yours?",#AI #LLM #AIEngineering #MachineLearning #MLOps
+425,On-Device Agentic Models,"A 2B model that calls tools shipped this week, Apache 2.0, running on a laptop or a phone.
+
+MiniCPM5-2B from OpenBMB and ModelBest. 131K context. GGUF, MLX and GPTQ on day one.
+
+I have argued for years that models should run where the data is. This is that argument landing.
+
+But the number everyone is quoting is the wrong one.
+
+Their own suite says 53.9 average versus 51.1 for a 4B competitor. Under three points, on a benchmark set they picked. Artificial Analysis scores it independently at 15 on their Intelligence Index.
+
+Fine. Small models are small.
+
+The line that actually stopped me was from independent testing: on rare vocabulary in translation, it invented plausible-sounding words.
+
+Not gibberish. Plausible.
+
+In the cloud, that is a retry. You escalate to a bigger model, you log it, a human catches it.
+
+Offline, there is nobody to escalate to. The device is alone, and whatever it says is the answer.
+
+I built an offline multilingual avatar that had to work with zero network. The hardest part was never the generation. It was deciding what the system does when it does not know.
+
+So build the refusal path before you build the demo. Confidence floor on tool calls. A local log of what it declined, not just what it answered. Four well-typed tools, not forty.
+
+A 2B model that knows when to say nothing beats a 7B model that is always sure.
+
+What does your on-device stack do when the model is confidently wrong and there is no uplink?",#EdgeAI #OnDeviceAI #LLM #AIEngineering #OpenSourceAI
