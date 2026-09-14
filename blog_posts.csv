@@ -696,3 +696,36 @@ The industry keeps reporting on-device progress as a capability curve. Smaller, 
 A 2B model that knows when to say nothing is worth more in the field than a 7B model that is always sure.
 
 On-device, the capability is the easy half. Budget for the half that stays quiet.",#EdgeAI #OnDeviceAI #LLM #AIEngineering #OpenSourceAI
+2026-09-14,426,Agent Identity Standards,"Visa, Mastercard and Ant agreed on who your agent is. Not on what it can do.",https://pranaymahendrakar.com/blog/visa-mastercard-and-ant-agreed-on-who-your-agent-is-not-on-what-it-can,"Three of the world's largest payment networks just agreed on how to identify an AI agent. Not one line of that agreement says what the agent is allowed to do.
+
+On September 9th and 10th, Ant International, Visa and Mastercard announced a Know-Your-Agent interoperability framework. The problem it targets is real and dull in the best way. Visa has its Trusted Agent Protocol. Mastercard has Verifiable Intent. Ant International has the Agentic Mobile Protocol. Until now, if you were building an agent that buys things, you integrated with all three separately. KYA is meant to make an agent registered with one network legible to the others: traceable back to a validated operator or cardholder, certified against shared requirements, monitored continuously.
+
+Read the announcement carefully and one thing stands out. There is no technical specification. No governance body. No rollout timeline. It is an intent to collaborate, published against a projection that AI agents will orchestrate three to five trillion dollars of global consumer commerce by 2030.
+
+I do not read that as a failure. Intent precedes specification, and three competitors agreeing to interoperate at all is not nothing. But it does mean the hard engineering is still ahead of them, and the framing has already put it in the wrong place.
+
+Knowing which agent is at the door is authentication. Knowing what it may do once it is inside is authorization. Those are different problems. They fail differently. In every autonomous system I have shipped, the second one is where the engineering actually went.
+
+On a defence deployment I worked on, nobody in the programme ever raised the question of the model's identity. It was our model, on our hardware, signed by us. The entire design argument was about what the system was permitted to do with a detection, under what conditions, and who could halt it. Identity was settled in week one. The permission boundary took the rest of the project.
+
+That asymmetry is not specific to defence. It is what autonomy costs everywhere.
+
+A verified agent with an unbounded mandate is a verified way to lose money. The credential says who is spending. It does not say how much, on what, for how long, or whether the human who granted it is still paying attention. Traceability is a forensic property; it tells you who to blame after the transaction cleared. What production needs is a preventive property: a ceiling the agent cannot exceed even when it is compromised, confused, or simply looping.
+
+Then there is the part that gets skipped because it is inconvenient for the architecture. Continuous monitoring assumes a network.
+
+I have spent most of my career arguing that models should run where the data is, and I built an offline multilingual avatar for an automotive deployment that had to work with no connectivity at all. Agents in the field inherit that constraint in some form: a van, a factory floor, a rural terminal, a phone in a basement. If the trust decision needs a round trip to a monitoring service, the agent either stops working when the link drops or acts without the check. Most implementations will quietly choose the second. A trust rating you can only consult online is not a guardrail. It is a latency-dependent suggestion.
+
+So build the permission model as though the registry will be unreachable at the worst possible moment, because one day it will be.
+
+Four things worth doing now. Issue a scoped mandate rather than a badge: an amount ceiling, a category, an expiry measured in minutes. Enforce it at the resource, not at the gateway, because the gateway is the component that goes down. Make revocation a path you have tested under load, not a support ticket. And log the mandate next to the transaction, so an audit can ask whether the agent exceeded its grant, not merely whether it was who it claimed to be.
+
+Underneath all four is one default. Deny anything the human did not explicitly enumerate. The common failure mode of an agent is not fraud. It is scope creep, and scope creep is invisible to an identity check by construction.
+
+None of this requires waiting for a standards body. It is all on your side of the line.
+
+I want KYA to work. A single onboarding path across three networks removes real integration cost, and an industry that settles its identity plumbing early avoids a decade of bad bilateral bridges. That is a genuine contribution and I would use it.
+
+Just do not let the word ""trust"" in a press release do work it has not earned. The framework establishes that an agent is who it claims to be. It says nothing about whether it should be doing what it is doing.
+
+Verify the agent if you like. Then give it the smallest mandate that does the job, and a fuse you can pull.",#AI #AgenticAI #LLM #AISecurity #MachineLearning

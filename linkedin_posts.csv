@@ -6910,3 +6910,28 @@ So build the refusal path before you build the demo. Confidence floor on tool ca
 A 2B model that knows when to say nothing beats a 7B model that is always sure.
 
 What does your on-device stack do when the model is confidently wrong and there is no uplink?",#EdgeAI #OnDeviceAI #LLM #AIEngineering #OpenSourceAI
+426,Agent Identity Standards,"Ant International, Visa and Mastercard just agreed on how to identify an AI agent.
+
+Nothing in that agreement says what the agent is allowed to do.
+
+The Know-Your-Agent framework lines up three protocols that already exist — Visa's Trusted Agent Protocol, Mastercard's Verifiable Intent, Ant's Agentic Mobile Protocol — so an agent verified with one is legible to the others.
+
+Useful. Real integration cost removed.
+
+But read it closely: no technical spec, no governance body, no rollout date. It's an intent to collaborate, set against a projection of three to five trillion dollars in agent-driven commerce by 2030.
+
+Here's my problem with the framing.
+
+Knowing which agent is at the door is authentication. Knowing what it may do once inside is authorization. Different problems, different failure modes.
+
+On a defence deployment I worked on, nobody ever asked who the model was. It was ours, on our hardware. The whole design fight was about what it could do with a detection and who could halt it.
+
+Identity was settled in week one. The permission boundary took the rest of the project.
+
+A verified agent with an unbounded mandate is a verified way to lose money.
+
+And ""continuous monitoring"" quietly assumes a network. I've built systems that run with no connectivity at all. If the trust check needs a round trip, the agent either stops working or skips it. Most will skip it.
+
+Scope the mandate. Set a ceiling. Test revocation under load. Default deny.
+
+Are you granting your agents identity, or authority? Most teams have only built the first.",#AI #AgenticAI #LLM #AISecurity #MachineLearning
