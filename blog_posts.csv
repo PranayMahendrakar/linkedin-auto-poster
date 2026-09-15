@@ -729,3 +729,36 @@ I want KYA to work. A single onboarding path across three networks removes real 
 Just do not let the word ""trust"" in a press release do work it has not earned. The framework establishes that an agent is who it claims to be. It says nothing about whether it should be doing what it is doing.
 
 Verify the agent if you like. Then give it the smallest mandate that does the job, and a fuse you can pull.",#AI #AgenticAI #LLM #AISecurity #MachineLearning
+2026-09-15,427,AI Data Center Energy Costs,Congress is about to itemize AI's power bill. On-device stopped being a privacy argument.,https://pranaymahendrakar.com/blog/congress-is-about-to-itemize-ais-power-bill-on-device-stopped-being-a-,"Hot take: the most consequential AI story this week is not a model release. It is a utility bill.
+
+A bipartisan bill called the Ratepayer Protection Act cleared the House Energy and Commerce Committee 52-0 in July, was reported to the House floor on September 10, and leadership has scheduled it for a vote this week. It does one narrow thing. It directs state utility regulators to consider a standard under which large-load customers (read: data centers) cover the full incremental cost of the new generation, transmission and distribution built to serve them, instead of smearing that cost across every other ratepayer.
+
+Strip the politics and you are left with an inference-economics story wearing a policy costume.
+
+The number underneath it comes from the Energy Information Administration's September outlook: US electricity consumption is on track to set records two years running, from 4,195 billion kilowatt-hours in 2025 to 4,270 in 2026 and 4,349 in 2027. AI data centers are a named driver of that curve.
+
+I have been making a version of this argument for years, and I have been making it badly.
+
+My position has always been that models should run where the data is. On-device, offline, under your control. I built an offline multilingual AI avatar for an automotive deployment in Germany that had to work with no connectivity at all. I built real-time drone threat detection for a defence deployment where the entire point was that it could not phone home. You do not put a round trip to a cloud region in the middle of a threat response loop.
+
+I argued those on privacy, latency and sovereignty. Good arguments. Arguments that lose to ""just call the API, it is cheap.""
+
+What changes this week is that the cheapness is getting itemized. If regulators start allocating grid buildout to the load that caused it, the marginal cost of centralised inference stops being a line in a hyperscaler's capex and starts being a number with somebody's name on it. That is a language procurement understands in a way it never understood my latency charts.
+
+So here is the engineering read, without the hype.
+
+First: your architecture diagram has an energy footprint whether or not anyone bills you for it. Cost per token has always been a lossy proxy for that footprint. When the grid reprices, the proxy moves, and it moves underneath systems that were sized back when tokens felt free.
+
+Second: most production systems still do not need a frontier model. Across the automotive, defence and education work I have shipped, the honest pattern is that a small, well-quantised model plus good retrieval and a tight scaffold answers the overwhelming majority of real traffic. Every one of those requests that never leaves the device is a request that never touches a substation.
+
+Third, and I want to be precise here because this is where edge advocates oversell: on-device inference is not thermodynamically free. A datacenter GPU batching a thousand requests is genuinely efficient per token. A phone NPU is not magic. The honest claim is narrower than ""edge saves energy."" It is this: the device already exists, it is already powered, and its inference draws no new transmission line. The saving is not in joules per token. It is in infrastructure nobody had to build.
+
+That distinction matters, because this bill is about infrastructure cost allocation, not about carbon.
+
+It is also worth being clear about what the bill is not. It does not cap data centers. It does not set an efficiency standard. It tells states to consider a cost-allocation rule, which is a nudge and not a mandate. And its odds are poor: the Senate has roughly three weeks before it recesses ahead of the midterms, and the companion measure there has not moved. This may well die quietly.
+
+The direction survives the bill anyway. Electricity affordability has become an electoral issue in the country that hosts most of the world's AI compute. That pressure does not evaporate in November, and it does not stay inside one jurisdiction.
+
+For those of us building in India, the lesson arrives early and cheap. We get to design for the constrained case before the constraint is legislated at us, which is more or less what building offline and on-device has always meant here anyway.
+
+The question stops being ""can the model do this."" It becomes ""does this need to leave the device.""",#EdgeAI #AIInfrastructure #OnDeviceAI #LLMOps #AIPolicy

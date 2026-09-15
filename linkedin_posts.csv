@@ -6935,3 +6935,28 @@ And ""continuous monitoring"" quietly assumes a network. I've built systems that
 Scope the mandate. Set a ceiling. Test revocation under load. Default deny.
 
 Are you granting your agents identity, or authority? Most teams have only built the first.",#AI #AgenticAI #LLM #AISecurity #MachineLearning
+427,AI Data Center Energy Costs,"The most consequential AI story this week isn't a model release. It's a utility bill.
+
+A bipartisan bill heads to the US House floor this week. It would push state regulators to make data centers cover the full cost of the grid built to serve them, instead of spreading it across everyone else's electricity bill.
+
+Meanwhile the EIA expects US power consumption to hit records two years running, with AI data centers a named driver.
+
+I've argued for years that models should run where the data is. Offline. On-device. Under your control.
+
+I built an offline multilingual avatar for an automotive deployment that had no connectivity. I built drone threat detection for a defence deployment that couldn't phone home.
+
+I argued both on privacy and latency. Those arguments lose to ""just call the API, it's cheap.""
+
+Now the cheapness is getting itemized.
+
+Let me be precise, because edge advocates oversell this: on-device inference isn't thermodynamically free. A datacenter GPU batching a thousand requests is genuinely efficient per token.
+
+The real claim is narrower. The device already exists. It's already powered. Its inference draws no new transmission line.
+
+The saving isn't joules per token. It's infrastructure nobody had to build.
+
+And most production systems still don't need a frontier model. A small quantised model with good retrieval handles the overwhelming majority of real traffic.
+
+Every request that never leaves the device never touches a substation.
+
+So here's my question: if your inference budget were priced in megawatts instead of tokens, how much of your current stack would survive the review?",#EdgeAI #AIInfrastructure #OnDeviceAI #LLMOps #AIPolicy
