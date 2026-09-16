@@ -762,3 +762,32 @@ The direction survives the bill anyway. Electricity affordability has become an 
 For those of us building in India, the lesson arrives early and cheap. We get to design for the constrained case before the constraint is legislated at us, which is more or less what building offline and on-device has always meant here anyway.
 
 The question stops being ""can the model do this."" It becomes ""does this need to leave the device.""",#EdgeAI #AIInfrastructure #OnDeviceAI #LLMOps #AIPolicy
+2026-09-16,428,ChatGPT Human Review Privacy,"Hundreds of people are reading real ChatGPT chats. That is the eval loop, not a leak.",https://pranaymahendrakar.com/blog/hundreds-of-people-are-reading-real-chatgpt-chats-that-is-the-eval-loo,"Hot take: the part of an AI system that leaks your data is almost never the model. It is the loop you built to make the model better.
+
+This week 404 Media published leaked internal documents describing a program at OpenAI codenamed Project Lily. Hundreds of contractors, recruited through one firm and paid through another at rates reported above 50 dollars an hour, sit and read real ChatGPT conversations. They grade the replies on a seven-point scale, summarize what the user was actually trying to do, and flag the model for sounding robotic or for agreeing too readily.
+
+Tom's Hardware, TechRepublic and The Next Web all picked it up within a day, so this is not one outlet's reading of a single leak. OpenAI's position is that accounts are anonymous and that automated filters strip personal details before a human sees anything. The documents say those filters miss. Reviewers see the whole conversation, and above it a summary of what that person has used the assistant for before, sometimes including roughly where in the world they are.
+
+None of this is a breach. That is the uncomfortable part.
+
+I have built evaluation pipelines. Every team that ships a model real people use builds one. You cannot improve a system on benchmark scores alone, because the things you are actually trying to fix, the tone, the over-agreement, the confidently wrong answer delivered in a reassuring voice, do not show up in a benchmark. They show up in the traffic. So you sample the traffic and a human reads it, because there is no automated grader for ""this answer was technically correct and left the user worse off.""
+
+I have published on what repeated rounds of reinforcement learning from human feedback do to a model's behaviour over time. All of that feedback has to come from somewhere. Somewhere is a person, reading.
+
+So the story here is not that one lab did something exotic. The story is that the privacy conversation in this industry has been pointed at the wrong component for three years.
+
+When a company asks me whether their data is safe with a hosted model, they are almost always asking about training. Will my prompts end up in the weights. That is the question vendor documentation is written to answer, and the answer is usually a calm paragraph about opt-outs and retention windows.
+
+It is the wrong question. Training is a batch process over tokenized text. A review queue is a browser tab open in front of a contractor who has a keyboard and a phone in their pocket. Those two things are not the same risk, and they should never have been covered by the same sentence in the same policy.
+
+This is why the systems I build for defence and automotive customers look the way they do. On a defence deployment I worked on, the binding constraint was never latency or cost. It was that the data physically could not leave the site. Not ""must be encrypted in transit."" Could not leave. An offline multilingual assistant I built for an automotive customer in Germany ran entirely on the device for the same reason, and the on-device requirement made the engineering harder in every dimension except the one that mattered.
+
+People hear that and assume it is a compliance checkbox, or vendor paranoia. It is neither. It is the recognition that every copy of your data that exists anywhere is a copy somebody can read, and that you cannot audit a human review queue you do not own.
+
+Yes, there is a setting. Improve the model for everyone. You can switch it off. It is on by default, most people have never opened that menu, and the burden of knowing the menu exists sits on the person least equipped to carry it. Defaults are policy. Everything else is documentation.
+
+If you run AI in production, the practical version of this is short. Find out whether your vendor has a human review path at all, which is a different question from whether they train on your data. Ask what a reviewer sees on screen, including the context panel sitting above the conversation. Ask who employs them and under what contract. Then decide, per class of data, what is allowed to reach that queue in the first place, and route everything else to a model you host yourself.
+
+That routing decision is the actual architecture. Most teams never make it, because nobody told them there was a queue.
+
+The takeaway: the only data that cannot surface in a stranger's review tab is the data that never left your machine. Build as though the tab is open, because somewhere it is.",#AI #LLM #DataPrivacy #OnDeviceAI #MLOps

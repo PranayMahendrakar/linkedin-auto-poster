@@ -6960,3 +6960,24 @@ And most production systems still don't need a frontier model. A small quantised
 Every request that never leaves the device never touches a substation.
 
 So here's my question: if your inference budget were priced in megawatts instead of tokens, how much of your current stack would survive the review?",#EdgeAI #AIInfrastructure #OnDeviceAI #LLMOps #AIPolicy
+428,ChatGPT Human Review Privacy,"Hundreds of people are paid to read real ChatGPT conversations. That is not a leak. That is the eval loop.
+
+404 Media published the leaked documents this week. Contractors read whole conversations, rate the replies on a seven-point scale, and flag the model for sounding robotic or agreeing too readily.
+
+Above each conversation sits a summary of what that user has asked before. Sometimes roughly where they are.
+
+Tom's Hardware, TechRepublic and The Next Web confirmed it within a day.
+
+Here is the part nobody wants to say out loud: this is normal engineering. I have built these pipelines. Tone, sycophancy, confidently wrong answers - none of that shows up in a benchmark. It shows up in the traffic, and a human has to read the traffic.
+
+So the problem is not that a lab did something exotic. The problem is that for three years we have been asking vendors the wrong question.
+
+""Do you train on my data"" is the question their documentation is written to answer.
+
+""Does a human ever read my data, who employs them, and what else is on their screen"" is the question that actually determines your risk.
+
+On a defence deployment I worked on, the constraint was not latency or cost. The data could not leave the site. Not encrypted in transit. Could not leave.
+
+Every copy of your data that exists somewhere is a copy someone can read.
+
+So: do you know whether your AI vendor has a human review queue? Have you ever asked?",#AI #LLM #DataPrivacy #OnDeviceAI #MLOps
