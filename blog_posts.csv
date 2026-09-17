@@ -791,3 +791,40 @@ If you run AI in production, the practical version of this is short. Find out wh
 That routing decision is the actual architecture. Most teams never make it, because nobody told them there was a queue.
 
 The takeaway: the only data that cannot surface in a stranger's review tab is the data that never left your machine. Build as though the tab is open, because somewhere it is.",#AI #LLM #DataPrivacy #OnDeviceAI #MLOps
+2026-09-17,429,MLPerf Edge Agentic Benchmark,"MLPerf started measuring the system instead of the model. That is the result, not the 5.7x.",https://pranaymahendrakar.com/blog/mlperf-started-measuring-the-system-instead-of-the-model-that-is-the-r,"Thirty organizations submitted to MLPerf Inference v6.1 on Wednesday. Record participation, 486 results, and the usual headline numbers. Best per-accelerator DeepSeek-R1 in the server scenario is 5.7x what it was a year ago. Best vision-language result is 2.99x what it was six months ago.
+
+Ignore all of that for a minute.
+
+The thing that actually matters in this round is that MLCommons added two benchmarks: an end-to-end RAG pipeline for the datacenter, and an Edge Agentic Inference benchmark for a single machine. After years of measuring one model answering one prompt, the industry's reference benchmark started measuring the system.
+
+That is the news. Everything else is a faster version of last year.
+
+Look at what the edge benchmark actually runs. Qwen3.6-27B with thinking off, quantized to Q4_K_M, GGUF, under llama.cpp, 32K of context served per turn. The workload is a replay of 20 agentic coding trajectories pulled from SWE-bench Verified, 1,007 turns in total, single stream, one request in flight.
+
+I want to be clear about how unusual that spec sheet is. That is not a datacenter config dressed down for a press release. That is what a workstation actually runs. Quantized weights, llama.cpp, one user, one request at a time, and a context that grows every single turn until it stops fitting.
+
+I have spent most of my career arguing that models should run where the data is. On-device, offline, under your control. For a long time the counter-argument was that there was no serious number to point at. You could cite throughput on eight accelerators, or you could show a demo. Now there is a reviewed edge agentic number with an accuracy gate on it, and one first-time submitter finished all 1,007 turns on a single desktop-class box in under 64 minutes.
+
+The metrics matter more than the model choice. It reports mean latency per turn, plus time-to-first-token and time-per-output-token distributions, and it gates accuracy at 97% of the reference score using BFCL v4.
+
+Latency per turn. Not tokens per second.
+
+Anyone who has shipped an agent knows why that distinction is the whole ballgame. Tokens per second is a property of your kernel. Latency per turn is a property of your system: prefill on a context that keeps growing, tool call, wait, re-prefill, generate again. On an offline deployment I worked on, the model was never the bottleneck. The bottleneck was the eleventh turn, when the conversation had grown past what the cache could hold and every turn after that paid full prefill.
+
+You cannot see that in a single-prompt benchmark. You can see it in 1,007 turns.
+
+The RAG benchmark does the same thing from the other direction. It is four models wired together: a 120B open-weights model doing query decomposition, sufficiency checking and answer generation, a 20B one grading documents, e5-base-v2 for embeddings, ColBERTv2 for reranking. 107,484 passages chunked out of 2,515 HTML files, 824 multi-hop questions from Google's FRAMES set, up to five retrieval rounds allowed. It reports documents per second for building the FAISS HNSW index, and tasks per second for answering.
+
+That is a pipeline, not a model. And it reports ingestion separately from query, which is the one thing nearly every RAG postmortem comes down to. Your retrieval is not slow. Your index build is slow, and nobody measured it because nobody owned it.
+
+Here is my actual opinion, and it is not a comfortable one for benchmark culture.
+
+For three years we optimized the wrong number because it was the only number that was standardized. Teams bought accelerators off throughput charts and then shipped agents that felt slow, because throughput was never the thing a user experiences. The gap between the benchmark and production was not a measurement error. It was a category error, we all knew it, and we quoted the numbers anyway because the alternative was quoting nothing.
+
+A benchmark is a statement about what an industry has agreed is worth being good at. For a long time we agreed that fast single-turn generation was worth being good at. This week, thirty organizations agreed that turn latency on a quantized model on one machine is also worth being good at.
+
+That is a bigger shift than any 5.7x.
+
+The scores in this round will be obsolete within six months. The shape of what got measured will not be.
+
+So if you are choosing hardware or a serving stack this quarter, stop reading the throughput column first. Find the turn-latency distribution, find the ingestion number, and ask whoever is quoting you tokens per second what happens on turn eleven.",#MLPerf #EdgeAI #AgenticAI #RAG #OnDeviceAI

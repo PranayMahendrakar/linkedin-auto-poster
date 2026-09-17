@@ -6981,3 +6981,28 @@ On a defence deployment I worked on, the constraint was not latency or cost. The
 Every copy of your data that exists somewhere is a copy someone can read.
 
 So: do you know whether your AI vendor has a human review queue? Have you ever asked?",#AI #LLM #DataPrivacy #OnDeviceAI #MLOps
+429,MLPerf Edge Agentic Benchmark,"MLPerf Inference v6.1 dropped this week. 30 organizations, 486 results, a record round.
+
+Everyone is quoting the 5.7x per-accelerator gain. That is the least interesting number in it.
+
+Here is what actually changed.
+
+MLCommons added an Edge Agentic Inference benchmark. Qwen3.6-27B, quantized to Q4_K_M, running under llama.cpp, 32K context per turn, one request in flight.
+
+That is not a datacenter config. That is a workstation.
+
+The workload is 20 real agentic coding trajectories from SWE-bench Verified. 1,007 turns. And the headline metric is mean latency per turn, not tokens per second.
+
+One first-time submitter finished all 1,007 turns on a single desktop-class box in under 64 minutes.
+
+I have argued for years that models should run where the data is. The honest problem was that there was never a serious number to point at. Now there is one.
+
+They also added an end-to-end RAG benchmark. Four models, 107,484 passages, 824 multi-hop questions, and it reports index build separately from query time.
+
+Anyone who has debugged a slow RAG system knows why that matters. Retrieval usually is not the problem. Ingestion is, and nobody owned it because nobody measured it.
+
+For three years we optimized throughput because it was the only standardized number. Then we shipped agents that felt slow to use.
+
+The scores in this round expire in six months. The shape of what got measured does not.
+
+So what is your turn-eleven latency? Most teams I ask have never checked.",#MLPerf #EdgeAI #AgenticAI #RAG #OnDeviceAI
