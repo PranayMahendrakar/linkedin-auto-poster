@@ -7006,3 +7006,26 @@ For three years we optimized throughput because it was the only standardized num
 The scores in this round expire in six months. The shape of what got measured does not.
 
 So what is your turn-eleven latency? Most teams I ask have never checked.",#MLPerf #EdgeAI #AgenticAI #RAG #OnDeviceAI
+430,LawZero Safe AI Funding,"Canada and Germany just committed up to 300 million Canadian dollars to an AI lab that is not building a frontier model.
+
+The money goes to LawZero, Yoshua Bengio's non-profit. Announced September 16 at ALL IN in Montreal.
+
+What they are building is called Scientist AI: a system with no goals of its own, meant to reason transparently and check the systems that do act.
+
+Most people filed this under safety. I read it as procurement.
+
+I have shipped 250+ AI systems into automotive, defence and education. The pattern that survives a real deployment never changes: the thing that decides is never the thing that checks.
+
+On a drone threat detection deployment I worked on, the detector ran at 94 percent precision. That is why it shipped. It is also why it needed a second layer, because the six percent is not a bad user experience, it is an incident.
+
+And the reviewer cannot be another head on the same network. Same data, same blind spots. It just agrees with the mistake faster.
+
+The honest problem: a verifier that is itself a neural net gives you a probability, not a proof. You move the uncertainty, you do not delete it.
+
+The detail nobody picked up: the grant includes sovereign compute, built domestically.
+
+Two governments concluded that if you do not own the substrate, you do not own the guarantee.
+
+Most labs fund the thing that acts. These two funded the thing that doubts.
+
+Where does your checking layer live right now - inside the same model, or outside it?",#AI #AISafety #MachineLearning #EdgeAI #LLM
