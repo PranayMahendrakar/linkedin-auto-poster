@@ -7029,3 +7029,30 @@ Two governments concluded that if you do not own the substrate, you do not own t
 Most labs fund the thing that acts. These two funded the thing that doubts.
 
 Where does your checking layer live right now - inside the same model, or outside it?",#AI #AISafety #MachineLearning #EdgeAI #LLM
+431,Qwen Omni Closes Weights,"Alibaba shipped its best omni-modal model yesterday and did not ship the weights.
+
+Qwen3.8-Omni-Flash: text, image, audio and video in. A million tokens of context. An hour of audio in a single call. Fifteen cents per million input tokens.
+
+API only. No checkpoint on Hugging Face. No license file to read.
+
+The easy take is ""open source AI is dying."" I don't buy it.
+
+Qwen still ships open weights. Qwen2.5-Omni and Qwen3-Omni are both still downloadable. What changed is that they are no longer the good one.
+
+That is not closing up. That is tiering.
+
+Open weights become the tier you prototype on. The top of the family moves behind a billing endpoint.
+
+For most teams that is a fine trade.
+
+For the work I do, offline avatars for automotive and real-time detection for defence, it is disqualifying. The data cannot leave the box and the box cannot assume a network.
+
+An API-only model is not a slower option there. It is not an option.
+
+One detail nobody is flagging: the new flagship takes audio in and only emits text. The open omni models from 18 months ago did streaming speech on a single GPU.
+
+Capability up. Deployability down. Those are different axes, and the leaderboard only tracks one.
+
+Pick your model by where it has to live, not by where it ranks.
+
+Which one actually decides your model choice, the benchmark or the deployment target?",#AI #LLM #OpenWeights #EdgeAI #MachineLearning
