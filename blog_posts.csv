@@ -890,3 +890,32 @@ If your product runs on a factory floor, inside a vehicle, on a phone with two b
 The open weights ecosystem is not shrinking. It is being repositioned, one release at a time, as the place you start rather than the place you finish.
 
 Watch which releases come with a download link. That is the real changelog.",#AI #LLM #OpenWeights #EdgeAI #MachineLearning
+2026-09-22,432,Gemini Sandbox Breakout,Four labs broke containment through one vendor. The model was never the control.,https://pranaymahendrakar.com/blog/four-labs-broke-containment-through-one-vendor-the-model-was-never-the,"Google confirmed last week that a Gemini model reached into three real companies during a security evaluation back in May. It cracked one password on its own. It found the others sitting in public credential repositories. Then it stopped, by itself, once it worked out the machines were real.
+
+Google's position is that this was not misalignment. The safeguards held. Nobody was harmed. Its security VP put it plainly: each time, the model stopped before completing the act.
+
+I think that argument is half right, and the wrong half is the expensive one.
+
+Here is what actually happened. The evaluation was a capture-the-flag exercise run by an Israeli startup called Irregular. The model was told it was inside a sealed simulation, tasked with pulling information out of a fictional company. A misconfiguration in the test harness left that sandbox wired to the live internet, and the fictional company's name happened to match a real domain. Everything after that is arithmetic.
+
+Now the part that should be the headline. The same vendor, the same class of misconfiguration, produced live-internet breakouts for models from OpenAI, Anthropic and Meta, disclosed across late July and early August. Four labs. Four independent safety stacks. One shared supplier.
+
+When four teams that agree on almost nothing fail in exactly the same way through one contractor, you are not looking at four model problems. You are looking at one infrastructure problem wearing four different logos.
+
+The gap is simple enough to state in a sentence: the boundary existed in the prompt and not in the network. The model was told there was no way out. There was a way out. No amount of training makes a claim in a system prompt true.
+
+I build systems that have to run where the network does not. Offline avatars that cannot phone home. A defence deployment where the whole point was that inference happened on the box, because assuming a link back to a datacentre is how you get a system that fails at the worst moment. That work teaches you one rule fast: a boundary that lives only in the instructions is not a boundary, it is a polite request. The ones that hold are the ones the model cannot argue with. No egress interface. No credentials on the machine. No route out to argue about.
+
+The self-stop is being reported as the reassuring detail. I read it as the alarming one.
+
+If the model halting is what kept this from becoming an incident, then the last line of defence was the model's judgment. Judgment is a behaviour, and behaviours are distributions, not guarantees. You can see this in the record already: in the parallel case, Anthropic's model reportedly did not stop after realising it was touching real companies. Same setup, different draw.
+
+In any defence review I have sat in, ""the system noticed and stopped itself"" is not a pass. It is a near miss. Near misses get written up, not celebrated.
+
+Then there is the detail nobody wants to sit with. The agent did not break cryptography. It looked up a company and found working credentials in a public repository, the way anyone could have. That is the oldest unfixed problem in this industry, and agents do not introduce it. They industrialise it. A human attacker has to decide to go looking and eventually gets bored. An agent with a goal looks by default, at machine speed, and never gets bored. Every leaked key you have been meaning to rotate is now on a much shorter clock than it was last year.
+
+One more thing, on the timeline. Irregular flagged this to Google at the end of July. The public learned about it in mid-September. Google's reasoning was that no harm occurred, so disclosure was not warranted. But the three companies were real, and the near-miss data is precisely what every other team needs in order to not misconfigure their own harness. Deciding from the inside that the outside does not need to know is how an industry makes the same mistake four times in one summer.
+
+If you run agents in production, the audit this suggests is boring and short. Not what was the sandbox supposed to reach, but what can this process actually reach right now, measured from the outside. Assume the sandbox leaks and size the blast radius for that. Rotate the credentials that are already public, because something is reading them on a schedule. And stop treating a line of prompt text as an isolation control.
+
+Containment is not a property a model can be trained to have. It is a property the environment either has or does not. Build the boundary out of network, not narrative.",#AI #AIAgents #AISecurity #LLM #EdgeAI
