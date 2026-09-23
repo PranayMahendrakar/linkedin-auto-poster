@@ -919,3 +919,30 @@ One more thing, on the timeline. Irregular flagged this to Google at the end of 
 If you run agents in production, the audit this suggests is boring and short. Not what was the sandbox supposed to reach, but what can this process actually reach right now, measured from the outside. Assume the sandbox leaks and size the blast radius for that. Rotate the credentials that are already public, because something is reading them on a schedule. And stop treating a line of prompt text as an isolation control.
 
 Containment is not a property a model can be trained to have. It is a property the environment either has or does not. Build the boundary out of network, not narrative.",#AI #AIAgents #AISecurity #LLM #EdgeAI
+2026-09-23,433,Open-Source Robotics Runtime,Alphabet open-sourced its robot control loop. Read the license before you read the code.,https://pranaymahendrakar.com/blog/alphabet-open-sourced-its-robot-control-loop-read-the-license-before-y,"Alphabet's robotics unit shipped the core of its industrial platform to GitHub yesterday under Apache 2.0. Real-time control, motion planning, grasp planning, 6-DoF pose estimation built on NVIDIA's FoundationPose, Gazebo simulation, camera calibration, ROS drivers. Announced at ROSCon in Toronto. It runs on local hardware, with no cloud account required.
+
+Most of the coverage led with the AI. I want to talk about the license.
+
+I build systems that have to run where the data is: offline, on-device, inside a building or a vehicle with no reliable link to anything. In that work, the model is almost never what kills the project. The loop underneath it is.
+
+A perception demo takes a weekend. Getting a sensor reading to change a machine's trajectory mid-move, on a deadline, on hardware you did not design, through a vendor driver that half-documents its own timing, is the part that eats quarters. On a defence deployment I worked on, the detection model was in acceptable shape early. Everything after that was determinism: holding the loop, calibrating the rig, proving that the same input produced the same output on the machine in the field and not just the machine on my desk.
+
+That work never makes the demo reel. Everybody pays for it anyway.
+
+Published research on motion planning and grasping has been open for twenty years. What was not open was a production-grade, hardware-agnostic runtime that connects any of it to real actuators in real time. That layer sat inside vendor stacks and inside integrators' heads, and it was priced accordingly. It is the main reason industrial robotics stayed a procurement problem instead of a software problem.
+
+A permissive license on that layer changes who gets to try. Apache 2.0 means a mid-size manufacturer in Pune, a defence lab, or a university group with two arms and no budget can clone it, run it on their own hardware, modify the control code, and ship something commercial without a legal conversation first. No runtime fee. No tenancy. No asking permission.
+
+I do not think this is charity, and you should not read it that way. Giving away the runtime is a distribution move. If the ecosystem standardizes on your control framework, your drivers, and your simulation format, you shape the industry whether or not you own the code people are running. It is the Android playbook pointed at factory floors.
+
+Take the deal anyway. A permissive grant on code that is already public cannot be pulled back from the copies that exist. Fork it, read it, and absorb the timing discipline inside it, because that knowledge transfers even if the project's governance disappoints you in three years.
+
+Be honest about the scope, though, because this is not a robot brain. It does not cover mobile robots or humanoids. The reference solution is machine tending with FANUC and Universal Robots arms. This is a serious industrial-automation foundation, and the distance between that and general embodied intelligence is still an entire research field.
+
+Here is what I would actually do with it this week if robots are anywhere near your roadmap. Pull the repository, run the simulation locally, and read the control framework before you read anything else. Not to adopt it tomorrow. Read it to see what a team with real deployment scars considers the minimum viable set of guarantees: how they thread sensor feedback into the loop, where they allow latency to vary, and where they refuse to.
+
+That is a free education in the discipline most AI teams are missing the moment they cross from screens into the physical world. You can fine-tune a policy in an afternoon. You cannot fake a control loop that holds its deadline in a plant at 2 a.m. with nobody watching.
+
+The useful question after an announcement like this is never whether the code is good. It is which constraint just moved. Yesterday the constraint on building a physical AI system stopped being access to a real-time runtime and went back to being what it should have been all along: whether you understand your own hardware well enough to trust it.
+
+Physical AI was never gated by intelligence. It was gated by plumbing, and the plumbing just went public.",#Robotics #PhysicalAI #OpenSource #EdgeAI #ROS
