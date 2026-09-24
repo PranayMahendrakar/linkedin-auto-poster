@@ -946,3 +946,40 @@ That is a free education in the discipline most AI teams are missing the moment 
 The useful question after an announcement like this is never whether the code is good. It is which constraint just moved. Yesterday the constraint on building a physical AI system stopped being access to a real-time runtime and went back to being what it should have been all along: whether you understand your own hardware well enough to trust it.
 
 Physical AI was never gated by intelligence. It was gated by plumbing, and the plumbing just went public.",#Robotics #PhysicalAI #OpenSource #EdgeAI #ROS
+2026-09-24,434,Open-Weights Hardware Floor,The best open-weights model in the world needs a server rack. That is not sovereignty.,https://pranaymahendrakar.com/blog/the-best-open-weights-model-in-the-world-needs-a-server-rack-that-is-n,"Xiaomi released MiMo-V2.6 this week under an MIT licence, and it took the top of the open-weights leaderboard. Artificial Analysis scores the Pro variant at 46 on its intelligence index. Trained in under six days for about $2.62 million.
+
+Every headline I read framed this as a win for open source. It is. I want to point at the part nobody put in the headline.
+
+MiMo-V2.6-Pro is 1.02 trillion total parameters, with 42 billion active per token.
+
+Read those two numbers again, because the gap between them is where most people get the story wrong. Forty-two billion active sounds runnable. It is not the number that decides whether you can run it.
+
+A mixture-of-experts model routes each token to a different subset of experts, and you do not know in advance which ones. The whole trillion has to sit in memory, even though only a sliver of it does arithmetic on any given token. Active parameters set your compute cost. Total parameters set your hardware floor.
+
+So the hardware floor for the best open-weights model in the world is close to a terabyte of fast memory before you have served a single user. That is a rack. Quantise it hard, accept the quality loss, and it is still a rack.
+
+I spend most of my working life on the other side of that floor. I build systems that have to run where the data is: offline, on-device, inside a vehicle or a building or a piece of field equipment with no reliable uplink and no permission to send anything outward. On a defence deployment I worked on, ""call an API"" was not a degraded option. It was not an option.
+
+From that side of the line, here is what I see happening. The open-weights ceiling is rising fast. The open-weights floor is not moving at all.
+
+Two years ago, the best model you could download and the best model you could realistically self-host were close to the same model. That is over. The leaderboard-topping open release and the thing you can put on a workstation have split into different product categories that happen to share a licence file.
+
+And the licence is doing a lot of work in these conversations. MIT is genuinely permissive, better than most of what has shipped this year, and I do not want to undersell it. But a licence grants you permission. It does not grant you capability. If exercising your rights under that licence requires capital you do not have, you have been handed something closer to a promise than a tool.
+
+That is worth naming, because open weights has quietly become a proxy for sovereign in procurement conversations I sit in. It is not a proxy. The questions are separable, and if you are the one buying, you have to ask them separately.
+
+Can I download the weights? Can I run them on hardware I control? Can I run them inside the latency, cost and power budget my product actually has? Those are three questions. A trillion-parameter MIT release answers the first one beautifully and the third one badly.
+
+None of this is a complaint about Xiaomi. They shipped a frontier-class model, gave the weights away under one of the most permissive licences available, and published their training cost, which is more than most labs with far deeper pockets have done this year. They also shipped a smaller Flash variant trained for roughly $850,000, and a distilled 9B checkpoint, which tells me they understand the floor problem better than the coverage does.
+
+The $2.62 million figure is its own story, incidentally. Training cost is falling faster than inference cost, and that reordering will shape the next two years more than any single release will.
+
+So the complaint is not about the model. It is about how we are reading the releases.
+
+The useful metric for anyone building real systems is not where a model sits on the open-weights leaderboard. It is the best model you can run inside your own constraints: your memory, your latency budget, your power envelope, your compliance boundary. For a lot of us that number is still measured in single-digit billions of active parameters on a machine you can carry into a room.
+
+That frontier moves too. It just moves quietly, because a small model that finally clears your bar does not make anyone's index.
+
+Which is why I would watch the Flash variant more closely than the Pro, and the distilled checkpoint more closely than either. Watch what the quantisation community does with these weights over the next month. That is where a download turns into a deployment.
+
+Open weights are necessary. They were never sufficient. The thing you own is not the model you can download. It is the model you can run.",#OpenWeights #OnDeviceAI #LLMOps #EdgeAI #AIInfrastructure

@@ -7108,3 +7108,28 @@ Take the deal anyway. A permissive grant on code that is already public cannot b
 Just be honest about scope. No mobile robots. No humanoids. Machine tending as the reference solution. A foundation, not a brain.
 
 If robots are anywhere near your roadmap: what is actually stopping you right now, the intelligence or the plumbing?",#Robotics #PhysicalAI #OpenSource #EdgeAI #ROS
+434,Open-Weights Hardware Floor,"Xiaomi's MiMo-V2.6 just took the top of the open-weights leaderboard under an MIT licence. Trained in under six days for about $2.62 million.
+
+The coverage called it a win for open source. It is.
+
+Here is the line nobody put in the headline: the Pro model is 1.02 trillion total parameters, with 42 billion active per token.
+
+Forty-two billion active sounds runnable. It is not the number that decides whether you can run it.
+
+Mixture-of-experts routes every token to a different subset of experts, and you do not know which ones in advance. So the whole trillion sits in memory.
+
+Active parameters set your compute cost. Total parameters set your hardware floor.
+
+That floor is close to a terabyte of fast memory before you serve a single user. That is a rack.
+
+I build systems that run where the data is. Offline, on-device, inside vehicles and buildings with no uplink and no permission to send anything outward.
+
+On a defence deployment I worked on, ""call an API"" was not a degraded option. It was not an option.
+
+From that side of the line: the open-weights ceiling is rising fast, and the floor is not moving at all.
+
+A licence grants you permission. It does not grant you capability.
+
+So before anyone calls a model sovereign, ask three separate questions. Can I download it? Can I run it on hardware I control? Can I run it inside my latency and power budget?
+
+What is the best model you can actually run inside your own constraints right now?",#OpenWeights #OnDeviceAI #LLMOps #EdgeAI #AIInfrastructure
