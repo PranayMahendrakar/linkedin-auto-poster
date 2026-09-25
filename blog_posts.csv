@@ -983,3 +983,22 @@ That frontier moves too. It just moves quietly, because a small model that final
 Which is why I would watch the Flash variant more closely than the Pro, and the distilled checkpoint more closely than either. Watch what the quantisation community does with these weights over the next month. That is where a download turns into a deployment.
 
 Open weights are necessary. They were never sufficient. The thing you own is not the model you can download. It is the model you can run.",#OpenWeights #OnDeviceAI #LLMOps #EdgeAI #AIInfrastructure
+2026-09-25,435,AI Drone Detection vs ISR Funding,"A drone maker just hit a $6.4B valuation. The harder AI problem is spotting it, not flying it.",https://pranaymahendrakar.com/blog/a-drone-maker-just-hit-a-64b-valuation-the-harder-ai-problem-is-spotti,"Tekever just closed the first tranche of a $580 million Series D at a $6.4 billion valuation. UC Investments and Baillie Gifford led it. The company has logged more than 50,000 flight hours over Ukraine since 2022, and the UK Ministry of Defence just picked it to build CORVUS, a decade-long surveillance program worth up to £400 million.
+
+That's a real number for a real capability: autonomous ISR drones that fly, loiter, and stream intelligence back without an operator's hands on a stick. It earns the valuation.
+
+But read past the headline and notice what nobody is pricing yet. Tekever's pitch is about the aircraft. It says almost nothing about the other side of that battlespace: the system that has to notice an aircraft like that is inbound, classify it in real time, and decide whether it is a threat, before it is close enough to matter.
+
+I have spent years on that side of the problem. Real-time drone threat detection for the Indian Army and police, running at 94% precision, taught me that detection is not a smaller version of the flying problem. It is a harder one, in most of the ways that count.
+
+A flying drone gets to choose its own sensors, its power budget, its compute. A detection system doesn't. It runs on whatever hardware sits at a checkpoint or a base perimeter, ingests whatever signal shows up, radar returns, acoustic signatures, RF, sometimes just a camera feed at dusk, and produces an answer inside a window measured in seconds. It cannot phone home to a data center to think it over. The moment a system needs connectivity to decide whether something overhead is hostile, it has already lost the one property that made it worth building.
+
+That is the whole argument for on-device inference, and it is not academic. Every defence deployment I have worked on had the same non-negotiable: the model runs where the data is, with no dependency on a link an adversary might be the one to cut. You design for the network being down, not for the network being fast.
+
+So when a drone platform raises $580 million and a detection stack for the same battlespace barely shows up in the funding roundup, that is not a reflection of difficulty. It is a reflection of what is legible to investors right now. A drone is a product you can point at. A detection model is infrastructure, and infrastructure is boring right up until the day it is the only thing that worked.
+
+I would also flag the numbers Tekever is proud of, because they are the right numbers, and detection systems should be judged the same way. Flight hours logged, not just funding raised. Precision at the operating point that matters, not an aggregate accuracy score. A 94% precision detection system still means roughly one flag in twenty is wrong, and in that domain you design the entire alerting pipeline around which failures you can tolerate: false positives that burn an operator's attention, or false negatives that let something through. Neither failure mode is free, and no funding round changes that math.
+
+The defence-tech capital is clearly coming; Europe's spending is up and rounds like this are the result. My hope is that the next wave of it goes toward the unglamorous half of the problem: the sensors and models that have to work offline, at the edge, under conditions nobody designed for, deciding in under a second whether what is overhead is friendly.
+
+Build the thing that flies. Then build the thing that watches for it. Right now only one of those is getting priced.",#AI #DefenseTech #EdgeAI #DroneDetection #OnDeviceAI

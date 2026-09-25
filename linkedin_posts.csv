@@ -7133,3 +7133,24 @@ A licence grants you permission. It does not grant you capability.
 So before anyone calls a model sovereign, ask three separate questions. Can I download it? Can I run it on hardware I control? Can I run it inside my latency and power budget?
 
 What is the best model you can actually run inside your own constraints right now?",#OpenWeights #OnDeviceAI #LLMOps #EdgeAI #AIInfrastructure
+435,AI Drone Detection vs ISR Funding,"Tekever just raised $580M at a $6.4B valuation to build autonomous ISR drones.
+
+50,000+ flight hours over Ukraine. A £400M UK MoD contract for CORVUS. Real numbers for a real capability.
+
+Here's what the headline skips.
+
+Nobody is pricing the other half of that battlespace: the system that has to notice the drone is coming.
+
+I've built real-time drone threat detection for the Indian Army and police, running at 94% precision.
+
+Detection is the harder problem, not the smaller one.
+
+A flying drone picks its own sensors and power budget. A detection system doesn't. It runs on whatever hardware sits at a perimeter, on whatever signal shows up, radar, acoustic, RF, a camera at dusk, and it has to decide in seconds.
+
+It can't call home to a data center to think it over. If a system needs connectivity to know something overhead is hostile, it has already lost.
+
+That's why every defence deployment I've worked on runs on-device, no dependency on a link an adversary can cut.
+
+Capital is flowing into the aircraft. Almost none of it is flowing into the model that has to watch for it.
+
+Which half of that problem do you think is underpriced: the thing that flies, or the thing that spots it?",#AI #DefenseTech #EdgeAI #DroneDetection #OnDeviceAI
