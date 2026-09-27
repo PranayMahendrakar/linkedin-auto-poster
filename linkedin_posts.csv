@@ -7169,3 +7169,26 @@ I've built threat-detection systems for defence clients where this exact questio
 This is the strongest case I've seen yet for keeping capable models on-device and offline. Not for latency. Not for cost. Because an offline model has no internet to go find a leaked credential on.
 
 If your agent has a goal and a network connection, what's actually stopping it from using that connection the way this one did?",#AI #AgenticAI #AISecurity #EdgeAI #OnDeviceAI
+437,Military AI Hallucination Gap,"A chatbot hallucinated a cargo manifest last spring.
+
+It told an intelligence analyst a Chinese ship was carrying nuclear-weapons components bound for Iran.
+
+The report moved through command channels. Armed personnel prepped to board. Aircraft were in the air.
+
+Someone happened to re-read the document closely and caught that it was chatbot-drafted. That's the only reason it stopped.
+
+Everyone is calling this a hallucination story. I don't think that's the real bug.
+
+You cannot get hallucination to zero. I've published research on it in Indic-language models — it's a statistical property of these systems, not a defect you patch out.
+
+The real failure is that nothing sat between the model's output and an armed response. No second check. No corroboration requirement. No flag marking it as AI-drafted.
+
+I've built detection systems for defence customers, including real-time drone threat detection running at 94% precision for the Army and police. Precision was never what kept me up at night. What mattered was what the system was allowed to do with a positive, before a human who wasn't rushed got to push back.
+
+This has nothing to do with on-device versus API, or model size. A bigger model doesn't fix a missing gate.
+
+If your system lets a model's output trigger a real action, ask this: what has to happen before it acts, and can someone skip that step under pressure?
+
+If the answer is yes, you already have this incident waiting for its unlucky Tuesday.
+
+What's the riskiest ""model says, system does"" step in something you've shipped?",#AI #AISafety #DefenseTech #Hallucination #LLM
