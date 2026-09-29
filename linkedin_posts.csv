@@ -7209,3 +7209,26 @@ OpenAI said it expects to hit pause again as capability grows. That's an admissi
 It's part of why I keep pushing on-device, offline deployment for anything sensitive: scope the tool access, shrink the blast radius to something you can actually reason about.
 
 If your agents have real tool access, can you prove what they can't do, independent of what you remembered to block?",#AI #AIsafety #AgentSecurity #FormalVerification #OnDeviceAI
+439,Sora API Shutdown,"OpenAI switched off the Sora API on September 24.
+
+The Videos endpoint is gone. So is every sora-2 alias.
+
+The deprecation table lists no replacement model.
+
+It was announced in March, with six months' notice. And plenty of teams still got caught.
+
+Because swapping a model is not swapping an endpoint name.
+
+Output style shifts. Latency shifts. Pricing shifts. Every prompt you tuned is now a guess.
+
+The systems I have shipped that aged well all had one boring property: the model was a replaceable part behind an interface we owned.
+
+Three things I push teams to do before launch:
+
+1. A thin adapter between your app and any hosted model
+2. A real evaluation set, not a demo prompt
+3. A named fallback, before you need one
+
+If your product depends on one vendor's API and you have no exit plan, you do not have a product. You have a lease.
+
+What is your plan the day a model you depend on gets a shutdown date?",#AI #LLM #MLOps #GenerativeAI #AIEngineering

@@ -1051,3 +1051,34 @@ This is exactly why I've been biased toward on-device, offline deployment for an
 If you're shipping agents with real tool access this year, the question worth asking isn't ""did we test the sandbox."" It's ""can we prove what this agent cannot do, independent of what we remembered to block."" Most teams can't answer that yet. Neither, this week, could OpenAI.
 
 A pause button tells you someone noticed the problem. It doesn't tell you the boundary will hold next time.",#AI #AIsafety #AgentSecurity #FormalVerification #OnDeviceAI
+2026-09-29,439,Sora API Shutdown,"OpenAI switched off the Sora API. The lesson is about dependencies, not video.",https://pranaymahendrakar.com/blog/openai-switched-off-the-sora-api-the-lesson-is-about-dependencies-not-,"On September 24, OpenAI turned off the Sora 2 API. The Videos endpoint is gone, and so is every alias of sora-2 and sora-2-pro. Any request to them now fails.
+
+This was not a surprise. OpenAI announced it on March 24, with six months of notice, and the consumer app had already shut down in April. The deprecations page lists no replacement model. It is a product line ending, not an upgrade path.
+
+So I am not going to write about how sad this is for video generation. I want to talk about what it says about how most teams build.
+
+Hot take: if your product calls one vendor's hosted model and has no plan for that model disappearing, you do not have a product. You have a lease.
+
+Six months sounds generous. In practice, it is not. Swapping a video model is not a find-and-replace on an endpoint name. Output style changes. Latency changes. Audio handling changes. Pricing changes, and your unit economics with it. Every prompt you tuned against one model is now a guess against another.
+
+I have shipped a lot of AI systems, in automotive, defence and education. The ones that aged well all had the same boring property: the model was a replaceable part behind an interface we owned. The ones that hurt were the ones where a vendor's API shape leaked into every layer of the codebase.
+
+Here is what I push teams to do before they go live.
+
+First, put a thin adapter between your application and any hosted model. Your code should ask for ""generate a clip from this brief"", not ""call vendor X with these vendor-specific parameters"". When the vendor changes or disappears, you rewrite one file.
+
+Second, keep an evaluation set. Not a demo prompt, a real set of inputs with outputs you have judged as acceptable. When you migrate, you run the set against the candidate and you know in an afternoon whether it is good enough. Without it, migration is a vibes exercise.
+
+Third, know your fallback before you need it. Which second provider could you route to? Which open-weights model could you host yourself? Even if you never switch, the exercise exposes how much you depend on one vendor's quirks.
+
+Fourth, own the data around the model. Your prompts, your briefs, your reviewed outputs and your logs are the durable asset. The model is the perishable one.
+
+This is also why I keep arguing that models should run where the data is. A model you host, on-device or in your own environment, does not get a shutdown notice. You decide when it is retired, and you decide what replaces it. That is not always practical for video, which is heavy. But for a large share of production workloads, it is more practical than people assume, and the Sora news is a good reminder of what you buy when you choose the convenient option.
+
+Some will say the market will simply route around this. Kling, Veo and Luma all still offer video APIs, and a whole layer of routing infrastructure will appear to smooth over the churn. They are right, and that layer is useful. But routing only helps if your application was built to be routed. If your code is welded to one provider's parameters, a router does not save you.
+
+The uncomfortable part is that this will keep happening. Model providers are companies with shifting priorities. A product that looked strategic in one quarter becomes a cost center in the next. Compute is expensive, and video is among the most expensive workloads there is. Expect more endpoints to be cut, not fewer.
+
+So treat every hosted model as temporary from day one. Build the adapter, build the eval set, name the fallback.
+
+The takeaway: the question is not whether your model vendor will change the deal. It is whether you will notice on the day it happens or six months before.",#AI #LLM #MLOps #GenerativeAI #AIEngineering
