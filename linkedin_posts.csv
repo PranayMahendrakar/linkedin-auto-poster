@@ -7232,3 +7232,31 @@ Three things I push teams to do before launch:
 If your product depends on one vendor's API and you have no exit plan, you do not have a product. You have a lease.
 
 What is your plan the day a model you depend on gets a shutdown date?",#AI #LLM #MLOps #GenerativeAI #AIEngineering
+440,OpenAI Dots Always-On Agents,"OpenAI just launched Dots: always-on agents that keep working after you close your laptop.
+
+Each one gets its own cloud computer, a browser, and access to 4,000+ apps.
+
+Good idea. Persistence is what makes agents useful.
+
+But here's what nobody is talking about.
+
+A chatbot sees what you paste in. An always-on agent sees your inbox, calendar, docs and team chat, continuously, and acts on them while you're not looking.
+
+The unit of trust stops being a prompt. It becomes a standing grant of access.
+
+OpenAI has added guardrails: read-only limits on proactive research, and sensitive actions like password changes stay with you. That's the right instinct.
+
+But that policy lives inside their stack. You can't audit it, and it can change with a release note.
+
+On defence-related systems I've worked on, the question was never ""is the agent smart enough?"" It was ""where does the data go, and can we prove it went nowhere else?""
+
+Before you give any agent real access:
+
+Scope the connectors narrowly.
+Start read-only.
+Insist on an exportable action log.
+Decide what must never leave your environment.
+
+Autonomy in someone else's cloud is fine. Just make it a decision, not a default.
+
+Which task would you refuse to hand to a cloud agent?",#AI #AIAgents #OpenAI #DataPrivacy #OnDeviceAI

@@ -1082,3 +1082,42 @@ The uncomfortable part is that this will keep happening. Model providers are com
 So treat every hosted model as temporary from day one. Build the adapter, build the eval set, name the fallback.
 
 The takeaway: the question is not whether your model vendor will change the deal. It is whether you will notice on the day it happens or six months before.",#AI #LLM #MLOps #GenerativeAI #AIEngineering
+2026-09-30,440,OpenAI Dots Always-On Agents,OpenAI's always-on Dots run on its cloud. The data you hand them never comes back.,https://pranaymahendrakar.com/blog/openais-always-on-dots-run-on-its-cloud-the-data-you-hand-them-never-c,"Hot take: the interesting part of OpenAI's new Dots is not the agent. It's the computer the agent lives on, and who owns it.
+
+At DevDay on September 29, OpenAI launched Dots: always-on agents that keep working after you close your laptop. Each one gets its own isolated cloud computer with a virtual browser, connects to more than 4,000 apps, reaches you through ChatGPT, Slack and Teams, and learns your preferences from feedback. TechCrunch, SiliconANGLE and The Next Web all describe the same setup.
+
+It is a good product idea. Agents that only answer when spoken to are a chat window with extra steps. Persistence is what makes an agent useful.
+
+But persistence changes the risk profile, and I think people are underrating that.
+
+A chatbot sees what you paste into it. An always-on agent with a browser and 4,000 connectors sees your inbox, your calendar, your documents and your team chat, continuously, and acts on them while you are not watching. The unit of trust is no longer a prompt. It is a standing grant of access.
+
+To OpenAI's credit, the launch coverage notes some guardrails. Proactive research features are restricted to read-only: a Dot can't send messages, modify content, or take unauthorized control of a system. Sensitive actions like changing a password stay with the user. That is the right instinct.
+
+Still, a read-only restriction is a policy that lives inside the vendor's stack. You can't audit it, and you can't pin it. It can change with a release note.
+
+I've spent years building AI systems where that would be a non-starter. On defence and government-adjacent deployments I worked on, the question was never ""is the agent smart enough"". It was ""where does the data go, and can we prove it went nowhere else"". The answer was almost always: the model runs where the data is. On-device, offline, under the operator's control.
+
+Consumer and business agents will not all work that way, and they don't need to. Plenty of tasks are fine in someone else's cloud. But you should choose that deliberately, task by task, instead of drifting into it because the demo was charming.
+
+Availability is worth noting too. Per the launch reports, the first Dot is included with Pro and Business Premium, Free and Plus users are left out, and Pro doesn't currently cover the European Economic Area, Switzerland or the UK. Access to autonomy is now a pricing tier and a jurisdiction question.
+
+Here is how I'd evaluate any always-on agent before giving it real access:
+
+1. Scope the grant. Give it the narrowest set of connectors that does the job, not all of them.
+
+2. Separate read from write. Start with read-only and promote individual actions only after you have watched them work.
+
+3. Demand an action log you can export. If you can't reconstruct what the agent did last Tuesday, you don't control it.
+
+4. Decide what must never leave your environment. Some data belongs on hardware you own, processed by a model you can run without a network.
+
+5. Assume the vendor's policy will change, and plan for the day it does.
+
+That last point matters more than it sounds. Last week the Sora API shutdown reminded everyone that a dependency on someone else's hosted model is a dependency on someone else's roadmap. An agent that holds your credentials and context is a much deeper dependency than a video endpoint.
+
+Dots will probably be popular, and some of what they do will genuinely save people time. I'm not arguing against them.
+
+I'm arguing that ""always-on"" and ""always in someone else's cloud"" should be a decision you make, not a default you inherit.
+
+Takeaway: the more autonomy you delegate, the more the question of where the agent runs matters, and that question is architecture, not marketing.",#AI #AIAgents #OpenAI #DataPrivacy #OnDeviceAI
