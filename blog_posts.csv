@@ -1121,3 +1121,32 @@ Dots will probably be popular, and some of what they do will genuinely save peop
 I'm arguing that ""always-on"" and ""always in someone else's cloud"" should be a decision you make, not a default you inherit.
 
 Takeaway: the more autonomy you delegate, the more the question of where the agent runs matters, and that question is architecture, not marketing.",#AI #AIAgents #OpenAI #DataPrivacy #OnDeviceAI
+2026-10-01,441,GPT-6.1 Sol Pricing,OpenAI just cut frontier pricing to a fifth. Your model bill was never the real problem.,,"On September 29, OpenAI launched GPT-6.1 Sol: near GPT-6 Astra performance on agentic coding, computer use and professional work, at one-fifth of Astra's token prices. The API lists it at $2 per million input tokens and $10 per million output tokens, with cached input at $0.10.
+
+Reported by The Next Web and several other outlets, and consistent across the pricing listings. It is a real price cut. It is also not the story most people will take from it.
+
+Controversial take: if a 5x price drop changes whether your product is viable, you did not have a product problem solved. You had a unit-economics experiment.
+
+I have shipped a lot of AI systems across automotive, defence and education. In none of them was the per-token price the thing that decided success or failure. What decided it was where the system ran, what it was allowed to see, and what happened when the network or the vendor was not there.
+
+Take the offline multilingual avatar I built for Mercedes-Benz Germany. It had to work without a cloud round trip. No token price, however low, would have changed that requirement. The same was true of a real-time detection system for a defence deployment. The data was never going to leave the building.
+
+Cheap frontier intelligence is great news for a specific class of work: batch jobs, coding agents, back-office automation where the data can leave. For that, a fifth of the price is a gift, and I would re-run your cost model this week.
+
+But notice what a price cut really tells you. The vendor sets the price. Last month it was Astra at five times the cost. Next quarter it could be something else. Prices fall when the vendor decides, and they can change in either direction. A dependency you do not control is a dependency whether it is expensive or cheap.
+
+Here is how I would use this news in practice.
+
+First, benchmark Sol against your real workload, not the launch charts. Near-Astra on public benchmarks says little about your documents, your languages, your edge cases. I have seen hallucination behave very differently in Indic languages than the headline numbers suggest, and that is exactly the kind of gap a vendor chart will not show you.
+
+Second, put a thin abstraction between your product and the model. If switching models takes a week of rewrites, you are not saving money, you are renting a lock-in at a discount.
+
+Third, keep a smaller model you control in the loop for the work that must stay local. Retrieval, classification, redaction, routing. Most of a production pipeline does not need frontier reasoning. It needs to be fast, private and predictable.
+
+Fourth, log what each call is worth. A cheaper model invites you to call it more. Without per-task cost and quality tracking, a 5x price cut turns into a 5x increase in usage and the same bill.
+
+There is a pattern here I keep seeing. Every time a price drops, the conversation becomes about spending less. The better question is what you can now build that you could not justify before, and which parts of it should never depend on someone else's servers at all.
+
+My bias is well known: models should run where the data is. On-device, offline, under your control. Cheaper cloud inference does not weaken that argument. It sharpens it, because now the only reason left to send data out is that you actually need to.
+
+Takeaway: use the discount, but design as if the price, the model and the endpoint can all change tomorrow. Because they can.",#AI #LLM #OnDeviceAI #MLOps #GenerativeAI

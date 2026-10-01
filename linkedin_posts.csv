@@ -7260,3 +7260,27 @@ Decide what must never leave your environment.
 Autonomy in someone else's cloud is fine. Just make it a decision, not a default.
 
 Which task would you refuse to hand to a cloud agent?",#AI #AIAgents #OpenAI #DataPrivacy #OnDeviceAI
+441,GPT-6.1 Sol Pricing,"OpenAI just made near-frontier intelligence five times cheaper.
+
+GPT-6.1 Sol: close to Astra on coding, computer use and professional work. $2 per million input tokens, $10 per million output.
+
+Good news. Re-run your cost model this week.
+
+But here is what I have learned shipping AI systems in automotive, defence and education:
+
+The token price was never what decided success.
+
+Where the model runs decided it. What data it could see decided it. What happened when the vendor or the network was unavailable decided it.
+
+A price the vendor sets can move again. A dependency you do not control stays a dependency, cheap or not.
+
+So my checklist:
+
+Benchmark on your real workload, not launch charts.
+Keep a thin layer between your product and any one model.
+Keep a smaller model you control for work that must stay local.
+Track cost and quality per task, because cheap calls invite more calls.
+
+Use the discount. Design as if the price, the model and the endpoint can all change tomorrow.
+
+What in your stack would break if your model vendor changed terms next quarter?",#AI #LLM #OnDeviceAI #MLOps #GenerativeAI
