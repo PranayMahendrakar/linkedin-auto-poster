@@ -7284,3 +7284,26 @@ Track cost and quality per task, because cheap calls invite more calls.
 Use the discount. Design as if the price, the model and the endpoint can all change tomorrow.
 
 What in your stack would break if your model vendor changed terms next quarter?",#AI #LLM #OnDeviceAI #MLOps #GenerativeAI
+442,Robots Need Offline AI,"Hot take: the hard part of putting a foundation model in a robot is the network cable you quietly assume is there.
+
+Boston Dynamics and Google DeepMind are bringing Gemini Robotics to Atlas and Spot, with factory pilots aimed at automotive first.
+
+That is a real step forward. Reasoning about irregular objects beats scripted routines.
+
+But in the defence, automotive and education deployments I have worked on, the real site looks nothing like the demo.
+
+Locked-down network. Security review. A hard rule about what data leaves the building.
+
+An inspection robot sees layouts, equipment and process details. Not everyone wants that leaving the premises.
+
+So I ask three questions of any embodied AI pilot:
+
+1. What runs on the device, and what calls out?
+2. What happens when connectivity drops?
+3. What leaves the premises, and who audits it?
+
+If the vendor cannot answer in a paragraph, the pilot is not ready.
+
+Models should run where the data is. A robot that only thinks when the network does is a remote control with extra steps.
+
+Would you let a factory robot depend on a cloud connection? Tell me in the comments.",#AI #Robotics #EdgeAI #LLM #OnDeviceAI

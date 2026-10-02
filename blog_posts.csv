@@ -1150,3 +1150,34 @@ There is a pattern here I keep seeing. Every time a price drops, the conversatio
 My bias is well known: models should run where the data is. On-device, offline, under your control. Cheaper cloud inference does not weaken that argument. It sharpens it, because now the only reason left to send data out is that you actually need to.
 
 Takeaway: use the discount, but design as if the price, the model and the endpoint can all change tomorrow. Because they can.",#AI #LLM #OnDeviceAI #MLOps #GenerativeAI
+2026-10-02,442,Robots Need Offline AI,Robots now think with a cloud model. Most factory floors can't depend on that.,https://pranaymahendrakar.com/blog/robots-now-think-with-a-cloud-model-most-factory-floors-cant-depend-on,"Hot take: the hard part of putting a foundation model in a robot is not the model. It is the network cable you quietly assume is there.
+
+Boston Dynamics and Google DeepMind have partnered to bring Gemini Robotics models to Atlas and Spot. It was announced at CES 2026, and the Spot inspection platform has since picked up Gemini Robotics-ER 1.6, a reasoning model DeepMind released in April. Industrial testing is aimed first at automotive factories.
+
+I think this is a real step. A robot that can interpret sensor data and plan around irregular objects is far more useful than one running scripted routines. But the interesting question is where that reasoning runs.
+
+I have shipped enough systems into defence, automotive and education settings to know what deployment looks like. The demo has fast internet and a friendly room. The real site has a locked-down network, a security team, and a hard rule about what data leaves the building.
+
+An inspection robot sees things the plant owner may not want to leave the premises. Layouts, equipment, process details. A defence deployment I worked on made this very concrete: if the system needs a round trip to someone else's servers to decide what to do next, it is not a system you control.
+
+Latency matters too. A model that reasons about physical space has to answer inside the control loop's tolerance, not inside a cloud request's. When the link drops, the robot should degrade gracefully, not freeze mid-task.
+
+This is why I keep arguing that models should run where the data is. For an offline multilingual avatar I built for an automotive client in Germany, offline was not a feature. It was the requirement that made the product shippable.
+
+So when I read robotics announcements, I ask three questions.
+
+First, which parts of the stack run on the device and which call out? A high-level reasoning model and a low-level controller have very different tolerances, and the split should be explicit.
+
+Second, what happens when connectivity is gone? The answer should be a defined fallback behaviour, tested, not a hope.
+
+Third, what leaves the premises, and who can audit it? If the vendor cannot answer in one paragraph, the pilot is not ready for a real plant.
+
+None of this is a criticism of the partnership. Pairing strong hardware with strong models is the right direction. Factory pilots will force exactly these questions, and the teams that answer them early will be the ones that scale.
+
+I also expect on-device and edge-sized robot models to matter more over the next year, precisely because of these constraints. The vendor that makes the reasoning layer run locally, with a cloud option rather than a cloud dependency, will have the easier enterprise conversation.
+
+Hardware cycles are slow and software cycles are fast. A robot bought today will outlive several model versions, so the architecture has to let the model change without reworking the safety case.
+
+If you are evaluating an embodied AI pilot, write down the offline behaviour before you sign anything.
+
+Takeaway: a robot that only thinks when the network does is a remote control with extra steps.",#AI #Robotics #EdgeAI #LLM #OnDeviceAI
