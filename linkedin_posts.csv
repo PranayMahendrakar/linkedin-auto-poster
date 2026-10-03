@@ -7307,3 +7307,23 @@ If the vendor cannot answer in a paragraph, the pilot is not ready.
 Models should run where the data is. A robot that only thinks when the network does is a remote control with extra steps.
 
 Would you let a factory robot depend on a cloud connection? Tell me in the comments.",#AI #Robotics #EdgeAI #LLM #OnDeviceAI
+443,AI Speeds Up Cyberattacks,"Microsoft's 2026 Digital Defense Report has one number I can't stop thinking about.
+
+The median time from vulnerability discovery to weaponization is now well under 24 hours.
+
+Most patch cycles are measured in weeks.
+
+Phishing was also the way in for 23% of the intrusions Microsoft investigated, up from 7% a year earlier. AI makes every spear phishing message personal, at mass scale.
+
+Here is what I take from it, as someone who has built AI for sensitive environments:
+
+1. Assume the exploit window is hours, not weeks.
+2. Your own AI is attack surface. Agents with broad credentials are the new shared admin password.
+3. Where a model runs is a security decision. Models should run where the data is: on-device, offline, under your control.
+4. Treat vendor claims about AI defenders as leads, not controls. Test on your own code.
+
+The attackers already treat AI as infrastructure.
+
+Your security plan should too.
+
+What is the slowest link between a published CVE and a patch in your stack?",#AI #CyberSecurity #LLM #AIsecurity #OnDeviceAI

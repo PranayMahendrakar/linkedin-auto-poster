@@ -1181,3 +1181,26 @@ Hardware cycles are slow and software cycles are fast. A robot bought today will
 If you are evaluating an embodied AI pilot, write down the offline behaviour before you sign anything.
 
 Takeaway: a robot that only thinks when the network does is a remote control with extra steps.",#AI #Robotics #EdgeAI #LLM #OnDeviceAI
+2026-10-03,443,AI Speeds Up Cyberattacks,Exploits now arrive in under a day. Your patch cycle still runs on weeks.,https://pranaymahendrakar.com/blog/exploits-now-arrive-in-under-a-day-your-patch-cycle-still-runs-on-week,"Microsoft's 2026 Digital Defense Report has one number that should change how you plan: the median time from a vulnerability being discovered in the wild to it being weaponized is now well under 24 hours.
+
+Your patch cycle is probably measured in weeks. That gap is the story.
+
+The same report says phishing was the way in for 23% of the intrusions Microsoft's incident responders investigated between July 2025 and June 2026. A year earlier it was 7%. The explanation is simple. AI lets an attacker personalize every message, so spear phishing stops being a craft and becomes a mass operation.
+
+I have spent years building AI systems for places where a failure is not a bad demo, including a defence deployment where the threat model was part of the spec on day one. The lesson from that work is blunt: defenders who treat AI as a feature to bolt on will lose to attackers who treat it as infrastructure.
+
+Here is what I think follows from the report.
+
+First, your architecture has to assume the exploit window is hours. If the only thing between a disclosed bug and your data is a weekly patch meeting, you have already lost. Segmentation, least privilege and fast rollback matter more than any detection model.
+
+Second, the AI you deploy is attack surface too. Every model endpoint, every agent with tool access, every RAG pipeline that ingests untrusted documents is a new way in. I see teams wire an agent to internal systems with broad credentials because it made the demo work. That is the same mistake as an admin account with a shared password, just with better marketing.
+
+Third, where the model runs is a security decision. A model that sends your documents to a third-party cloud has extended your perimeter to someone else's logging policy. My bias has always been that models should run where the data is: on-device, offline, under your control. The Microsoft numbers make that bias look less like a preference and more like basic hygiene.
+
+Fourth, be careful with vendor claims about AI defenders. This week Google launched a new model to trusted cyber defenders first, and the headline claims are about autonomously finding and fixing vulnerabilities. Maybe. But reporting says no independent lab has reproduced the published scores yet. I would treat that as a promising lead, not a control. Run your own evaluation on your own code before you let anything patch production.
+
+None of this means panic. It means the boring work just got urgent. Inventory what you expose. Shorten the time from advisory to patch. Give agents the narrowest credentials that let them do the job. Train people against phishing that no longer has typos.
+
+And if you are building AI for a regulated or sensitive environment, write down where each model runs and what data it can touch. If that page is hard to write, that is your real finding.
+
+The attackers already treat AI as infrastructure. The takeaway: your security plan should too, and it should be measured in hours, not weeks.",#AI #CyberSecurity #LLM #AIsecurity #OnDeviceAI
