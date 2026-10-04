@@ -7327,3 +7327,26 @@ The attackers already treat AI as infrastructure.
 Your security plan should too.
 
 What is the slowest link between a published CVE and a patch in your stack?",#AI #CyberSecurity #LLM #AIsecurity #OnDeviceAI
+444,Optical Deepfake Detection,"A deepfake detector that runs on light, not just on GPUs.
+
+UCLA researchers built a chip that screens 15 video streams in a single optical pass.
+
+97.79% accuracy on Celeb-DF. 96.13% at 18 streams.
+
+The number is not the story. The architecture is.
+
+Most detection pipelines are digital and sequential. One video, one model, next video waits. Throughput becomes a GPU bill.
+
+Here, part of the compute happens as light propagates. Many streams at once.
+
+I have worked on real-time detection systems where accuracy was the easy part to demo. Latency and power were the hard part to ship.
+
+Caveats worth keeping:
+
+It is a benchmark result, not a product.
+Unseen generators are where detectors usually fall apart.
+""Resistant to attacks"" is a claim to test, not assume.
+
+My take: deepfake detection will be won on throughput, energy and generalisation. Benchmark score is the least interesting of the three.
+
+Are you measuring your detector's cost per stream, or only its accuracy?",#AI #Deepfakes #EdgeAI #MachineLearning #ComputerVision

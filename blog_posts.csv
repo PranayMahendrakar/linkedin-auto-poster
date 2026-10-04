@@ -1204,3 +1204,28 @@ None of this means panic. It means the boring work just got urgent. Inventory wh
 And if you are building AI for a regulated or sensitive environment, write down where each model runs and what data it can touch. If that page is hard to write, that is your real finding.
 
 The attackers already treat AI as infrastructure. The takeaway: your security plan should too, and it should be measured in hours, not weeks.",#AI #CyberSecurity #LLM #AIsecurity #OnDeviceAI
+2026-10-04,444,Optical Deepfake Detection,"A deepfake detector that runs on light is a hardware story, not a model story.",https://pranaymahendrakar.com/blog/a-deepfake-detector-that-runs-on-light-is-a-hardware-story-not-a-model,"UCLA researchers just showed a chip that screens 15 video streams for deepfakes in a single optical pass, at 97.79% accuracy on the Celeb-DF benchmark. At 18 streams it still holds 96.13%. The paper is in eLight, and the preprint is on arXiv.
+
+The headline number is not what caught my attention. The architecture did.
+
+Most detection pipelines I see are digital and sequential. A video goes in, frames get decoded, a model scores them, the next video waits. Throughput is a GPU bill. Here, part of the computation happens as light propagates through the optics, so many streams are evaluated at the same time instead of queued.
+
+That matters because the deepfake problem is a volume problem. Generating a fake is cheap and getting cheaper. Checking one costs real compute, and you have to check all of them, including the ones that turn out to be real.
+
+I have spent years building real-time detection systems, including a drone threat detection system for Indian Army and Police use. The lesson from that kind of work is that accuracy is the easy part to talk about and latency and power are the hard part to ship. A model that is great on a benchmark but needs a rack of GPUs is not deployable where the data is generated.
+
+So an approach that cuts energy per stream and scales by multiplexing is the right direction. It is the same bias I keep coming back to: inference should run close to the data, offline if possible, under your control. Sending every suspect video to a cloud API to be scored is a privacy problem as well as a cost problem.
+
+Now the caveats, because there are real ones.
+
+First, this is a research result on a benchmark. Celeb-DF is a known dataset. Detectors that look excellent on a fixed benchmark routinely lose a lot of accuracy on fakes from a generator they have not seen. I would want to see out-of-distribution numbers before trusting any figure here.
+
+Second, a chip is not a product. Optical hardware has to be fabricated, calibrated, integrated with decoders and fed video at line rate. Those integration steps are where research prototypes usually spend years.
+
+Third, the reports mention resistance to attacks as an advantage. That is plausible, since a physical optical stage is harder to probe with gradient-based adversarial methods than a software model you can query. But harder is not immune, and I would treat that claim as something to test, not assume.
+
+Still, the shift is worth noticing. For the last few years the conversation about AI has been almost entirely about models: bigger, cheaper, better. This result is a reminder that the next real gains in some workloads may come from changing what the computation physically runs on.
+
+If you are building detection or moderation pipelines today, there are two practical things to do. Measure your cost per stream, not just your accuracy. And test your detector on generators it was not trained on, because that is the only number that will predict what happens in production.
+
+Takeaway: deepfake detection will be won on throughput, energy and generalisation, and the benchmark score is only the least interesting of the three.",#AI #Deepfakes #EdgeAI #MachineLearning #ComputerVision
