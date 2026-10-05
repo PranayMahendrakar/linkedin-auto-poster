@@ -7350,3 +7350,26 @@ Unseen generators are where detectors usually fall apart.
 My take: deepfake detection will be won on throughput, energy and generalisation. Benchmark score is the least interesting of the three.
 
 Are you measuring your detector's cost per stream, or only its accuracy?",#AI #Deepfakes #EdgeAI #MachineLearning #ComputerVision
+445,Local 125B MoE Inference,"A 125B-parameter model now runs on a single gaming GPU.
+
+That was this week's news. Strata, an open-source inference engine, runs Qwen3.8-Flash-Next with about 12GB of VRAM.
+
+How? It's a mixture-of-experts model. Each token touches only 10 of 24,576 experts. The hot ones sit in VRAM, the rest in system RAM.
+
+Reported speed: roughly 94 tokens per second on an RTX 5070. That's the project's own number, at 2-bit quantization.
+
+My bias has never changed: models should run where the data is.
+
+I've worked on systems where the network was not an option. In those, the model was never the hard part. Fitting it onto hardware already bought was.
+
+But before you celebrate, three checks:
+
+Aggressive quantization hides quality loss in rare languages and structured output.
+
+Expert offloading makes latency uneven when the cache misses.
+
+A one-click installer is not a deployment.
+
+The hardware excuse for sending your data to someone else's server is getting thinner. Your own evaluation set is what tells you whether local is good enough.
+
+Would you run a model this size on your own hardware, and what would you test first?",#AI #LLM #OpenSource #EdgeAI #LocalAI

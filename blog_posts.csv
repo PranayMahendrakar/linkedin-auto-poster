@@ -1229,3 +1229,30 @@ Still, the shift is worth noticing. For the last few years the conversation abou
 If you are building detection or moderation pipelines today, there are two practical things to do. Measure your cost per stream, not just your accuracy. And test your detector on generators it was not trained on, because that is the only number that will predict what happens in production.
 
 Takeaway: deepfake detection will be won on throughput, energy and generalisation, and the benchmark score is only the least interesting of the three.",#AI #Deepfakes #EdgeAI #MachineLearning #ComputerVision
+2026-10-05,445,Local 125B MoE Inference,A 125B model now runs on a gaming GPU. Whether it's good enough is the real question.,https://pranaymahendrakar.com/blog/a-125b-model-now-runs-on-a-gaming-gpu-whether-its-good-enough-is-the-r,"A 125-billion-parameter model running on a single gaming GPU with about 12GB of VRAM. That was this week's headline, and it deserves a closer read than the headline gets.
+
+The project is Strata, an open-source inference engine, and the model is Qwen3.8-Flash-Next. It is a mixture-of-experts model with 24,576 small experts, and each token only touches 10 of them. Strata keeps the hot experts cached in VRAM, holds the full set in system RAM, and lets the CPU handle whatever missed the cache.
+
+The reported speeds are around 94 tokens per second on an RTX 5070 and around 60 on an RX 9070 XT, at aggressive 2-bit quantization. Those are the project's own numbers, so treat them as a ceiling, not a promise.
+
+Here is why I care. My bias has not changed in years: models should run where the data is. On-device, offline, under your control.
+
+I have shipped systems where the network was not an option. An offline multilingual avatar had to work with no connection at all. A defence deployment could not send a single frame off the device. In those projects, the model was never the hard part. The hard part was fitting a capable model into hardware someone had already bought.
+
+Mixture-of-experts changes that arithmetic. Total parameters stop being the number that sets your hardware floor. Active parameters and memory traffic do.
+
+But I want to be careful, because this is where demos and products part ways.
+
+First, 2-bit quantization is not free. Quality loss shows up unevenly. It tends to hide in long-tail behaviour, in rare languages, and in structured output. If you work with Indic languages, as I do in my hallucination research, you learn quickly that an average benchmark score says very little about the languages at the edges. Measure on your own data.
+
+Second, expert offloading makes latency uneven. When the experts a prompt needs are not in the cache, the CPU path takes over and speed drops. Throughput on a clean benchmark prompt is not throughput on your traffic. Look at the worst case, not the median.
+
+Third, a one-click installer is not a deployment. Production means pinned versions, health checks, drift monitoring, and a rollback plan. An engine that is at an early version number needs a wrapper of discipline around it.
+
+None of this makes Strata less interesting. It makes it correctly interesting. For a prototype, a private internal assistant, or a data-sensitive workflow where cloud APIs are ruled out, the barrier just dropped to a machine many teams already own.
+
+It also puts pressure on a habit I see everywhere: defaulting to a hosted API because local was too hard. Local is getting less hard every month. The honest question is now whether your use case needs the cloud, not whether you can avoid it.
+
+If I were evaluating this today, I would do three things. Run my own evaluation set at the quantization level I plan to ship. Test with realistic concurrent traffic, not a single prompt. And write down what happens when the engine fails.
+
+The takeaway: the hardware excuse for sending your data to someone else's server is getting thinner. Your evaluation set is the only thing that tells you whether the local model is good enough.",#AI #LLM #OpenSource #EdgeAI #LocalAI
