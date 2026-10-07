@@ -7373,3 +7373,29 @@ A one-click installer is not a deployment.
 The hardware excuse for sending your data to someone else's server is getting thinner. Your own evaluation set is what tells you whether local is good enough.
 
 Would you run a model this size on your own hardware, and what would you test first?",#AI #LLM #OpenSource #EdgeAI #LocalAI
+446,NIST AI Evaluation Framework,"NIST just released a draft framework for evaluating AI systems. The best part is what it refuses to give you: a checklist.
+
+It is called the TEVV-Athlon (NIST AI 200-2). Four stages. You build the assessment around your own goals.
+
+NIST says it directly: no single list of tests fits every AI system.
+
+I agree, and here is why.
+
+In a defence deployment I worked on, the lab precision number looked great. The number that mattered was dusk, a degraded feed, and an operator with seconds to decide.
+
+No generic benchmark measures that.
+
+Same for LLM products. A leaderboard tells you how a model does on someone else's questions. Not yours.
+
+My version of the playbook:
+
+1. Write down the three failures that would actually hurt.
+2. Build a small test for each from your own data.
+3. Run them on every model swap, prompt edit and retrieval change.
+4. Keep them runnable offline.
+
+Fifty good cases beat five thousand generic ones.
+
+A checklist gives you the comfort of a pass. A custom evaluation gives you the truth.
+
+What is the one failure your team cannot afford, and do you have a test for it today?",#AI #LLM #AIEvaluation #NIST #MachineLearning

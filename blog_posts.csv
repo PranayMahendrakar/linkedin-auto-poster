@@ -1256,3 +1256,34 @@ It also puts pressure on a habit I see everywhere: defaulting to a hosted API be
 If I were evaluating this today, I would do three things. Run my own evaluation set at the quantization level I plan to ship. Test with realistic concurrent traffic, not a single prompt. And write down what happens when the engine fails.
 
 The takeaway: the hardware excuse for sending your data to someone else's server is getting thinner. Your evaluation set is the only thing that tells you whether the local model is good enough.",#AI #LLM #OpenSource #EdgeAI #LocalAI
+2026-10-07,446,NIST AI Evaluation Framework,"NIST just published an AI evaluation framework, and its best feature is no checklist.",https://pranaymahendrakar.com/blog/nist-just-published-an-ai-evaluation-framework-and-its-best-feature-is,"NIST just published a framework for evaluating AI systems, and the best thing about it is what it refuses to give you: a checklist.
+
+The draft is NIST AI 200-2, called the TEVV-Athlon. Public comment closed on October 6. It describes a four-stage method for building a customized assessment around your own test, evaluation, verification and validation goals. NIST says plainly that no single list of tests works for every system, because the systems and their risks vary too much.
+
+I think that is the right call, and it matches what I have seen in production.
+
+Take a real-time detection system I worked on for a defence deployment. A headline precision number looked great in the lab. But the number that mattered in the field was different: what happens at dusk, with a degraded camera feed, when an operator has four seconds to decide. No generic benchmark measures that. We had to design the evaluation around the mission, not the model.
+
+The same is true for LLM products. A leaderboard score tells you how a model does on someone else's questions. It says nothing about your documents, your users, or your failure costs.
+
+When I wrote about hallucination in Indic languages, this was the core problem. A model can look fine on English benchmarks and quietly fall apart in Hindi or Kannada. If your evaluation was never built for your language and your domain, you will not see it until a user does.
+
+That is why the framing in this draft matters. The TEVV-Athlon treats evaluation as a set of events and tools that generate data on specific measurement concepts. In plain terms: decide what you are trying to measure first, then pick the tests. Most teams do it backwards. They pick a benchmark because it is popular, then work out what it means.
+
+Here is how I would use it, even before it is final:
+
+First, write down the three failures that would actually hurt. Not ""accuracy"". Real failures: a wrong answer a customer acts on, a refusal that blocks a workflow, a silent drift after a model update.
+
+Second, build a test for each one from your own data. Small is fine. Fifty good cases that reflect your reality beat five thousand generic ones.
+
+Third, run them on every change. Model swap, prompt edit, retrieval tweak. Evaluation is not a launch gate, it is a regression suite.
+
+Fourth, keep it local. If your evaluation data is sensitive, which it often is in defence, automotive and education, it should be runnable offline, on your own machines. I have always believed models should run where the data is, and your tests should too.
+
+One more point. A framework that is not a compliance checklist is harder to adopt. A checklist lets you tick boxes and feel safe. A method makes you think, and thinking costs time. Expect some organizations to wish NIST had just handed them a list.
+
+I would still take the harder version. A checklist gives you the comfort of a pass. A custom evaluation gives you the truth about your own system, and that is the only thing that survives contact with production.
+
+This is a draft, and details may change before it is final. But the direction is correct, and you do not need to wait for the final version to start.
+
+Takeaway: stop asking which benchmark your model won. Ask which failure you can no longer afford, and build the test that catches it.",#AI #LLM #AIEvaluation #NIST #MachineLearning
