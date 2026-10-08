@@ -7399,3 +7399,31 @@ Fifty good cases beat five thousand generic ones.
 A checklist gives you the comfort of a pass. A custom evaluation gives you the truth.
 
 What is the one failure your team cannot afford, and do you have a test for it today?",#AI #LLM #AIEvaluation #NIST #MachineLearning
+447,Reflection Beam Open Weights,"Reflection AI just announced Beam, its first model.
+
+Text-only. Mixture-of-experts. Reported at 501B total parameters, 23B active. 1M token context.
+
+The headline: ""open-weight"" and ""3-4x less inference compute.""
+
+Here is what I noticed.
+
+The weights are promised for this month. They are not out yet. The benchmarks are Reflection's own. Neither TechCrunch nor Fortune verified them.
+
+So today, Beam is an announcement, not a tool.
+
+I care because I have always pushed for models that run where the data is. On-device. Offline. Under your control. In defence and automotive work, ""just call an API"" was never an option.
+
+Open weights are what make that possible. You can pin a version, inspect it, and put it next to your data.
+
+One thing people get wrong: 23B active parameters sets your speed. 501B total parameters sets your hardware bill. All the experts still need memory.
+
+My checklist once the weights land:
+- Your own eval set, not the vendor's
+- Accuracy at long context
+- Loss at 8-bit and 4-bit, especially in non-English text
+- The actual licence terms
+- Cost per correct answer, not per token
+
+Believe the download, not the launch post.
+
+What is the first thing you would test on a new open-weight model?",#AI #LLM #OpenSource #OnDeviceAI #MachineLearning
