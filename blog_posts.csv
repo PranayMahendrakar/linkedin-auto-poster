@@ -1324,3 +1324,28 @@ There is a broader point here too. A strong Western open-weight option matters f
 But I will believe it when I have the weights on my own machine and my own test set has run against them.
 
 Takeaway: judge an open model by what you can download and verify, not by what was announced.",#AI #LLM #OpenSource #OnDeviceAI #MachineLearning
+2026-10-09,448,Claude Haiku 5.5 Subagents,Haiku 5.5 is 75% cheaper. The real win is that the small model finally gets a job.,,"Anthropic released Claude Haiku 5.5 on October 7, and the headline is price. Anthropic says it costs around 75% less than Haiku 4.5 for most work: $0.10 per million input tokens and $0.50 per million output for prompts up to 100K tokens, rising to $0.50 and $2.50 beyond that. Anthropic and the trade coverage agree on those numbers.
+
+Everyone will quote the discount. I care more about how it is positioned: as a subagent model, sitting under bigger models that plan and decide.
+
+That is the architecture I keep ending up with in production. One capable model makes the plan. Many small, fast, cheap workers do the narrow jobs: classify this, extract that, check this output against a rule. The big model is the manager. The small model is the workforce.
+
+Most teams I see do the opposite. They send every step through the biggest model because it was the easiest thing to wire up in week one. Then the bill arrives and they call it an inference cost problem. It is a design problem.
+
+Here is the test I use. For each step in an agent loop, ask whether a wrong answer is cheap to detect. If a deterministic check can catch the failure, the step does not need your best model. It needs a fast one and a verifier.
+
+Extraction is the clean example. Pull a field out of a document, validate it against a schema, retry on failure. A small model with a validator beats a large model with no validator, and it does it faster.
+
+Hallucination checks work the same way. I have built tooling around detecting unsupported claims, and the lesson was always that verification is a narrower task than generation. Narrow tasks are where small models earn their place.
+
+Now the caveat. A 75% cheaper API model is still an API model. You are still sending data out, still depending on someone else's availability, and still exposed to their next pricing change. Cheap rented intelligence is better than expensive rented intelligence, but it is still rented.
+
+My bias has not changed: models should run where the data is. In the defence and automotive deployments I have worked on, the question was never only cost per token. It was whether the data was allowed to leave the building at all. For those jobs, the subagent pattern is exactly what lets you swap the small worker for an on-device model and keep the planner wherever policy allows.
+
+That is the practical advice. Design your agents so the worker tier is replaceable. Define each worker by its input, its output schema, and its check. Then it does not matter whether it is Haiku today, an open-weight model next quarter, or something running offline on your own hardware.
+
+Also watch the 100K token threshold. Anthropic says prompts up to that size make up around 90% of requests to the previous Haiku, which is why the headline discount applies to most people. If your workload stuffs huge contexts into every call, your real savings are smaller than the headline. Measure your own prompt-length distribution before you plan a budget around a press release.
+
+Two things to do this week. First, list every step in your agent pipeline and mark which ones have a cheap verifier. Second, route those steps to the smallest model that passes the verifier at your required accuracy, and measure it on your own data, not a leaderboard.
+
+Takeaway: a cheaper small model does not fix a bad architecture. It rewards a good one.",#AI #LLM #AIAgents #MLOps #OnDeviceAI

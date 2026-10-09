@@ -7427,3 +7427,26 @@ My checklist once the weights land:
 Believe the download, not the launch post.
 
 What is the first thing you would test on a new open-weight model?",#AI #LLM #OpenSource #OnDeviceAI #MachineLearning
+448,Claude Haiku 5.5 Subagents,"Anthropic released Claude Haiku 5.5 this week. The headline: around 75% cheaper than Haiku 4.5.
+
+Everyone is quoting the discount.
+
+I care more about the positioning. It is built as a subagent model.
+
+That is the pattern I keep landing on in production. One strong model plans. Many small models do narrow jobs.
+
+Extract a field. Classify a ticket. Check an output against a rule.
+
+If a deterministic check can catch the failure, that step does not need your biggest model. It needs a fast one and a verifier.
+
+Most teams do the opposite. Every step goes through the largest model because it was easy to wire up in week one. Then they call the bill an inference cost problem.
+
+It is a design problem.
+
+One caveat. Cheap rented intelligence is still rented. For the defence and automotive work I have done, the question was whether the data could leave the building at all.
+
+So build the worker tier to be replaceable. Define each worker by input, output schema, and check. Then it can be Haiku today and an on-device model tomorrow.
+
+A cheaper small model does not fix a bad architecture. It rewards a good one.
+
+Which step in your agent pipeline is still running on a model that is too big for the job?",#AI #LLM #AIAgents #MLOps #OnDeviceAI
