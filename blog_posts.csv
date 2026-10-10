@@ -1349,3 +1349,28 @@ Also watch the 100K token threshold. Anthropic says prompts up to that size make
 Two things to do this week. First, list every step in your agent pipeline and mark which ones have a cheap verifier. Second, route those steps to the smallest model that passes the verifier at your required accuracy, and measure it on your own data, not a leaderboard.
 
 Takeaway: a cheaper small model does not fix a bad architecture. It rewards a good one.",#AI #LLM #AIAgents #MLOps #OnDeviceAI
+2026-10-10,449,AI-Written Math Papers,Hot take: 722 AI-written math papers prove nothing until someone can rerun them,https://pranaymahendrakar.com/blog/hot-take-722-ai-written-math-papers-prove-nothing-until-someone-can-re,"Hot take: 722 AI-written math papers prove nothing until someone can rerun the process that wrote them.
+
+On October 6, OpenAI put 722 math manuscripts on GitHub, all produced by a model it has not released. Multiple outlets report that nearly all of them came from a single prompt given to a single agent. Only some of the papers ship with Lean formal proofs. The prompts, the model name and the per-problem compute are not public.
+
+I want to be fair here. Publishing the manuscripts openly under a permissive licence is a real contribution, and mathematicians can now go and judge them. That is more than most labs do. But the interesting part isn't the volume. It's what the release does and does not let you check.
+
+I work with formal verification and I publish open-access research with permanent DOIs, so I have a bias. A result is only as good as your ability to reproduce it. A Lean proof is the gold standard because a machine checks every step and you don't have to trust the author, human or otherwise. For the papers that have one, the argument is over. The proof compiles or it doesn't.
+
+For the papers without one, you are back to peer review. And peer review at this scale is a human bottleneck. Seven hundred manuscripts is years of referee time, and referees are volunteers. Generation is now cheap and verification is still expensive. That asymmetry is the whole story.
+
+I have seen the same pattern in production AI work. In a defence deployment I worked on, generating candidate detections was never the hard part. Deciding which ones were safe to act on was. We spent most of our engineering effort on the checking layer, not the model. A system that produces output faster than you can validate it is not a productivity gain. It is a queue.
+
+The single-prompt claim is the other thing I would not take on faith. If one prompt really produced most of this, that is remarkable, and it is also unfalsifiable today. Nobody outside the lab can rerun it, because the model is unreleased and the prompt is private. A claim you cannot rerun is a press release with a bibliography.
+
+This is also why I keep pushing for models that run where the data is, under your control. When the model, the prompt and the compute are all in someone else's hands, ""trust us"" is your only audit trail. When you control the stack, you can pin the version, log the inputs and reproduce the output next month. That is not a philosophical preference. It is what makes a result defensible.
+
+So what should a lab do when it releases machine-generated research? Four things, none of them exotic.
+
+First, ship a formal proof wherever the domain allows one, and say plainly which results lack it. Second, publish the prompt and the harness, even if the weights stay private. Third, record the model version and the compute budget so others can estimate cost per result. Fourth, flag unverified claims in the repository itself, not in a footnote. OpenAI's README does warn that some unformalized results may have problems, which is the right instinct. It needs to go further.
+
+If you are building anything where an AI produces claims that people will rely on, copy this lesson for your own system. Treat the verifier as the product and the generator as a component. Budget more for checking than for creating, and make every output traceable to an input you can replay.
+
+The volume of AI-generated work will keep climbing. The scarce resource is not ideas or even proofs. It is trust you can audit.
+
+Takeaway: if you can't rerun it, you can't rely on it, no matter how many pages it has.",#AI #LLM #FormalVerification #Reproducibility #OpenAI

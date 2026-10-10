@@ -7450,3 +7450,28 @@ So build the worker tier to be replaceable. Define each worker by input, output 
 A cheaper small model does not fix a bad architecture. It rewards a good one.
 
 Which step in your agent pipeline is still running on a model that is too big for the job?",#AI #LLM #AIAgents #MLOps #OnDeviceAI
+449,AI-Written Math Papers,"Hot take: 722 AI-written math papers prove nothing until someone can rerun the process that wrote them.
+
+On October 6, OpenAI posted 722 math manuscripts to GitHub.
+
+All came from an unreleased model. Reports say nearly all came from a single prompt. The prompts and compute are private.
+
+Credit where it's due: open licence, open for scrutiny. That's more than most labs do.
+
+But look at what you can actually check.
+
+Papers with Lean proofs? A machine verifies every step. Argument over.
+
+Papers without? Back to human referees. And generation is now far cheaper than verification.
+
+I've seen this in a defence deployment I worked on. Producing candidates was easy. Deciding which were safe to act on took most of the engineering.
+
+An AI that outputs faster than you can validate isn't productivity. It's a queue.
+
+My ask for any lab releasing machine-generated research: formal proofs where possible, published prompts and harness, recorded model version, and unverified claims flagged up front.
+
+Treat the verifier as the product. The generator is just a component.
+
+If you can't rerun it, you can't rely on it.
+
+When your AI produces a claim, can you replay exactly how it got there?",#AI #LLM #FormalVerification #Reproducibility #OpenAI
