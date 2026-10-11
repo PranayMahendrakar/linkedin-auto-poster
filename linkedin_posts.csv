@@ -7475,3 +7475,25 @@ Treat the verifier as the product. The generator is just a component.
 If you can't rerun it, you can't rely on it.
 
 When your AI produces a claim, can you replay exactly how it got there?",#AI #LLM #FormalVerification #Reproducibility #OpenAI
+450,Mistral Large 4 Open Weights,"Mistral previewed a 1-trillion-parameter model this week.
+
+The weights are promised by the end of October.
+
+Promised is not shipped.
+
+Here is how I judge an ""open weights"" release:
+
+Can I run it in an air-gapped environment?
+Can a legal team sign off on the license?
+Can I quantize it and measure what breaks?
+Can I fine-tune it on my own data?
+
+I have worked on deployments where nothing could leave the network. An API-only model was never an option, no matter the benchmark.
+
+And at a trillion parameters, almost no team can self-host the flagship anyway. The real value will come from distilled and quantized derivatives that fit hardware you control.
+
+My advice: write your evaluation set now, before the weights land. Then test the released model on your own data and languages, not the preview.
+
+Open weights are a deliverable, not an announcement.
+
+Are you planning to self-host anything from this release, or waiting for the smaller versions?",#AI #OpenWeights #Mistral #LLM #OnDevice
