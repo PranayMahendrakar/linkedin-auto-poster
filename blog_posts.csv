@@ -1403,3 +1403,32 @@ Plan for the smaller derivatives, not the flagship. That is where on-device and 
 And read the license before you read the benchmark table.
 
 The takeaway: open weights are a deliverable, not an announcement. Judge the release by what you can run, audit, and change on your own machines, and ignore the headline parameter count.",#AI #OpenWeights #Mistral #LLM #OnDevice
+2026-10-12,451,EU AI Act Disclosure,"The EU AI Act disclosure rule is live, and it is an architecture problem, not a legal one",,"The EU AI Act's chatbot disclosure rule has been live since 2 August. Most teams I talk to still treat it as a legal problem. It is an architecture problem.
+
+Article 50 says that if your system talks to people, they must be told they are dealing with an AI, unless that is obvious. If it generates synthetic audio, image, video or text, the output has to be marked in a machine-readable way. Deployers publishing deepfakes must disclose them. Law firms tracking this, including Cooley, Sidley and Stibbe, describe the same four areas and the same 2 August date. Fines can reach 15 million euros or 3% of worldwide turnover.
+
+There is one wrinkle. Under the Digital Omnibus, the machine-readable marking duty in Article 50(2) only bites from 2 December 2026 for systems already on the market before 2 August. Newer systems have no grace period.
+
+Here is why I call it an architecture problem. Disclosure is easy when you own the whole pipeline. It gets hard when generated text passes through three services, a cache and a translation layer before a user sees it. Where does the marker live? Who adds it? What happens when someone copies the text out?
+
+I have shipped enough multilingual, customer-facing AI systems to know how this goes. The disclosure banner gets added to the UI at the end, and the first time the output is consumed by something other than the UI, the banner is gone.
+
+So my advice is to treat provenance as a first-class field, not a decoration. Every generation gets a record: which model, which version, which pipeline, when. The marker is attached at the point of generation, not at the point of display. Anything downstream that transforms the content has to carry the marker forward or fail loudly.
+
+This is also where my bias shows. Systems that run on-device or offline, under your control, are far easier to make compliant. You know exactly what model produced the output because you deployed it. You are not trusting an upstream API to keep its behaviour, its watermarking or its versioning stable. In an offline deployment I worked on, the avatar was disclosed as an AI from the first frame, because we owned every layer between the model and the screen.
+
+With a hosted API chain you inherit whatever your vendors decide. If a vendor changes how outputs are marked, your compliance posture changes without a deploy on your side.
+
+Three things I would do this quarter if I were running an LLM product that touches EU users.
+
+First, inventory every surface where model output reaches a person or leaves your system: UI, email, PDF export, API response, webhook. Disclosure has to survive each one.
+
+Second, log generation provenance at the source. If a regulator or a customer asks what produced a given piece of content, you should answer from a database query, not from memory.
+
+Third, test it adversarially. Copy the output, paste it elsewhere, run it through your own translation step, and check whether the disclosure and the marker are still there. If they are not, you have found your gap before someone else does.
+
+Also, read the Commission's guidelines and the voluntary code of practice on AI-generated content transparency rather than relying on summaries, mine included. Law-firm notes are good for orientation, but the binding text is Regulation 2024/1689.
+
+I have seen too many compliance efforts stall because they were handed to legal alone. Legal can tell you what must be true. Only engineering can make it true at every hop.
+
+The takeaway: compliance with Article 50 is a property of your pipeline, so design the pipeline to carry it.",#AI #EUAIAct #LLM #AIGovernance #OnDeviceAI

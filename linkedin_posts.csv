@@ -7497,3 +7497,24 @@ My advice: write your evaluation set now, before the weights land. Then test the
 Open weights are a deliverable, not an announcement.
 
 Are you planning to self-host anything from this release, or waiting for the smaller versions?",#AI #OpenWeights #Mistral #LLM #OnDevice
+451,EU AI Act Disclosure,"The EU AI Act's chatbot disclosure rule has been live since 2 August.
+
+Most teams I meet treat it as a legal checkbox. It is an architecture problem.
+
+Article 50 says people must be told when they are talking to an AI. Synthetic outputs must be marked in a machine-readable way. Fines go up to 15M euros or 3% of global turnover.
+
+Disclosure is easy when you own the whole pipeline. It is hard when generated text passes through three services, a cache and a translation layer before anyone sees it.
+
+The banner gets added to the UI at the end. Then something other than the UI consumes the output, and the banner is gone.
+
+What I would do:
+
+1. Inventory every surface where model output reaches a person: UI, email, PDF, API, webhook.
+2. Log provenance at generation time, not display time.
+3. Test adversarially: copy, paste, translate, and check the marker survives.
+
+This is also why I keep pushing on-device and offline deployments. When you deployed the model, you know what produced the output. No upstream vendor can change your compliance posture without you.
+
+Legal can tell you what must be true. Only engineering can make it true at every hop.
+
+Does your product's AI disclosure survive a copy-paste? Tell me in the comments.",#AI #EUAIAct #LLM #AIGovernance #OnDeviceAI
