@@ -1432,3 +1432,28 @@ Also, read the Commission's guidelines and the voluntary code of practice on AI-
 I have seen too many compliance efforts stall because they were handed to legal alone. Legal can tell you what must be true. Only engineering can make it true at every hop.
 
 The takeaway: compliance with Article 50 is a property of your pipeline, so design the pipeline to carry it.",#AI #EUAIAct #LLM #AIGovernance #OnDeviceAI
+2026-10-13,452,Reflection Beam Open Weights,Reflection's Beam has 23B active parameters. Your GPU bill will be set by the other 478B.,https://pranaymahendrakar.com/blog/reflections-beam-has-23b-active-parameters-your-gpu-bill-will-be-set-b,"Everyone will repeat the small number. Reflection AI's first open-weight model, Beam, was announced on October 5 as a sparse Mixture-of-Experts system with 501 billion total parameters and 23 billion active per token. The 23B is the headline. It is not the number that decides what you pay.
+
+Here is what is reported. Axios broke the story on October 4 that Reflection, an Nvidia-backed startup founded by former Google DeepMind researchers, was close to releasing its first open-weight model. Follow-up coverage describes Beam as text-only and pitched as a lower-cost alternative to the leading Chinese open-weight models. The weights and technical details are promised this month, and at least one source points to an Apache 2.0 license. As of the coverage I could find, the weights were not yet public. Treat everything below as conditional on them shipping.
+
+Now the engineering point. Active parameters tell you how much compute a single token costs. They say nothing about how much memory you need to hold the model. In an MoE, every expert has to be resident, or you pay a latency penalty fetching it. A 501B model needs the memory footprint of a 501B model, even if each token only touches a slice.
+
+At 8-bit that is roughly 500 GB of weights before you count the KV cache. Even at 4-bit you are well past a single GPU. So the cheap-to-run story is true for throughput on a cluster that is already provisioned. It is not true for the team that wants to run this on one box.
+
+I have watched this confusion in production. When I scope a deployment, the first question is never tokens per second. It is where the weights live and who controls that machine. In the defence and automotive work I have been part of, the model had to run offline, inside a boundary the customer owned. A model you can only serve from a multi-node cluster is a hosted service with extra steps.
+
+That is why I keep a simple checklist for any open-weight release:
+
+1. Total parameters, not active, against the memory I actually have.
+2. A license my legal team can sign without a phone call.
+3. Weights I can download and run air-gapped.
+4. Quantized variants, ideally published by the lab itself.
+5. An evaluation I can rerun on my own data.
+
+Beam may clear some of these. We will know when the files are public. Until then it is an announcement, and I do not build on announcements.
+
+None of this makes the release unimportant. A credible US-origin open-weight option matters for teams who cannot or will not depend on Chinese-origin weights, and competition on price helps everyone. If the license is as permissive as reported, it widens the choices for regulated buyers.
+
+But for most of the systems I have shipped, the right answer was a much smaller model, specialised, quantized, and sitting next to the data. The most useful open-weight models are the ones that fit on hardware you already own.
+
+My takeaway: when a lab quotes active parameters, ask for the memory requirement. That is the number your infrastructure budget actually answers to.",#AI #OpenWeights #LLM #MoE #OnDeviceAI

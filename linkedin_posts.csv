@@ -7518,3 +7518,30 @@ This is also why I keep pushing on-device and offline deployments. When you depl
 Legal can tell you what must be true. Only engineering can make it true at every hop.
 
 Does your product's AI disclosure survive a copy-paste? Tell me in the comments.",#AI #EUAIAct #LLM #AIGovernance #OnDeviceAI
+452,Reflection Beam Open Weights,"Reflection AI announced Beam, its first open-weight model.
+
+501B total parameters. 23B active per token.
+
+Everyone is quoting the 23B. I care about the 501B.
+
+In a Mixture-of-Experts model, active parameters set your compute per token.
+Total parameters set your memory.
+Every expert has to be resident or you pay in latency.
+
+So the cheap-to-run story holds on a cluster that already exists.
+It does not hold for a team that wants one box, offline, under its own control.
+
+My checklist for any open-weight release:
+
+Total parameters against the memory I actually have.
+A license legal can sign.
+Weights I can run air-gapped.
+Quantized variants from the lab.
+An eval I can rerun on my own data.
+
+The weights are promised this month. Promised is not shipped.
+
+A credible US open-weight option is good news for everyone.
+But the best model for most systems I have built was a much smaller one, sitting next to the data.
+
+When a lab quotes active parameters, do you ask for the memory number too?",#AI #OpenWeights #LLM #MoE #OnDeviceAI
