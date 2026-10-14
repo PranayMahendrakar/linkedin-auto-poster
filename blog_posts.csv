@@ -1457,3 +1457,36 @@ None of this makes the release unimportant. A credible US-origin open-weight opt
 But for most of the systems I have shipped, the right answer was a much smaller model, specialised, quantized, and sitting next to the data. The most useful open-weight models are the ones that fit on hardware you already own.
 
 My takeaway: when a lab quotes active parameters, ask for the memory requirement. That is the number your infrastructure budget actually answers to.",#AI #OpenWeights #LLM #MoE #OnDeviceAI
+2026-10-14,453,Utah AI Prescription Pilot,Utah's AI prescription pilot hinges on one number nobody has published: how often it asks a human,https://pranaymahendrakar.com/blog/utahs-ai-prescription-pilot-hinges-on-one-number-nobody-has-published-,"Hot take: the interesting part of Utah's AI prescription pilot is not that an AI renews prescriptions. It is that nobody can yet say how often it hands a case back to a human.
+
+Here is what is reported. Utah's Office of Artificial Intelligence Policy, working through its regulatory sandbox, signed a mitigation agreement with a company called Doctronic. The pilot lets an AI system renew existing prescriptions for roughly 190 commonly prescribed maintenance drugs, in 30, 60 or 90 day amounts. Controlled substances are excluded. It does not write new prescriptions. Early on, physicians review the renewals.
+
+The pushback is also reported. Utah's medical licensing board and the AMA have objected, arguing that a renewal is not a routine checkbox, especially for drugs where a patient's condition changes. The state has not halted the pilot.
+
+I have no standing to say whether this is good medicine. I do have standing on the engineering, because I have spent years shipping systems where a wrong answer has a real cost, including a defence deployment where false alarms were as damaging as misses.
+
+So here is how I read this pilot as a systems person.
+
+First, the model is the cheap part. The expensive part is the escalation path. Any system that decides ""I am confident enough to act alone"" needs a second decision: ""I am not, send this to a human."" The quality of that second decision decides whether the product is safe. Reporting on the pilot notes that the real escalation rate in production is still unclear. That is the number I would ask for before any other.
+
+Second, a sandbox waives enforcement, not physics. The agreement can relax state rules for a company that follows its contract. It cannot make a bad refill good. Whatever safety case exists has to live in the system itself: the drug allowlist, the data checks, the logging, the stop conditions.
+
+Third, the allowlist is the most honest design decision in the whole thing. Roughly 190 drugs, no controlled substances, no new prescriptions, no treatment changes. That is a narrow action space. In my experience, narrowing the action space is the single most reliable way to make an AI system trustworthy. Most failed LLM products I have seen tried to do everything on day one.
+
+Fourth, auditability is not optional. If a refill goes wrong, someone needs to reconstruct exactly what the system saw, what it checked, and why it decided. That means an immutable decision log with the inputs, not a chat transcript. I build with the assumption that every automated decision will be examined later by someone who was not in the room.
+
+Fifth, and this is my bias showing: where the patient data goes matters. A pipeline that ships sensitive records to a remote model for every decision has a bigger attack surface and a harder compliance story than one that does the verification step close to the data. For anything touching health records, I would push as much of the checking as possible on-device or inside the provider's own boundary, and send out only what is strictly needed.
+
+None of this means the pilot is wrong. A supervised, narrow, time-boxed experiment is exactly how a high-stakes capability should be tested. My worry is the other direction: that the headline becomes ""AI can prescribe"" and the metrics that matter, escalation rate, adverse events, where liability sits, stay invisible.
+
+If you are building anything similar in any regulated field, here is a checklist I would hold myself to:
+
+Define the action space as narrowly as you can stand.
+Measure and publish how often the system defers to a human.
+Log every decision with its inputs so it can be replayed.
+Keep sensitive data inside the smallest boundary that works.
+Decide in advance what number makes you shut it off.
+
+Autonomy is not a model capability. It is a promise about what happens when the model is wrong.
+
+The teams that earn trust in regulated AI will be the ones who publish their deferral rate first.",#AI #LLM #Healthcare #AIGovernance #ResponsibleAI

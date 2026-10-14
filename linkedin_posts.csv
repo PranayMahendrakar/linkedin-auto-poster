@@ -7545,3 +7545,31 @@ A credible US open-weight option is good news for everyone.
 But the best model for most systems I have built was a much smaller one, sitting next to the data.
 
 When a lab quotes active parameters, do you ask for the memory number too?",#AI #OpenWeights #LLM #MoE #OnDeviceAI
+453,Utah AI Prescription Pilot,"Utah now lets an AI renew prescriptions.
+Everyone is arguing about whether that is allowed.
+
+I care about a different number: how often it hands a case back to a human.
+
+Here is what is reported:
+It runs in a state regulatory sandbox with a company called Doctronic.
+Roughly 190 maintenance drugs. Renewals only. No controlled substances.
+Utah's medical board and the AMA have pushed back.
+
+What is not public is the escalation rate in production.
+
+I have shipped systems where a wrong answer has a real cost, including a defence deployment where false alarms hurt as much as misses.
+
+The lesson was always the same:
+The model is the cheap part.
+The ""I am not sure, send this to a person"" path is the product.
+
+My checklist for any regulated AI system:
+Keep the action space narrow.
+Publish the deferral rate.
+Log every decision with its inputs.
+Keep sensitive data inside the smallest boundary that works.
+Pick the shutdown number in advance.
+
+Autonomy is not a model capability. It is a promise about what happens when the model is wrong.
+
+If you build in a regulated field, what is the first metric you would demand to see?",#AI #LLM #Healthcare #AIGovernance #ResponsibleAI
