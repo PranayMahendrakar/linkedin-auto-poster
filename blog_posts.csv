@@ -1490,3 +1490,35 @@ Decide in advance what number makes you shut it off.
 Autonomy is not a model capability. It is a promise about what happens when the model is wrong.
 
 The teams that earn trust in regulated AI will be the ones who publish their deferral rate first.",#AI #LLM #Healthcare #AIGovernance #ResponsibleAI
+2026-10-15,454,Open Models Risk Debate,"Anthropic says open models carry ""more risk."" It depends on whose risk you count.",https://pranaymahendrakar.com/blog/anthropic-says-open-models-carry-more-risk-it-depends-on-whose-risk-yo,"Here is what is reported. At the International AI Summit in Dublin on October 14, Anthropic executive Guillaume Princen said open alternatives to closed models carry more risk of cybersecurity incidents and other dangers. His words, as quoted: ""I can't talk for open models. But by definition, there's more risk with them."" Bloomberg and Business Standard both carried the story, and Business Standard says his concern comes from Anthropic's work securing its own products.
+
+That is the news. Here is my opinion: the statement is true in a narrow sense and misleading in the way it will be used.
+
+Open weights do change the threat model. Once weights are public, the publisher cannot revoke access, patch a misuse pattern server-side, or watch what people ask. A hosted API gives you all three. If your only question is ""who can stop a bad actor"", the closed model wins that argument by construction.
+
+But that is not the question most of my work has been about.
+
+In the deployments I have worked on, including a defence deployment and an automotive one, the risk that kept people up at night was not a stranger misusing a model. It was the data leaving the building. When the input is sensor footage, or customer conversations, or anything an auditor will ask about, ""send it to someone else's server and trust their controls"" is the riskiest design on the table. Not the safest.
+
+So ""more risk"" depends on whose risk you count. The vendor counts the risk of the model being misused. The operator counts the risk of the data being exposed, the service being switched off, or the terms changing on a Tuesday. Those are different ledgers, and a summit stage tends to show only one of them.
+
+My bias is no secret. Models should run where the data is: on-device, offline, under your control. That is not ideology. It is what we had to do for an offline multilingual avatar that had to work with no network at all, and for detection systems that could not wait on a round trip. Open weights are what made that possible. A closed API was never an option there.
+
+I also do not want to wave away the concern, because part of it is real. Open weights mean the safety work shipped with the model can be fine-tuned away. Anyone running one in production inherits the job of guardrails, evaluation, and monitoring. In my experience most teams underestimate that job. They download a checkpoint, see good demo output, and ship it with none of the controls a hosted provider would have run for them.
+
+That is the honest version of the argument. Open models do not carry more risk by definition. They move the risk from the vendor to you. If you are not set up to carry it, you should not be running one.
+
+What would a fair comparison look like? I would want to see it measured, not asserted. Incidents per deployment, split by closed API and self-hosted. Data-exposure events counted alongside misuse events. Nobody I know has published that, and until someone does, ""by definition"" is doing a lot of work in that sentence.
+
+Here is the checklist I would apply before choosing either side:
+
+1. Where does the data have to live, and who is allowed to see it?
+2. What happens to the product if the vendor changes pricing, policy, or availability?
+3. Who owns evaluation and abuse monitoring after launch?
+4. Can you reproduce a result a year from now, with the exact model you used today?
+
+Closed models answer the third question for you and fail the second and fourth. Open models answer the second and fourth and hand you the third. Neither is free.
+
+The vendors have a real interest in this debate, and so do I. Read every claim about ""risk"" with that in mind, mine included.
+
+The takeaway: open weights do not make a system riskier by definition. They make you the one responsible for the risk, and that is a feature only if you are ready for it.",#AI #OpenSource #LLM #AISafety #OnDeviceAI

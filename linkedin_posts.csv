@@ -7573,3 +7573,24 @@ Pick the shutdown number in advance.
 Autonomy is not a model capability. It is a promise about what happens when the model is wrong.
 
 If you build in a regulated field, what is the first metric you would demand to see?",#AI #LLM #Healthcare #AIGovernance #ResponsibleAI
+454,Open Models Risk Debate,"An Anthropic executive said this week that open models carry ""more risk"" by definition.
+
+Said at the International AI Summit in Dublin on October 14. Reported by Bloomberg and Business Standard.
+
+Half right.
+
+Open weights mean the publisher can't revoke access or patch misuse server-side. That's real.
+
+But in the defence and automotive work I've been part of, the scarier risk was data leaving the building. Not a stranger misusing a model.
+
+So ""more risk"" depends on whose ledger you read.
+
+The vendor counts misuse. The operator counts data exposure, outages, and terms changing on a Tuesday.
+
+Open models don't add risk by definition. They move it from the vendor to you. Guardrails, evals, monitoring: all yours now.
+
+Most teams I see download a checkpoint, love the demo, and ship without any of that.
+
+If you can't carry the risk, don't run the model. If you can, you get control nobody can take back.
+
+Where does your data have to live, and who owns the safety work after launch?",#AI #OpenSource #LLM #AISafety #OnDeviceAI
