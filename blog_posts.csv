@@ -1522,3 +1522,34 @@ Closed models answer the third question for you and fail the second and fourth. 
 The vendors have a real interest in this debate, and so do I. Read every claim about ""risk"" with that in mind, mine included.
 
 The takeaway: open weights do not make a system riskier by definition. They make you the one responsible for the risk, and that is a feature only if you are ready for it.",#AI #OpenSource #LLM #AISafety #OnDeviceAI
+2026-10-16,455,Meta Muse Spark Open,Meta's 816B open model needs 700 GB of memory. Open weights is not on-device.,https://pranaymahendrakar.com/blog/metas-816b-open-model-needs-700-gb-of-memory-open-weights-is-not-on-de,"Meta just released the weights of an 816-billion-parameter model, and the minimum memory to run it is around 700 GB. ""Open"" and ""runs where your data is"" are not the same sentence.
+
+Here is what is reported. On October 15, Meta published Muse Spark Open on Hugging Face. It is a sparse mixture-of-experts model: 816B total parameters, 42B active per token, a 1M-token context window, built for coding and long-horizon agent work. Weights ship in BF16 and NVFP4. It is also listed on Amazon SageMaker, Google Cloud and Microsoft Foundry. Bloomberg covered the release, and the Hugging Face model card and Meta's own research post confirm the specs.
+
+The part most headlines skip: the model card recommends at least 700 GB of VRAM for the NVFP4 version and about 2 TB for BF16. Community reports of running it on a pair of high-end Mac Studios are impressive, and also tell you what the floor looks like.
+
+I have spent years pushing one bias: models should run where the data is. On-device, offline, under your control. The offline multilingual avatar I built for an automotive client had to work with no network at all. A defence deployment I worked on could not send a single frame off the box. In both cases the model size was a design constraint, not a bragging number.
+
+By that standard, 42B active parameters is a compute story. 816B total is a memory story. Active parameters set your cost per token. Total parameters set whether you can host the thing at all. Everyone quotes the first number because it is smaller.
+
+So who actually benefits from this release? Mostly organisations that can rent or own a multi-hundred-gigabyte GPU node. That is a real group: a bank, a hospital network, a government lab that cannot ship data to a third-party API. For them, weights in hand beat an API. They can audit, fine-tune, pin a version, and keep the inference inside their own perimeter.
+
+For a startup with one GPU, nothing changes. You will still reach this model through a hosted provider, and at that point you have traded one dependency for another, with a nicer license file.
+
+Speaking of the license: it is not a standard open-source license. Meta calls it the Muse Model License. It permits use, fine-tuning, distillation and redistribution, but model-as-a-service providers above 20 million dollars in annual revenue need a separate agreement with Meta. That is a reasonable commercial line. It is also not what most engineers mean by open source, and procurement teams should read it before anyone builds on it.
+
+What I would do with this release if I were evaluating it this week:
+
+First, measure on your own task, not the leaderboard. A coding-agent benchmark tells you little about your document pipeline or your Indic-language workload. I have watched strong general models hallucinate badly in Indic languages, and no headline score showed it.
+
+Second, test the quantized build, not the BF16 one. If NVFP4 loses accuracy on your data, the whole on-prem story changes.
+
+Third, price total memory, not active parameters. Budget the node, the networking, the failure case and the person who gets paged.
+
+Fourth, ask what the smaller sibling does. In production, I rarely need the biggest model. I need the smallest one that clears my error budget, and a distilled version of a model like this may be where the real value lands.
+
+None of this makes the release unimportant. A US lab shipping frontier-scale weights that anyone can download, inspect and fine-tune is good for the ecosystem. More eyes on a model means more honest evaluation.
+
+But ""open weights"" is a licensing fact. ""Runs where your data is"" is an engineering fact. Do not let the first one convince you the second one is solved.
+
+Takeaway: before you celebrate an open model, divide your available memory by its total parameters, not its active ones.",#AI #LLM #OpenWeights #OnDevice #MachineLearning

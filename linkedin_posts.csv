@@ -7594,3 +7594,31 @@ Most teams I see download a checkpoint, love the demo, and ship without any of t
 If you can't carry the risk, don't run the model. If you can, you get control nobody can take back.
 
 Where does your data have to live, and who owns the safety work after launch?",#AI #OpenSource #LLM #AISafety #OnDeviceAI
+455,Meta Muse Spark Open,"Meta just open-sourced an 816B-parameter model. Minimum memory to run it: around 700 GB.
+
+Everyone is quoting the 42B active parameters.
+I care about the 816B total.
+
+Active parameters set your cost per token.
+Total parameters decide whether you can host it at all.
+
+""Open weights"" is a licensing fact.
+""Runs where your data is"" is an engineering fact.
+
+Those are not the same thing.
+
+The people who benefit most are teams that can own a multi-hundred-gigabyte GPU node and cannot send data to a third-party API. Banks, hospitals, government labs.
+
+Everyone else will reach it through a hosted provider. That just swaps one dependency for another.
+
+Also worth reading: it ships under Meta's own Muse Model License, not a standard open-source one. Large model-as-a-service providers need a separate agreement.
+
+My checklist before adopting any model like this:
+
+Test on your own task, not the leaderboard.
+Test the quantized build, not just BF16.
+Price total memory, not active parameters.
+
+In production I rarely need the biggest model. I need the smallest one that clears my error budget.
+
+What is the largest model you have actually run inside your own perimeter?",#AI #LLM #OpenWeights #OnDevice #MachineLearning
