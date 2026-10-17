@@ -7622,3 +7622,31 @@ Price total memory, not active parameters.
 In production I rarely need the biggest model. I need the smallest one that clears my error budget.
 
 What is the largest model you have actually run inside your own perimeter?",#AI #LLM #OpenWeights #OnDevice #MachineLearning
+456,State AGs Sue OpenAI,"Eight US states just sued OpenAI over the word ""safe.""
+
+Reported by The Hill and Al Jazeera: attorneys general filed on October 14, alleging OpenAI misled users about ChatGPT's safety, with a focus on children.
+
+These are allegations. Nothing is decided.
+
+But here is what I take from it.
+
+""Safe"" is a marketing word until a court asks for evidence. Then it is a claim.
+
+What was your test set? What failure rate did you measure? On which users? What did you do when the number was bad?
+
+""We ran some red-team sessions"" is not a safety case.
+
+On the AI systems I have shipped, including a defence deployment, the discipline was simple:
+
+Write the failure modes down.
+Build an eval set that contains the bad cases.
+Measure every release.
+Set the launch-blocking threshold before you see the result.
+
+And do not trust one global number. A model can look fine in English and fail quietly in Hindi or Kannada. Averages hide the people who get hurt.
+
+Safety is a measurement problem before it is a policy problem.
+
+My bet: safety claims are about to be treated like financial claims. You say it, you prove it, you keep the receipts.
+
+What is the one safety claim in your product that you could not defend with data today?",#AI #AISafety #LLM #Regulation #MachineLearning

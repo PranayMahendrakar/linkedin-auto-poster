@@ -1553,3 +1553,34 @@ None of this makes the release unimportant. A US lab shipping frontier-scale wei
 But ""open weights"" is a licensing fact. ""Runs where your data is"" is an engineering fact. Do not let the first one convince you the second one is solved.
 
 Takeaway: before you celebrate an open model, divide your available memory by its total parameters, not its active ones.",#AI #LLM #OpenWeights #OnDevice #MachineLearning
+2026-10-17,456,State AGs Sue OpenAI,"Eight states sued OpenAI over the word ""safe."" Can you prove yours?",https://pranaymahendrakar.com/blog/eight-states-sued-openai-over-the-word-safe-can-you-prove-yours,"Eight US states just sued OpenAI over one word: ""safe.""
+
+Here is what is reported. On October 14, attorneys general from Iowa, Kansas, Arizona, Arkansas, Idaho, Montana, Nebraska and West Virginia filed separate suits under their own consumer protection laws. The allegation, as reported by The Hill and Al Jazeera, is that OpenAI misled users about how safe ChatGPT is, with a focus on children. The complaints cite dangerous medical advice and content touching on self-harm and violence. The states want penalties and changes to company practices. OpenAI's response was that no system is perfect and that it will keep working with experts, pointing to parental controls and break reminders.
+
+These are allegations. Nothing has been decided, and I am not going to pretend to know who wins.
+
+Here is my opinion: this is a consumer protection case, and consumer protection law asks a boring question. Can you show your work?
+
+""Safe"" is a marketing word. In a courtroom it becomes a claim, and a claim needs evidence. What was the test set? How was it built? What failure rate did you measure, on which kinds of users, and what did you do when the number was bad? If the honest answer is ""we ran some red-team sessions before launch,"" that is not a safety case. That is a story about a safety case.
+
+I have shipped AI systems in settings where ""it usually works"" was never an acceptable answer, including a defence deployment where a wrong output had real consequences. The discipline in those projects was not clever. Define the failure modes in writing. Build an evaluation set that actually contains the bad cases. Measure on every release. Keep the numbers. Decide in advance what result blocks a launch.
+
+That last part is the one most teams skip. A threshold you set after seeing the result is not a threshold.
+
+My own research on hallucination, especially in Indic languages, points at the same gap. A model can look fine in English and fail quietly in Hindi or Kannada, and nobody notices because nobody measured. Averages hide the users who get hurt. If your safety claim is one global number, you have not yet looked at the people it fails.
+
+This is why I keep building evaluation tooling as open packages, such as hallucination-detector and model-drift-detector, rather than treating it as an afterthought. Safety is a measurement problem before it is a policy problem.
+
+There is also an architecture angle. When a model runs where the data is, on-device or inside an organisation's own boundary, the deployer owns the evaluation, the logs and the guardrails. When you ship a general chatbot to everyone, you inherit every context at once, from a teenager at midnight to a patient asking about dosage. You cannot test for a population you cannot define. Narrow deployments are easier to certify honestly.
+
+If you build with LLMs, here is what I would do this week:
+
+First, write down every safety claim in your product, including the ones in marketing copy and onboarding screens. Second, next to each claim, write the evidence. If the evidence column is empty, either fix the product or soften the claim.
+
+Third, evaluate on the subgroups you actually serve: age, language, domain. A single aggregate score is not enough.
+
+Fourth, keep an audit trail. If a regulator or a court asks what you knew and when, ""we believed it was fine"" will not hold up.
+
+Whatever happens in these eight cases, the direction is clear. Safety claims are about to be treated like financial claims: you say it, you prove it, you keep the receipts.
+
+If you cannot measure it, do not call it safe.",#AI #AISafety #LLM #Regulation #MachineLearning
