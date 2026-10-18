@@ -1584,3 +1584,36 @@ Fourth, keep an audit trail. If a regulator or a court asks what you knew and wh
 Whatever happens in these eight cases, the direction is clear. Safety claims are about to be treated like financial claims: you say it, you prove it, you keep the receipts.
 
 If you cannot measure it, do not call it safe.",#AI #AISafety #LLM #Regulation #MachineLearning
+2026-10-18,457,China AI Export Controls,"China would regulate running AI models abroad, not renting them. Know where yours run.",,"Here is what is reported. On October 16, China's commerce ministry proposed export controls on 23 AI technologies, including those involving models, agents and computing clusters. Reuters carried it, and TBS News reported the same proposal. The ministry framed it as security-driven: prevent misuse, keep AI under human control.
+
+The detail I care about is one line. The proposal would cover overseas deployment of restricted models. It would exclude access through APIs, websites, apps and SaaS platforms.
+
+Read that again. Renting the model is fine. Running the model is regulated.
+
+This is a proposal, not a rule. Details may change, and I am not a trade lawyer. But the shape of it is worth taking seriously, because it points at the thing I keep saying: where a model runs is a design decision, and it is about to become a compliance decision too.
+
+I have spent years building systems where the model has to live next to the data. An offline multilingual avatar for an automotive client. Real-time detection in a defence deployment, where a round trip to someone else's cloud was never an option. In those projects, the model was an artifact we shipped, versioned and pinned. Nobody could change it under us, and nobody could switch it off.
+
+An API-only architecture is the opposite. You get convenience, and you give up control. If the rules treat hosted access and local deployment differently, the two paths stop being merely technical alternatives. They carry different legal exposure.
+
+Here is the practical problem. Most teams I see have not written down which of their dependencies are weights they run and which are endpoints they call. Ask them where a given model physically executes, and under whose terms, and you get a pause.
+
+If a rule like this lands in any jurisdiction, three things follow:
+
+First, your model inventory matters. You need a list of every model in production: its source, its licence, its version, and where it runs. Not in a slide, in a file under version control.
+
+Second, portability is a risk control. If your product only works with one provider's hosted endpoint, you have a single point of failure that regulation can hit from either side. If it can swap between hosted and local models, you have options.
+
+Third, on-device and offline stops being a niche. When someone tells me a local model is a nice-to-have, I ask what happens the day the endpoint is unavailable to them. Then it is not a nice-to-have.
+
+None of this means local is always better. Hosted models are often stronger, and running your own means you own patching, evaluation and monitoring. I have shipped both. The honest answer is that it depends on the data, the latency budget and the failure you can least afford.
+
+But ""it depends"" has to be a decision you made on purpose. Too many systems made it by default, because the API key was the fastest way to a demo.
+
+So here is the test I would run this week. Pick your most important AI feature and answer four questions. Which model does it use? Where does that model execute? Who can change or revoke it? What is your fallback if that path closes?
+
+If you cannot answer all four in five minutes, you do not have an architecture. You have a dependency.
+
+Controls will come and go, and details will shift. The teams that handle it well will be the ones who already know what they are running, and where.
+
+Know where your models run before someone else's rulebook asks.",#AI #LLM #AIRegulation #OnDeviceAI #MachineLearning

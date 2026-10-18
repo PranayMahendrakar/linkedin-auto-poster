@@ -7650,3 +7650,27 @@ Safety is a measurement problem before it is a policy problem.
 My bet: safety claims are about to be treated like financial claims. You say it, you prove it, you keep the receipts.
 
 What is the one safety claim in your product that you could not defend with data today?",#AI #AISafety #LLM #Regulation #MachineLearning
+457,China AI Export Controls,"China just proposed export controls on 23 AI technologies, including models, agents and computing clusters.
+Reported by Reuters and TBS News on October 16. It's a proposal, not a final rule.
+
+The line that stood out:
+Overseas deployment of restricted models would be covered. Access via API, web, app and SaaS would be excluded.
+
+Renting the model: fine.
+Running the model: regulated.
+
+That's the opposite of how most teams think about risk.
+
+I've worked on systems where the model had to sit next to the data, because the network was never an option. In those, the model was a pinned artifact we shipped, not an endpoint we hoped stayed up.
+
+Where a model runs is now an architecture decision and a compliance decision.
+
+Five-minute test for your most important AI feature:
+1. Which model does it use?
+2. Where does it execute?
+3. Who can change or revoke it?
+4. What's your fallback if that path closes?
+
+If you can't answer all four, you don't have an architecture. You have a dependency.
+
+Do you know where your production models actually run?",#AI #LLM #AIRegulation #OnDeviceAI #MachineLearning
