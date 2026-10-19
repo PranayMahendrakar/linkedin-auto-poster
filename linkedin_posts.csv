@@ -7674,3 +7674,30 @@ Five-minute test for your most important AI feature:
 If you can't answer all four, you don't have an architecture. You have a dependency.
 
 Do you know where your production models actually run?",#AI #LLM #AIRegulation #OnDeviceAI #MachineLearning
+458,Jais 3 Open Models,"Jais 3 just shipped: six open Arabic models, from 900M to 375B parameters, plus a speech model.
+
+Reported by HPCwire and the UAE's WAM. The accuracy gains are the developers' own numbers, not independent tests.
+
+What I care about is not the model. It is that they published the 24 Arabic benchmarks with it.
+
+When I worked on hallucination in Indic languages, fluency was never the problem.
+
+The problem was knowing how often the fluent answer was wrong.
+
+A confident sentence in a lower-resource language reads as correct to anyone who cannot check it.
+
+So the evaluation set is the product.
+
+The size range matters too. A small model that handles dialect well can run on-device, offline, under your control.
+
+In the defence and education work I have been part of, that beat any API call.
+
+My checklist before adopting any regional-language model:
+
+Build a test set from real user text.
+Score hallucination separately from fluency.
+Test the smallest model first.
+
+India deserves the same: open weights, open checkpoints, and the benchmarks published first.
+
+Which Indic language do you think is least served by today's models?",#AI #LLM #IndicAI #OpenSource #MultilingualAI

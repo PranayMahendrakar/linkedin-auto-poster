@@ -1617,3 +1617,31 @@ If you cannot answer all four in five minutes, you do not have an architecture. 
 Controls will come and go, and details will shift. The teams that handle it well will be the ones who already know what they are running, and where.
 
 Know where your models run before someone else's rulebook asks.",#AI #LLM #AIRegulation #OnDeviceAI #MachineLearning
+2026-10-19,458,Jais 3 Open Models,Jais 3 shipped six open Arabic models. Indic languages are still waiting for the same.,https://pranaymahendrakar.com/blog/jais-3-shipped-six-open-arabic-models-indic-languages-are-still-waitin,"Here is what is reported. On October 15, MBZUAI's Institute of Foundation Models and Inception42 released Jais 3: six open language models from 900 million to 375 billion parameters, plus Jais Speech for Arabic and its dialects. Both are on Hugging Face. The developers say they trained on Modern Standard Arabic and regional dialects, and that they are publishing the audited set of 24 Arabic benchmarks alongside the models.
+
+The headline number is a jump on their Arabic evaluations for the 7B model, from 56.4 for the base model to 79.6. That is the developers' own result, not independent testing. Treat it as a claim until someone else reproduces it.
+
+Here is my opinion: the benchmark release matters more than the model.
+
+When I worked on hallucination in Indic languages, the hardest part was never getting a model to produce fluent text. It was knowing how often the fluent text was wrong. A multilingual model can look fine in English and fall apart in a lower-resource language, and the usual leaderboards will not tell you.
+
+Fluency hides failure. A confident sentence in Hindi, Kannada or Marathi reads as correct to anyone who does not check the facts. The error rate lives in the evaluation set, not in the demo.
+
+That is why I like the way this launch is packaged. A language-native model family, a speech model, and the evaluation suite in the same release. Most regional-language efforts ship the first and skip the last.
+
+Second point: the size range. Six models from under a billion to hundreds of billions means a team can pick the one that fits its hardware. My bias has not changed. Models should run where the data is. In the defence and education deployments I have been part of, the data could not leave the building, and a small model that speaks the local language well beats a giant one you are not allowed to call.
+
+A 900M model that handles dialect properly can run on a modest device with no network. A model you reach through an API cannot do that, however good its benchmark.
+
+What I would do before adopting any of these:
+
+1. Build your own test set from real user text in your language, with dialect and code-mixing. Public benchmarks are a starting point, not a verdict.
+2. Measure hallucination separately from fluency. Ask factual questions with known answers and score the wrong ones.
+3. Test the smallest model first. If it clears your bar, you get on-device deployment and lower cost.
+4. Check the speech path separately. A good text model with a weak speech front end is still a weak product.
+
+India has hundreds of languages and dialects, and most of the useful text in them is not in clean web corpora. The Arabic effort shows the pattern: open weights, open checkpoints, open evaluation, and a recipe others can copy.
+
+I would like to see the same for Indic languages, with the benchmarks published first.
+
+Takeaway: a language model is only as trustworthy as its evaluation set, so ask for the eval before you ask for the weights.",#AI #LLM #IndicAI #OpenSource #MultilingualAI
