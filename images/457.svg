@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#111A2E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F43F5E" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#F43F5E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="890" cy="610" r="190" fill="url(#glow)"/>
+
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <!-- label chip -->
+    <rect x="80" y="92" width="404" height="56" rx="28" fill="none" stroke="#F43F5E" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#F43F5E">AI EXPORT CONTROLS</text>
+
+    <!-- rent: fine -->
+    <text x="80" y="315" font-size="84" font-weight="800" fill="#F5F7FA">Renting it:</text>
+    <text x="80" y="410" font-size="84" font-weight="800" fill="#94A3B8">fine.</text>
+
+    <line x1="80" y1="470" x2="700" y2="470" stroke="#1E293B" stroke-width="3"/>
+
+    <!-- run: regulated -->
+    <text x="80" y="580" font-size="84" font-weight="800" fill="#F5F7FA">Running it:</text>
+    <text x="80" y="690" font-size="100" font-weight="800" fill="#F43F5E">regulated.</text>
+
+    <!-- takeaway -->
+    <text x="80" y="800" font-size="36" font-weight="500" fill="#94A3B8">Where your model runs is now</text>
+    <text x="80" y="848" font-size="36" font-weight="500" fill="#94A3B8">a <tspan fill="#F5F7FA" font-weight="700">compliance decision.</tspan></text>
+
+    <!-- footer -->
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#F43F5E"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+
+  <!-- cloud with a tick: rented via API -->
+  <g>
+    <circle cx="848" cy="352" r="40" fill="#24324A"/>
+    <circle cx="898" cy="326" r="56" fill="#24324A"/>
+    <circle cx="950" cy="356" r="38" fill="#24324A"/>
+    <rect x="808" y="350" width="182" height="46" rx="23" fill="#24324A"/>
+    <path d="M866 360 l20 20 l40 -44" fill="none" stroke="#94A3B8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- chip with a lock: running it yourself -->
+  <g stroke="#F43F5E" stroke-width="6" stroke-linecap="round">
+    <rect x="820" y="540" width="140" height="140" rx="18" fill="#0B1220"/>
+    <line x1="800" y1="575" x2="820" y2="575"/>
+    <line x1="800" y1="610" x2="820" y2="610"/>
+    <line x1="800" y1="645" x2="820" y2="645"/>
+    <line x1="960" y1="575" x2="980" y2="575"/>
+    <line x1="960" y1="610" x2="980" y2="610"/>
+    <line x1="960" y1="645" x2="980" y2="645"/>
+    <line x1="855" y1="520" x2="855" y2="540"/>
+    <line x1="890" y1="520" x2="890" y2="540"/>
+    <line x1="925" y1="520" x2="925" y2="540"/>
+    <line x1="855" y1="680" x2="855" y2="700"/>
+    <line x1="890" y1="680" x2="890" y2="700"/>
+    <line x1="925" y1="680" x2="925" y2="700"/>
+    <path d="M872 612 v-14 a18 18 0 0 1 36 0 v14" fill="none" stroke-width="7"/>
+  </g>
+  <rect x="862" y="610" width="56" height="44" rx="8" fill="#F43F5E"/>
+  <circle cx="890" cy="628" r="6" fill="#0B1220"/>
+  <rect x="887" y="630" width="6" height="14" rx="3" fill="#0B1220"/>
+</svg>
