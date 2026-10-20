@@ -31,7 +31,7 @@ POST_TO_LINKEDIN = True
 POST_WITH_IMAGE = False
 # ⬆⬆⬆ IMAGE TOGGLE ⬆⬆⬆
 
-ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
+ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
 CSV_FILE = "linkedin_posts.csv"
 PROGRESS_FILE = "post_progress.json"
 IMAGE_FILE = "output.png"
@@ -404,10 +404,20 @@ def extract_excerpt(post_text: str, max_chars: int = 800) -> str:
 
 
 # ============ LINKEDIN ============
+def exit_token_rejected():
+    print("\nERROR: LinkedIn rejected LINKEDIN_ACCESS_TOKEN (401 Unauthorized).")
+    print("The token is expired (LinkedIn tokens last 60 days), revoked, or not an access token.")
+    print("Generate a new one with scopes openid, profile, w_member_social,")
+    print("then update the LINKEDIN_ACCESS_TOKEN repository secret.")
+    exit(1)
+
+
 def get_user_id():
     url = "https://api.linkedin.com/v2/userinfo"
     headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
     response = requests.get(url, headers=headers, timeout=30)
+    if response.status_code == 401:
+        exit_token_rejected()
     response.raise_for_status()
     return response.json()["sub"]
 
@@ -553,6 +563,7 @@ def post_next():
     print(f"\nPreviewing #{post['number']} — {post['category']}")
     print(f"Post text preview: {post['text'][:100]}...")
 
+    user_id = None
     if not post["category"] or not POST_WITH_IMAGE:
         if not post["category"]:
             print("\nNo category. Skipping image.")
@@ -617,9 +628,7 @@ def post_next():
     if not ACCESS_TOKEN:
         print("ERROR: LINKEDIN_ACCESS_TOKEN not set!")
         exit(1)
-    try:
-        user_id
-    except NameError:
+    if user_id is None:
         user_id = get_user_id()
         print(f"[LinkedIn] Authenticated. User: {user_id}")
 
@@ -630,6 +639,8 @@ def post_next():
         current_index += 1
         save_progress(current_index)
         print(f"Progress updated: {current_index}/{total}")
+    elif status == 401:
+        exit_token_rejected()
     else:
         print(f"\nFAILED! Status {status}: {response}")
         exit(1)
