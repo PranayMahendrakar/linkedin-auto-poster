@@ -5,8 +5,9 @@ Queue helper for the LinkedIn writer (.github/workflows/writer.yml).
     python writer/post_queue.py append [--dry-run]  # after it
 
 prepare  Reads linkedin_posts.csv and post_progress.json, writes
-         writer/out/context.md for Claude, and sets the step outputs
-         `buffer` (posts waiting) and `skip` (true once MAX_BUFFER are waiting).
+         writer/out/context.md for Claude, copies the newest thumbnails to
+         writer/out/examples/, and sets the step outputs `buffer` (posts
+         waiting) and `skip` (true once MAX_BUFFER are waiting).
 
 append   Checks writer/out/post.json and the thumbnails, appends the post to
          linkedin_posts.csv with the next post_number, copies its thumbnail to
@@ -41,6 +42,7 @@ IMAGES = ROOT / "images"
 MAX_BUFFER = int(os.environ.get("MAX_BUFFER", "30"))
 RECENT = 30              # recent topics shown to Claude, and checked for repeats
 BACKFILL = 2             # queued posts per run that get a missing thumbnail
+EXAMPLES = 3             # newest thumbnails shown to Claude as the house style
 MAX_SVG_BYTES = 30_000
 PUSH_ATTEMPTS = 4
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -126,6 +128,14 @@ def prepare():
         lines.append("None.")
     (OUT / "context.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"Wrote writer/out/context.md ({len(need_thumb)} thumbnail(s) to backfill).")
+
+    # The newest thumbnails, as house-style examples for this run.
+    examples = sorted((p for p in IMAGES.glob("*.svg") if p.stem.isdigit()),
+                      key=lambda p: int(p.stem))[-EXAMPLES:]
+    (OUT / "examples").mkdir()
+    for path in examples:
+        shutil.copyfile(path, OUT / "examples" / path.name)
+    print(f"Copied {len(examples)} example thumbnail(s) to writer/out/examples/.")
 
 
 # ============ CHECKS ============

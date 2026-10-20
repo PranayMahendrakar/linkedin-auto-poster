@@ -13,9 +13,9 @@ on:
   schedule:
     # GitHub often starts scheduled runs late, so the slot is picked from the
     # clock when the run starts, not from which line fired.
-    - cron: '17 0 * * *'    # 05:47 IST  models, research, open source
-    - cron: '17 8 * * *'    # 13:47 IST  market and industry
-    - cron: '17 16 * * *'   # 21:47 IST  policy, safety, practice
+    - cron: '17 0 * * *'    # 05:47 IST  LLMs and models
+    - cron: '17 8 * * *'    # 13:47 IST  AI jobs market
+    - cron: '17 16 * * *'   # 21:47 IST  AI/ML industry
   workflow_dispatch:
     inputs:
       dry_run:
@@ -65,11 +65,11 @@ jobs:
         run: |
           hour=$(date -u +%-H)
           if [ "$hour" -lt 8 ]; then
-            slot="models, research and open-source releases"
+            slot="LLMs and models: new releases, benchmarks, open weights, and the research engineers are arguing about"
           elif [ "$hour" -lt 16 ]; then
-            slot="the AI market and industry: funding, chips, pricing, enterprise adoption"
+            slot="the AI jobs market: hiring and layoffs, roles and skills in demand, how AI is changing software, data and ML careers"
           else
-            slot="AI policy, safety, and hands-on practice (on-device AI, RAG, evals)"
+            slot="the AI and ML industry: funding, chips, pricing, big-tech moves, enterprise adoption, regulation"
           fi
           echo "Slot: $slot"
           SLOT="$slot" python writer/post_queue.py prepare
