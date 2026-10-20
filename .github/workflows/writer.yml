@@ -1,0 +1,146 @@
+name: LinkedIn Writer
+
+# Writes one LinkedIn post plus a thumbnail per run, three runs a day, and adds
+# it to linkedin_posts.csv. The site's daily writer adds one more, so the queue
+# gains about two posts a day while the poster uses two. Writing stops while
+# MAX_BUFFER posts are waiting, so news posts never sit for weeks.
+#
+# Secret required (Settings -> Secrets and variables -> Actions):
+#   CLAUDE_CODE_OAUTH_TOKEN  from `claude setup-token` - uses the Claude
+#                            subscription, so there is no per-token API bill
+
+on:
+  schedule:
+    # GitHub often starts scheduled runs late, so the slot is picked from the
+    # clock when the run starts, not from which line fired.
+    - cron: '17 0 * * *'    # 05:47 IST  models, research, open source
+    - cron: '17 8 * * *'    # 13:47 IST  market and industry
+    - cron: '17 16 * * *'   # 21:47 IST  policy, safety, practice
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Write the post but do not add it to the queue'
+        type: boolean
+        default: false
+
+concurrency:
+  group: linkedin-writer
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  MAX_BUFFER: 30   # about 15 days of posts at two a day
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out the queue
+        uses: actions/checkout@v4
+        with:
+          # Claude reads web pages and runs rsvg-convert in a later step, so
+          # keep the push token out of .git/config. The append step gets it
+          # through GIT_CONFIG_* instead.
+          persist-credentials: false
+
+      - name: Fail early if the Claude token is missing
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::CLAUDE_CODE_OAUTH_TOKEN is not set. Run 'claude setup-token' and add the result under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Read the queue and pick the slot
+        id: queue
+        run: |
+          hour=$(date -u +%-H)
+          if [ "$hour" -lt 8 ]; then
+            slot="models, research and open-source releases"
+          elif [ "$hour" -lt 16 ]; then
+            slot="the AI market and industry: funding, chips, pricing, enterprise adoption"
+          else
+            slot="AI policy, safety, and hands-on practice (on-device AI, RAG, evals)"
+          fi
+          echo "Slot: $slot"
+          SLOT="$slot" python writer/post_queue.py prepare
+
+      - name: Install the SVG renderer and fonts
+        if: steps.queue.outputs.skip != 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin
+          sudo apt-get install -y -qq fonts-inter || echo "::warning::fonts-inter unavailable; thumbnails fall back to DejaVu Sans"
+
+      - uses: actions/setup-node@v4
+        if: steps.queue.outputs.skip != 'true'
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code
+        if: steps.queue.outputs.skip != 'true'
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Write the post and thumbnail
+        if: steps.queue.outputs.skip != 'true'
+        working-directory: writer
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set -o pipefail
+          rc=0
+          # One line on purpose: a wrapped string would carry this file's
+          # indentation into the prompt.
+          claude -p "Follow the instructions in LINKEDIN_RUN.md exactly. You are running unattended on Ubuntu. Read out/context.md first, then write out/post.json and out/thumbnail.svg as the brief describes. Never send a push notification." \
+            --permission-mode acceptEdits \
+            --allowedTools "Read,Write,Edit,WebSearch,WebFetch,Bash(rsvg-convert:*)" \
+            2>&1 | tee out/claude-output.txt || rc=$?
+          # Judged by the file, not the exit code: a run can finish its work
+          # and still exit non-zero.
+          if [ ! -f out/post.json ]; then
+            echo "::error::out/post.json was never written (claude exit $rc)"
+            exit 1
+          fi
+          [ "$rc" = 0 ] || echo "::warning::claude exited $rc but wrote out/post.json"
+
+      - name: Add it to the queue
+        if: steps.queue.outputs.skip != 'true'
+        env:
+          PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          # The token lives in this step's environment only; every git child
+          # process picks it up without it reaching disk or argv.
+          b64=$(printf 'x-access-token:%s' "$PUSH_TOKEN" | base64 -w0)
+          echo "::add-mask::$b64"
+          export GIT_CONFIG_COUNT=3
+          export GIT_CONFIG_KEY_0='http.https://github.com/.extraheader'
+          export GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $b64"
+          export GIT_CONFIG_KEY_1='user.name'
+          export GIT_CONFIG_VALUE_1='github-actions[bot]'
+          export GIT_CONFIG_KEY_2='user.email'
+          export GIT_CONFIG_VALUE_2='github-actions[bot]@users.noreply.github.com'
+
+          if [ "$DRY_RUN" = "true" ]; then
+            python writer/post_queue.py append --dry-run
+          else
+            python writer/post_queue.py append
+          fi
+
+      - name: Keep the output
+        if: always() && steps.queue.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: writer-${{ github.run_id }}
+          path: writer/out/
+          retention-days: 7
+          if-no-files-found: warn

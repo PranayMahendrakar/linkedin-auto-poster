@@ -1,98 +1,75 @@
 # LinkedIn Auto-Poster
 
-Automated LinkedIn posting powered by GitHub Actions. Posts twice daily at **9 AM** and **6 PM IST**, with manual trigger support.
+Automated LinkedIn posting powered by GitHub Actions. Posts twice daily at **9 AM** and **6 PM IST**, with manual trigger support. New posts, each with its own thumbnail, are written by Claude three times a day so the queue keeps growing.
 
 ## How It Works
 
-1. Your posts are stored in `linkedin_posts.csv`
-2. `post_progress.json` tracks which post is next
-3. GitHub Actions runs the script on schedule (or manually)
-4. The script posts the next unposted item and commits the updated progress
-5. Repeats automatically — hands-free!
+1. Posts wait in `linkedin_posts.csv`; `post_progress.json` tracks which one is next
+2. **Writers** add posts to the queue:
+   - **LinkedIn Writer** (`writer.yml`, this repo) runs Claude Code three times a day. Each run researches current AI news for its slot (models and research, the market and industry, policy and practice), writes one post in Pranay's voice, and designs a thumbnail SVG for it
+   - **Daily writer** (in the `pranay-mahendrakar.com` repo) adds one more post a day, alongside the blog post it publishes
+3. The **poster** (`post.yml`) publishes the next post on schedule. If `images/<post_number>.svg` exists, it is converted to PNG and attached
+4. Writing pauses while 30 posts are waiting (`MAX_BUFFER` in `writer.yml`), so news posts never sit for weeks. If the queue ever runs dry, the poster skips the run instead of re-posting old posts
 
 ## Project Structure
 
 ```
 linkedin-auto-poster/
-├── .github/workflows/post.yml   # GitHub Actions workflow (cron + manual)
-├── post_next.py                  # Main script — posts next item & exits
-├── linkedin_posts.csv            # Your 100 posts (CSV format)
-├── post_progress.json            # Tracks current position (auto-updated)
-├── requirements.txt              # Python dependencies
-└── README.md
+├── .github/workflows/
+│   ├── post.yml                 # Poster: 9 AM + 6 PM IST, or manual
+│   └── writer.yml               # Writer: 3 runs a day, or manual (with dry run)
+├── writer/
+│   ├── LINKEDIN_RUN.md          # Brief Claude follows: voice, rules, thumbnail spec
+│   └── post_queue.py            # Builds Claude's context, checks its output, appends + pushes
+├── images/                      # Thumbnails, one SVG per post number
+├── post_next.py                 # Posts the next item & exits
+├── renew_linkedin_token.py      # Gets a new LinkedIn token and saves it to GitHub
+├── linkedin_posts.csv           # The queue
+├── post_progress.json           # Current position (auto-updated)
+└── requirements.txt
 ```
 
-## Setup Guide
+## Setup
 
-### Step 1: Get LinkedIn Access Token
+### Secrets (Settings → Secrets and variables → Actions)
 
-1. Go to [LinkedIn Developer Portal](https://www.linkedin.com/developers/)
-2. Create an app and request `w_member_social` and `openid` scopes
-3. Generate an access token via OAuth 2.0
-4. Copy the access token
+| Secret | Used by | How to get it |
+|--------|---------|---------------|
+| `LINKEDIN_ACCESS_TOKEN` | poster | `python renew_linkedin_token.py` (below) |
+| `CLAUDE_CODE_OAUTH_TOKEN` | writer | run `claude setup-token`, then `gh secret set CLAUDE_CODE_OAUTH_TOKEN -R PranayMahendrakar/linkedin-auto-poster` and paste it |
 
-### Step 2: Add Secret to GitHub
+### LinkedIn token (renew every 60 days)
 
-1. Go to your repo **Settings** → **Secrets and variables** → **Actions**
-2. Click **New repository secret**
-3. Name: `LINKEDIN_ACCESS_TOKEN`
-4. Value: paste your LinkedIn access token
-5. Click **Add secret**
+LinkedIn access tokens expire after 60 days. When one does, the poster fails with
+"LinkedIn rejected LINKEDIN_ACCESS_TOKEN (401 Unauthorized)". To renew, run this on your PC:
 
-### Step 3: Add Your Posts to CSV
-
-Edit `linkedin_posts.csv` with your posts. Format:
-
-```csv
-post_number,category,post_text,hashtags
-1,AI Basics,"Your post text here",#AI #ML #Tech
-2,Career Tips,"Another post text",#Career #DataScience
+```bash
+python renew_linkedin_token.py
 ```
 
-### Step 4: Done!
+It asks for your LinkedIn app's client secret, opens the LinkedIn sign-in in your browser, and saves the new token to the GitHub secret. Nothing to copy or paste. It needs Python 3.8+, the GitHub CLI signed in (`gh auth login`), and `http://localhost:8080/callback` listed under the LinkedIn app's **Auth → Authorized redirect URLs**. Add `--no-save` to get and test a token without updating GitHub.
 
-The workflow will automatically run at:
-- **9:00 AM IST** (3:30 AM UTC)
-- **6:00 PM IST** (12:30 PM UTC)
+## Manual Runs
 
-## Manual Posting
+**Post now:** Actions → **LinkedIn Auto-Poster** → Run workflow (set how many posts).
 
-To post immediately:
+**Write a post now:** Actions → **LinkedIn Writer** → Run workflow. Tick **dry run** to see what it would write (the post, thumbnail and Claude's transcript are in the run's artifact) without adding it to the queue.
 
-1. Go to **Actions** tab in your repo
-2. Click **LinkedIn Auto-Poster** workflow
-3. Click **Run workflow**
-4. Set number of posts (default: 1)
-5. Click **Run workflow** button
+## Thumbnails
 
-## Changing Schedule
+Claude designs each thumbnail as a 1080×1080 SVG following the spec in `writer/LINKEDIN_RUN.md`: navy background, one accent colour, a short bold headline, a simple graphic, and the name in the footer. It renders each one and checks it before saving. `post_queue.py` then rejects anything unsafe or broken (scripts, external links, files over 30 KB, files that don't render). Thumbnails are stored as SVG to keep the repo small and converted to PNG with `rsvg-convert` at posting time, since LinkedIn doesn't accept SVG.
 
-Edit `.github/workflows/post.yml` and update the cron expressions:
+To change the look, edit the **Thumbnail spec** section of `writer/LINKEDIN_RUN.md`. To replace a thumbnail by hand, overwrite `images/<post_number>.svg`.
 
-```yaml
-schedule:
-  - cron: '30 3 * * *'   # 9:00 AM IST
-  - cron: '30 12 * * *'  # 6:00 PM IST
-```
+## Changing Schedules
 
-Use [crontab.guru](https://crontab.guru/) to generate cron expressions.
-
-## Resetting Progress
-
-To start over from post #1, edit `post_progress.json`:
-
-```json
-{
-  "next_index": 0,
-  "last_posted_at": null
-}
-```
+Edit the cron lines in `.github/workflows/post.yml` (posting) or `writer.yml` (writing). Use [crontab.guru](https://crontab.guru/) to generate cron expressions; times are UTC (IST − 5:30).
 
 ## CSV Format
 
 | Column | Required | Description |
 |--------|----------|-------------|
-| post_number | Yes | Post number (1, 2, 3...) |
-| category | Yes | Category name |
+| post_number | Yes | Post number (1, 2, 3...); also names the thumbnail file |
+| category | Yes | Topic label |
 | post_text | Yes | The post content |
 | hashtags | No | Hashtags (appended to post) |

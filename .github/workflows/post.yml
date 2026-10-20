@@ -36,6 +36,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Thumbnails are stored as SVG; LinkedIn only takes PNG/JPG/GIF.
+      - name: Install the SVG renderer and fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin
+          sudo apt-get install -y -qq fonts-inter || echo "::warning::fonts-inter unavailable; thumbnails fall back to DejaVu Sans"
+
       - name: Post to LinkedIn
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
@@ -56,4 +63,15 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add post_progress.json
           git diff --staged --quiet || git commit -m "Update post progress [skip ci]"
-          git push
+          # The writers push new posts to this repo too. If one landed while
+          # this run was posting, a plain push is rejected, progress is lost,
+          # and the next run posts the same thing again.
+          for attempt in 1 2 3 4; do
+            if git pull --rebase --quiet && git push --quiet; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push post_progress.json. The next run will repeat this post unless it is pushed."
+          exit 1

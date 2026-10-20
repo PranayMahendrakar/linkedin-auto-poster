@@ -5,6 +5,10 @@ Scene chain: Pollinations text → Qwen runner → content-aware fallback.
 Style rotation: 8 distinct visual styles, selected deterministically by post number.
 Each post always picks the same style on retry, but styles rotate across posts.
 
+Thumbnails: if images/<post_number>.svg exists (written by the LinkedIn writer
+workflow), it is rendered to PNG and attached instead, whatever POST_WITH_IMAGE
+says. Posts without one follow the toggles below.
+
 Set POST_TO_LINKEDIN = False for dry-run (image only, no posting).
 """
 
@@ -12,6 +16,7 @@ import os
 import csv
 import json
 import re
+import subprocess
 import time
 import random
 from datetime import datetime
@@ -35,6 +40,7 @@ ACCESS_TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
 CSV_FILE = "linkedin_posts.csv"
 PROGRESS_FILE = "post_progress.json"
 IMAGE_FILE = "output.png"
+THUMBNAIL_DIR = "images"   # images/<post_number>.svg, written by the LinkedIn writer
 
 POLLINATIONS_IMAGE = "https://image.pollinations.ai/prompt/"
 IMAGE_WIDTH = 1024
@@ -482,7 +488,46 @@ def post_to_linkedin(user_id, text, asset_urn=None):
     return response.status_code, response.json()
 
 
+def upload_image(image_path):
+    """Upload an image for a post. Returns (user_id, asset_urn); asset_urn is None on failure."""
+    if not ACCESS_TOKEN:
+        print("ERROR: LINKEDIN_ACCESS_TOKEN not set!")
+        exit(1)
+    user_id = None
+    try:
+        user_id = get_user_id()
+        print(f"\n[LinkedIn] Authenticated. User: {user_id}")
+        print("[LinkedIn] Registering upload...")
+        upload_url, asset_urn = register_image_upload(user_id)
+        print("[LinkedIn] Uploading image bytes...")
+        upload_image_bytes(upload_url, image_path)
+        print("[LinkedIn] Waiting 5s for asset processing...")
+        time.sleep(5)
+        print(f"[LinkedIn] Asset ready: {asset_urn}")
+        return user_id, asset_urn
+    except Exception as e:
+        print(f"WARNING: image upload failed, falling back to text-only: {e}")
+        return user_id, None
+
+
 # ============ IMAGE GENERATION ============
+def render_thumbnail(svg_path, out_path=IMAGE_FILE):
+    """Convert a writer's SVG thumbnail to PNG (LinkedIn doesn't accept SVG)."""
+    try:
+        result = subprocess.run(
+            ["rsvg-convert", "-w", "1080", "-h", "1080", "-f", "png", "-o", out_path, svg_path],
+            capture_output=True, text=True, timeout=60,
+        )
+    except (OSError, subprocess.TimeoutExpired) as e:
+        print(f"WARNING: could not run rsvg-convert: {e}")
+        return False
+    if result.returncode != 0 or not os.path.exists(out_path):
+        print(f"WARNING: rsvg-convert failed: {result.stderr.strip()[:200]}")
+        return False
+    print(f"Thumbnail rendered to {out_path} ({os.path.getsize(out_path)} bytes)")
+    return True
+
+
 def generate_image(prompt, seed, out_path=IMAGE_FILE):
     url = (
         f"{POLLINATIONS_IMAGE}{quote(prompt)}"
@@ -556,15 +601,28 @@ def post_next():
     print(f"Current progress: {current_index}/{total}")
 
     if current_index >= total:
-        print("All posts published! Looping back to start...")
-        current_index = 0
+        # Starting over would re-post old news. The writers refill the queue.
+        print("::warning::Queue empty: every post in the CSV has been published. Nothing to post this run.")
+        return
 
     post = posts[current_index]
     print(f"\nPreviewing #{post['number']} — {post['category']}")
     print(f"Post text preview: {post['text'][:100]}...")
 
     user_id = None
-    if not post["category"] or not POST_WITH_IMAGE:
+    asset_urn = None
+    thumbnail = os.path.join(THUMBNAIL_DIR, f"{post['number']}.svg")
+    if post["number"] and os.path.exists(thumbnail):
+        print(f"\n[Thumbnail] Using {thumbnail}")
+        image_ok = render_thumbnail(thumbnail, IMAGE_FILE)
+        if not POST_TO_LINKEDIN:
+            print(f"SAFE MODE: thumbnail {'rendered to ' + IMAGE_FILE if image_ok else 'failed to render'}. Not posting.")
+            return
+        if image_ok:
+            user_id, asset_urn = upload_image(IMAGE_FILE)
+        else:
+            print("Thumbnail render failed. Falling back to text-only post.")
+    elif not post["category"] or not POST_WITH_IMAGE:
         if not post["category"]:
             print("\nNo category. Skipping image.")
         else:
@@ -572,7 +630,6 @@ def post_next():
         if not POST_TO_LINKEDIN:
             print("SAFE MODE: exiting without posting.")
             return
-        asset_urn = None
     else:
         try:
             seed = int(post["number"]) if post["number"] else current_index
@@ -604,24 +661,8 @@ def post_next():
                 print("\n*** SAFE MODE: image generation failed. ***")
             return
 
-        asset_urn = None
         if image_ok:
-            try:
-                if not ACCESS_TOKEN:
-                    print("ERROR: LINKEDIN_ACCESS_TOKEN not set!")
-                    exit(1)
-                user_id = get_user_id()
-                print(f"\n[LinkedIn] Authenticated. User: {user_id}")
-                print("[LinkedIn] Registering upload...")
-                upload_url, asset_urn = register_image_upload(user_id)
-                print("[LinkedIn] Uploading image bytes...")
-                upload_image_bytes(upload_url, IMAGE_FILE)
-                print("[LinkedIn] Waiting 5s for asset processing...")
-                time.sleep(5)
-                print(f"[LinkedIn] Asset ready: {asset_urn}")
-            except Exception as e:
-                print(f"WARNING: image upload failed, falling back to text-only: {e}")
-                asset_urn = None
+            user_id, asset_urn = upload_image(IMAGE_FILE)
         else:
             print("Image gen failed. Falling back to text-only post.")
 
