@@ -7727,3 +7727,22 @@ Mixture-of-experts helps with speed and energy per token. It does not shrink the
 Models should run where the data is. But deployment is decided by gigabytes, not by the headline parameter count.
 
 What memory ceiling are you designing your on-device models around?",#AI #LLM #OnDeviceAI #MixtureOfExperts #EdgeAI
+460,AI Compute Debt Financing,"Anthropic doesn't own most of the chips it runs on. Investors do, and Anthropic leases them back.
+
+In October, reports said Broadcom is assembling about $60 billion of debt to pay for that hardware: roughly $42 billion senior, $18 billion junior, with Blackstone anchoring the junior piece.
+
+Read that again. Frontier compute is now project finance. Chips are collateral, and the model company is a tenant.
+
+I don't think that's a bubble signal on its own. It is a dependency signal.
+
+If the labs you build on run on leased, debt-funded capacity, then your API price, your rate limits and your roadmap are downstream of someone's coupon rate.
+
+In the defence and automotive deployments I've worked on, the question was never ""which model is smartest?"" It was ""what still works when the network, the vendor or the budget goes away?""
+
+That's why I keep pushing the same design rule: use the big hosted model where it earns its keep, but make sure the critical path has a smaller model that runs on hardware you control, offline.
+
+The teams that will sleep well in a funding squeeze are the ones who can swap or shrink a model without rewriting the product.
+
+Takeaway: treat compute supply as a vendor risk, the same way you treat a single cloud region.
+
+If your AI feature lost its hosted model tomorrow, what would still work?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
