@@ -1645,3 +1645,24 @@ India has hundreds of languages and dialects, and most of the useful text in the
 I would like to see the same for Indic languages, with the benchmarks published first.
 
 Takeaway: a language model is only as trustworthy as its evaluation set, so ask for the eval before you ask for the weights.",#AI #LLM #IndicAI #OpenSource #MultilingualAI
+2026-10-20,459,MoE Memory vs Active Parameters,Mixture-of-experts models compute like a 2B and store like a 24B. Ask about memory.,https://pranaymahendrakar.com/blog/mixture-of-experts-models-compute-like-a-2b-and-store-like-a-24b-ask-a,"Liquid AI released LFM2.5-24B-A2B on October 13. By the catalog and blog listings I could find, it is a 24B-parameter mixture-of-experts reasoning model that activates about 2B parameters per token, with a 128K context window and open weights under its own LFM Open License. The same listings put a Q4_K_M quantized build at roughly 14.5 GB.
+
+Those are the facts that two independent sources agree on. The benchmark claims, including a comparison against Qwen3.6-35B-A3B on agentic tasks, come from Liquid's own launch material. No third party had evaluated the checkpoint in what I found. Treat the scores as a vendor's claim until someone else reproduces them.
+
+Now the part I care about. Active parameters decide how fast each token is computed. Total parameters decide how much memory you need to hold the model. A model that computes like a 2B and stores like a 24B is a very good deal on a workstation. It is a different deal on a phone, a drone, or an embedded board.
+
+I have shipped offline systems where the hardware budget was fixed before the model was chosen. In those projects the first question was never ""how smart is it"". It was ""does it fit in memory next to everything else the device has to run"". Speed was the second question. Mixture-of-experts helps with the second and does nothing for the first.
+
+That is why a 14.5 GB file matters more to me than the 2B figure. It tells you which class of device can hold the thing at all. A laptop with enough RAM, yes. A typical phone, no. An air-gapped edge box with a proper accelerator, probably, if you leave headroom for the context cache.
+
+And the context cache is the other number people skip. A 128K window is a ceiling, not a free feature. On constrained hardware you will cap it far lower, and your real memory plan is weights plus cache plus the rest of your application.
+
+There is a real step forward here, though. Routing only a few experts per token means latency and energy per token behave like a small model. For an agent that makes many short calls in a loop, that is exactly what you want. Fewer joules per step is the difference between an agent you can leave running locally and one you only demo.
+
+The licence deserves a read as well. Open weights under a custom licence with conditions on commercial use is not the same as Apache 2.0. If you are building something for a defence or regulated client, your legal team needs to see the terms before your engineers fall in love with the benchmark chart.
+
+So here is how I would evaluate it. First, write down the memory ceiling of the device you actually ship to. Second, subtract the OS, your application, and a realistic context cache. Third, see whether a quantized 24B fits in what is left. Only then look at the accuracy numbers, and run them on your own data, in your own language, on your own hardware.
+
+My bias is well known: models should run where the data is, offline and under your control. Mixture-of-experts moves us closer to that. But the spec sheet number that gets quoted is the compute number, and the number that decides whether you can deploy is the memory one.
+
+Takeaway: when someone says a model is small because it has few active parameters, ask how many gigabytes you have to load.",#AI #LLM #OnDeviceAI #MixtureOfExperts #EdgeAI

@@ -7701,3 +7701,29 @@ Test the smallest model first.
 India deserves the same: open weights, open checkpoints, and the benchmarks published first.
 
 Which Indic language do you think is least served by today's models?",#AI #LLM #IndicAI #OpenSource #MultilingualAI
+459,MoE Memory vs Active Parameters,"""2B active parameters"" is the most misleading number in on-device AI right now.
+
+Liquid AI released LFM2.5-24B-A2B on October 13. It is a 24B mixture-of-experts model that activates about 2B parameters per token.
+
+Listings put the quantized build at roughly 14.5 GB. The benchmark claims are Liquid's own. I found no independent evaluation yet.
+
+Here is the catch.
+Active parameters decide how fast a token is computed.
+Total parameters decide how much memory you need.
+
+It computes like a 2B model and stores like a 24B one.
+
+On a workstation, great deal. On a phone or an embedded board, a very different one.
+
+In offline systems I have shipped, the first question was never ""how smart is it"". It was ""does it fit next to everything else the device runs"".
+
+So before you read the benchmark chart:
+1. Write down the memory ceiling of your target device.
+2. Subtract the OS, your app and a realistic context cache.
+3. Check whether the quantized weights fit in what is left.
+
+Mixture-of-experts helps with speed and energy per token. It does not shrink the file.
+
+Models should run where the data is. But deployment is decided by gigabytes, not by the headline parameter count.
+
+What memory ceiling are you designing your on-device models around?",#AI #LLM #OnDeviceAI #MixtureOfExperts #EdgeAI
