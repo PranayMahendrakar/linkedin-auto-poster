@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#10B981" stop-opacity="0.22"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="800" cy="300" r="260" fill="url(#glow)"/>
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <rect x="80" y="92" width="290" height="56" rx="28" fill="none" stroke="#10B981" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#10B981">PRIVATE AI</text>
+    <text x="80" y="330" font-size="110" font-weight="800" fill="#F5F7FA">Private means</text>
+    <text x="80" y="450" font-size="110" font-weight="800" fill="#10B981">where it runs.</text>
+    <text x="80" y="580" font-size="38" font-weight="500" fill="#94A3B8">Weights on device, or in a partner cloud?</text>
+    <text x="80" y="630" font-size="38" font-weight="500" fill="#94A3B8">Ask what leaves on the fallback path.</text>
+    <text x="80" y="685" font-size="40" font-weight="700" fill="#F5F7FA">Pull the network cable.</text>
+    <g fill="none" stroke="#10B981" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="80" y="760" width="110" height="80" rx="10"/>
+      <path d="M240 800 H400 M380 780 L402 800 L380 820"/>
+      <path d="M450 830 H540 a30 30 0 0 0 0 -60 a40 40 0 0 0 -76 -8 a34 34 0 0 0 -14 68z"/>
+    </g>
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#10B981"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+</svg>

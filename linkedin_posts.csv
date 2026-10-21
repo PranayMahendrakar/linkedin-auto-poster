@@ -7795,3 +7795,23 @@ Before you buy or build an assistant, ask:
 Models should run where the data is.
 
 When a vendor says ""private"", do you ask where the weights run?",#AI #PrivateAI #OnDeviceAI #LLM #Privacy
+463,AI Layoffs Budget Shift,"AI is now the most-cited reason for US job cuts. That does not mean AI is doing those jobs.
+
+Challenger, Gray & Christmas counted 139,156 tech job cuts in the first half of 2026, up 83% on the same period last year.
+
+AI was the top stated reason for four straight months through June, in about 23% of all announced cuts.
+
+The part worth reading is the caveat from Challenger himself: whether or not a role is being replaced by AI, the money for that role is.
+
+That is a different story. It is a spending decision, not a capability proof.
+
+I have shipped AI systems in automotive, defence and education, and the pattern is consistent. The model never replaced the team. It replaced a manual step, and the people who understood the data, the failure modes and the deployment became more valuable.
+
+If you are an engineer, my read:
+- Own the pipeline around the model, not just the prompt.
+- Learn evaluation, monitoring and deployment. That is where the budget is landing.
+- Treat ""AI-driven"" layoff headlines with suspicion. Some of it is cost cutting with a better narrative.
+
+The headcount line moved. The need for people who can make AI work in production did not.
+
+Are you seeing budget move to AI at your company, or actual work?",#AI #FutureOfWork #MachineLearning #AIJobs #Layoffs
