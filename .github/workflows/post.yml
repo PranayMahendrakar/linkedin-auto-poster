@@ -1,12 +1,17 @@
 name: LinkedIn Auto-Poster
 
 on:
-  # Scheduled: 9 AM and 6 PM IST (3:30 AM and 12:30 PM UTC)
+  # Posts at 9:00 AM and 6:00 PM IST.
+  #
+  # GitHub starts scheduled runs late (often by hours) and sometimes skips
+  # them, so a cron line per post can't be trusted. Instead this wakes up
+  # every 20 minutes and post_schedule.py decides, by the clock in India,
+  # whether a post is due. A late wake-up still posts; a slot never gets two.
+  # (GitHub cron is always UTC; the IST times live in post_schedule.py.)
   schedule:
-    - cron: '30 3 * * *'   # 9:00 AM IST
-    - cron: '30 12 * * *'  # 6:00 PM IST
+    - cron: '7,27,47 * * * *'
 
-  # Manual trigger from GitHub Actions tab
+  # Manual trigger from the Actions tab: posts right away, whatever the time.
   workflow_dispatch:
     inputs:
       post_count:
@@ -14,6 +19,12 @@ on:
         required: false
         default: '1'
         type: string
+
+# One run at a time, so two wake-ups can't both post the same slot. A queued
+# run checks out after the first one has pushed its progress.
+concurrency:
+  group: linkedin-poster
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -33,17 +44,30 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Is a post due?
+        id: due
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual run: posting now."
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          else
+            python post_schedule.py
+          fi
+
       - name: Install dependencies
+        if: steps.due.outputs.due == 'true'
         run: pip install -r requirements.txt
 
       # Thumbnails are stored as SVG; LinkedIn only takes PNG/JPG/GIF.
       - name: Install the SVG renderer and fonts
+        if: steps.due.outputs.due == 'true'
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq librsvg2-bin
           sudo apt-get install -y -qq fonts-inter || echo "::warning::fonts-inter unavailable; thumbnails fall back to DejaVu Sans"
 
       - name: Post to LinkedIn
+        if: steps.due.outputs.due == 'true'
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
         run: |
@@ -58,6 +82,7 @@ jobs:
           done
 
       - name: Commit progress
+        if: steps.due.outputs.due == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"

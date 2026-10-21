@@ -19,7 +19,7 @@ import re
 import subprocess
 import time
 import random
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 
 import requests
@@ -41,6 +41,7 @@ CSV_FILE = "linkedin_posts.csv"
 PROGRESS_FILE = "post_progress.json"
 IMAGE_FILE = "output.png"
 THUMBNAIL_DIR = "images"   # images/<post_number>.svg, written by the LinkedIn writer
+IST = timezone(timedelta(hours=5, minutes=30), "IST")
 
 POLLINATIONS_IMAGE = "https://image.pollinations.ai/prompt/"
 IMAGE_WIDTH = 1024
@@ -577,11 +578,11 @@ def load_progress():
 
 
 def save_progress(index):
+    # IST with its offset, so post_schedule.py (and anyone reading the file)
+    # knows which slot this post filled.
+    posted_at = datetime.now(IST).isoformat(timespec="seconds")
     with open(PROGRESS_FILE, "w") as f:
-        json.dump(
-            {"next_index": index, "last_posted_at": datetime.now().isoformat()},
-            f, indent=2,
-        )
+        json.dump({"next_index": index, "last_posted_at": posted_at}, f, indent=2)
 
 
 # ============ MAIN ============

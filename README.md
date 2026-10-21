@@ -8,7 +8,7 @@ Automated LinkedIn posting powered by GitHub Actions. Posts twice daily at **9 A
 2. **Writers** add posts to the queue:
    - **LinkedIn Writer** (`writer.yml`, this repo) runs Claude Code three times a day. Each run researches current AI news for its slot (models and research, the market and industry, policy and practice), writes one post in Pranay's voice, and designs a thumbnail SVG for it
    - **Daily writer** (in the `pranay-mahendrakar.com` repo) adds one more post a day, alongside the blog post it publishes
-3. The **poster** (`post.yml`) publishes the next post on schedule. If `images/<post_number>.svg` exists, it is converted to PNG and attached
+3. The **poster** (`post.yml`) publishes the next post at 9 AM and 6 PM IST (see [Schedule](#schedule-ist)). If `images/<post_number>.svg` exists, it is converted to PNG and attached
 4. Writing pauses while 30 posts are waiting (`MAX_BUFFER` in `writer.yml`), so news posts never sit for weeks. If the queue ever runs dry, the poster skips the run instead of re-posting old posts
 
 ## Project Structure
@@ -16,12 +16,13 @@ Automated LinkedIn posting powered by GitHub Actions. Posts twice daily at **9 A
 ```
 linkedin-auto-poster/
 ├── .github/workflows/
-│   ├── post.yml                 # Poster: 9 AM + 6 PM IST, or manual
+│   ├── post.yml                 # Poster: checks every 20 min, posts 9 AM + 6 PM IST, or manual
 │   └── writer.yml               # Writer: 3 runs a day, or manual (with dry run)
 ├── writer/
 │   ├── LINKEDIN_RUN.md          # Brief Claude follows: voice, rules, thumbnail spec
 │   └── post_queue.py            # Builds Claude's context, checks its output, appends + pushes
 ├── images/                      # Thumbnails, one SVG per post number
+├── post_schedule.py             # Says whether a 9 AM / 6 PM IST post is due
 ├── post_next.py                 # Posts the next item & exits
 ├── renew_linkedin_token.py      # Gets a new LinkedIn token and saves it to GitHub
 ├── linkedin_posts.csv           # The queue
@@ -61,9 +62,18 @@ Claude designs each thumbnail as a 1080×1080 SVG following the spec in `writer/
 
 To change the look, edit the **Thumbnail spec** section of `writer/LINKEDIN_RUN.md`. To replace a thumbnail by hand, overwrite `images/<post_number>.svg`.
 
-## Changing Schedules
+## Schedule (IST)
 
-Edit the cron lines in `.github/workflows/post.yml` (posting) or `writer.yml` (writing). Use [crontab.guru](https://crontab.guru/) to generate cron expressions; times are UTC (IST − 5:30).
+GitHub starts scheduled runs late, often by hours, and sometimes skips them. So the poster doesn't rely on exact cron times: it wakes up every 20 minutes, and `post_schedule.py` checks the clock in India.
+
+| Slot | Posts any time from | until |
+|------|---------------------|-------|
+| Morning | 9:00 AM IST | 6:00 PM IST |
+| Evening | 6:00 PM IST | midnight IST |
+
+A slot is posted once, on the first wake-up after it opens, so a slow or skipped run is caught up by the next one. Nothing is posted between midnight and 9 AM: a missed evening post waits for the morning instead of going out at 1 AM. `post_progress.json` records each post's time in IST.
+
+To change the times, edit `SLOTS` in `post_schedule.py`. The writer's cron lines in `writer.yml` are in UTC (IST − 5:30); its timing matters less because posts wait in the queue.
 
 ## CSV Format
 
