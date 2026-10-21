@@ -7815,3 +7815,20 @@ If you are an engineer, my read:
 The headcount line moved. The need for people who can make AI work in production did not.
 
 Are you seeing budget move to AI at your company, or actual work?",#AI #FutureOfWork #MachineLearning #AIJobs #Layoffs
+464,GPU Rental Futures,"GPU hours are about to get a futures market. Your cloud bill is not the thing being priced.
+
+CME announced plans in August to list cash-settled futures on H100 and B200 rental price indexes, and the CFTC has been collecting public comment on AI compute derivatives. Each contract covers a month of GPU rental exposure.
+
+The pitch is hedging. Lock in a price, stop worrying about the spike.
+
+Here's the catch. The contract settles against an index. Your invoice settles against your cloud provider, your region, your commitment tier and whatever capacity you could actually get. Commentators already flag that basis gap.
+
+In the AI systems I've shipped, the compute bill was rarely the real risk. The real risk was a design that could only run on rented GPUs at all. A defence deployment I worked on had to run offline, so renting was never on the table, and the architecture was better for it.
+
+A hedge is a patch on a dependency. The cheaper fix is to need less of the thing.
+
+Quantise. Distil. Route easy requests to small models. Run what you can on hardware you control.
+
+Futures can smooth a price. They can't smooth an architecture that burns H100 hours on tasks a small model handles fine.
+
+If your GPU spend doubled next quarter, would your product survive, or only your hedge?",#AI #LLM #GPU #MLOps #OnDeviceAI
