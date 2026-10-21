@@ -7767,3 +7767,31 @@ Three things I'd do:
 That last one is why I keep arguing for models that run where your data is. Weights on your own disk don't get rerouted.
 
 When did a vendor last change a model under you, and how did you find out?",#AI #LLM #DeepSeek #MLOps #OpenWeights
+462,Private AI Deployment,"Hot take: ""private AI"" is a deployment fact, not a marketing sentence.
+
+Apple and Google announced a deal in January: the next Apple Foundation Models will be based on Gemini.
+
+Apple says Apple Intelligence still runs on-device and on Private Cloud Compute.
+
+But reporting says neither company has said definitively where the Gemini-based Siri runs. Bloomberg reported talks about hosting it on Google TPUs.
+
+I am not accusing anyone. I am pointing at a gap I see in most AI projects.
+
+""Private"" can mean three things:
+1. Weights on the device, nothing leaves.
+2. The request leaves, but to infrastructure the vendor controls.
+3. The request goes to a partner's cloud under contract.
+
+Only the first one passes the ""pull the network cable"" test.
+
+In defence deployments I have worked on, this was never philosophical. If the data cannot leave the building, the model comes to the data.
+
+Before you buy or build an assistant, ask:
+- Where does inference run for the hard request?
+- What leaves the device on the fallback path?
+- Who can read it, and for how long?
+- Does it work with the network off?
+
+Models should run where the data is.
+
+When a vendor says ""private"", do you ask where the weights run?",#AI #PrivateAI #OnDeviceAI #LLM #Privacy

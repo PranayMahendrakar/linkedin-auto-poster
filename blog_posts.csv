@@ -1666,3 +1666,26 @@ So here is how I would evaluate it. First, write down the memory ceiling of the 
 My bias is well known: models should run where the data is, offline and under your control. Mixture-of-experts moves us closer to that. But the spec sheet number that gets quoted is the compute number, and the number that decides whether you can deploy is the memory one.
 
 Takeaway: when someone says a model is small because it has few active parameters, ask how many gigabytes you have to load.",#AI #LLM #OnDeviceAI #MixtureOfExperts #EdgeAI
+2026-10-21,462,Private AI Deployment,"Hot take: ""private AI"" is a deployment fact, not a marketing sentence",https://pranaymahendrakar.com/blog/hot-take-private-ai-is-a-deployment-fact-not-a-marketing-sentence,"Apple and Google announced a multi-year deal in January under which the next generation of Apple Foundation Models will be based on Google's Gemini models and cloud technology. Apple's line is that Apple Intelligence keeps running on the device and on Private Cloud Compute, and that only the minimum data needed leaves the phone.
+
+Here is what is still not public. Bloomberg reported the two companies were discussing hosting the chatbot on Google servers running TPUs. Reporting that followed the earnings call noted that Apple is not releasing details of the Google arrangement, and that neither company has said definitively where the Gemini-based Siri runs.
+
+I am not here to accuse anyone. I am here to point at the gap, because I see the same gap in almost every AI project I review.
+
+""Private"" gets used to describe three very different things. One: the model weights sit on the device and no request leaves it. Two: the request leaves, but goes to infrastructure the vendor controls and says it cannot read. Three: the request goes to a partner's cloud under a contract. All three get the same word in a slide deck. Only the first is something you can verify by pulling the network cable.
+
+In the defence and government-adjacent deployments I have worked on, that distinction was never philosophical. It decided the architecture. If the data cannot leave the building, the model has to come to the data. You then spend your time on quantisation, memory budgets, latency on modest hardware and offline updates, instead of arguing about trust.
+
+The same was true for an offline multilingual avatar I shipped for an automotive client. The reason it worked in the real environment was boring: it did not need a connection to do its job.
+
+Cloud-hosted models are not bad. Frontier capability is real, and for plenty of workloads a well-governed cloud call is the right trade. Apple's Private Cloud Compute is a serious attempt at making that trade defensible. My complaint is narrower: users and buyers should be told which of the three they are getting, in plain words, before they hand over a calendar, a message history or a patient record.
+
+If you are building or buying an assistant this quarter, ask four questions and expect specific answers.
+
+Where does inference run for the common request, and where for the hard one? What exactly leaves the device on the fallback path? Who can read it, and what is the retention? Can I get the same behaviour with the network disabled?
+
+If the answer to the last one is ""no"", that is fine, but then it is a cloud product with a good privacy policy, and it should be evaluated like one.
+
+I keep my bias in the open: models should run where the data is. On-device, offline, under your control. Not because the cloud is evil, but because the only guarantee you can audit yourself is the one that never leaves your hardware.
+
+Takeaway: when a vendor says ""private"", ask where the weights run. The answer is the product.",#AI #PrivateAI #OnDeviceAI #LLM #Privacy
