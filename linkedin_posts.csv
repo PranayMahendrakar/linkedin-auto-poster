@@ -7746,3 +7746,24 @@ The teams that will sleep well in a funding squeeze are the ones who can swap or
 Takeaway: treat compute supply as a vendor risk, the same way you treat a single cloud region.
 
 If your AI feature lost its hosted model tomorrow, what would still work?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
+461,DeepSeek Flagship Rerouted,"DeepSeek retired its flagship by pointing it at a cheaper model.
+
+In September, DeepSeek released V4.1-Flash: 552B parameters, mixture-of-experts, about 8B active per input token. From 14 September, every request to V4-Pro was routed to Flash and billed at Flash rates, until a V4.1-Pro exists.
+
+On DeepSeek's own benchmarks, Flash matches or beats the old flagship on coding and agent tasks. It trails the top US closed models on harder reasoning. None of that is independently verified yet.
+
+The benchmark argument is the boring part. The interesting part is that the model name in your config now points at something else.
+
+I've seen this go wrong in a defence deployment I worked on. The model was fine. The behaviour around it shifted: output length, refusal style, tool-call formatting. Nobody noticed until a downstream parser started failing.
+
+If your product calls a hosted model by alias, you don't fully own its behaviour. The vendor does.
+
+Three things I'd do:
+
+1. Pin exact model versions where the API allows it.
+2. Keep a frozen eval set from your own traffic and rerun it on every change.
+3. Keep an open-weights fallback you can run yourself.
+
+That last one is why I keep arguing for models that run where your data is. Weights on your own disk don't get rerouted.
+
+When did a vendor last change a model under you, and how did you find out?",#AI #LLM #DeepSeek #MLOps #OpenWeights
