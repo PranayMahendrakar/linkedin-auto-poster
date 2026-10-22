@@ -7832,3 +7832,18 @@ Quantise. Distil. Route easy requests to small models. Run what you can on hardw
 Futures can smooth a price. They can't smooth an architecture that burns H100 hours on tasks a small model handles fine.
 
 If your GPU spend doubled next quarter, would your product survive, or only your hedge?",#AI #LLM #GPU #MLOps #OnDeviceAI
+465,Modeling Drift in LLMs,"Your LLM can reason flawlessly about a problem you never asked it.
+
+A mid-October arXiv paper on physics reasoning gives this failure a name: modeling drift. The model quietly changes a given quantity, invents a law, or adds an assumption nobody stated. Then it solves the wrong problem with perfect logic.
+
+The authors' fix is a training one. They reward the model for stating its picture of the problem separately from solving it, and the reported gains reach 12.2 points on the PhysReason benchmark.
+
+The part I care about is the diagnosis. A wrong answer with clean algebra is not a maths failure. It is a framing failure, and a final-answer check will never catch it.
+
+I've seen the same shape in production. In a defence deployment I worked on, the dangerous outputs were never the sloppy ones. They were the fluent ones built on a premise the model had silently rewritten.
+
+So my rule for any system that reasons over real inputs: make the model restate the inputs and assumptions first, then check that restatement against the source before anything downstream runs. It is cheap, and it fails loudly instead of quietly.
+
+A correct-looking answer can still come from the wrong problem.
+
+Do you check what your model assumed, or only what it answered?",#AI #LLM #Reasoning #MachineLearning #Hallucination
