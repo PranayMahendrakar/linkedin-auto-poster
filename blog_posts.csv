@@ -1689,3 +1689,32 @@ If the answer to the last one is ""no"", that is fine, but then it is a cloud pr
 I keep my bias in the open: models should run where the data is. On-device, offline, under your control. Not because the cloud is evil, but because the only guarantee you can audit yourself is the one that never leaves your hardware.
 
 Takeaway: when a vendor says ""private"", ask where the weights run. The answer is the product.",#AI #PrivateAI #OnDeviceAI #LLM #Privacy
+2026-10-22,466,Computer-Use Agent Safety,Computer-use agents click buttons. Your code decides whether they should.,https://pranaymahendrakar.com/blog/computer-use-agents-click-buttons-your-code-decides-whether-they-shoul,"Hot take: the scariest part of a computer-use agent is not the model. It is the thirty lines of glue code that execute whatever the model asks for.
+
+The pattern is simple. The model looks at a screenshot and returns an action: click here, type this. A program you wrote carries it out with a browser driver or a desktop automation library. The model never touches the machine itself. OpenAI introduced this with Operator in January 2025 and added a computer use tool to its Responses API in March 2025, and Microsoft's Azure documentation describes the same split between model and developer-run integration layer.
+
+That split is the whole security story. Everything the agent can do, your executor lets it do.
+
+I have shipped enough systems for defence and enterprise settings to know what happens when a demo meets a real environment. The demo works on a clean page. Production has expired sessions, cookie banners, a popup that appeared for the first time on a Tuesday, and a button that says Delete next to a button that says Save.
+
+So here is how I think about building one of these properly.
+
+First, the executor is a policy engine, not a pipe. Every action the model proposes should pass through an allowlist: which domains, which windows, which action types. Anything outside it is refused and logged, no matter how confident the model sounds.
+
+Second, irreversible actions need a human. Sending, paying, deleting, submitting. The agent can prepare them. A person approves them. This costs a few seconds and saves a week of incident review.
+
+Third, log screenshots with actions. When something goes wrong you need to see what the model saw, not just what it did. Without that, debugging is guessing.
+
+Fourth, assume the screen is untrusted input. A web page can contain text written to steer the model. If your agent reads a page and treats its contents as instructions, you have built a prompt injection channel with a mouse attached. Separate what the user asked for from what the screen says.
+
+Fifth, test failure, not success. Run the agent against pages that are slow, broken, or lying. Measure how often it stops safely versus how often it presses on. The second number is the one that matters.
+
+There is also a deployment question that people skip. Screenshots of your internal tools, your customer records, your dashboards are being sent somewhere to be interpreted. For a lot of the work I do, that is a non-starter. My bias is that models should run where the data is: on-device, offline, under your control. A smaller vision model running locally that handles a narrow workflow reliably beats a frontier model you cannot legally point at the screen.
+
+None of this makes computer-use agents bad. They are genuinely useful, especially for legacy software with no API, which is most of the world's software. But the capability is arriving faster than the discipline around it.
+
+When people ask me whether an agent is ready, I do not ask about the benchmark score. I ask what the executor refuses to do, who approves the irreversible steps, and where the screenshots go.
+
+If you cannot answer those three questions, you do not have an agent in production. You have a demo with a mouse.
+
+Takeaway: the model proposes, your code disposes. Build the part that says no first.",#AI #AIAgents #LLM #AISecurity #MachineLearning

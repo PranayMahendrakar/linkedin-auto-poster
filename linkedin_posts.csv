@@ -7847,3 +7847,26 @@ So my rule for any system that reasons over real inputs: make the model restate 
 A correct-looking answer can still come from the wrong problem.
 
 Do you check what your model assumed, or only what it answered?",#AI #LLM #Reasoning #MachineLearning #Hallucination
+466,Computer-Use Agent Safety,"Hot take: the riskiest part of a computer-use agent isn't the model.
+
+It's the glue code that executes whatever the model asks for.
+
+The model looks at a screenshot and says ""click here."" Your program does the clicking. That means everything the agent can do is something your executor allowed.
+
+So I build it like a policy engine, not a pipe:
+
+Allowlist the domains, windows and action types. Refuse and log everything else.
+
+Put a human on anything irreversible: send, pay, delete, submit.
+
+Log screenshots next to actions, so you can see what the model saw.
+
+Treat the screen as untrusted input. A web page can contain text written to steer your agent.
+
+And ask where the screenshots go. For a lot of defence and enterprise work, sending internal screens to a hosted model is a non-starter. Models should run where the data is.
+
+I don't ask whether an agent scores well on a benchmark. I ask what its executor refuses to do.
+
+If you can't answer that, you have a demo with a mouse.
+
+What is the one action you would never let an agent take without approval?",#AI #AIAgents #LLM #AISecurity #MachineLearning
