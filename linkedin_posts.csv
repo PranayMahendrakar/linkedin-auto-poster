@@ -7889,3 +7889,18 @@ If you're hiring, a junior who can debug a pipeline is worth more than one who c
 The bottom rung didn't vanish. It moved up.
 
 Hiring managers: what do you look for in a first AI role?",#AI #MachineLearning #AIJobs #Careers #LLM
+468,AI Chip Financing Squeeze,"The AI chip bottleneck may not be chips anymore. It may be the cost of borrowing.
+
+In October, the CEOs of Broadcom and Intel both warned that access to capital and rising borrowing costs could become a bigger obstacle to AI expansion than physical shortages. Broadcom's Hock Tan said some investors hold expectations so extreme it is almost like they are in a casino. Chip stocks sold off hard, with one tally putting the loss above $1 trillion.
+
+I read this as an engineering story, not a market story.
+
+Every roadmap that assumes cheap, endless frontier compute is quietly a bet on cheap money. If financing tightens, API prices and rate limits are the first places you feel it.
+
+In the defence and automotive deployments I've worked on, the systems that survived were the ones sized for the hardware that was actually there, not the hardware promised next quarter. Smaller models, quantisation, caching and on-device inference are not compromises. They are insurance.
+
+My bias is well known: run the model where the data is, on hardware you control. A cost curve you own beats a cost curve you rent.
+
+If your product only works at today's token prices, you don't have a product yet. You have a subsidy.
+
+How much of your AI roadmap would survive if compute got 2x more expensive?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning

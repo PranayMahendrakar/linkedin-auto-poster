@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F43F5E" stop-opacity="0.22"/><stop offset="1" stop-color="#F43F5E" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="800" cy="760" r="280" fill="url(#glow)"/>
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <rect x="80" y="92" width="500" height="56" rx="28" fill="none" stroke="#F43F5E" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#F43F5E">AI CHIP FINANCING</text>
+    <text x="80" y="330" font-size="110" font-weight="800" fill="#F5F7FA">Chips: built.</text>
+    <text x="80" y="450" font-size="110" font-weight="800" fill="#F43F5E">Cash: scarce.</text>
+    <text x="80" y="580" font-size="38" font-weight="500" fill="#94A3B8">Broadcom and Intel CEOs warn:</text>
+    <text x="80" y="630" font-size="38" font-weight="500" fill="#94A3B8">capital may bind before silicon.</text>
+    <text x="80" y="690" font-size="40" font-weight="700" fill="#F5F7FA">Design for the cheaper model.</text>
+    <g fill="none" stroke="#F43F5E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M90 780 H150 V820 H210 V860 H270 V900"/>
+    </g>
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#F43F5E"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+</svg>
