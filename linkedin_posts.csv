@@ -7870,3 +7870,22 @@ I don't ask whether an agent scores well on a benchmark. I ask what its executor
 If you can't answer that, you have a demo with a mouse.
 
 What is the one action you would never let an agent take without approval?",#AI #AIAgents #LLM #AISecurity #MachineLearning
+467,Entry-Level AI Jobs Gap,"AI jobs are booming. Only 16.4% of them are entry level.
+
+An October analysis of live job postings found that share for AI-titled roles, against 38.3% across all postings. In the US the gap is wider: 10.4% versus 35.8%.
+
+To be fair, it's one index and it counts job titles only. The same analysis says much of the gap comes from tech roles in general, not AI specifically.
+
+But it matches what LinkedIn reported in April: AI engineer is the fastest-growing title for young workers, and automation is eroding the bottom rungs of the ladder.
+
+So the door is open, but it's narrow. Companies want AI talent, and they want it already proven.
+
+Having shipped AI systems in production, I can tell you what that means in practice. Nobody is hired for knowing how to call an API. They're hired because they've handled what happens after the demo: evaluation, drift, bad inputs, a system that has to run offline.
+
+If you're early in your career, build one thing that survives contact with real users. Write down how it fails. Publish it.
+
+If you're hiring, a junior who can debug a pipeline is worth more than one who can write a prompt.
+
+The bottom rung didn't vanish. It moved up.
+
+Hiring managers: what do you look for in a first AI role?",#AI #MachineLearning #AIJobs #Careers #LLM
