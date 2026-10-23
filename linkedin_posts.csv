@@ -7904,3 +7904,25 @@ My bias is well known: run the model where the data is, on hardware you control.
 If your product only works at today's token prices, you don't have a product yet. You have a subsidy.
 
 How much of your AI roadmap would survive if compute got 2x more expensive?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
+469,Open Model Leaderboard Ranges,"The #1 open-weight model in October has a 20-point error bar.
+
+Xiaomi's MiMo-V2.6-Pro tops BenchLM at 73.7 and leads Artificial Analysis too. But BenchLM tags that score ""Estimated"", with a plausible range of roughly 64 to 83.
+
+An independent audit of the two leaderboards found that every pair of score ranges among the models it matched overlaps. The top of the table is unresolved. The audit also found that the sites disagree on which models count as open at all: Kimi K3 is flagged as open on one, excluded on the other.
+
+This is exactly how model choices go wrong in production.
+
+On defence and enterprise deployments I've worked on, nobody cared about a leaderboard point estimate. We cared about whether the weights could run on hardware the customer controlled, under a licence they could actually use, on their own data, offline.
+
+A 73.7 tells you none of that.
+
+Before you swap a model because it moved up a ranking:
+
+1. Read the evidence tag and the range, not the headline score.
+2. Confirm the exact checkpoint that was benchmarked.
+3. Verify the weights are really downloadable and the licence fits your use.
+4. Run it on your own eval set.
+
+A leaderboard is a shortlist generator. Your eval is the decision.
+
+How do you pick a model: leaderboard rank, or your own eval set?",#AI #LLM #OpenSource #MachineLearning #Benchmarks
