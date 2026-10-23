@@ -1718,3 +1718,32 @@ When people ask me whether an agent is ready, I do not ask about the benchmark s
 If you cannot answer those three questions, you do not have an agent in production. You have a demo with a mouse.
 
 Takeaway: the model proposes, your code disposes. Build the part that says no first.",#AI #AIAgents #LLM #AISecurity #MachineLearning
+2026-10-23,470,EU AI Act Deadline Delay,"The EU AI Act delay is a head start, not a reprieve. Most teams will waste it.",https://pranaymahendrakar.com/blog/the-eu-ai-act-delay-is-a-head-start-not-a-reprieve-most-teams-will-was,"Teams I talk to are treating the EU AI Act delay like a snooze button. That is the wrong read.
+
+The Digital Omnibus on AI is now law. High-risk obligations for Annex III systems, the ones that touch employment, credit, education and law enforcement, moved from 2 August 2026 to 2 December 2027. AI embedded in regulated products under Annex I moved to 2 August 2028. Two independent legal and research write-ups agree on those dates.
+
+Here is the part that gets lost in the headlines. The transparency duties in Article 50 were not delayed. Telling people they are talking to a machine and labelling synthetic content already applies. The Commission's powers to fine providers of general-purpose models also started on 2 August 2026.
+
+So the calendar did not get emptier. It got uneven. Some obligations are live today and some are a year or two out.
+
+I have shipped enough systems into defence, automotive and education settings to know how this goes. The deadline is never the hard part. The hard part is that nobody can answer, on demand, what a model did, on which data, under which version, and who approved it. In a defence deployment I worked on, that question was asked in the first week of review, not the last.
+
+If you wait for the final deadline, you will be reconstructing evidence for a system that has been running for two years. Logs that were never kept cannot be recovered. Prompts that were never versioned cannot be replayed. Evaluation sets that nobody froze cannot be compared against.
+
+The extra time is a gift only if you spend it on the unglamorous work. Here is what I would do now:
+
+First, version everything that shapes behaviour: model weights, system prompts, retrieval indexes, guardrail rules. If you cannot pin it, you cannot defend it.
+
+Second, keep an evaluation set that is frozen and dated. When a regulator or a customer asks whether quality regressed, you want a number from last quarter and a number from today, produced by the same harness.
+
+Third, log decisions at the boundary where a human or a downstream system acts on a model output. Not every token. The decision, the inputs that mattered, and the model version.
+
+Fourth, classify your own systems honestly. Most teams I see either claim nothing is high-risk or panic that everything is. Write down the reasoning for each system, because the reasoning is what gets reviewed.
+
+Fifth, run hallucination and drift checks continuously. This is why I built tooling for it as open packages rather than leaving it as a quarterly exercise. A check that runs on every release becomes evidence. A check that runs once becomes an anecdote.
+
+There is also an architectural angle that I keep coming back to. The easier it is to keep a model, its data and its logs inside a boundary you control, the easier every one of these obligations becomes. When inference runs on-device or on your own infrastructure, you can answer where the data went with one sentence. When it runs through three vendors, you need three contracts and a diagram.
+
+None of this is exciting. That is the point. Compliance work rewards the teams that were already disciplined about engineering, and punishes the ones who treated governance as a document to write at the end.
+
+A delayed deadline is not a cancelled one. Use the extra year to build the evidence trail, because the system you ship today is the one you will be asked to explain in 2027.",#EUAIAct #AIGovernance #LLM #MLOps #ResponsibleAI

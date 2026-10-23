@@ -7926,3 +7926,27 @@ Before you swap a model because it moved up a ranking:
 A leaderboard is a shortlist generator. Your eval is the decision.
 
 How do you pick a model: leaderboard rank, or your own eval set?",#AI #LLM #OpenSource #MachineLearning #Benchmarks
+470,EU AI Act Deadline Delay,"Hot take: the EU AI Act delay is not a reprieve. It is a head start you are about to waste.
+
+The Digital Omnibus is law now.
+High-risk Annex III obligations moved from August 2026 to December 2027.
+Product-embedded AI moved to August 2028.
+
+But Article 50 transparency duties were not delayed.
+Neither were the Commission's fining powers over general-purpose models.
+
+In every high-stakes deployment I have worked on, the deadline was never the hard part.
+The hard part was answering one question on demand: what did the model do, on which data, under which version?
+
+You cannot reconstruct logs that were never kept.
+You cannot replay prompts that were never versioned.
+
+So use the extra time on the boring work:
+- Version weights, prompts, indexes and guardrails
+- Freeze a dated evaluation set
+- Log decisions at the boundary where someone acts on the output
+- Write down why each system is, or is not, high-risk
+
+And keep inference inside a boundary you control. It makes every one of these answers shorter.
+
+Which part of your AI stack would you struggle most to explain to an auditor today?",#EUAIAct #AIGovernance #LLM #MLOps #ResponsibleAI
