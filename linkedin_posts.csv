@@ -7972,3 +7972,18 @@ If you are an engineer, build one system you can defend end to end:
 If you are hiring, test for that. A polished prompt is not a skill. Owning a failure is.
 
 What is the one production skill you now look for first when you hire?",#AI #AIEngineering #MachineLearning #Hiring #Careers
+472,Anthropic Akamai CPU Deal,"Anthropic just signed $11.6 billion for compute. Mostly CPUs, not GPUs.
+
+In September, Akamai announced a seven-year agreement to run Anthropic workloads on its distributed cloud. The deal can grow to roughly $20 billion.
+
+The detail that matters: it is largely CPU capacity, spread close to users.
+
+Everyone talks about GPU scarcity. But a production AI system is not one big model call. It is retrieval, parsing, routing, validation, tool execution and logging. Most of that runs on ordinary compute.
+
+In the deployments I have worked on, including one in defence, the model was rarely the slowest or the costliest part. The pipeline around it was. Once we moved that work next to the data, latency and cost both dropped.
+
+That is my bias: run things where the data is. It is now showing up in how frontier labs buy infrastructure too.
+
+My take: if your AI budget line says only ""GPU hours"", you are planning for the demo, not the product.
+
+Where does your AI bill actually go: the model, or everything around it?",#AI #LLM #AIInfrastructure #EdgeAI #MachineLearning
