@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.22"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="800" cy="760" r="280" fill="url(#glow)"/>
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <rect x="80" y="92" width="480" height="56" rx="28" fill="none" stroke="#F59E0B" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#F59E0B">EU AI ACT DELAY</text>
+    <text x="80" y="330" font-size="110" font-weight="800" fill="#F5F7FA">Not a reprieve.</text>
+    <text x="80" y="450" font-size="110" font-weight="800" fill="#F59E0B">A head start.</text>
+    <text x="80" y="580" font-size="38" font-weight="500" fill="#94A3B8">High-risk rules: August 2026</text>
+    <text x="80" y="630" font-size="38" font-weight="500" fill="#94A3B8">moved to December 2027.</text>
+    <text x="80" y="690" font-size="40" font-weight="700" fill="#F5F7FA">Version it. Log it. Prove it.</text>
+    <g fill="none" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M90 890 H270 M230 850 L270 890 L230 930"/>
+    </g>
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#F59E0B"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+</svg>

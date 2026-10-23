@@ -7950,3 +7950,25 @@ So use the extra time on the boring work:
 And keep inference inside a boundary you control. It makes every one of these answers shorter.
 
 Which part of your AI stack would you struggle most to explain to an auditor today?",#EUAIAct #AIGovernance #LLM #MLOps #ResponsibleAI
+471,AI Engineer Hiring Surge,"Software engineering is not shrinking. It is splitting in two.
+
+The Pragmatic Engineer's May data shows many larger tech companies with 50-100% more AI engineering listings than a year earlier.
+Top tech companies were also hiring roughly 20% more software engineers than a year before.
+
+An Axial Search analysis of 43,480 US AI engineering postings, updated in October, finds about 1,550 new roles a week.
+Mid-level and senior roles are roughly two-thirds of them.
+
+Read that carefully. Companies are not asking for people who can call an API. They are asking for people who can own what happens after the demo.
+
+In the production systems I have worked on, the model was rarely the hard part. The hard part was retrieval quality, evaluation, latency, drift, and what happens when the network is gone.
+
+That is the work these postings are describing, even when the title says ""AI engineer"".
+
+If you are an engineer, build one system you can defend end to end:
+- Measure it against a frozen evaluation set
+- Show what it costs per request
+- Show how it fails, and what you did about it
+
+If you are hiring, test for that. A polished prompt is not a skill. Owning a failure is.
+
+What is the one production skill you now look for first when you hire?",#AI #AIEngineering #MachineLearning #Hiring #Careers
