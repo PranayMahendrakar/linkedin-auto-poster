@@ -8004,3 +8004,32 @@ My rule: before any model touches a pipeline, I run it on my own data. Measure l
 If diffusion LLMs hold up outside the launch deck, the cost of fast inference changes. If they don't, we will have learned that cheaply.
 
 What would you test first: latency, accuracy on long outputs, or cost at scale?",#AI #LLM #DiffusionModels #MachineLearning #AIEngineering
+474,Kolibri Sovereign AI,"Hot take: ""sovereign AI"" is not a licence. It's a box you can run.
+
+Aleph Alpha just open-sourced Kolibri under Apache 2.0.
+78B total parameters, about 3.5B active per token.
+
+Great news for regulated teams.
+But read the fine print before you celebrate.
+
+Reported floor: two H100s or one H200.
+That's a real server, not a laptop and not an edge device.
+
+Active parameters set your compute.
+Total parameters set your memory.
+I watch teams size hardware from the wrong number all the time.
+
+The benchmark claims are mostly vendor-sourced too.
+I would not put them in a procurement doc.
+
+In every defence and enterprise deployment I've worked on, the first question was never ""how smart is it?""
+It was ""where does the data go?""
+
+So here's my test:
+1. Run the weights on one box with no outbound calls.
+2. Measure memory and latency at the context length you actually need.
+3. Evaluate on your own data, not a leaderboard.
+
+If you can't do step 1, you don't have sovereignty. You have a download link.
+
+Are you planning to self-host an open-weight model this year, or still renting through an API?",#SovereignAI #OpenWeights #LLM #OnPremAI #MachineLearning

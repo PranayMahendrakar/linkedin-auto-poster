@@ -1747,3 +1747,32 @@ There is also an architectural angle that I keep coming back to. The easier it i
 None of this is exciting. That is the point. Compliance work rewards the teams that were already disciplined about engineering, and punishes the ones who treated governance as a document to write at the end.
 
 A delayed deadline is not a cancelled one. Use the extra year to build the evidence trail, because the system you ship today is the one you will be asked to explain in 2027.",#EUAIAct #AIGovernance #LLM #MLOps #ResponsibleAI
+2026-10-24,474,Kolibri Sovereign AI,"Sovereign AI starts with weights you can actually run, and Kolibri makes that harder to dodge",https://pranaymahendrakar.com/blog/sovereign-ai-starts-with-weights-you-can-actually-run-and-kolibri-make,"Sovereign AI starts with a weights file you can actually run, and Kolibri just made that argument harder to dodge.
+
+On October 3, Aleph Alpha released Kolibri, a German-English mixture-of-experts model, as open weights under Apache 2.0. The model card lists roughly 78B total parameters and about 3.5B active per token. It was trained from scratch on infrastructure in Germany and Finland. Both the Hugging Face card and independent write-ups agree on those numbers.
+
+I care about this for a reason that has nothing to do with benchmarks. My bias has always been that models should run where the data is: on-device, offline, under your control. Every defence and enterprise deployment I have worked on started with the same question. Where is the data allowed to go? Usually the answer was ""nowhere"".
+
+In that world, an API is not an option, however good the model behind it. A permissive licence plus downloadable weights is the entry ticket. Without it, the conversation ends before it begins.
+
+But here is where I want to be honest, because the sovereignty pitch tends to skip this part. Open weights are not the same as easy to run. Reports put the deployment floor at about two H100 80GB cards or one H200. That is not a laptop, and it is not an edge box in a field unit. It is a proper server you have to buy, power, cool and patrol.
+
+The active-parameter count makes compute per token look small. Memory is what you pay for. All the experts have to be resident, so you are provisioning for 78B even though each token touches a fraction of that. I see teams get this wrong constantly when they size hardware from the headline number.
+
+Then there is the evidence. The benchmark claims around Kolibri are mostly from the vendor and community write-ups. I have not seen independent evaluation, and I would not put a number in a procurement document on that basis. When I evaluate a model for a regulated deployment, I run it on the customer's own data and the customer's own failure cases. A leaderboard score tells me nothing about how the model behaves on a noisy scanned form or a mixed-language query.
+
+Language coverage is the other thing I look at first. A German-English model is a real win for European regulated industries. It also makes me think about the languages that keep waiting. In my own research on hallucination in Indic languages, the gap between a well-supported language and a thinly supported one was the main finding, not a footnote. A sovereign model for one region does not become a sovereign model for another.
+
+So what would I do with Kolibri if I were scoping a project tomorrow?
+
+First, I would pull the weights and run them on one box inside the target network, with no outbound calls. If that single step cannot happen, the project has a sovereignty problem regardless of the licence.
+
+Second, I would measure memory and latency at the context lengths we really need. The card allows over a million tokens but recommends staying at or below about 262K for serving. Most real workloads need a small fraction of that, and I would size for that fraction.
+
+Third, I would build an evaluation set from the customer's data before making any quality promise. Retrieval quality and hallucination rates on their documents decide whether the system ships, not the model's reported maths score.
+
+Fourth, I would ask whether a much smaller model does the job. Most production systems I have built did not need a frontier-class model. They needed a reliable one, close to the data.
+
+Open weights from European labs are a healthy development. They give regulated teams a real option, and they put pressure on closed vendors to justify what they charge for sending your data elsewhere.
+
+The takeaway: sovereignty is not a licence, it is a deployment you can run, size and audit yourself. Download the weights, put them on your own hardware, and test them on your own data before you believe anyone's slide.",#SovereignAI #OpenWeights #LLM #OnPremAI #MachineLearning
