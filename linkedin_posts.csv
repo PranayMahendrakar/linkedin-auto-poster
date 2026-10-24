@@ -8033,3 +8033,25 @@ So here's my test:
 If you can't do step 1, you don't have sovereignty. You have a download link.
 
 Are you planning to self-host an open-weight model this year, or still renting through an API?",#SovereignAI #OpenWeights #LLM #OnPremAI #MachineLearning
+475,Tech Job Postings Specialize,"Job postings now ask for 21 skills, not 30. That's not good news for generalists.
+
+Two reports landed on the same shift.
+
+CompTIA counted about 350,000 active US tech listings that need AI skills in September. That is more than half of all active tech listings.
+
+Revelio Labs, looking at 75 million tech postings, found the average number of listed skills fell from about 30 to 21 since 2024. Required experience per skill edged up.
+
+My read: employers are done hiring for ""knows a bit of everything."" They want someone who has gone deep on one hard thing and can show it.
+
+In the defence and enterprise AI systems I've worked on, nobody asked how many frameworks I'd touched. They asked who had actually debugged a model in production, or made one run offline on constrained hardware.
+
+That is the depth being priced now.
+
+So here's what I'd do:
+1. Pick one layer of the stack: evaluation, retrieval, data pipelines, or on-device inference.
+2. Ship something in it that other people can run and check.
+3. Cut your CV's skills list to what you can defend in a live debugging session.
+
+""AI skills"" on a posting is becoming table stakes. A proven specialty is what separates candidates.
+
+If you hire engineers: would you rather see a long skills list or one deep project?",#AI #MachineLearning #AIJobs #Hiring #CareerGrowth
