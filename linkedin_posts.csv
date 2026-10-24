@@ -7987,3 +7987,20 @@ That is my bias: run things where the data is. It is now showing up in how front
 My take: if your AI budget line says only ""GPU hours"", you are planning for the demo, not the product.
 
 Where does your AI bill actually go: the model, or everything around it?",#AI #LLM #AIInfrastructure #EdgeAI #MachineLearning
+473,Diffusion LLM Speed Claims,"Over 1,000 tokens a second sounds like a breakthrough. Until you ask who measured it.
+
+In October, Inception launched Mercury 3, a diffusion language model. It refines many tokens in parallel instead of writing them one by one.
+
+Its claims: 4 to 8 times faster than rivals, a 1M-token context window, and quality it says beats GPT-6 Luna and Claude Haiku 5.5. List price is $0.20 per million input tokens and $0.70 per million output.
+
+Here is the catch. Every number is self-reported. No outside group has published a test yet.
+
+I like the idea. Latency is the thing that kills real products. In the production systems I have shipped, users forgive a slightly weaker answer far sooner than a slow one.
+
+But a speed claim on a vendor's benchmark is a hypothesis, not a result. Speed also moves your failure modes: parallel refinement can behave differently from left-to-right generation on long, structured outputs.
+
+My rule: before any model touches a pipeline, I run it on my own data. Measure latency at p95, not the average. Measure error rate on your hardest 100 cases. Only then compare price.
+
+If diffusion LLMs hold up outside the launch deck, the cost of fast inference changes. If they don't, we will have learned that cheaply.
+
+What would you test first: latency, accuracy on long outputs, or cost at scale?",#AI #LLM #DiffusionModels #MachineLearning #AIEngineering
