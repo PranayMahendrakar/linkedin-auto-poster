@@ -8055,3 +8055,20 @@ So here's what I'd do:
 ""AI skills"" on a posting is becoming table stakes. A proven specialty is what separates candidates.
 
 If you hire engineers: would you rather see a long skills list or one deep project?",#AI #MachineLearning #AIJobs #Hiring #CareerGrowth
+476,Modal Sandboxes Agent Infrastructure,"Modal's $1B run rate has a tell: $300M of it is sandboxes, not models.
+
+In October, Modal raised $750M at a $15.75B valuation, up from $4.65B in May. By its own numbers, usage tripled in five months. Sandboxes, the isolated environments where agents run code, are now a $300M run rate by themselves.
+
+The money is not only in the model call. It is in the place where the model's output gets executed.
+
+That matches what I see in production. In a defence deployment I worked on, the model was the easy part. The hard questions were what the system was allowed to touch, what happened when it ran something wrong, and who could audit it afterwards.
+
+An agent that writes code is a junior engineer with root access until you give it a box. Isolation, timeouts, network limits and logs are not extras. They are the product.
+
+A caveat: the run rate is the company's own figure, not audited financials.
+
+My bias is well known. Wherever you can, run that box close to the data, under your control. But if you rent it, treat the sandbox as a security boundary, not a convenience.
+
+Takeaway: the agent stack is being priced by where code runs, not only by which model writes it.
+
+If you ship agents, where do they execute today, and who owns that boundary?",#AI #AIAgents #LLM #MLOps #AIInfrastructure
