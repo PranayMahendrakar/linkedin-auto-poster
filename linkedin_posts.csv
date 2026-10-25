@@ -8116,3 +8116,23 @@ Capability and availability are different properties. Most roadmaps only plan fo
 Models should run where the data is.
 
 How does your team handle it when a model you depend on gets throttled, repriced or withdrawn?",#AI #LLM #Gemini #AIEngineering #OnDeviceAI
+479,Microsoft Layoffs Automation Memo,"Microsoft cut 4,800 jobs and said AI didn't replace them. Then it said tasks can be automated.
+
+In July, its chief people officer wrote that the roles eliminated ""are not being replaced by AI."" In the same memo: ""Some of the tasks we do every day can now be automated.""
+
+Both statements can be true. That is the part engineers should read twice.
+
+A role is a bundle of tasks. AI rarely deletes the bundle. It shrinks it, and the budget follows the shrinkage.
+
+In the production systems I have shipped, the automated step was never the hard part. The hard part was the person who knew when its output was wrong, and could prove it.
+
+That is where I would put my learning time:
+
+Own the evaluation, not just the prompt.
+Know the failure modes of the workflow you automate.
+Verify output with something that is not the model.
+Understand the data well enough to run it inside your own boundary.
+
+The safest job in a team that automates is the one that decides whether the automation can be trusted.
+
+Which task in your own role would you automate first, and who would check it?",#AI #FutureOfWork #SoftwareEngineering #MachineLearning #Careers
