@@ -8136,3 +8136,20 @@ Understand the data well enough to run it inside your own boundary.
 The safest job in a team that automates is the one that decides whether the automation can be trusted.
 
 Which task in your own role would you automate first, and who would check it?",#AI #FutureOfWork #SoftwareEngineering #MachineLearning #Careers
+480,Anthropic Public Benefit Fund,"Anthropic is putting 5% of its shares into a fund. Nobody has said who decides where the money goes.
+
+In October, it announced a Public Benefit Fund. It is wholly owned by Anthropic, and the board can add 2% more shares for every 50% rise in company value above a baseline it hasn't disclosed.
+
+What it will fund is still open. Large gifts to nonprofits and direct payments to groups were floated. Governance details are promised in the coming months.
+
+The pledge is generous. But as an engineer, here is what I take from it.
+
+When I ship a system that depends on a model vendor, I read the vendor's structure the way I read its SLA. Who controls it, who answers to whom, and what is still undecided. In a defence deployment I worked on, that review mattered more than any benchmark.
+
+A headline pledge tells you about intent. Governance tells you about behaviour under pressure.
+
+So my rule is simple: treat any single model provider as a replaceable component. Keep prompts, evals and data portable. Keep a path to run something smaller on your own hardware.
+
+Good intentions are not a substitute for an exit plan.
+
+Do you review a model vendor's governance before you build on it, or only its pricing and benchmarks?",#AI #LLM #AIGovernance #MachineLearning #OnDeviceAI
