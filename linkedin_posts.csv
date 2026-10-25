@@ -8072,3 +8072,23 @@ My bias is well known. Wherever you can, run that box close to the data, under y
 Takeaway: the agent stack is being priced by where code runs, not only by which model writes it.
 
 If you ship agents, where do they execute today, and who owns that boundary?",#AI #AIAgents #LLM #MLOps #AIInfrastructure
+477,Kimi K3.1 Open Weights,"Kimi K3.1 Pro is billed as open weights. In October, there are no weights to download.
+
+Moonshot says they land by 4 November. Until then it is an API model with an open-source label on it.
+
+The headline numbers are mostly the lab's own too. 65.7% on Terminal-Bench 4.0, a hair behind Claude Opus 5.5 at 66.4%, is Moonshot's comparison, not a controlled head-to-head. Artificial Analysis does rank it fourth overall, which is real. But that is a hosted endpoint, not something you can run.
+
+Then there is the size: roughly 3 trillion parameters in a mixture-of-experts design. Open does not mean runnable. Almost nobody will self-host that.
+
+In the defence and on-device work I've shipped, the rule was simple: the model you can inspect, pin and run offline is the model you plan around. A promised checkpoint is a roadmap item, not a dependency.
+
+So my checklist for any ""open"" launch:
+
+1. Are the weights downloadable today?
+2. What is the licence, and does it cover your use?
+3. Who ran the benchmark, on what harness?
+4. What hardware does it actually need?
+
+Until the first two are yes, it is a hosted API with good marketing.
+
+When a lab says ""open weights"" before the weights exist, do you build on it or wait?",#AI #LLM #OpenWeights #MachineLearning #OnDeviceAI
