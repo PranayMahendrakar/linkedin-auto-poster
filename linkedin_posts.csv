@@ -8153,3 +8153,22 @@ So my rule is simple: treat any single model provider as a replaceable component
 Good intentions are not a substitute for an exit plan.
 
 Do you review a model vendor's governance before you build on it, or only its pricing and benchmarks?",#AI #LLM #AIGovernance #MachineLearning #OnDeviceAI
+481,Mistral Large 4 License,"A 1-trillion-parameter model is billed as open weights. In October, it had no license to read.
+
+Mistral put Large 4 into public API preview in October. About 1.05 trillion total parameters, around 52 billion active, 1M-token context. The weights were promised by the end of the month.
+
+The license terms were not published. Every benchmark number so far comes from Mistral itself.
+
+Here is why that matters more than the parameter count.
+
+""Open weights"" tells you the files exist. It does not tell you whether you can fine-tune them, ship them inside a product, or run them in a customer's environment.
+
+In the defence and automotive deployments I have worked on, the licence was a gate before the architecture review. If legal cannot sign off on the terms, the model never reaches an engineer's laptop.
+
+And a trillion parameters is a separate problem. Even with only the active experts computing, you still have to store all of them. Plan the hardware before you plan the demo.
+
+My rule: when weights drop, read three things in order. The license, the independent evals, the memory footprint. Only then the launch post.
+
+Open is a legal fact and a hardware fact. Not a headline.
+
+When a new open model lands, what do you check first: the license or the leaderboard?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
