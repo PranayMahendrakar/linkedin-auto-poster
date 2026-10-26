@@ -1805,3 +1805,28 @@ None of this is anti-frontier. I will use Argon where it earns its place. But ca
 The best model is the one you can still call on the day it matters, and run where your data lives.
 
 Build as if the waitlist never ends, and be pleasantly surprised when it does.",#AI #LLM #Gemini #AIEngineering #OnDeviceAI
+2026-10-26,482,Open Weights Reality Check,"Open weights are only as open as the license, the memory bill, and your own evals",https://pranaymahendrakar.com/blog/open-weights-are-only-as-open-as-the-license-the-memory-bill-and-your-,"In the last three weeks, two ""open"" models landed that tell you everything about how to evaluate open weights. Neither story is about benchmarks.
+
+On October 6, Mistral put Large 4 in public preview, a mixture-of-experts model north of one trillion parameters. The weights were promised for the end of October. As of this week, coverage still says the license has not been announced. On October 15, NVIDIA released Nemotron 3.5 Super VL, a 120B model with roughly 12B active parameters, with weights on Hugging Face, a license named on the model card, and a quantized checkpoint reported to fit a single DGX Spark.
+
+Same word, ""open"". Two very different things to build on.
+
+Here is the order I check things in a new open model, and it is not the order the launch posts use.
+
+First, the license. Not the headline, the actual text. Can you use it commercially? Can you fine-tune and redistribute? Does it restrict specific sectors? In a defence deployment I worked on, a single ambiguous clause would have ended the conversation before the first benchmark was discussed. A model you cannot legally ship is a research artifact.
+
+Second, the memory footprint, not the active-parameter count. An MoE model computes like its active parameters but has to store all of them. A trillion-parameter checkpoint is open in the same sense that a data centre is open to visitors. Whoever can run it is a small club, and for most teams that means calling somebody's API, which is exactly the dependency open weights were supposed to remove.
+
+Third, the quantized checkpoints. This is where Nemotron is genuinely interesting. A 120B-class model that has an official low-precision build for one desktop-class box changes who can run it on-premise. That matters to me because I keep making the same argument: models should run where the data is, on-device or offline, under your control. I built an offline multilingual avatar for an automotive client in Germany, and the hard constraint was never model quality. It was whether the thing could run inside the customer's perimeter with no outbound calls.
+
+Fourth, independent evaluation. Every performance figure in both launches comes from the vendor. That is normal, and it is also not evidence. Before I trust any number I run the model on my own held-out data, in the language and domain I actually serve. In my hallucination work on Indic languages, the gap between a vendor's multilingual claim and real behaviour on a low-resource language was the whole story.
+
+Fifth, and last, benchmarks.
+
+None of this is a criticism of either lab. Releasing weights at all is a real contribution, and competition between a European and an American lab on open models is good for everyone building outside the big API providers. But ""open weights"" has become a marketing category, and a category that loose will mislead you if you let it.
+
+My rule of thumb: an open model is only as open as the smallest of three things. The license, the hardware you can afford, and the evaluation you can run yourself.
+
+If you cannot answer all three before the demo, you do not have an open model. You have a press release with a download link.
+
+Takeaway: read the license first, price the memory second, and treat the benchmark table as the last thing you check, not the first.",#AI #OpenSource #LLM #MLOps #OnDeviceAI

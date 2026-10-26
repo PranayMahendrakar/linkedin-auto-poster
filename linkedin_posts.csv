@@ -8172,3 +8172,28 @@ My rule: when weights drop, read three things in order. The license, the indepen
 Open is a legal fact and a hardware fact. Not a headline.
 
 When a new open model lands, what do you check first: the license or the leaderboard?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
+482,Open Weights Reality Check,"Hot take: ""open weights"" is a marketing category, not a guarantee.
+
+Two models, three weeks apart.
+
+Mistral Large 4: trillion-parameter preview on October 6, weights promised for end of October, license still not announced in the coverage I found.
+
+NVIDIA Nemotron 3.5 Super VL: 120B with about 12B active, weights out, license on the model card, and a quantized build reported to fit one DGX Spark.
+
+Same word. Very different things to build on.
+
+My checklist for any new open model:
+
+1. Read the actual license text.
+2. Price the memory, not the active parameters. MoE computes small but stores big.
+3. Look for official quantized checkpoints.
+4. Run your own evals. Every number at launch is vendor-reported.
+5. Only then look at the benchmark table.
+
+I have seen one ambiguous license clause end a defence deployment conversation before a single benchmark came up.
+
+An open model is only as open as the smallest of three things: the license, the hardware you can afford, and the evaluation you can run yourself.
+
+Models should run where the data is. That only works if you can legally and physically run them.
+
+What is the first thing you check when a new ""open"" model drops?",#AI #OpenSource #LLM #MLOps #OnDeviceAI
