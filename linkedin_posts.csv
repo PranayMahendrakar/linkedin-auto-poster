@@ -8197,3 +8197,24 @@ An open model is only as open as the smallest of three things: the license, the 
 Models should run where the data is. That only works if you can legally and physically run them.
 
 What is the first thing you check when a new ""open"" model drops?",#AI #OpenSource #LLM #MLOps #OnDeviceAI
+483,AI Skills Baseline Hiring,"Hot take: ""AI skills"" on a resume is now the new ""proficient in Microsoft Office.""
+
+Dice counted AI skill requirements in 75% of US tech job postings in June, and 79% in July. FrogHire, looking across about 20.7 million postings of all kinds, put the AI share at 19% in Q1 2026.
+
+Different datasets, same direction. AI is no longer a specialty line item. It is a baseline.
+
+Here is the number I would actually read twice. Dice reported demand for enterprise integration skills up 638% year over year, faster than agentic AI at 587%.
+
+That matches what I see in production. In the defence and enterprise systems I have worked on, the model was rarely the hard part. Getting it to run offline, inside someone else's security boundary, wired to messy legacy data, was the job.
+
+So if everyone lists ""AI,"" it stops separating candidates. What separates them:
+
+1. Can you ship it behind an API contract someone else owns?
+2. Can you evaluate it on your own data, not the vendor's benchmark?
+3. Can you say where it runs and who controls it?
+
+Caveat: these are vendor and job-board counts, and each defines ""AI skill"" its own way. Treat them as direction, not precision.
+
+Knowing the model gets you the interview. Integrating it gets you the offer.
+
+Hiring managers: what are you screening for now that ""AI"" is on every resume?",#AI #Hiring #MachineLearning #SoftwareEngineering #Careers
