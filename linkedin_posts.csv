@@ -8218,3 +8218,16 @@ Caveat: these are vendor and job-board counts, and each defines ""AI skill"" its
 Knowing the model gets you the interview. Integrating it gets you the offer.
 
 Hiring managers: what are you screening for now that ""AI"" is on every resume?",#AI #Hiring #MachineLearning #SoftwareEngineering #Careers
+484,Google TPU Hardware Sales,"Google selling TPUs into customer data centers is not a chip story. It's a software story.
+
+In October, analysts at Piper Sandler put Google's TPU hardware revenue at roughly $51 billion in 2027, up from a small base this year. Those are forecasts, not Google's numbers. Google hasn't disclosed unit volumes, margins or customer counts.
+
+Still, the direction matters. The Nvidia moat was never only about silicon. It was CUDA, the kernels, the debugging tools and the engineers who already know them.
+
+On production systems I've worked on, including a defence deployment, the chip was never the slow part. Porting the stack was. Every new accelerator meant re-validating kernels, quantisation and latency behaviour before anyone trusted it.
+
+Cheaper hardware on a spec sheet is not cheaper in production. The real cost is the team that can run it at 3 a.m.
+
+My bet: the winners of this shift won't be whoever has the best chip. They'll be whoever makes switching boring.
+
+If your inference stack had to move to a different accelerator next quarter, how many weeks would it really take?",#AI #MLOps #AIInfrastructure #GPUs #LLM

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#8B5CF6" stop-opacity="0.25"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="780" cy="800" r="290" fill="url(#glow)"/>
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <rect x="80" y="92" width="240" height="56" rx="28" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#8B5CF6">AI CHIPS</text>
+    <text x="80" y="330" font-size="120" font-weight="800" fill="#F5F7FA">Chips: easy.</text>
+    <text x="80" y="460" font-size="120" font-weight="800" fill="#8B5CF6">Stack: hard.</text>
+    <text x="80" y="590" font-size="38" font-weight="500" fill="#94A3B8">Google is selling TPUs outright.</text>
+    <text x="80" y="640" font-size="38" font-weight="500" fill="#94A3B8">Switching still costs weeks.</text>
+    <text x="80" y="710" font-size="40" font-weight="700" fill="#F5F7FA">Make switching boring.</text>
+    <g fill="none" stroke="#8B5CF6" stroke-width="6">
+      <rect x="720" y="790" width="130" height="130" rx="14"/>
+      <rect x="755" y="825" width="60" height="60" rx="8" fill="#8B5CF6"/>
+      <path d="M745 790v-30M785 790v-30M825 790v-30M745 920v30M785 920v30M825 920v30M720 815h-30M720 855h-30M720 895h-30M850 815h30M850 855h30M850 895h30"/>
+    </g>
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#8B5CF6"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+</svg>
