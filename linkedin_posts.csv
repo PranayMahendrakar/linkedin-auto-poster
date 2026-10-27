@@ -8254,3 +8254,22 @@ My bias, as always: small, specialised models that run where your data lives bea
 Test it on your own corpus. Score citation existence, support and omissions separately.
 
 Would you trust an 8B model inside your research pipeline? What would it have to prove first?",#AI #RAG #OpenSource #LLM #OnDeviceAI
+486,Forward Deployed Engineer Demand,"Postings for forward deployed engineers in India grew 19-fold in a year. The role is still tiny.
+
+Indeed India's data shows FDE postings hit about 19 times the year-earlier level in June. By August they were still over six times higher.
+
+Another count found roughly 1,300 live FDE roles worldwide in September, if you only count the exact title. Huge growth, small base. Read the percentage with that in mind.
+
+But the direction is real, and it matches what I see in production.
+
+The hard part of shipping AI is rarely the model. It is the last mile: the messy data, the locked-down network, the workflow nobody wrote down. On a defence deployment I worked on, most of the real engineering happened next to the people using the system, not in a notebook.
+
+That is the FDE job. Sit with the customer, unpack the actual problem, make the thing work in their environment.
+
+Postings reportedly ask for Python, RAG, LLMs and agents, and a lot of travel. Most want 3 to 5 years of experience, so this is not an entry-level door.
+
+If you want to be hired into this, build and deploy one system end to end, offline if you can, and be ready to explain every failure.
+
+The model gets the headline. The person who makes it work on site gets the offer.
+
+Are you seeing FDE roles where you work, or is it just a new title for solutions engineering?",#AI #ForwardDeployedEngineer #AIJobs #LLM #MachineLearning
