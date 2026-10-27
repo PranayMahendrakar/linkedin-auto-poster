@@ -1830,3 +1830,36 @@ My rule of thumb: an open model is only as open as the smallest of three things.
 If you cannot answer all three before the demo, you do not have an open model. You have a press release with a download link.
 
 Takeaway: read the license first, price the memory second, and treat the benchmark table as the last thing you check, not the first.",#AI #OpenSource #LLM #MLOps #OnDeviceAI
+2026-10-27,485,Ai2 AstaBrief Open Model,A small open model that writes cited reports is the RAG story I care about this month,https://pranaymahendrakar.com/blog/a-small-open-model-that-writes-cited-reports-is-the-rag-story-i-care-a,"On October 2, Ai2 released AstaBrief 8B, an open-weight model that takes a research question plus retrieved paper excerpts and writes a cited scientific report in one pass. It now powers the Fast mode in their Asta platform.
+
+Ai2's own numbers put Fast mode at about 51 seconds per report, against about 178 seconds for the Claude-powered Thinking mode in the same product. Those are the lab's measurements, so treat them as a claim to reproduce, not a leaderboard.
+
+Here is why I care. The model does not search. It does not retrieve. Retrieval belongs to the pipeline around it, and the model's only job is to write a grounded, cited answer from what it is handed.
+
+That is the right division of labour. In every retrieval system I have shipped, the failures were not in the generator being too small. They were in retrieval quality, chunking, and a generator that was free to wander off the evidence.
+
+A narrow 8B model trained to stay inside its sources and cite them is a better component than a giant general model asked nicely to behave.
+
+It is also the kind of model that can run where the data lives. A defence or research deployment I worked on could never send documents to an external API. An 8B model on a single local GPU is a very different conversation with a security team than a hosted frontier endpoint.
+
+Now the honest caveats, because the coverage I read was careful about them too.
+
+The release is not evidence that an 8B model beats the latest commercial research systems. Ai2 says most of the training and evaluation was done in 2025, and the full comparison has not been rerun against today's frontier models. Reviewers also report that on one external benchmark, DeepScholarBench, it trails the existing Asta ScholarQA system and another open 8B writer. I could only find those figures in secondary write-ups, not in Ai2's announcement, so check them yourself.
+
+Then there is licensing. The model checkpoint is Apache 2.0, and it descends from Qwen3-8B. But the separately released training datasets carry non-commercial labels. If you plan to fine-tune on that data or build a product around it, read the data terms separately. Apache on the weights does not settle it.
+
+And citations are not correctness. A report can cite a real paper and still misstate what it says. Citation support is a measurable property, and it is worth measuring, but a link next to a sentence is not a verification.
+
+What I would do with this if I were starting a project tomorrow:
+
+Run it on your own corpus, not on theirs. Build a small set of questions where you already know the right answer and the right source.
+
+Score three things separately: does the cited passage exist, does it actually support the sentence, and did the report omit something important.
+
+Compare it against whatever you use today on latency and cost per report, not just quality. Speed is where a small model should win, and where the business case lives.
+
+Keep retrieval as its own tested component. If retrieval is bad, no writer model will save you.
+
+The pattern worth noticing is bigger than one release. The useful work is moving from ""one giant model does everything"" to small, specialised, inspectable models inside a pipeline you control.
+
+Takeaway: the best generator in your RAG stack may be the smallest one that is trained to say only what its sources say.",#AI #RAG #OpenSource #LLM #OnDeviceAI
