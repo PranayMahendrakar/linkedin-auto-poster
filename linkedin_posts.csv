@@ -8273,3 +8273,20 @@ If you want to be hired into this, build and deploy one system end to end, offli
 The model gets the headline. The person who makes it work on site gets the offer.
 
 Are you seeing FDE roles where you work, or is it just a new title for solutions engineering?",#AI #ForwardDeployedEngineer #AIJobs #LLM #MachineLearning
+487,Meta AI Spending Commitments,"Meta's free cash flow went negative for the first time since 2012.
+
+The reason is AI. Meta reported about -$2.1B of free cash flow for its third quarter, with capex of $34.9B. It now guides $135-145B of capex for 2026.
+
+The bigger number is the one in the filing: roughly $825B of future commitments for AI data centers, energy and compute. About $455B of that is non-cancelable contracts.
+
+That is not a budget line. That is a bet that demand for AI compute never stops climbing.
+
+In October, even a company with one of the best ad machines on earth is changing how it funds this. It is creating a new non-voting share class, to be issued in January.
+
+Here is what I take from it as an engineer. When the biggest builders lock in spending for years, the cost shows up downstream as pricing, rate limits and quotas that you do not control.
+
+In the defence and automotive deployments I have worked on, the systems that survived were the ones that did not depend on a single vendor's capacity. A small model running on-device, offline, under your control does not care what a hyperscaler's balance sheet looks like.
+
+My opinion: treat frontier API access as a utility you can lose, not a foundation. Design so you can swap it out.
+
+If your product depended on one provider's pricing staying flat for two years, what is your plan B?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
