@@ -8290,3 +8290,18 @@ In the defence and automotive deployments I have worked on, the systems that sur
 My opinion: treat frontier API access as a utility you can lose, not a foundation. Design so you can swap it out.
 
 If your product depended on one provider's pricing staying flat for two years, what is your plan B?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
+488,Leaderboard Reset Benchmarks,"A leaderboard changed its test in October, and last month's model scores stopped meaning anything.
+
+Artificial Analysis moved its Intelligence Index to v5. It adds a coding benchmark with a private test set and a new terminal-based science benchmark. The old and new scores are not directly comparable.
+
+The models did not change. The ruler did.
+
+This is the right call. Public test sets leak into training data, and a score that can be memorised is a marketing number. Private sets are how you keep a benchmark honest.
+
+But look at what it means for you. If your model-selection slide says ""ranked #1 on the index"", that slide just expired. Whoever built it on a score from the old version has a stale decision.
+
+On the production systems I have shipped, the leaderboard never picked the model. A small eval set built from our own data did. In a defence deployment I worked on, the ""best"" general model lost to a smaller one tuned for the task, and it ran on hardware we controlled.
+
+My rule: use public leaderboards to build a shortlist, and your own private eval to make the call. Re-run it every time you change models, and every time the leaderboard changes its rules.
+
+What is in your private eval set today, and when did you last refresh it?",#AI #LLM #Benchmarks #MachineLearning #LLMOps
