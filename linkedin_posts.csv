@@ -8305,3 +8305,30 @@ On the production systems I have shipped, the leaderboard never picked the model
 My rule: use public leaderboards to build a shortlist, and your own private eval to make the call. Re-run it every time you change models, and every time the leaderboard changes its rules.
 
 What is in your private eval set today, and when did you last refresh it?",#AI #LLM #Benchmarks #MachineLearning #LLMOps
+489,Colorado ADMT Rules,"Colorado's AI rules hinge on two words: ""materially influence.""
+
+The attorney general's revised draft presumes your model's output influenced a decision when certain criteria are met.
+
+You can rebut it by showing the output was a de minimis factor.
+
+That is an engineering question, not a legal one.
+
+In the systems I have worked on across automotive, defence and education, the model output was never the whole decision. It was a score, a flag, a suggestion. How much weight it carried got decided in a meeting and never written down.
+
+That will not survive a rebuttable presumption.
+
+What I would build now:
+
+Log every model output next to the decision it fed.
+
+Log what the human or rule did with it: accepted, overridden, ignored.
+
+Rerun past decisions with the model removed and measure how often the outcome changes.
+
+Pin the model on infrastructure you control, so behaviour can be replayed.
+
+Colorado's duties start January 1, 2027, and the final text may still change. The evidence trail will be needed under any version.
+
+Compliance is becoming an observability problem.
+
+Could you prove today how much your model mattered to its last 100 decisions?",#AI #AIRegulation #AIGovernance #LLM #MLOps

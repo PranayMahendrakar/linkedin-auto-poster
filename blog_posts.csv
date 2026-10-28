@@ -1863,3 +1863,28 @@ Keep retrieval as its own tested component. If retrieval is bad, no writer model
 The pattern worth noticing is bigger than one release. The useful work is moving from ""one giant model does everything"" to small, specialised, inspectable models inside a pipeline you control.
 
 Takeaway: the best generator in your RAG stack may be the smallest one that is trained to say only what its sources say.",#AI #RAG #OpenSource #LLM #OnDeviceAI
+2026-10-28,489,Colorado ADMT Rules,Colorado's AI rules hinge on two words: 'materially influence'. Can you prove yours?,https://pranaymahendrakar.com/blog/colorados-ai-rules-hinge-on-two-words-materially-influence-can-you-pro,"Colorado just held its rulemaking hearing on automated decision-making, and the part that matters for engineers is a single phrase: ""materially influence.""
+
+The state attorney general's office published a revised draft of its rules on October 6, after more than sixty comments on the August draft. The comment window closed on October 26. The statute's main duties start on January 1, 2027, so these rules have to be final before then. One piece of the revision is a presumption that a system's output ""materially influences"" a decision when certain criteria are met. A company can rebut it by showing the output was a de minimis factor.
+
+Read that again as someone who ships systems. The legal test is not ""do you use AI."" It is ""how much did the output move the decision."" That is an engineering question, and most teams cannot answer it today.
+
+I have worked on AI systems in automotive, defence and education. In every one of them, the model output was never the whole story. It was a score, a flag, a ranking, a suggested reply. A human or a downstream rule did something with it. The question of how much weight that output carried was answered in a meeting, once, and never written down. If a regulator asked you tomorrow, you would be reconstructing it from memory.
+
+That will not survive a rebuttable presumption. If the default is that your output influenced the decision, the burden is on you to show it did not. You cannot show that with a slide. You show it with logs.
+
+Here is what I would build now, before the final rules land:
+
+First, record every model output next to the decision it fed. Same ID, same timestamp, stored together. If you cannot join them, you cannot prove anything later.
+
+Second, record what the human or the rule actually did. Accepted, overridden, ignored. Override rates are the cheapest evidence of whether a model is advisory or decisive.
+
+Third, test counterfactuals. Rerun a sample of past decisions with the model output removed and see how often the outcome changes. That number is your real answer to ""materially influence,"" and you want to know it before someone else asks.
+
+Fourth, keep the model where you can inspect it. This is my standing bias: models should run where the data is, under your control. When the system is a black-box API that changes underneath you, your audit trail has a hole in it. A pinned model on your own infrastructure gives you versioned behaviour you can replay.
+
+None of this is exotic. It is the same discipline as drift monitoring and evaluation, pointed at a legal question. The teams that already log and evaluate properly will treat the Colorado rules as paperwork. The teams that shipped a demo and called it a product will find out how much of their pipeline was guesswork.
+
+I will say what I do not know. The hearing's outcome is not reported yet, and the final text may change the presumption or its criteria. Do not build to today's wording. Build the evidence trail, because every version of these rules will want one.
+
+Compliance is turning into an observability problem. If you can measure how much your model mattered, you can defend it. If you cannot, the regulator will assume the answer.",#AI #AIRegulation #AIGovernance #LLM #MLOps
