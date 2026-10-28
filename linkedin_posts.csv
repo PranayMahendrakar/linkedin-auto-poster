@@ -8332,3 +8332,26 @@ Colorado's duties start January 1, 2027, and the final text may still change. Th
 Compliance is becoming an observability problem.
 
 Could you prove today how much your model mattered to its last 100 decisions?",#AI #AIRegulation #AIGovernance #LLM #MLOps
+490,AI-Assisted Coding Interviews,"Google now lets some engineering candidates use AI in the interview. The skill being graded changed.
+
+In October, Business Insider reported on internal Google documents describing a ""code comprehension"" round. Candidates read, debug and improve existing code with Gemini, and interviewers grade prompt quality, output validation and debugging.
+
+Google describes the formats as a pilot, and not every team uses them. But a spokesperson said AI fluency is required for all software engineering jobs.
+
+The point is not that AI is allowed. It is that writing the first draft is no longer the scarce skill.
+
+In the AI systems I have shipped across automotive, defence and education, the expensive failures were never a missing function. They were plausible output nobody checked: a model that looked right on the demo set and was wrong on the edge case that mattered.
+
+That is the skill this interview rewards. Reading code you did not write, and deciding whether to trust it.
+
+If you are preparing for interviews, or hiring, I would shift the practice:
+
+Review AI-generated pull requests and write down what you would reject, and why.
+
+Build a small eval before you trust any output.
+
+Explain the failure modes of code you did not write.
+
+Typing speed was never the job. Judgment is the job.
+
+If your interviews still ban the tools your engineers use every day, what exactly are you measuring?",#AI #SoftwareEngineering #Hiring #LLM #Careers
