@@ -8355,3 +8355,18 @@ Explain the failure modes of code you did not write.
 Typing speed was never the job. Judgment is the job.
 
 If your interviews still ban the tools your engineers use every day, what exactly are you measuring?",#AI #SoftwareEngineering #Hiring #LLM #Careers
+491,Replit Model Default Switch,"Replit's CEO said it stopped working with Anthropic. The real story is the default setting.
+
+In October, Amjad Masad said at TechCrunch Disrupt that cost, partnership and performance drove the move. Replit then clarified that Claude is still available, but OpenAI is now the default for Replit Agent.
+
+Reports say OpenAI offered a discount of over 30% on a contract worth more than $100 million a year. Neither company has confirmed those terms.
+
+Here is what I take from it: most users never change the default. So whoever owns that one dropdown owns the spend.
+
+In AI systems I've shipped, including a defence deployment, the model was never hard-wired. It sat behind a thin interface we could swap in an afternoon, and we re-ran our own evals before every swap.
+
+That is the real lesson for anyone building on LLM APIs. Model loyalty is a pricing negotiation, and your leverage is how cheaply you can leave.
+
+If switching providers would take your team a quarter, you don't have a vendor. You have a landlord.
+
+How long would a model swap take in your stack today?",#AI #LLM #AIEngineering #MachineLearning #GenerativeAI
