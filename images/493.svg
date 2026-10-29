@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#8B5CF6" stop-opacity="0.25"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="780" cy="800" r="290" fill="url(#glow)"/>
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <rect x="80" y="92" width="380" height="56" rx="28" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#8B5CF6">AI AGENT IDENTITY</text>
+    <text x="80" y="330" font-size="110" font-weight="800" fill="#F5F7FA">Who acted?</text>
+    <text x="80" y="450" font-size="110" font-weight="800" fill="#8B5CF6">Prove it.</text>
+    <text x="80" y="590" font-size="38" font-weight="500" fill="#94A3B8">Most agent demos run on one broad key.</text>
+    <text x="80" y="640" font-size="38" font-weight="500" fill="#94A3B8">Nobody can say which agent did what.</text>
+    <text x="80" y="710" font-size="40" font-weight="700" fill="#F5F7FA">Identity. Scope. Off switch.</text>
+    <g fill="#8B5CF6"><circle cx="760" cy="860" r="28" opacity="0.5"/><circle cx="870" cy="790" r="28" opacity="0.7"/><circle cx="880" cy="910" r="28"/><path d="M760 860L870 790M760 860L880 910M870 790L880 910" stroke="#8B5CF6" stroke-width="5" fill="none"/></g>
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#8B5CF6"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+</svg>

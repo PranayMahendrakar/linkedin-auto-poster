@@ -8412,3 +8412,22 @@ And shrink the surface first. An agent that runs on-device, next to its data, ha
 Identity tells you who acted. It does not tell you whether the action made sense. You still need evals.
 
 Which of the three cells is empty in your stack right now?",#AIAgents #AISecurity #LLM #Governance #AI
+494,CFOs Hiring Mix Shift,"750 CFOs were asked what AI does to headcount. Most said: not much. The mix changes, though.
+
+An NBER working paper surveyed them. Cutting cost, labour included, ranked among the least important reasons to invest in AI.
+
+What they did expect: routine clerical work falls by about 2 percentage points by 2028, while the share of technical roles (engineers, data scientists, analysts) keeps rising.
+
+They also report AI added around 1.8% to labour productivity, and expect about 3% next. Those are self-reported numbers, so treat them as intent, not proof.
+
+Here is what that matches in my own work. In a defence deployment I worked on, the model was never the hard part. The hard part was the person who could evaluate it, monitor it for drift, and decide when to turn it off.
+
+That person does not disappear when AI gets better. Their job gets bigger.
+
+If you are an engineer, the safe bet is not ""learn a prompt trick."" It is owning the boring parts: evals, data quality, deployment, failure handling.
+
+If you hire, stop writing job posts for people who only generate output. Write them for people who can check it.
+
+Automation reshuffles who gets hired before it reduces how many.
+
+Which of your team's tasks is already routine, and which one needs a person who can judge the result?",#AI #FutureOfWork #MachineLearning #AIJobs #Hiring
