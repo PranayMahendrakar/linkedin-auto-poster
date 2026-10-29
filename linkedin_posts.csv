@@ -8389,3 +8389,26 @@ Never read one benchmark. Read the sibling benchmark that the press release left
 Then run your own eval on your own data, on the hardware you will actually deploy to. That is the only number that ever shipped a product.
 
 When a vendor leads with one score, what is the first question you ask about the others?",#AI #LLM #Benchmarks #MLOps #CyberSecurity
+493,AI Agent Identity,"IBM announced identity and control features for AI agents this week.
+
+Verifiable identities. Scoped access. Fast revocation. Vault extended to hand agents short-lived credentials.
+
+Rollout details differ between reports, so read the primary source before you plan around it.
+
+But the direction is right, and it matches what I have seen in production, including a defence deployment I worked on.
+
+Most agent demos run on one broad API key and a developer's laptop. Nobody can say which agent did what, for whom, with what permission.
+
+Every component that touches data needs an identity, a scope and an off switch.
+
+A quick audit for this week:
+
+List every agent you run.
+Write down its identity, its scope, and who can shut it off.
+Any empty cell is your next sprint.
+
+And shrink the surface first. An agent that runs on-device, next to its data, has fewer credentials to leak than one that has to reach out to ten services.
+
+Identity tells you who acted. It does not tell you whether the action made sense. You still need evals.
+
+Which of the three cells is empty in your stack right now?",#AIAgents #AISecurity #LLM #Governance #AI

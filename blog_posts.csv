@@ -1888,3 +1888,30 @@ None of this is exotic. It is the same discipline as drift monitoring and evalua
 I will say what I do not know. The hearing's outcome is not reported yet, and the final text may change the presumption or its criteria. Do not build to today's wording. Build the evidence trail, because every version of these rules will want one.
 
 Compliance is turning into an observability problem. If you can measure how much your model mattered, you can defend it. If you cannot, the regulator will assume the answer.",#AI #AIRegulation #AIGovernance #LLM #MLOps
+2026-10-29,493,AI Agent Identity,Hot take: an AI agent without its own identity is just a shared password with opinions,https://pranaymahendrakar.com/blog/hot-take-an-ai-agent-without-its-own-identity-is-just-a-shared-passwor,"IBM announced identity and control features for AI agents on October 27 at its TechXchange event. The headline items are verifiable identities for agents, limits on what data and applications they can touch, fast revocation of permissions, and an extension of HashiCorp Vault so it can issue agents short-lived credentials.
+
+I am glad to see a large vendor say this out loud. The reports I read also disagree on how much of the Vault-for-agents piece ships today and how much is a stated direction. IBM's own materials are the place to check before you plan around it.
+
+Here is why it matters to me. In most agent demos I see, the agent runs with whatever credentials the developer had on their laptop. One API key, broad scope, no owner on record. That works until the first time something goes wrong and nobody can answer a simple question: which agent did this, on whose behalf, and with what permission?
+
+In the production systems I have worked on, including a defence deployment, that question was never optional. Every component that touched data had an identity, a scope and an audit trail. Agents are not special. They are software that takes actions, and they take them faster and in more surprising ways than a cron job does.
+
+So the pattern IBM describes is the right one, whoever ends up implementing it.
+
+First, give every agent its own identity. Not a shared service account, not a developer's token. If you cannot name the agent and its owner, you cannot govern it.
+
+Second, make credentials short-lived. A key that expires in minutes is a much smaller problem when a prompt injection or a bad tool call leaks it.
+
+Third, make revocation boring and fast. If killing an agent's access takes a ticket and a meeting, you do not have control. You have a policy document.
+
+Fourth, deny by default and end the session on violation. An agent reaching outside its scope should be treated as an incident, not a warning in a log.
+
+There is a part of this that vendors cannot solve for you. An identity layer tells you who acted. It does not tell you whether the action was sensible. You still need evaluation, and you still need to decide what an agent is allowed to do in the first place.
+
+This is also where my bias shows. The less an agent needs to reach out to, the less you have to secure. When the model and the data sit on the same device or inside the same network boundary, the permission surface shrinks before any tooling is involved. Offline systems have fewer credentials to leak because they have fewer places to send them.
+
+You should not have to choose between that and a managed identity layer. Use both. Shrink the surface first, then govern what remains.
+
+If you are shipping agents this quarter, run a quick audit. List every agent you have running. Next to each one, write the identity it uses, the scope it has and the person who can shut it off. If any of those three cells are empty, you have found your next sprint.
+
+Agents will get more autonomy, not less. The teams that get to grant it safely will be the ones that treated identity as part of the design, not a patch added after the incident.",#AIAgents #AISecurity #LLM #Governance #AI
