@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F43F5E" stop-opacity="0.25"/><stop offset="1" stop-color="#F43F5E" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="800" cy="800" r="290" fill="url(#glow)"/>
+  <g font-family="Inter, DejaVu Sans, sans-serif">
+    <rect x="80" y="92" width="440" height="56" rx="28" fill="none" stroke="#F43F5E" stroke-width="3"/>
+    <text x="112" y="129" font-size="25" font-weight="700" letter-spacing="3" fill="#F43F5E">CYBER BENCHMARKS</text>
+    <text x="80" y="330" font-size="110" font-weight="800" fill="#F5F7FA">Wins by 0.7.</text>
+    <text x="80" y="450" font-size="110" font-weight="800" fill="#F43F5E">Loses by 24.</text>
+    <text x="80" y="590" font-size="38" font-weight="500" fill="#94A3B8">Finding flaws: 84.5 vs 83.8.</text>
+    <text x="80" y="640" font-size="38" font-weight="500" fill="#94A3B8">Exploiting them: 54.4 vs 78.0.</text>
+    <text x="80" y="710" font-size="40" font-weight="700" fill="#F5F7FA">Read the sibling benchmark.</text>
+    <g fill="#F43F5E">
+      <rect x="690" y="860" width="70" height="80" opacity="0.5"/>
+      <rect x="790" y="800" width="70" height="140" opacity="0.5"/>
+      <rect x="890" y="900" width="70" height="40"/>
+    </g>
+    <rect x="80" y="944" width="64" height="6" rx="3" fill="#F43F5E"/>
+    <text x="80" y="1000" font-size="26" font-weight="700" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+  </g>
+</svg>

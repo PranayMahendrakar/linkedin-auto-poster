@@ -8370,3 +8370,22 @@ That is the real lesson for anyone building on LLM APIs. Model loyalty is a pric
 If switching providers would take your team a quarter, you don't have a vendor. You have a landlord.
 
 How long would a model swap take in your stack today?",#AI #LLM #AIEngineering #MachineLearning #GenerativeAI
+492,Cyber Benchmark Cherry-Picking,"A 0.7-point win on one cyber benchmark hides a 24-point loss on another.
+
+Z.ai says its GLM-5.3 scores 84.5% on CyberGym, a test of finding vulnerabilities. It reports 83.8% for Anthropic's Mythos 5 on the same test. Headline: the challenger edges ahead.
+
+Now the second number. On ExploitBench, which measures turning a flaw into a working attack, Z.ai reports 54.4% for its model against 78.0% for Mythos 5.
+
+Same vendor. Same press release. Opposite story.
+
+And every figure is vendor-reported. I have not seen an independent rerun.
+
+This is the pattern I keep running into when I evaluate models for real deployments, including a defence project I worked on. A model that does well on one slice of a task can fail the slice your system actually depends on. Finding a problem and acting on it correctly are different skills, and a single score blends them together.
+
+So my rule is simple:
+
+Never read one benchmark. Read the sibling benchmark that the press release left out.
+
+Then run your own eval on your own data, on the hardware you will actually deploy to. That is the only number that ever shipped a product.
+
+When a vendor leads with one score, what is the first question you ask about the others?",#AI #LLM #Benchmarks #MLOps #CyberSecurity
