@@ -8431,3 +8431,22 @@ If you hire, stop writing job posts for people who only generate output. Write t
 Automation reshuffles who gets hired before it reduces how many.
 
 Which of your team's tasks is already routine, and which one needs a person who can judge the result?",#AI #FutureOfWork #MachineLearning #AIJobs #Hiring
+495,Anthropic S-1 Compute Commitments,"Anthropic's IPO filing has a number every AI builder should read twice: more than $500 billion in compute commitments.
+
+The filing itself says the company has to grow revenue fast to meet them. Its revenue is mostly consumption-based, with few long-term contracts. The compute contracts run for years.
+
+That is a duration mismatch. Short-term customers on one side, long-term fixed bills on the other.
+
+I see a small version of this in every production AI system I ship. Teams build around one vendor's API, sized for the demo's growth curve instead of the real one. Then usage flattens and the fixed cost does not.
+
+In October, the biggest lesson from a filing like this is not about Anthropic. It is about how much of the AI stack is now a bet on demand that has not arrived yet.
+
+What I would do as an engineer:
+
+1. Treat your model vendor's pricing as a variable, not a constant.
+2. Keep a smaller model that can run on your own hardware as a fallback.
+3. Know your cost per task, not just your cost per token.
+
+The teams that survive a price shift are the ones that can move workloads.
+
+If your model provider's costs doubled next quarter, how long would it take you to switch?",#AI #LLM #Anthropic #AIInfrastructure #MachineLearning
