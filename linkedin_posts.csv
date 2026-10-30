@@ -8508,3 +8508,20 @@ Fewer layers means fewer people between you and the result. That's good if you c
 My advice to engineers: pick one outcome in your current job and measure it end to end.
 
 Where does your team's work stop today: at the merge, or at the customer's result?",#AI #AIJobs #MachineLearning #LLM #Careers
+499,OpenAI Revenue Net vs Gross,"In October, OpenAI's revenue went from nearly $70B to about $50B. Part of that gap is accounting.
+
+OpenAI told investors its annualized revenue was close to $50 billion at the end of September. The figure reported earlier was nearly $70 billion. Part of the difference is net versus gross revenue.
+
+The same day, CoreWeave fell almost 8%, and Oracle and Nvidia fell too.
+
+A definition changed, and billions in market value moved with it. That tells you how much of the AI infrastructure build-out is financed against one customer's growth curve.
+
+CoreWeave has said most of its borrowing sits in vehicles where lenders look through to the customer's credit. So a customer's revenue story is also a lender's collateral story.
+
+I see the small version of this in production work. A team reports ""accuracy"" or ""cost per query"" and nobody checks whether it is gross or net, averaged or worst case. Then someone sizes a GPU cluster on it.
+
+My rule: before you commit to compute, ask which number it was sized on and who defined it.
+
+If the number can change by 30% with a footnote, don't build a three-year commitment on it. Prefer capacity you can scale down, and models you can run on hardware you control.
+
+When did a metric definition last change a decision on your team?",#AI #LLM #AIInfrastructure #MachineLearning #OpenAI
