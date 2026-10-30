@@ -8450,3 +8450,18 @@ What I would do as an engineer:
 The teams that survive a price shift are the ones that can move workloads.
 
 If your model provider's costs doubled next quarter, how long would it take you to switch?",#AI #LLM #Anthropic #AIInfrastructure #MachineLearning
+496,GPT-6.1 Terra Cost Per Task,"A 3-point gap, a 9x price gap. That's the real GPT-6.1 Terra story.
+
+In October, OpenAI released GPT-6.1 Terra at $1 per million input tokens and $5 per million output. On its own Agents' Last Exam chart, Terra scores 60.0% at about $1.01 per task. Claude Opus 5.5 scores 63.2% at $8.82.
+
+Those numbers come from OpenAI. It also chose which rivals appear on each chart, and none of it has been independently reproduced yet. One analyst called the cost comparison ""a little artificial or selective.""
+
+I'd still take the signal seriously. Three points of benchmark for roughly a ninth of the cost is the trade most production systems should be making.
+
+In the defence and automotive deployments I've worked on, the model was never the expensive part to get right. The expensive part was running it ten thousand times a day on tasks that didn't need the top of the leaderboard.
+
+So don't switch because a vendor's chart says so. Run Terra and your current model on your own 200 real tasks, then compare cost per completed task, not score.
+
+The winner is rarely the highest number on the chart. It's the cheapest model that clears your bar.
+
+What's your bar for swapping a model in production?",#AI #LLM #GenerativeAI #MachineLearning #AIEngineering
