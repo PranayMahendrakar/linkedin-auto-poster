@@ -8487,3 +8487,24 @@ Use the extra time like a good engineer uses a slipped release date: pay down th
 A deadline is a forcing function. Don't let someone else's extension remove yours.
 
 What is the one thing in your AI stack you couldn't explain to an auditor today?",#AI #EUAIAct #AIGovernance #LLM #MLOps
+498,HubSpot Outcome Reorg,"HubSpot cut 660 jobs, about 7%, and said AI efficiency wasn't the reason.
+
+In October, the CEO said the company is reorganizing around helping customers get results with AI. Flatter structure, product teams built around customer outcomes.
+
+I'd read that as the real signal, and it isn't about headcount.
+
+When a company sells outcomes instead of features, the job changes. Nobody gets credit for shipping a model or a screen. You get credit when the customer's problem is actually solved.
+
+I've seen this inside AI deployments I worked on, including a defence one. The model's accuracy was never the thing people were judged on. It was whether the system held up in the field, and whether someone could explain a failure.
+
+That is a different skill set from ""I can call an LLM API"":
+
+- evaluation on the customer's own data
+- monitoring and drift once it's live
+- owning the failure, not just the demo
+
+Fewer layers means fewer people between you and the result. That's good if you can own one. It's rough if your value was passing work along.
+
+My advice to engineers: pick one outcome in your current job and measure it end to end.
+
+Where does your team's work stop today: at the merge, or at the customer's result?",#AI #AIJobs #MachineLearning #LLM #Careers
