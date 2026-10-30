@@ -1915,3 +1915,26 @@ You should not have to choose between that and a managed identity layer. Use bot
 If you are shipping agents this quarter, run a quick audit. List every agent you have running. Next to each one, write the identity it uses, the scope it has and the person who can shut it off. If any of those three cells are empty, you have found your next sprint.
 
 Agents will get more autonomy, not less. The teams that get to grant it safely will be the ones that treated identity as part of the design, not a patch added after the incident.",#AIAgents #AISecurity #LLM #Governance #AI
+2026-10-30,497,EU AI Omnibus Delay,"Hot take: a regulatory delay is a gift of time, not a gift of safety",https://pranaymahendrakar.com/blog/hot-take-a-regulatory-delay-is-a-gift-of-time-not-a-gift-of-safety,"The EU just pushed back its high-risk AI rules by more than a year, and I am already hearing teams say they can relax. That reading is wrong.
+
+Here is what I verified. The Digital Omnibus on AI was adopted by the Council on June 29, published in the Official Journal on July 24 as Regulation (EU) 2026/1744, and entered into force on July 27. Law-firm trackers from Hunton and Garrigues both report those dates. Under it, high-risk obligations for stand-alone Annex III systems now apply from December 2, 2027, and for AI embedded in regulated products from August 2, 2028. The original date was August 2 of this year.
+
+So the clock moved. The work did not.
+
+I have spent years shipping AI into places where a wrong answer is expensive: automotive, education, and defence. In a defence deployment I worked on, nobody asked us what the regulation said. They asked what happens when the model is wrong at 3 a.m. and who can prove why. That question does not move with a legislative calendar.
+
+The obligations that were delayed are, at their core, engineering obligations. Know your data. Log what the system did. Test it against the failure modes that matter. Keep a human able to intervene. If you cannot do those things today, you do not have a compliance problem. You have a production problem that compliance will eventually put a date on.
+
+This is why I keep building the unglamorous tooling. Hallucination detection, drift monitoring, bias and fairness audits, and training-data debugging are not features you bolt on the week before an audit. They are how you find out your system is quietly getting worse. I open-sourced several of these as PyPI packages precisely because every team ends up writing a worse version of them under deadline pressure.
+
+There is a second reason not to coast. A delay changes the economics for the careful teams, and not in the way people think. Competitors who skip the work now will ship faster for a year. Then they will face the same requirements with a larger, messier system, more users, and no paper trail. Retrofitting traceability onto a live product is far harder than designing it in. I have seen that movie in other domains, and it is always more expensive than the original plan.
+
+I also want to be honest about what I do not know. The omnibus changes dates and some details, and the guidance and standards that will define how you demonstrate conformity are still maturing. I would not claim anyone can predict exactly what an auditor will ask for in late 2027. Anyone who tells you otherwise is selling something.
+
+What I do know is which habits survive any version of the rules. Treat every model output as something you may have to explain later. Version your prompts, your retrieval corpus, and your evals together. Run your tests on your own data, not a vendor leaderboard. Prefer architectures where the data stays under your control, because it makes both privacy and auditability simpler. That is the same bias I have always had: models should run where the data is.
+
+If you are building in or selling into Europe, use the extra time the way a good engineer uses a slipped release date. Not to ship more features, but to pay down the risk you already know about.
+
+A deadline is a forcing function. Do not let someone else's extension remove yours.
+
+The delay is real. The reason the rules exist is not going anywhere.",#AI #EUAIAct #AIGovernance #LLM #MLOps

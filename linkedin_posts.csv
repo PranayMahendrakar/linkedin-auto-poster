@@ -8465,3 +8465,25 @@ So don't switch because a vendor's chart says so. Run Terra and your current mod
 The winner is rarely the highest number on the chart. It's the cheapest model that clears your bar.
 
 What's your bar for swapping a model in production?",#AI #LLM #GenerativeAI #MachineLearning #AIEngineering
+497,EU AI Omnibus Delay,"The EU just delayed its high-risk AI rules by over a year.
+
+Regulation (EU) 2026/1744 entered into force on July 27.
+Stand-alone high-risk systems now have until December 2, 2027. Embedded ones, August 2, 2028.
+
+I'm already hearing ""great, we can relax.""
+
+I'd push back on that.
+
+The delayed obligations are engineering obligations: know your data, log what the system did, test the failure modes, keep a human able to step in.
+
+In a defence deployment I worked on, nobody asked what the regulation said. They asked who could prove why the model was wrong at 3 a.m.
+
+That question doesn't move with the legislative calendar.
+
+Teams that skip the work now will ship faster for a year. Then they'll retrofit traceability onto a bigger, messier live system. That is always the expensive way.
+
+Use the extra time like a good engineer uses a slipped release date: pay down the risk you already know about.
+
+A deadline is a forcing function. Don't let someone else's extension remove yours.
+
+What is the one thing in your AI stack you couldn't explain to an auditor today?",#AI #EUAIAct #AIGovernance #LLM #MLOps
