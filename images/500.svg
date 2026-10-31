@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#3B82F6" stop-opacity="0.28"/><stop offset="1" stop-color="#3B82F6" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="720" r="340" fill="url(#glow)"/>
+<rect x="80" y="64" width="470" height="56" rx="28" fill="none" stroke="#3B82F6" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#3B82F6">GEMINI 4 CARBON</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="120" fill="#F5F7FA">Priced: yes.</text>
+<text x="80" y="430" font-size="120" fill="#3B82F6">Available: no.</text>
+</g>
+<g fill="none" stroke="#3B82F6" stroke-width="8">
+<rect x="730" y="660" width="200" height="150" rx="14"/>
+<path d="M770 660 V610 a60 60 0 0 1 120 0 V660"/>
+</g>
+<circle cx="830" cy="735" r="16" fill="#3B82F6"/>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">$2 in, $10 out. Then $4 and $20.</text>
+<text x="80" y="615">Gated to cyber defenders first.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Test before you plan.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#3B82F6"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

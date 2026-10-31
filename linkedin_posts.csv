@@ -8525,3 +8525,20 @@ My rule: before you commit to compute, ask which number it was sized on and who 
 If the number can change by 30% with a footnote, don't build a three-year commitment on it. Prefer capacity you can scale down, and models you can run on hardware you control.
 
 When did a metric definition last change a decision on your team?",#AI #LLM #AIInfrastructure #MachineLearning #OpenAI
+500,Gemini 4 Carbon Pricing,"Gemini 4 Carbon has a price list. Most developers still can't call it.
+
+In October, Google announced Carbon with introductory API pricing of $2 per million input tokens and $10 per million output tokens. After the introductory period, that rises to $4 and $20.
+
+Access, for now, is limited to selected cybersecurity defenders. Developers and businesses come later, and no date has been given.
+
+The benchmark numbers are Google's own: 88.2% on SEC-bench Pro, 71.0% on CWE-bench. Independent verification is still thin.
+
+Here is why I'd be careful. A price you can't test against your own workload is a marketing number, not a budget line.
+
+I've shipped enough production systems to know the bill is never the per-token rate. It is retries, long contexts, and the tasks the model fails on. You only learn that by running your own data through it.
+
+So my rule is simple. Until I can run my own evals, a gated model is a preview. I plan around what I can call today, and I keep a smaller model I control as the fallback.
+
+A model that is great but unavailable is not part of your architecture yet.
+
+Would you put a gated model with an introductory price into a roadmap? Or wait until you can test it yourself?",#AI #LLM #Gemini #MachineLearning #AIEngineering
