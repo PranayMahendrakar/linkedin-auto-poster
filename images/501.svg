@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#8B5CF6" stop-opacity="0.28"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="720" r="340" fill="url(#glow)"/>
+<rect x="80" y="64" width="440" height="56" rx="28" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#8B5CF6">ON-DEVICE AI</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="120" fill="#F5F7FA">30B params.</text>
+<text x="80" y="425" font-size="120" fill="#8B5CF6">In your pocket.</text>
+</g>
+<g fill="none" stroke="#8B5CF6" stroke-width="6">
+<rect x="760" y="600" width="170" height="260" rx="24"/>
+</g>
+<g fill="#8B5CF6">
+<rect x="790" y="640" width="110" height="40" opacity="0.4"/>
+<rect x="790" y="700" width="110" height="40"/>
+<rect x="790" y="760" width="110" height="40" opacity="0.7"/>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">A vendor claim. Measure it.</text>
+<text x="80" y="615">Memory for total, compute for active.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">What truly needs to leave?</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#8B5CF6"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

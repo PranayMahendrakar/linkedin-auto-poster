@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#10B981" stop-opacity="0.28"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="720" r="340" fill="url(#glow)"/>
+<rect x="80" y="64" width="520" height="56" rx="28" fill="none" stroke="#10B981" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#10B981">ENGINEERING HIRING</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="120" fill="#F5F7FA">Down 25%.</text>
+<text x="80" y="425" font-size="120" fill="#10B981">Except this.</text>
+</g>
+<g fill="#10B981">
+<rect x="700" y="640" width="70" height="200" opacity="0.35"/>
+<rect x="800" y="700" width="70" height="140"/>
+<rect x="900" y="800" width="70" height="40" opacity="0.7"/>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">Engineers: only 11% below 2019.</text>
+<text x="80" y="615">Entry level: far worse.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Ship real systems.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#10B981"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

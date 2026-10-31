@@ -8567,3 +8567,25 @@ Stop asking what you can move to the device.
 Ask what truly needs to leave it.
 
 What would you move on-device first?",#AI #OnDeviceAI #LLM #EdgeAI #MachineLearning
+502,Engineering Hiring Resilience,"Engineering hiring at big tech is down 11% from 2019. Everything else is down 25%.
+
+SignalFire's 2026 talent report has the numbers. Across the largest tech companies, total hiring is about a quarter below 2019 levels. Engineering is only 11% below.
+
+Read that carefully. Engineers aren't booming. Their share of hiring is rising because the roles around them are shrinking faster.
+
+The same report shows the other side: hiring of people with under a year of experience is down sharply at big tech and at early-stage startups.
+
+So the entry door is narrowing while the building still needs engineers.
+
+In the AI systems I've shipped, including a defence deployment, the people who mattered were never the ones who typed the fastest. They were the ones who could debug a failing pipeline at 2 a.m. and explain why the model was wrong.
+
+That is what teams are still paying for. Judgment on top of generated code.
+
+My advice if you're early in your career:
+Ship something real end to end.
+Learn to evaluate model output, not just prompt it.
+Publish your work where a hiring manager can read it.
+
+A portfolio of working systems beats a list of tools on a resume.
+
+Hiring managers: what do you look for now in someone with zero years of experience?",#AI #SoftwareEngineering #AIJobs #CareerAdvice #MachineLearning
