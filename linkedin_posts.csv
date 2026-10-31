@@ -8589,3 +8589,18 @@ Publish your work where a hiring manager can read it.
 A portfolio of working systems beats a list of tools on a resume.
 
 Hiring managers: what do you look for now in someone with zero years of experience?",#AI #SoftwareEngineering #AIJobs #CareerAdvice #MachineLearning
+503,Chip-Backed AI Debt,"Nvidia wants to turn its own chips into collateral for $500 billion of debt.
+
+In August, Nvidia said it is building financing platforms with Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR. The structure: special-purpose vehicles issue bonds and private debt, then lease the hardware to AI companies. The collateral is some mix of the chips and the contracts to use them.
+
+Here is the part I keep coming back to. Reports say Nvidia has not published when its support kicks in, or who gets paid first.
+
+In the defence and automotive deployments I've worked on, hardware is never the asset. The asset is the system running on it. Chips get replaced, models get retrained, and the workload moves.
+
+A GPU's resale value depends on the next generation arriving. A loan against it depends on demand staying high for the whole term. Those are two bets stacked on each other.
+
+This is also why I lean toward models that run on hardware you already own. A smaller model on-device doesn't need a bond market behind it.
+
+If you're planning AI infrastructure, ask your vendor one question: who holds the risk when the hardware ages faster than the loan?
+
+Would you borrow against GPUs, or buy less compute and run leaner models?",#AI #Nvidia #AIInfrastructure #OnDeviceAI #MachineLearning
