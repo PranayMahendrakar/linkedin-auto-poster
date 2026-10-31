@@ -1938,3 +1938,38 @@ If you are building in or selling into Europe, use the extra time the way a good
 A deadline is a forcing function. Do not let someone else's extension remove yours.
 
 The delay is real. The reason the rules exist is not going anywhere.",#AI #EUAIAct #AIGovernance #LLM #MLOps
+2026-10-31,501,On-Device MoE Phones,Hot take: the phone is about to become a serious inference target,https://pranaymahendrakar.com/blog/hot-take-the-phone-is-about-to-become-a-serious-inference-target,"Hot take: the phone is about to become a serious inference target, and most teams are not ready for it.
+
+On September 22, Qualcomm announced the Snapdragon 8 Elite Gen 6 and a higher-tier Extreme variant. TechCrunch and Android Headlines both covered it. The claim that matters to me: the Extreme chip is pitched as able to run a mixture-of-experts model of around 30 billion parameters locally, with only a fraction of those parameters active per token.
+
+Those are vendor claims, and coverage differs on some of the finer numbers, so I am not going to quote speeds or memory figures. Treat any tokens-per-second number you see until you have measured it on your own device and your own workload.
+
+But the direction is the point. Mixture-of-experts is what makes this plausible. You pay memory for the total parameters and compute for the active ones. A phone has limited memory bandwidth and a tight thermal budget, so a sparse model fits better than a dense one of the same quality.
+
+I have a bias, and I will state it plainly: models should run where the data is. On-device, offline, under your control. In the offline deployments I have worked on, including an avatar system that could not assume a network and a detection system where data could not leave the site, the cloud was never the hard part to remove. The hard part was making the model small, fast and predictable enough that nobody missed it.
+
+Here is what changes if a 30B-class sparse model really runs on a flagship phone.
+
+First, privacy stops being a policy and becomes an architecture. If the text never leaves the handset, there is nothing to leak, log or subpoena. That is a much stronger claim than ""we promise not to train on your data.""
+
+Second, latency and availability become yours. No round trip, no rate limit, no outage on someone else's status page.
+
+Third, and this is what people skip, your evaluation burden goes up. When you ship to one cloud endpoint, you test one model behind one API. When you ship to a fleet of devices, you test quantised weights on different chips, different memory limits, different thermal states. The same prompt can behave differently after quantisation. I have seen small accuracy drops hide inside an average and show up as one bad language or one bad edge case. In multilingual work that is exactly where it bites.
+
+So my advice to teams getting excited about this:
+
+Measure on real hardware. A benchmark on a spec sheet is not your product.
+
+Keep a regression set of the ugly cases, not just the typical ones, and run it against the quantised build, not the full-precision one.
+
+Design for graceful fallback. Decide in advance what happens when the device cannot run the model: a smaller local model, a deferred task, or an explicit cloud path the user opted into.
+
+Watch memory, not just compute. Sparse models are cheap per token but not cheap to hold in RAM.
+
+And be honest in your product copy about what runs locally and what does not. Users are getting good at spotting ""on-device"" as a marketing word.
+
+I am not saying the cloud goes away. Frontier training and the hardest reasoning tasks will stay there for a long time. I am saying the default question should flip. Instead of asking what we can move to the device, ask what truly needs to leave it.
+
+Most applications I see do not need to leave it. They need a capable, well-tested model that sits next to the data.
+
+The takeaway: a bigger model in a data centre is not the only kind of progress. A good-enough model that runs where the data lives, and that you have actually tested there, is the kind that ships.",#AI #OnDeviceAI #LLM #EdgeAI #MachineLearning

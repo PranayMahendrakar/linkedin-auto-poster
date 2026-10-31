@@ -8542,3 +8542,28 @@ So my rule is simple. Until I can run my own evals, a gated model is a preview. 
 A model that is great but unavailable is not part of your architecture yet.
 
 Would you put a gated model with an introductory price into a roadmap? Or wait until you can test it yourself?",#AI #LLM #Gemini #MachineLearning #AIEngineering
+501,On-Device MoE Phones,"Qualcomm's new Extreme-tier phone chip is pitched to run a roughly 30B-parameter mixture-of-experts model locally.
+
+That is a vendor claim, so measure it yourself.
+
+But the direction is right.
+Sparse models fit phones: you pay memory for total parameters, compute for active ones.
+
+I have always argued models should run where the data is.
+On-device. Offline. Under your control.
+
+If the text never leaves the handset, privacy stops being a policy and becomes architecture.
+
+The catch nobody mentions: testing gets harder.
+Quantised weights on different chips and thermal limits can fail on one language or one edge case while the average looks fine.
+
+My checklist:
+Test on real hardware.
+Keep a regression set of ugly cases.
+Plan a fallback when the device cannot run it.
+Watch RAM, not just compute.
+
+Stop asking what you can move to the device.
+Ask what truly needs to leave it.
+
+What would you move on-device first?",#AI #OnDeviceAI #LLM #EdgeAI #MachineLearning
