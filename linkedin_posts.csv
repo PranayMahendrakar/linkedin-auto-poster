@@ -8647,3 +8647,20 @@ Prompts tuned to one vendor's quirks are not a strategy. They are a lock-in you 
 The model is a supplier. The architecture is the product.
 
 Could you swap your model provider this week without a rewrite?",#AI #LLM #Privacy #OnDeviceAI #Apple
+506,Senior AI-Fluent Hiring,"Software job postings are rebounding. Almost all of the gain is senior, AI-fluent roles.
+
+That is Indeed Hiring Lab's read of its July labor snapshot. Software development postings are still roughly 30% below February 2020, and the recent gains are coming from senior, AI-fluent hires.
+
+An Axial Search analysis of about 43,000 US AI engineering postings points the same way. Python shows up in 62% of them. Foundation models in 51%. Two-thirds are individual contributor roles, mostly mid-level or senior.
+
+The message to engineers: nobody is hiring ""knows how to prompt."" They are hiring judgement.
+
+On the defence and automotive systems I have worked on, the hard part was never calling the model. It was knowing when the output was wrong, what to do offline, and how to keep it running on hardware we controlled.
+
+That judgement is what the postings are paying for. You can't get it from a certificate.
+
+If you are early in your career, build one thing end to end and own its failures. Evals, monitoring, a rollback plan.
+
+If you are hiring, stop screening for tool names. Ask what the candidate did when the model got it wrong.
+
+Hiring managers: what do you actually test for when you say ""AI-fluent""?",#AI #MachineLearning #AIJobs #LLM #Engineering

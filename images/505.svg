@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#3B82F6" stop-opacity="0.26"/><stop offset="1" stop-color="#3B82F6" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="780" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="400" height="56" rx="28" fill="none" stroke="#3B82F6" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#3B82F6">VENDOR LOCK-IN</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="116" fill="#F5F7FA">The model is</text>
+<text x="80" y="420" font-size="116" fill="#3B82F6">a supplier.</text>
+</g>
+<g fill="none" stroke="#3B82F6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+<path d="M660 840 L760 740 L860 800 L960 660"/>
+<path d="M910 660 L960 660 L960 710"/>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">Apple rents Gemini for Siri.</text>
+<text x="80" y="615">Your stack can swap too.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Own the architecture.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#3B82F6"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>
