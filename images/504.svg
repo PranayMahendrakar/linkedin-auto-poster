@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#10B981" stop-opacity="0.26"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="780" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="440" height="56" rx="28" fill="none" stroke="#10B981" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#10B981">LLM PRICE CUTS</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="120" fill="#F5F7FA">Tokens got</text>
+<text x="80" y="430" font-size="120" fill="#10B981">80% cheaper.</text>
+</g>
+<g fill="#10B981">
+<rect x="640" y="650" width="70" height="200"/>
+<rect x="730" y="710" width="70" height="140" opacity="0.8"/>
+<rect x="820" y="780" width="70" height="70" opacity="0.6"/>
+<rect x="910" y="822" width="50" height="28" opacity="0.45"/>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">Competition, not kindness.</text>
+<text x="80" y="615">Prices move under you.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Design for swapping.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#10B981"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

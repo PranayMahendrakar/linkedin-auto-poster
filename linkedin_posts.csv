@@ -8604,3 +8604,22 @@ This is also why I lean toward models that run on hardware you already own. A sm
 If you're planning AI infrastructure, ask your vendor one question: who holds the risk when the hardware ages faster than the loan?
 
 Would you borrow against GPUs, or buy less compute and run leaner models?",#AI #Nvidia #AIInfrastructure #OnDeviceAI #MachineLearning
+504,LLM Price Cuts,"OpenAI cut GPT-5.6 Luna's price by 80% three weeks after launch. Nobody does that out of kindness.
+
+On July 30, input fell from $1 to $0.20 per million tokens, output from $6 to $1.20. OpenAI credits its own efficiency work. That figure is self-reported.
+
+Anthropic moved too. Opus 5.5 launched at $4 input and $20 output, against $5 and $25 for Opus 5.
+
+My read: this is competition, not generosity. Models are close to interchangeable, switching costs are low, and cheap open-weight models are pushing from below.
+
+Here is what that means if you build.
+
+Price per token is a number that changes under you. If your architecture only works at today's price, it's fragile. If it only works at a price from three months ago, it was never a product.
+
+In the defence and automotive systems I've shipped, the model was never the part that decayed fastest. The pricing, the vendor terms and the endpoint behaviour were.
+
+So design for swapping. Keep prompts, evals and routing outside any one vendor. Run the small, steady workloads where the data lives. Spend the frontier budget only where the task earns it.
+
+Cheaper tokens are a gift to people who can switch. They're a trap for people who can't.
+
+What would break in your stack if you had to change model vendors next month?",#AI #LLM #GenAI #MachineLearning #OnDeviceAI
