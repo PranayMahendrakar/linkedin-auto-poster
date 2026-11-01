@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F43F5E" stop-opacity="0.24"/><stop offset="1" stop-color="#F43F5E" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="780" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="470" height="56" rx="28" fill="none" stroke="#F43F5E" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#F43F5E">AI INFRASTRUCTURE</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="104" fill="#F5F7FA">Money: ready.</text>
+<text x="80" y="420" font-size="104" fill="#F43F5E">Chips: late.</text>
+</g>
+<g fill="#F43F5E">
+<rect x="640" y="800" width="70" height="50" opacity="0.8"/>
+<rect x="730" y="800" width="70" height="50" opacity="0.8"/>
+<rect x="820" y="800" width="70" height="50" opacity="0.8"/>
+<rect x="910" y="800" width="70" height="50" fill="none" stroke="#F43F5E" stroke-width="4" stroke-dasharray="10 8"/>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">Microsoft cut its capex forecast</text>
+<text x="80" y="615">as GPUs arrived late.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Plan for delay, not budget.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#F43F5E"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

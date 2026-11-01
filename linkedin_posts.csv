@@ -8664,3 +8664,18 @@ If you are early in your career, build one thing end to end and own its failures
 If you are hiring, stop screening for tool names. Ask what the candidate did when the model got it wrong.
 
 Hiring managers: what do you actually test for when you say ""AI-fluent""?",#AI #MachineLearning #AIJobs #LLM #Engineering
+507,Capex Cut Chip Delays,"Microsoft lowered its AI spending forecast to $170B. The reason wasn't weak demand. It was late chips.
+
+In October, Microsoft's CFO said third-party GPU providers ran behind, pushing some capacity into the first half of 2027. Alphabet said outside capacity came online only at the very end of the quarter.
+
+So the biggest buyers on earth had the money and still couldn't get the compute on time.
+
+That changes what I'd plan around. Most roadmaps I see assume capacity is a budget line: ask, pay, receive. October says capacity is a delivery date, and delivery dates slip.
+
+In the defence and automotive deployments I worked on, we never got to assume a cloud GPU would be there on schedule. The model had to run on hardware the customer already owned, offline. That constraint felt like a limitation then. It now looks like insurance.
+
+My opinion: if your product only works when a hyperscaler delivers on time, your roadmap is a bet on someone else's supply chain.
+
+The practical moves are boring. Build a smaller model fallback. Test what degrades when you drop a size class. Keep one path that runs on hardware you control.
+
+Where does your product break first if inference capacity arrives six months late?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
