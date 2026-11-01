@@ -8623,3 +8623,27 @@ So design for swapping. Keep prompts, evals and routing outside any one vendor. 
 Cheaper tokens are a gift to people who can switch. They're a trap for people who can't.
 
 What would break in your stack if you had to change model vendors next month?",#AI #LLM #GenAI #MachineLearning #OnDeviceAI
+505,Apple Siri Gemini Privacy,"Apple is renting Google's Gemini to power the next Siri.
+
+Axios and Business Today both reported the joint announcement in January. Multi-year. Not exclusive. No financial terms disclosed.
+
+Everyone is asking who won.
+
+I am asking where the data goes.
+
+Both companies say Apple's privacy standards are preserved. Maybe so. But a press release is a promise. A data flow diagram is a proof.
+
+My bias after shipping AI systems in automotive and defence: models should run where the data is. On-device. Offline. Under your control.
+
+If even Apple treats the model as a replaceable component, so should you.
+
+Keep three layers yours:
+- the data boundary
+- the evals
+- the exit
+
+Prompts tuned to one vendor's quirks are not a strategy. They are a lock-in you wrote yourself.
+
+The model is a supplier. The architecture is the product.
+
+Could you swap your model provider this week without a rewrite?",#AI #LLM #Privacy #OnDeviceAI #Apple

@@ -1973,3 +1973,42 @@ I am not saying the cloud goes away. Frontier training and the hardest reasoning
 Most applications I see do not need to leave it. They need a capable, well-tested model that sits next to the data.
 
 The takeaway: a bigger model in a data centre is not the only kind of progress. A good-enough model that runs where the data lives, and that you have actually tested there, is the kind that ships.",#AI #OnDeviceAI #LLM #EdgeAI #MachineLearning
+2026-11-01,505,Apple Siri Gemini Privacy,Hot take: Apple renting Gemini for Siri proves the privacy story is an architecture question,https://pranaymahendrakar.com/blog/hot-take-apple-renting-gemini-for-siri-proves-the-privacy-story-is-an-,"In January, Apple and Google announced a multi-year deal: Google's Gemini models will underpin the next-generation Siri and other Apple Intelligence features. Axios and Business Today both reported the joint confirmation.
+
+Most of the commentary I read was about who won. I care about a different question: where does the data go?
+
+Here is what was actually said, and nothing more. Neither company disclosed financial terms. Coverage reported that the arrangement is not exclusive. And the companies said the approach would preserve Apple's privacy standards, with multiple outlets noting that raw user queries are not simply sent back to Google's systems.
+
+That last point is the interesting one, and it is also the one nobody can verify from the outside. A privacy promise is a claim. An architecture is a proof.
+
+I have a bias, and I will state it plainly: models should run where the data is. On-device, offline, under your control. Every time I have been asked to ship an AI system for a sensitive environment, the first design review was not about accuracy. It was about the data boundary.
+
+When I built an offline multilingual AI avatar for an automotive client, the whole point was that nothing left the machine. When I worked on real-time threat detection for a defence deployment, the network was not a dependency, it was a liability. Those were not ideological choices. They were requirements.
+
+So when a company with Apple's reputation reaches for a partner's model, I read it as a signal about the economics of frontier capability. Training and serving the strongest models is brutally expensive. Even the best-resourced hardware company in the world decided that renting was more sensible than building everything itself.
+
+That tells you something about the rest of us.
+
+If Apple is not going to build every layer, you are not going to either. The real engineering decision is not build versus buy. It is which layer you keep.
+
+Here is how I think about it in production.
+
+First, the data layer stays yours. Your documents, your embeddings, your logs. If a vendor model needs to see them, you decide exactly what, when, and under what retention terms.
+
+Second, the evaluation layer stays yours. Never let the vendor grade their own homework. When the model underneath changes, and it will, your regression suite is the only thing that tells you whether behaviour drifted.
+
+Third, the routing layer stays yours. A small model on the device or inside your network handles the easy and sensitive requests. A bigger hosted model handles the hard ones that you have cleared for export. That split is where most of the cost and almost all of the risk lives.
+
+Fourth, have an exit. A deal that is not exclusive is a gift, if you have built your system so that swapping the model is a configuration change and not a rewrite. Most teams I see have not. Their prompts are tuned to one model's quirks and their pipeline assumes one vendor's output format.
+
+I have seen this movie with hallucination, too. A model swap quietly changes how often the system confidently invents something. If you are not measuring that continuously, you find out from a user. My research on hallucination in Indic languages points the same way: behaviour that looks fine in English can degrade sharply elsewhere, and a vendor's headline benchmark will not tell you.
+
+None of this is a criticism of the Apple and Google arrangement. It may well be a sensible design, with sensitive work staying local and heavier work handled by a larger model. I simply cannot confirm that from public statements, and neither can you.
+
+That is the point. When privacy is a sentence in a press release, you are trusting. When privacy is a data flow diagram you can audit, you are verifying.
+
+For anyone building products on top of foundation models, the lesson from this deal is not about two giants. It is that even they treat the model as a replaceable component inside a larger system they control.
+
+Treat yours the same way. Own the data boundary, own the evals, own the exit.
+
+Takeaway: the model is a supplier, the architecture is the product.",#AI #LLM #Privacy #OnDeviceAI #Apple
