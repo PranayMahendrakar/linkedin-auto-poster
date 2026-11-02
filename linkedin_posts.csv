@@ -8716,3 +8716,22 @@ Test it on your own data and your own languages.
 Local AI is coming. The memory line decides when it arrives for you.
 
 What is the biggest model you could actually run on-premise today?",#AI #LLM #OpenSource #OnDeviceAI #EdgeAI
+510,Meta Equity Raise Chips,"Meta's chip suppliers are now buying Meta's stock.
+
+In October, Meta announced its largest equity raise ever: about $97.5B in total. Roughly $35B is priced now, with up to $60B more in at-the-market sales planned after new Class C shares start trading in Q1 2027.
+
+The detail I can't stop thinking about: Nvidia, AMD and Broadcom signalled interest in up to $5B of the common shares.
+
+So the companies selling the GPUs are helping fund the buyer of the GPUs.
+
+Treat the headline number carefully: most of it is a future programme, not cash in the bank.
+
+The lesson for builders is not about Meta's balance sheet. It's that compute is now financed like infrastructure, with supply, capital and demand tied tightly together.
+
+On defence and enterprise deployments I've worked on, the hardware budget was fixed before the model was chosen. That constraint made us better engineers. We shipped smaller models, tighter retrieval, and systems that ran inside the room we were given.
+
+If frontier labs need raises this size to keep the GPUs fed, I would not build a product whose margin depends on cheap frontier inference staying cheap.
+
+Design for the day the price moves. Keep a smaller model that runs on hardware you control as your fallback.
+
+Is your AI product's unit economics built for today's compute prices, or for any compute price?",#AI #LLM #AIInfrastructure #Nvidia #OnDeviceAI
