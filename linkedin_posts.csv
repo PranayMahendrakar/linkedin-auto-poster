@@ -8679,3 +8679,16 @@ My opinion: if your product only works when a hyperscaler delivers on time, your
 The practical moves are boring. Build a smaller model fallback. Test what degrades when you drop a size class. Keep one path that runs on hardware you control.
 
 Where does your product break first if inference capacity arrives six months late?",#AI #LLM #AIInfrastructure #OnDeviceAI #MachineLearning
+508,Kimi K3.1 Cyber Filtering,"Moonshot scrubbed cyber data from Kimi K3.1 Pro's training. The exploit score still only fell from 90.5% to 81%.
+
+That is Moonshot's own number, on its own internal suite, with no independent reproduction. Read it with that caveat.
+
+But look at what it says. The company removed cyber material from mid-training and filtered the cyber reinforcement-learning environments. The previous model, K3, scored 33.3% on the same suite. So the new model is still far ahead of its predecessor, with the data taken out.
+
+My read: you cannot subtract a capability by deleting its data. Skills transfer from code, systems and reasoning. A model that learns to debug software learns most of what it needs to attack it.
+
+I saw the same pattern building detection systems for a defence deployment. The capability sits in the general competence, not in one labelled folder.
+
+The practical consequence for builders is that ""we filtered the training data"" is a mitigation, not a guarantee. If you ship an open-weight model into a product, test the behaviour you care about yourself, on your own tasks, before you trust the model card.
+
+When a lab tells you it removed a capability, what evidence would convince you it's actually gone?",#AI #LLM #OpenWeights #AISafety #MachineLearning
