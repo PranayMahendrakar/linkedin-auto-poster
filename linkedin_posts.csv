@@ -8692,3 +8692,27 @@ I saw the same pattern building detection systems for a defence deployment. The 
 The practical consequence for builders is that ""we filtered the training data"" is a mitigation, not a guarantee. If you ship an open-weight model into a product, test the behaviour you care about yourself, on your own tasks, before you trust the model card.
 
 When a lab tells you it removed a capability, what evidence would convince you it's actually gone?",#AI #LLM #OpenWeights #AISafety #MachineLearning
+509,Meta Muse Spark Open,"Meta just released the weights of Muse Spark Open. The headline: it runs on a Mac.
+
+The footnote: you need roughly a terabyte of memory.
+
+TechCrunch and Engadget both covered it. About 816B parameters in total, around 42B active per token. Benchmarks are Meta's own, so verify them yourself.
+
+I love the direction. I have always argued models should run where the data is. On-device, offline, under your control.
+
+But ""runs on a Mac"" and ""runs on a Mac you can buy"" are different sentences.
+
+With sparse models you pay memory for total parameters and compute for active ones. Memory is the budget that decides your deployment.
+
+In a defence deployment I worked on, the question was never ""what is the best model?"" It was ""what is the best model that fits the hardware allowed in that room?""
+
+My advice:
+
+Don't rebuild your stack this week.
+Use it as a ceiling to distil from and evaluate against.
+Read the licence. Open-weight is not open source.
+Test it on your own data and your own languages.
+
+Local AI is coming. The memory line decides when it arrives for you.
+
+What is the biggest model you could actually run on-premise today?",#AI #LLM #OpenSource #OnDeviceAI #EdgeAI
