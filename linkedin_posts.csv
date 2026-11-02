@@ -8735,3 +8735,20 @@ If frontier labs need raises this size to keep the GPUs fed, I would not build a
 Design for the day the price moves. Keep a smaller model that runs on hardware you control as your fallback.
 
 Is your AI product's unit economics built for today's compute prices, or for any compute price?",#AI #LLM #AIInfrastructure #Nvidia #OnDeviceAI
+511,AWS Growth Cash Burn,"AWS grew 39%. Amazon's free cash flow fell to negative $42 billion.
+
+Both numbers come from the same October quarter. AWS posted its fastest growth in nearly five years. Trailing free cash flow swung from a $14.8 billion inflow a year earlier to a $42.4 billion outflow.
+
+The cause is capex: about $220 billion planned for 2026, and long-term debt up from $65.6 billion to $173 billion in nine months.
+
+Demand is real. I'm not arguing that. But look at who is carrying the bill. The cloud is pre-paying for compute years ahead of the revenue that justifies it.
+
+In my work on defence and automotive deployments, the systems that survived were the ones where cost per task was known before launch. Not the ones that assumed the unit price would fall to meet the usage curve.
+
+That is why I keep pushing for models that run where the data is. If a workload fits on-device or on your own hardware, you are not exposed to a hyperscaler's financing cycle, or to whatever price it needs to recover that spending.
+
+Not every workload fits. But more of them do than most teams have tested.
+
+My takeaway: treat cloud AI pricing as a variable, not a constant, and keep a local fallback you have actually benchmarked.
+
+Which of your AI workloads would still work if the API price went up 2x?",#AI #CloudComputing #OnDeviceAI #MachineLearning #AIInfrastructure
