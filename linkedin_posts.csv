@@ -8752,3 +8752,22 @@ Not every workload fits. But more of them do than most teams have tested.
 My takeaway: treat cloud AI pricing as a variable, not a constant, and keep a local fallback you have actually benchmarked.
 
 Which of your AI workloads would still work if the API price went up 2x?",#AI #CloudComputing #OnDeviceAI #MachineLearning #AIInfrastructure
+512,Mistral Large 4 Weights,"Mistral's new open-weights model is ranked 17th on an independent index. Its own charts say otherwise.
+
+In October, Mistral released the weights of Large 4: about 1 trillion parameters, roughly 49 billion active per token. Mistral reports 41% on Terminal-Bench 4.0 and a coding-agent score tied with GLM-5.3 on 47% fewer tokens.
+
+Vals.ai, which ran it independently, puts it 17th overall on its index at 56%, and 5th among open-weight models.
+
+Neither number is wrong. They answer different questions.
+
+The vendor number tells you what the model can do on its best day. The independent number tells you where it lands on someone else's tasks.
+
+And ""active parameters"" is a compute figure, not a memory figure. All trillion still have to sit somewhere. At 8-bit that is on the order of a terabyte of weights before you serve a single request.
+
+I have shipped models into defence and automotive settings where the data could not leave the building. In those rooms, the question was never ""what is the biggest open model."" It was ""what is the smallest model that clears our own eval, on hardware we already own.""
+
+Open weights give you control. They do not give you a fit.
+
+Build your own 50-task eval from real traffic before you read anyone's leaderboard, including this one.
+
+What is the smallest model that has passed your own eval?",#AI #LLM #OpenWeights #MachineLearning #OnDeviceAI
