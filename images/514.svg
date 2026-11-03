@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.25"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="780" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="380" height="56" rx="28" fill="none" stroke="#F59E0B" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#F59E0B">CHINA AI LAW</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="110" fill="#F5F7FA">A law with</text>
+<text x="80" y="420" font-size="110" fill="#F59E0B">no text yet.</text>
+</g>
+<g fill="none" stroke="#F59E0B" stroke-width="5">
+<rect x="720" y="700" width="170" height="220" rx="10"/>
+<g stroke-dasharray="14 10"><line x1="750" y1="750" x2="860" y2="750"/><line x1="750" y1="800" x2="860" y2="800"/><line x1="750" y1="850" x2="830" y2="850"/></g>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">No draft, dates or penalties.</text>
+<text x="80" y="615">Disclosure rules are coming.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Build traceability now.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#F59E0B"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

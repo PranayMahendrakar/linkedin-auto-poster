@@ -8796,3 +8796,26 @@ Open weights are the precondition for models that run where the data is. The lic
 Open is a nice word. Auditable is a better one.
 
 What is the first thing you check before building on an open-weight model?",#OpenWeights #LLM #AI #Mistral #OnDeviceAI
+514,China AI Law Plan,"China says it will speed up a national AI law. There is no draft yet.
+
+In November, an official at China's economic planner, the NDRC, said Beijing will accelerate legislation covering data, computing power and algorithms, with safety standards across the full AI lifecycle.
+
+Bloomberg reports the rules would reach developers like DeepSeek, Moonshot and Alibaba. Those names are the reporter's, not the official's. Reports also mention regulatory sandboxes and a transition period.
+
+The interesting part is what is missing: no text, no dates, no penalties.
+
+So the useful question isn't ""what will it ban?"" It's ""what will my system need to prove?""
+
+In a defence deployment I worked on, the hard part was never the model. It was showing where every input came from, what the system did with it, and that nothing left the box. Teams that could show that passed review. Teams that couldn't rebuilt.
+
+The pattern is the same everywhere regulation is heading: disclose risks, report incidents, document the lifecycle.
+
+You don't need the final text to start. You need:
+
+1. A versioned record of every model and checkpoint in production
+2. Logged evals you can reproduce
+3. An incident process that someone actually owns
+
+Compliance you can bolt on later is cheap. Traceability you have to retrofit is not.
+
+Which part of your AI stack would be hardest to document if a regulator asked tomorrow?",#AI #AIRegulation #AIGovernance #LLM #MachineLearning
