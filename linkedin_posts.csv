@@ -8771,3 +8771,28 @@ Open weights give you control. They do not give you a fit.
 Build your own 50-task eval from real traffic before you read anyone's leaderboard, including this one.
 
 What is the smallest model that has passed your own eval?",#AI #LLM #OpenWeights #MachineLearning #OnDeviceAI
+513,Mistral Large 4 Open Weights,"Mistral just released the weights for Large 4. Roughly a trillion parameters, mixture-of-experts, downloadable by anyone.
+
+Everyone is asking how it benchmarks.
+
+I am asking what the license lets me do.
+
+Reports describe it as a modified MIT license, and at least one outlet noted it is not quite open source. That difference decides whether you can fine-tune it, ship it, or run it inside a customer's network.
+
+The benchmark claims are Mistral's own. Treat them as a hypothesis until you reproduce them on your data.
+
+In a defence deployment I worked on, nothing could phone home. Downloadable weights were only half the requirement. The legal right to use them that way was the other half.
+
+My checklist for any open-weight release:
+
+1. Read the license end to end
+2. Know what you do not get (data, recipe)
+3. Be honest about the hardware
+4. Run your own evals
+5. Save the exact checkpoint you tested
+
+Open weights are the precondition for models that run where the data is. The license decides whether you actually get that control.
+
+Open is a nice word. Auditable is a better one.
+
+What is the first thing you check before building on an open-weight model?",#OpenWeights #LLM #AI #Mistral #OnDeviceAI
