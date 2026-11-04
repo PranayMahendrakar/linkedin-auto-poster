@@ -8819,3 +8819,27 @@ You don't need the final text to start. You need:
 Compliance you can bolt on later is cheap. Traceability you have to retrofit is not.
 
 Which part of your AI stack would be hardest to document if a regulator asked tomorrow?",#AI #AIRegulation #AIGovernance #LLM #MachineLearning
+515,AI Spend Metering,"Uber reportedly used up its 2026 AI coding budget in about four months.
+
+Its CTO told The Information. Outlook Business and DesignRush both covered the cap that followed.
+
+The tool worked. People used it. That is the success case, and it still broke the budget.
+
+My read: this is a metering problem, not an AI problem.
+
+Usage-based billing turns every keen engineer into a variable cost. Each request looks cheap. The total only shows up after the money is gone.
+
+What I would do from day one:
+
+Measure cost per task, not per month.
+Route routine work to smaller models.
+Cache and trim context.
+Set team allowances with alerts at 50 and 80 percent.
+
+And ask which workloads can run where the data already is. On hardware you own, a busy week does not create a surprise invoice.
+
+Hosted frontier models are still right for hard, low-volume work. The mistake is one pricing model for everything.
+
+Rising token usage is appetite, not value, until you tie it to shipped work.
+
+Does anyone in your company own the AI bill by name?",#AI #LLM #AIEngineering #OnDeviceAI #MLOps

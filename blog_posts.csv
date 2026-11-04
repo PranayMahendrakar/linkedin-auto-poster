@@ -2072,3 +2072,32 @@ I would also keep the weights, the license text, and the exact version you teste
 The industry loves the word open. Production teams should love the word auditable more.
 
 Takeaway: open weights give you the option to control your stack, and the license decides whether you are allowed to use it. Read the second one first.",#OpenWeights #LLM #AI #Mistral #OnDeviceAI
+2026-11-04,515,AI Spend Metering,"Hot take: Uber burning its AI budget in four months is a metering problem, not an AI problem",https://pranaymahendrakar.com/blog/hot-take-uber-burning-its-ai-budget-in-four-months-is-a-metering-probl,"Here is what was reported, and nothing more. Uber's CTO told The Information that the company's 2026 AI coding budget was used up by around April, roughly four months in. Coverage from Outlook Business and DesignRush, among others, says Uber has since capped employee usage of tools like Claude Code. Reports on the exact cap and per-engineer cost vary, so I will not quote them.
+
+What I take from it is simple. The tool worked well enough that people used it. That is the success case, and it still broke the budget.
+
+Usage-based billing turns every enthusiastic engineer into a variable cost line. Nobody sets out to overspend. Each individual request looks cheap, and the total only becomes visible after the money is gone.
+
+I have seen the same shape in production systems I have worked on. A pilot runs on a small group and a generous allowance. Then adoption spreads, agents start calling other agents, context windows grow, and the bill stops tracking headcount and starts tracking behaviour.
+
+The fix is not to ban the tool. The fix is to treat tokens like any other metered infrastructure from day one.
+
+First, measure per task, not per month. If you cannot say what a merged change, a resolved ticket or a processed document costs in tokens, you cannot defend the spend when someone asks. Reports say Uber's own leadership is now asking exactly that question about return on investment.
+
+Second, route by difficulty. Most requests in a real workload are routine: classification, extraction, small edits, summaries. They do not need the largest frontier model. Send the hard ones up and keep the rest on something smaller and cheaper.
+
+Third, cache and trim context. Repeated system prompts, whole repositories pasted in, and long conversation histories are the quiet multipliers. Context management is a cost control as much as a quality control.
+
+Fourth, and this is my standing bias, ask which workloads can run where the data already is. In my experience with on-device and offline deployments, including a defence deployment I worked on, a model running on hardware you own has a fixed cost profile. You pay for the machine once, and a busy week does not produce a surprise invoice.
+
+That is not free. You take on hardware, updates and evaluation. But it converts an open-ended operating expense into a bounded one, and for repetitive, high-volume work that trade is often the right one.
+
+None of this means hosted frontier models are a mistake. For hard reasoning and for low-volume, high-value work they are the right tool. The mistake is using one pricing model for every kind of work and then being surprised by the total.
+
+There is also a governance lesson. A cap imposed after the budget is gone is a blunt instrument. Per-team allowances, alerts at 50 and 80 percent of budget, and a named owner for AI spend are boring controls that cost almost nothing, and they prevent the emergency version of the conversation.
+
+I would also be careful about the productivity story. Token consumption is an input, not an output. A dashboard that celebrates rising usage without tying it to shipped work is measuring appetite, not value.
+
+Teams that get this right will not be the ones who spend the least. They will be the ones who know what each unit of work costs and can explain it in one sentence.
+
+The takeaway: AI spend does not fail because the models are too expensive. It fails because nobody metered it before it scaled.",#AI #LLM #AIEngineering #OnDeviceAI #MLOps
