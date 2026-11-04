@@ -8843,3 +8843,20 @@ Hosted frontier models are still right for hard, low-volume work. The mistake is
 Rising token usage is appetite, not value, until you tie it to shipped work.
 
 Does anyone in your company own the AI bill by name?",#AI #LLM #AIEngineering #OnDeviceAI #MLOps
+516,Nvidia China Cloud Cap,"Nvidia is policing chip exports with a phone call.
+
+In November, the Financial Times reported that Nvidia told cloud partners to keep Chinese customers under 49% of new contracts. Per the reports, it was passed on verbally by sales teams, not in writing. Nvidia has not confirmed the number.
+
+The target is the rental loophole. Chinese AI firms can't buy the top chips, so they rent them in data centres abroad over a remote connection. The hardware never crosses a border.
+
+One cloud operator in Singapore said it is hard to find enough non-Chinese customers to stay under the cap.
+
+My read: renting compute means renting someone else's rules.
+
+A cap like this can change overnight, without a public rulebook. If your product depends on capacity from one provider in one region, your roadmap depends on a policy you can't read.
+
+On deployments I've worked on, especially in defence and enterprise settings, the data and the model had to sit where we controlled them. That felt like a constraint at the time. It now looks like insurance.
+
+Cloud GPUs are still the right call for bursty, hard workloads. But keep a fallback: a smaller model you can run on hardware you own.
+
+If your cloud provider's compute rules changed next quarter, what would break first?",#AI #Nvidia #AIInfrastructure #CloudComputing #OnDeviceAI
