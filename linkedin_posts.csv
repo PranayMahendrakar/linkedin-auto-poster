@@ -8860,3 +8860,22 @@ On deployments I've worked on, especially in defence and enterprise settings, th
 Cloud GPUs are still the right call for bursty, hard workloads. But keep a fallback: a smaller model you can run on hardware you own.
 
 If your cloud provider's compute rules changed next quarter, what would break first?",#AI #Nvidia #AIInfrastructure #CloudComputing #OnDeviceAI
+517,Open Weights Nobody Can Run,"""Open weights"" now includes models almost nobody can actually run.
+
+In November, Moonshot put Kimi K3.1 Pro on Hugging Face. 2.8 trillion parameters, 104 billion active per token, about 1.56 TB of weights.
+
+That is not a download. That is a storage and cluster project. Reported guidance says a single GPU is basically unworkable and you need multi-GPU or multi-node serving.
+
+It also ships under a custom licence with conditions for large commercial users, not a plain Apache or MIT file.
+
+So what does ""open"" buy you?
+
+It buys inspection, auditability and an exit if an API vendor changes terms. Real benefits. But it does not buy you control over where the model runs.
+
+I've shipped offline AI systems for a defence deployment and an automotive one. In both, the question was never ""are the weights public?"" It was ""does this run on the hardware sitting next to the data?""
+
+A 2.8T model fails that test for almost every team. A well-tuned small model that fits on your own box passes it.
+
+My take: judge open models on the cost of running them, not the licence headline. Open weights you cannot host are an API with extra steps.
+
+When did you last pick a smaller model because it could run where your data lives?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
