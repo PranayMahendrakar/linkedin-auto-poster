@@ -8879,3 +8879,33 @@ A 2.8T model fails that test for almost every team. A well-tuned small model tha
 My take: judge open models on the cost of running them, not the licence headline. Open weights you cannot host are an API with extra steps.
 
 When did you last pick a smaller model because it could run where your data lives?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
+518,EU AI Act Enforcement,"The EU's first AI Act enforcement was not a fine.
+
+It was a list of questions.
+
+In Dublin on 14 October, Henna Virkkunen said the AI Office had sent requests for information to leading AI providers.
+Agence Europe and Lexology both covered it.
+
+The topics: security, external evaluation, and monitoring how models are used.
+
+Not benchmarks. Not parameter counts.
+Process.
+
+I have shipped AI into automotive, defence and education.
+The model was never the hard part to defend.
+
+The hard part was always this: once it is deployed, how would you know if it went wrong?
+
+A consultation on penalty procedures is reportedly open until 9 November.
+So information gathering is running while the fine rules are being written.
+
+The high-risk deadlines moved to 2027 and 2028. That does not pause this track.
+
+My bias: models should run where the data is.
+On-device, offline, under your control.
+It does not remove the need to evaluate and monitor. It does shorten the list of things you have to explain.
+
+Try this today: answer ""security, external evaluation, monitoring"" for your own system in one paragraph each.
+Where you stall is your roadmap.
+
+Which of the three is weakest in your stack?",#AI #EUAIAct #LLM #MLOps #AIGovernance

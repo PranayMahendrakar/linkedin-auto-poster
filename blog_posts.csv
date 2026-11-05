@@ -2101,3 +2101,44 @@ I would also be careful about the productivity story. Token consumption is an in
 Teams that get this right will not be the ones who spend the least. They will be the ones who know what each unit of work costs and can explain it in one sentence.
 
 The takeaway: AI spend does not fail because the models are too expensive. It fails because nobody metered it before it scaled.",#AI #LLM #AIEngineering #OnDeviceAI #MLOps
+2026-11-05,518,EU AI Act Enforcement,"Hot take: the EU's first AI Act enforcement is a questionnaire, and that should worry you",https://pranaymahendrakar.com/blog/hot-take-the-eus-first-ai-act-enforcement-is-a-questionnaire-and-that-,"Hot take: the EU's first AI Act enforcement is not a fine. It is a questionnaire, and that is the part that should worry you.
+
+On 14 October, at the International AI Summit in Dublin, Commission Executive Vice-President Henna Virkkunen said the AI Office had started enforcing the rules. It sent requests for information to leading AI providers. Her description, as quoted in the coverage, was that they address security, external evaluation and monitoring how models are used.
+
+Agence Europe and Lexology both reported it. Some outlets went further and named specific companies. I am not repeating that, because the sources do not agree on it. What they do agree on is the shape of the questions.
+
+Notice what is not in that list. Nothing about benchmark scores. Nothing about parameter counts. The questions are about process: how you secure the model, who evaluates it from outside, and whether you can see how it is being used after release.
+
+That is an operations audit, not a capability audit.
+
+I have shipped AI systems into automotive, defence and education settings. In every one of them, the model was the easy part to defend. The hard question from the customer was always the same: what happens after it is deployed, and how would you know if it went wrong?
+
+In a defence deployment I worked on, the model quality conversation took one meeting. The monitoring, logging and review conversation took the rest of the project. Nobody asked how clever the model was. They asked how we would notice drift, who could see the outputs, and what the fallback was when confidence dropped.
+
+The AI Office is asking the same class of question, just with legal weight behind it.
+
+There is a second thing worth knowing. The Commission has opened a consultation on a draft implementing act that sets the procedural rules for penalty proceedings. As reported, it runs until 9 November. So the machinery for fines is being written while the information gathering is already happening. The order matters: first they learn what you actually do, then the penalty rules arrive.
+
+Meanwhile, the high-risk deadlines were pushed back. The Digital Omnibus, in force since late July, moved stand-alone high-risk obligations to December 2027 and product-embedded ones to August 2028. Law firm write-ups from Gibson Dunn and Freshfields agree on that.
+
+Some teams will read the delay and relax. I think that is the wrong reading. The delay applies to high-risk system obligations. The AI Office is already using its investigative powers on general-purpose model providers, and that is a different track.
+
+So what should a practitioner do now? Here is my short list, none of it exotic.
+
+First, keep external evaluation records. If a third party tested your system, keep what they tested, when, and what they found. If nobody external ever tested it, that gap is the finding.
+
+Second, log usage in a way you can actually query. Not a pile of text files. If a regulator asks how a model is being used, ""we would need to check"" is a bad answer.
+
+Third, write down your security assumptions. Where do prompts go? Where do outputs go? Which third party sees your data? Every hop you cannot account for is a question you will struggle to answer.
+
+This is where my own bias shows. I think models should run where the data is: on-device, offline, under your control. Part of the reason is practical. When the model runs inside your boundary, a large share of those questions get shorter answers. There is no external API hop to explain and no vendor-side logging to chase.
+
+That is not a compliance trick, and it does not remove the need for evaluation or monitoring. You still have to do both. But it shrinks the surface you must describe.
+
+I also want to be honest about the limits of what is known. Nobody has reported fines or formal proceedings yet. A questionnaire is not a verdict. It is possible this stays quiet for months.
+
+But the direction is clear enough to plan around. Regulators are starting with the boring questions, because the boring questions are where the real risk lives.
+
+If you build with LLMs, the useful exercise this week is simple. Take those three phrases, security, external evaluation, monitoring of use, and try to answer each one for your own system in a paragraph. Where you stall is your roadmap.
+
+Takeaway: the first thing Europe asked AI providers for was not better models. It was better evidence of how they are run.",#AI #EUAIAct #LLM #MLOps #AIGovernance
