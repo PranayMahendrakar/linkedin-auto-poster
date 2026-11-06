@@ -8909,3 +8909,22 @@ Try this today: answer ""security, external evaluation, monitoring"" for your ow
 Where you stall is your roadmap.
 
 Which of the three is weakest in your stack?",#AI #EUAIAct #LLM #MLOps #AIGovernance
+519,Gemini Off For Students,"Google just flipped a default, and it matters more than most model launches.
+
+On 3 November it said Gemini, Gemini in Classroom and Search stay off for K-12 student accounts until a school admin turns them on.
+
+The Next Web and Let's Data Science both report it.
+
+Before this, many districts found Gemini already on for their students. They learned about it after the fact.
+
+The default is the product decision. Nobody reads the settings page.
+
+The detail I would push on: reportedly, schools get no separate switch to keep Search and block the AI. That is not a control. That is a negotiation.
+
+I build AI for education and I teach. The institution should decide what runs, because it answers to students, parents and regulators.
+
+This is why I keep arguing for models that run where the data is. When inference lives inside infrastructure a school controls, opt-in is real. The off switch is simply not deploying it.
+
+Ship the conservative default. Unbundle the features. Build for the person who has to answer to the board.
+
+Would your product survive its customers choosing for themselves?",#AI #EdTech #Gemini #AIGovernance #OnDeviceAI

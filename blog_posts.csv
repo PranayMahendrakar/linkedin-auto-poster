@@ -2142,3 +2142,40 @@ But the direction is clear enough to plan around. Regulators are starting with t
 If you build with LLMs, the useful exercise this week is simple. Take those three phrases, security, external evaluation, monitoring of use, and try to answer each one for your own system in a paragraph. Where you stall is your roadmap.
 
 Takeaway: the first thing Europe asked AI providers for was not better models. It was better evidence of how they are run.",#AI #EUAIAct #LLM #MLOps #AIGovernance
+2026-11-06,519,Gemini Off For Students,"Hot take: Google switching Gemini off for students is the right default, and it came a year late",https://pranaymahendrakar.com/blog/hot-take-google-switching-gemini-off-for-students-is-the-right-default,"On 3 November, Google said Gemini, Gemini Notebook, Gemini in Classroom and Google Search will stay off for K-12 student accounts until a school administrator turns each one on. Reporting from The Next Web and Let's Data Science confirms the same shape: off by default, admin opt-in, details to schools in the coming months.
+
+Read that again. The default flips from on to off. That is the whole story, and it matters more than any benchmark released this week.
+
+Earlier, many districts found Gemini already switched on for their students. Common Sense Media wrote about it. Schools learned about a major AI deployment inside their own tenant after it had happened. I have seen the enterprise version of this moment, and it never ends well.
+
+Here is my opinion: the default is the product decision. Nobody reads the settings page. Whatever you ship as the default is what ninety percent of your users will live with. If AI is on by default for children, you have made a policy decision for every school, and you have made it without asking them.
+
+One detail deserves attention. According to The Verge, as cited by Let's Data Science, and also Technobezz, schools will not get a separate switch to keep Search while blocking the AI features. Search and the AI layer are bundled. An administrator who wants a search box for a twelve-year-old now has to accept the AI, or give up the search box.
+
+That is the part I would push back on. A control that only has an all-or-nothing position is not much of a control. It is a negotiation, and the vendor holds the stronger hand.
+
+I have spent years building AI systems for education, and I also teach. The pattern I trust is boring. The institution decides what runs. The institution knows its students, its legal duties and its tolerance for error. The vendor does not.
+
+On the research platforms I worked on, with thousands of users, the hard questions were never about model quality. They were questions like these. Who can see what? What gets logged? What happens when the model is wrong in front of a student? Who is allowed to turn a feature off at three in the afternoon when a teacher complains?
+
+If your architecture cannot answer that last question in one click, you do not have governance. You have a hope.
+
+This is also why I keep pushing for models that run where the data is. When inference happens on a device or inside infrastructure a school controls, opt-in is real. The administrator is not asking a vendor to please disable something. They are simply not deploying it. The off switch is the absence of the thing.
+
+A cloud-hosted assistant bundled into a search product can only offer you a toggle. And toggles come with defaults, schedules and roadmaps that somebody else owns.
+
+There is a fair counterargument, and I will state it plainly. Students are going to meet these tools anyway, at home, on a phone, with no guardrails at all. A school-managed account with logging and filters may be safer than the alternative. Banning by default can push kids toward worse options.
+
+I accept that. But it argues for a supported opt-in path, with training, with clear data terms, with a switch that actually separates features. It does not argue for turning everything on and letting districts discover it.
+
+The controls have not rolled out yet, and the announcement does not give a date, a count of affected accounts or a list of countries.
+
+So what should anyone building AI products take from this?
+
+First, ship the conservative default and make the opt-in path excellent. Reversing a default in public is expensive, and it costs you trust you cannot buy back with a blog post.
+
+Second, unbundle. If an administrator has to choose between two things they need, you have designed a pressure tactic, and customers feel it.
+
+Third, assume the institution is the decision-maker. Build for the person who has to answer to parents, regulators and a board.
+
+The best AI deployment in a school is the one the school chose. Defaults should protect that choice, not replace it.",#AI #EdTech #Gemini #AIGovernance #OnDeviceAI
