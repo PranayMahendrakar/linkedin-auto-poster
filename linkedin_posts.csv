@@ -8957,3 +8957,22 @@ If the answers are no, no, no, you have a demo with a billing account.
 Efficient AI is not the budget option. It is the resilient one.
 
 What is your plan B if compute gets expensive or scarce?",#AI #LLM #EdgeAI #MLOps #OnDeviceAI
+521,AI Layoff Attribution,"AI is the top-cited reason for US layoffs. ""Cited"" is doing a lot of work.
+
+Challenger, Gray & Christmas counted 112,713 announced US job cuts through July that employers tied to AI. That is more than double the 54,836 for all of 2025.
+
+In July, AI was the leading stated reason for the fifth month running.
+
+Now the caveat. These are announced cuts and stated reasons. They do not prove a model replaced a person. One EY-Parthenon economist said he was not sure the cuts were true replacement by technology. A Cornell professor said blaming AI is simply an easier message.
+
+I have shipped 250+ AI systems into automotive, defence and education. What I saw: the model rarely deletes a job. It changes which work is worth paying a person for.
+
+That is a budget decision wearing an AI label.
+
+So if you are an engineer, do not read the headline as ""AI can do your job."" Read it as ""my company is moving money toward people who can ship and run AI in production.""
+
+That means evaluation, monitoring, deployment, data quality. The unglamorous parts that keep a system alive after the demo.
+
+If you are a hiring manager, ask what the layoff memo really says. Is it replacement, or reallocation?
+
+How does your company explain its own cuts: AI, cost, or something else?",#AI #FutureOfWork #MachineLearning #LLM #TechCareers
