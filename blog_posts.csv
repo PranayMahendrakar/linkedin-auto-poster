@@ -2179,3 +2179,38 @@ Second, unbundle. If an administrator has to choose between two things they need
 Third, assume the institution is the decision-maker. Build for the person who has to answer to parents, regulators and a board.
 
 The best AI deployment in a school is the one the school chose. Defaults should protect that choice, not replace it.",#AI #EdTech #Gemini #AIGovernance #OnDeviceAI
+2026-11-07,520,Data Centre Backlash,Hot take: the midterm data-centre backlash shows why AI that needs a power plant is a fragile bet,https://pranaymahendrakar.com/blog/hot-take-the-midterm-data-centre-backlash-shows-why-ai-that-needs-a-po,"Hot take: the most important AI story this week is not a model release. It is an election result.
+
+After the US midterms, Democrats took Congress, and markets read it as a threat to the data-centre buildout. Data-centre operator stocks fell in the US. In Asia, Japan's Nikkei dropped about 3%, and chip and AI names led the slide. Reuters analysis described data centres as a live issue that voters punished incumbents over in several states.
+
+Some analysts doubt any law could actually stop construction. Others expect hearings and investigations, not statutes. I will not pretend to know how the politics resolves. What I can tell you is what it exposes.
+
+A huge share of the AI industry has been built on one assumption: that compute and power will always be available, always be cheaper next year, and always be welcome in someone's backyard. This week, that assumption got a price attached to it.
+
+I have spent years shipping AI systems where that assumption could never hold. An offline multilingual avatar for an automotive client had no cloud to lean on. A real-time detection system I worked on for a defence deployment had to run at the edge, because the network was not something you could count on. Neither project had the luxury of asking for another few hundred megawatts.
+
+That constraint was annoying at the time. It turned out to be the best teacher I had.
+
+When you cannot scale by buying more compute, you learn things. You learn that a well-tuned small model beats a lazy large one on a narrow task. You learn to quantise, to distil, to cache, to cut the context window down to what the answer needs. You learn to measure cost per useful answer instead of cost per token.
+
+Most teams skip those lessons because the cloud lets them. Spend is a rounding error until the day it is not. Then the same team discovers that their architecture has no plan B.
+
+So here is the practical version of my take.
+
+First, treat energy and capacity as a product risk, not an infrastructure detail. If your roadmap quietly depends on inference costs falling by half, write that down as an assumption and ask what happens if it fails.
+
+Second, build a degradation path. Can your product run on a smaller model when the big one is rate-limited, expensive, or unavailable? If the answer is no, you have a demo with a billing account, not a product.
+
+Third, put the model where the data is. This is my long-standing bias, and this week made the case better than I could. On-device and offline inference does not need a new power plant on someone else's land. It uses hardware people already own, and it keeps sensitive data under the owner's control. For regulated and privacy-heavy work, that is not a nice-to-have. It is the architecture that survives political weather.
+
+Fourth, benchmark honestly. Take your top three workloads and test them on a model one size smaller. In my experience the quality gap is usually much smaller than people fear, and sometimes it is zero. The only way to know is to run the test.
+
+I am not saying the cloud is going away, and I am not saying frontier models do not matter. Training will keep needing big clusters, and some tasks really do need a large model. But the default has been far too lopsided. Teams reach for the biggest model and the biggest data centre first, then wonder why the economics wobble.
+
+The market reaction this week was loud, and some of it will fade. Analysts disagreed on how much of the selloff was politics and how much was a broader worry about overcapacity and returns. Either way, the signal is the same. Investors and voters are both asking what all this compute is for, and who pays for it.
+
+If your answer to that question is vague, now is a good time to sharpen it.
+
+Efficient AI is not the budget option. It is the resilient option.
+
+The teams that win the next phase will be the ones whose product still works when the cheap, abundant, welcome compute stops being any of those things.",#AI #LLM #EdgeAI #MLOps #OnDeviceAI

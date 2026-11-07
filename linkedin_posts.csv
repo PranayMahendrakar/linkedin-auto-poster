@@ -8928,3 +8928,32 @@ This is why I keep arguing for models that run where the data is. When inference
 Ship the conservative default. Unbundle the features. Build for the person who has to answer to the board.
 
 Would your product survive its customers choosing for themselves?",#AI #EdTech #Gemini #AIGovernance #OnDeviceAI
+520,Data Centre Backlash,"Hot take: the biggest AI story this week was an election, not a model.
+
+After the US midterms, data-centre stocks fell and Japan's Nikkei dropped about 3%.
+
+Reuters analysis said data centres had become a real voting issue.
+
+Nobody knows yet how the politics resolves. But the assumption underneath it just got a price tag.
+
+The assumption: compute and power will always be abundant, cheaper next year, and welcome in someone's backyard.
+
+I have shipped AI where that could never be true. An offline avatar for an automotive client. A defence deployment that had to run at the edge.
+
+No cloud. No extra megawatts. Just a hard budget.
+
+That constraint taught me more than any scaling guide did.
+
+A tuned small model beats a lazy large one on a narrow task. Quantise, distil, cache, trim the context. Measure cost per useful answer, not cost per token.
+
+Three questions for your roadmap:
+
+Does it quietly assume inference costs keep falling?
+Can it degrade to a smaller model when the big one is unavailable?
+Could the data stay where it is, on-device?
+
+If the answers are no, no, no, you have a demo with a billing account.
+
+Efficient AI is not the budget option. It is the resilient one.
+
+What is your plan B if compute gets expensive or scarce?",#AI #LLM #EdgeAI #MLOps #OnDeviceAI
