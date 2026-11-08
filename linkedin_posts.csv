@@ -8999,3 +8999,26 @@ I would rather see smaller, narrow models running inside your own perimeter for 
 Restricted release is the responsible minimum. It is not a strategy.
 
 Do you trust a cyber model more because access is gated, or only when someone independent has tested it?",#AI #CyberSecurity #LLM #AISafety #OnDeviceAI
+523,Canva Restructuring Without AI,"Canva is cutting 22% of its staff. The announcement never says the word AI.
+
+In November, Canva said 1,271 people are affected by a restructuring. That figure covers layoffs, role changes and relocations. The CEO cited slowing growth and rapid technological change.
+
+Reporters noted the message did not explicitly blame AI. Everyone read it that way anyway.
+
+Here is what I take from it as someone who builds AI systems for a living.
+
+The jobs at risk are not only the ones a model can do. They are also the ones at companies whose product a model can now approximate.
+
+I have shipped AI into automotive, defence and education teams. The pattern is the same each time. The people who stay valuable own an outcome, not a task. They know the domain, the data and the failure modes.
+
+If you are an engineer, ask yourself three things:
+
+Could a user get 80% of what my product does from a prompt?
+Do I understand the problem well enough to know when the model is wrong?
+Can I ship something that runs under real constraints, not just in a demo?
+
+If you lead a team, stop asking whether AI replaces a role. Ask whether it replaces the product that pays for the role.
+
+A layoff memo tells you what a company says. The strategy behind it tells you where the jobs are going.
+
+Which matters more for your career right now: using AI well, or working on something AI can't commoditise?",#AI #FutureOfWork #TechLayoffs #SoftwareEngineering #MachineLearning
