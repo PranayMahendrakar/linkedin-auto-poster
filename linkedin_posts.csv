@@ -8976,3 +8976,26 @@ That means evaluation, monitoring, deployment, data quality. The unglamorous par
 If you are a hiring manager, ask what the layoff memo really says. Is it replacement, or reallocation?
 
 How does your company explain its own cuts: AI, cost, or something else?",#AI #FutureOfWork #MachineLearning #LLM #TechCareers
+522,Gated Cyber AI Models,"OpenAI's new GPT-6 Cyber is locked behind vetted customers. OpenAI itself rates it ""Critical"" for cybersecurity.
+
+Days earlier, Tencent released a model trained with limited cyber data. Exploit development content was filtered out.
+
+Two labs. Two opposite fixes.
+
+One controls who can use the model. The other controls what the model learned.
+
+Both claims come from the companies themselves. Nobody independent has tested them yet.
+
+Here is my view from building defence and regulated-industry systems:
+
+Gating depends on human vetting, and that process can fail.
+
+Filtering is hard because defensive and offensive knowledge overlap.
+
+And hosted access means defenders ship sensitive code to a third party.
+
+I would rather see smaller, narrow models running inside your own perimeter for triage and review. Match the capability to the job.
+
+Restricted release is the responsible minimum. It is not a strategy.
+
+Do you trust a cyber model more because access is gated, or only when someone independent has tested it?",#AI #CyberSecurity #LLM #AISafety #OnDeviceAI
