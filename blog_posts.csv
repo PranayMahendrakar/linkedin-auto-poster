@@ -2235,3 +2235,30 @@ I am not saying restricted release is wrong. For a model that OpenAI itself rate
 There is one more thing I would watch. Tencent says it will publish its weights and a safety report later. If it does, outsiders can test the claim directly. If a gated model and an open one are measured on the same defensive and offensive tasks, we will finally learn which control actually works. Until then, both are promises.
 
 My takeaway: do not judge a cyber model by who is allowed to use it. Judge it by what independent testers can prove it can do, and by whether you can run it without handing over your data.",#AI #CyberSecurity #LLM #AISafety #OnDeviceAI
+2026-11-09,524,Meta Paused Business Terms,Hot take: Meta's paused business terms show consent-by-terms-update is not a data strategy,https://pranaymahendrakar.com/blog/hot-take-metas-paused-business-terms-show-consent-by-terms-update-is-n,"Meta has paused a business-terms update that was due to take effect on 20 November. The reason: an outcry over language that critics read as letting Meta use content from websites linked to business accounts.
+
+Here is what I verified. Social Media Today and Nieman Lab both report the pause. Meta's own notice says the updates will not take effect on that date, existing terms still apply, and it is consulting stakeholders. Meta's stated position is that the change was about pulling accurate product information from third-party sites, not about scraping news sites.
+
+I am not here to guess intent. I want to talk about the mechanism.
+
+Changing a terms-of-service page and calling it consent is the oldest move in the data playbook. It works until someone reads the clause. Then you get a pause, a consultation, and a trust problem that costs far more than the data was worth.
+
+I have built enough systems for regulated environments to know how this goes. In a defence deployment I worked on, nobody asked what the model could legally ingest in theory. The question was what we could prove we were allowed to ingest, and who signed off. If you cannot answer that on a single page, the data does not go in.
+
+That is the discipline most commercial AI teams skip. They treat training and retrieval data as a pile, and provenance as something legal will sort out later. Then a clause surfaces and the roadmap stalls.
+
+Three things I would do differently, and have done in the production RAG work I ship.
+
+First, keep a source register. Every document that feeds a retrieval index or a fine-tune gets an origin, a licence basis, and an owner. It is boring. It is also the only thing that survives an audit.
+
+Second, separate what you may read from what you may learn from. Reading a page at query time to answer a user is not the same as baking it into weights. Teams blur these and then cannot unwind it. Retrieval can be removed by deleting a row. Weights cannot.
+
+Third, prefer data you already hold. This is my consistent bias: models should run where the data is. When the corpus is yours, on your infrastructure, under your control, there is no terms update that can put your roadmap on pause. A system built on first-party data has a supply chain you can name.
+
+The counter-argument is real. Product data on the open web is useful, and merchants often want it surfaced. Opt-in programmes where a site owner explicitly says yes would give the same signal without the fight. That is the version that scales, because consent that has to be reverse-engineered from a clause is not consent.
+
+Meta has not said whether the terms return in the same form or when. Watch that space. But the lesson does not depend on the outcome.
+
+If your AI product depends on data you were only allowed to use because nobody read the fine print, you do not have a data strategy. You have a deferred incident.
+
+Takeaway: provenance is a feature. Build the source register before someone else asks for it.",#AI #LLM #DataGovernance #RAG #ResponsibleAI

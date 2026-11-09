@@ -9022,3 +9022,24 @@ If you lead a team, stop asking whether AI replaces a role. Ask whether it repla
 A layoff memo tells you what a company says. The strategy behind it tells you where the jobs are going.
 
 Which matters more for your career right now: using AI well, or working on something AI can't commoditise?",#AI #FutureOfWork #TechLayoffs #SoftwareEngineering #MachineLearning
+524,Meta Paused Business Terms,"Meta just paused a business-terms update that was due on 20 November.
+
+The outcry: critics read the language as letting Meta use content from sites linked to business accounts.
+
+Social Media Today and Nieman Lab both report the pause. Meta says existing terms still apply and it is consulting stakeholders.
+
+I won't guess intent. The mechanism is the lesson.
+
+A terms update is not consent. It works until someone reads the clause.
+
+In a defence deployment I worked on, the question was never what we could ingest in theory. It was what we could prove we were allowed to ingest.
+
+My three rules:
+
+1. Keep a source register: origin, licence basis, owner.
+2. Separate reading at query time from learning into weights. Rows can be deleted. Weights can't.
+3. Prefer data you already hold, running where you control it.
+
+If your AI product depends on data nobody read the fine print on, you have a deferred incident, not a strategy.
+
+Does your team have a source register for its training and retrieval data?",#AI #LLM #DataGovernance #RAG #ResponsibleAI
