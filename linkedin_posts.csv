@@ -9043,3 +9043,27 @@ My three rules:
 If your AI product depends on data nobody read the fine print on, you have a deferred incident, not a strategy.
 
 Does your team have a source register for its training and retrieval data?",#AI #LLM #DataGovernance #RAG #ResponsibleAI
+525,Fireworks AI Key Exposure,"Nine AI developer platforms disclosed security incidents in October alone.
+
+That is the Wiz count. Fireworks AI was one of them.
+
+Here is what I verified from Fireworks' own bulletin: an unauthorised party used internal credentials to reach environment variables in evaluation jobs, in a limited number of customer accounts.
+
+Those variables can hold API keys and tokens.
+
+Fireworks says no customer models, datasets or inference traffic were accessed, and it revoked the keys. Good response. Scope was still under review.
+
+Look at what the attacker went after. Not the model. Not the data. The keys.
+
+I keep seeing the same pattern in production. An eval pipeline needs a secret, someone drops it in an environment variable, and now a vendor's job runner is inside your security perimeter.
+
+My bias has not changed: models should run where the data is. Offline, on-device, under your control, someone else's incident has nothing to steal from you.
+
+If you must use a hosted platform:
+
+Scope every key to one job.
+Keep production secrets out of evals.
+Alert on key usage by origin.
+Rehearse your rotation runbook.
+
+Which of those four does your team not do yet?",#AI #LLM #CyberSecurity #OnDeviceAI #MLOps

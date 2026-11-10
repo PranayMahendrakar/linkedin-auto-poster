@@ -2262,3 +2262,30 @@ Meta has not said whether the terms return in the same form or when. Watch that 
 If your AI product depends on data you were only allowed to use because nobody read the fine print, you do not have a data strategy. You have a deferred incident.
 
 Takeaway: provenance is a feature. Build the source register before someone else asks for it.",#AI #LLM #DataGovernance #RAG #ResponsibleAI
+2026-11-10,525,Fireworks AI Key Exposure,"Hot take: the Fireworks AI breach shows attackers want your API keys, not your models",https://pranaymahendrakar.com/blog/hot-take-the-fireworks-ai-breach-shows-attackers-want-your-api-keys-no,"Here is what I verified. Fireworks AI's own security bulletin says an unauthorised party used internal Fireworks credentials to reach environment variables used in evaluation jobs, in a limited number of customer accounts. Those variables can hold customer API keys and tokens. Wiz's ""Black October"" write-up counts Fireworks as one of at least nine AI developer platforms that disclosed an incident in a single month.
+
+To be fair to Fireworks: the bulletin says it found no evidence of access to customer models, datasets, training data, inference traffic or personal information, that it does not store prompts or outputs by default, and that it revoked the exposed keys. That is a reasonable response. The review was still ongoing when I read it, so treat the scope as provisional.
+
+But look at what the attacker actually wanted. Not the models. Not the data. The keys. Every hosted AI platform is a vault of credentials for other systems, and evaluation jobs are exactly where teams paste them because it is convenient.
+
+I have seen this pattern in production. The moment an eval or fine-tuning pipeline needs a secret, someone puts it in an environment variable, and now your security perimeter includes a vendor's job runner. Nobody drew that on the architecture diagram.
+
+This is why I keep pushing the same bias: models should run where the data is. In a defence deployment I worked on, the question was never whether the vendor was trustworthy. It was whether the system could work with no vendor in the path at all. Offline, on-device, under your control, the blast radius of someone else's incident is zero by construction.
+
+That is not always possible. Frontier-scale inference needs hosted compute, and I am not pretending otherwise. But most of the workloads I see do not need it. A retrieval pipeline over internal documents, a classifier, a multilingual assistant on a kiosk: these run fine on hardware you own.
+
+If you do use a hosted platform, here is the minimum I would insist on.
+
+First, scope every key to one job and one model, with a short expiry. A key that lives for an hour is a much smaller prize.
+
+Second, never put production secrets in evaluation environments. Evals should run against a sandbox endpoint with a throwaway credential.
+
+Third, log and alert on key usage by origin. If a key meant for your build server is suddenly called from somewhere else, you want to know in minutes, not weeks.
+
+Fourth, have a rotation runbook you have actually rehearsed. When a vendor emails you about an incident, the clock is already running.
+
+Fifth, ask a plain question of every vendor: what do you store by default? Fireworks says prompts and outputs are not stored by default. That one design choice is the reason this story is about keys and not about customer data. Look for it elsewhere.
+
+Nine platforms in one month is not a coincidence. It is what happens when the whole industry builds on shared infrastructure and treats credentials as an afterthought.
+
+Every third-party AI service you connect is a dependency you cannot audit. The safest data path is the one that never leaves your machine, and the next safest is one where a stolen key opens almost nothing.",#AI #LLM #CyberSecurity #OnDeviceAI #MLOps
