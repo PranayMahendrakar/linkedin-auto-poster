@@ -9067,3 +9067,18 @@ Alert on key usage by origin.
 Rehearse your rotation runbook.
 
 Which of those four does your team not do yet?",#AI #LLM #CyberSecurity #OnDeviceAI #MLOps
+526,OpenAI Round Valuation Gap,"OpenAI's new round is $1.25 trillion on paper. That is below what it first asked for.
+
+In November, Reuters and Bloomberg both reported that OpenAI closed about $11 billion as the first part of a round at a $1.25 trillion valuation. Reports say it started out aiming higher, and the round may still grow. OpenAI declined to comment.
+
+I'm not calling this a crash. A trillion-plus is still a trillion-plus.
+
+But when the most hyped buyer in AI negotiates the price down, investors are doing arithmetic instead of just believing.
+
+For builders, that matters more than the headline. Every API, every agent platform and every ""free for now"" tier is subsidised by that capital. When funding gets pickier, pricing, rate limits and terms get pickier too.
+
+In a defence deployment I worked on, we never designed around a vendor's runway. The model had to keep working if the contract, the network or the pricing changed. That habit looks cheaper every month.
+
+My bias: run the model where the data is, keep the vendor swappable, and treat any hosted API as a rental.
+
+If your main model provider doubled its prices in a quarter, what would you actually do?",#AI #OpenAI #LLM #OnDeviceAI #MachineLearning
