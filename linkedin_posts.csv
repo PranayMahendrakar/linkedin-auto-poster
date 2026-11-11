@@ -9082,3 +9082,30 @@ In a defence deployment I worked on, we never designed around a vendor's runway.
 My bias: run the model where the data is, keep the vendor swappable, and treat any hosted API as a rental.
 
 If your main model provider doubled its prices in a quarter, what would you actually do?",#AI #OpenAI #LLM #OnDeviceAI #MachineLearning
+527,Amazon Text-to-Buy Agent,"Amazon's AI agent can now take your order over text message.
+
+Retail Gazette and Let's Data Science both report the rollout began November 6 to a limited group of US customers.
+
+You text it. It searches, adds to cart, and places the order.
+
+That is a bigger shift than it sounds.
+
+A chatbot that is wrong costs you a minute. An agent that is wrong costs you money.
+
+On the production systems I have shipped, the hard part was never fluency. It was deciding what the system may do without a human confirming.
+
+If you build agents, my minimum list:
+
+Separate reading from acting. Search freely, confirm before you spend.
+
+Log the decision, not just the result. If you cannot replay it, you cannot fix it.
+
+Put spend caps and limits in plain code, not in the prompt.
+
+Treat every listing, review and message as data, never as instructions.
+
+A text thread removes the product page and the cart review. The convenience is the same thing that removes the friction careful buyers rely on.
+
+The day your agent can spend money is the day your confirmation flow matters more than your model.
+
+What is the one action you would never let an agent take without a human click?",#AI #LLM #AIAgents #MachineLearning #Security
