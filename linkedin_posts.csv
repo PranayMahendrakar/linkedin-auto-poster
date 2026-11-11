@@ -9109,3 +9109,26 @@ A text thread removes the product page and the cart review. The convenience is t
 The day your agent can spend money is the day your confirmation flow matters more than your model.
 
 What is the one action you would never let an agent take without a human click?",#AI #LLM #AIAgents #MachineLearning #Security
+528,Anthropic IPO Vendor Risk,"Anthropic's IPO filing is a vendor-risk document. Engineers should read it like one.
+
+In November, Anthropic set a range of $70 to $78 a share for 825 million shares on Nasdaq. Pricing was expected later in the month.
+
+Most of the coverage is about valuation. I care about something else.
+
+A public filing forces a model vendor to put its risk factors, customer concentration and cost structure in writing. That is information most of us have never had about the API we build on.
+
+On the defence and enterprise systems I have shipped, the model was never the part that failed us. The dependency was. A pricing change, a rate limit or a policy update, and a roadmap moves.
+
+So my checklist for any team building on a hosted model:
+
+Read the vendor's disclosures, not just their launch posts.
+
+Keep the model behind an interface you own, so swapping it is a config change.
+
+Keep an eval set that tells you in a day whether a replacement is good enough.
+
+Run the sensitive workloads where the data lives, on-device or offline, whenever you can.
+
+Being public makes a vendor more transparent. It does not make it less of a dependency.
+
+What is the one clause in a model vendor's terms that would force you to re-architect?",#AI #LLM #Anthropic #MachineLearning #AIEngineering
