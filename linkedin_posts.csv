@@ -9160,3 +9160,27 @@ Map every external model in your path.
 Announcements are not statutes. But the era of shipping first and explaining later is ending.
 
 Could your team reproduce last month's accuracy number tomorrow? Tell me in the comments.",#AI #LLM #AIRegulation #MLOps #ResponsibleAI
+530,Nvidia CEO Exit Vendor Risk,"Nvidia swapped its CEO in a day. Is your AI roadmap that easy to swap?
+
+In November, Nvidia's board said Jensen Huang is resigning and the CFO will step in as interim CEO. The stock fell as much as 13% at the open, and the company dropped below a $4 trillion market value.
+
+I am not going to speculate on why. The reports around it are still unconfirmed.
+
+What I care about is the engineering lesson.
+
+A huge share of the AI stack now depends on one chip vendor, one software ecosystem and one leadership team. Nobody planned for that to be a single point of failure. It became one by default.
+
+In a defence deployment I worked on, we were asked a simple question early: if your main supplier disappears, what still runs? It was annoying then. It was the best question anyone asked.
+
+My bias is well known: run models where the data is, on hardware you control. Smaller models, quantised, portable across accelerators.
+
+This quarter, I would:
+
+Keep inference code off vendor-specific kernels where you can.
+Benchmark your model on a second accelerator.
+Write down the cost of a three-month chip delay.
+Keep a smaller fallback model that runs on-device.
+
+Nvidia will be fine. The question is whether your roadmap survives the next surprise at your supplier.
+
+If your main GPU vendor vanished tomorrow, how many weeks until your product is back up? Tell me in the comments.",#AI #Nvidia #MachineLearning #OnDeviceAI #AIInfrastructure
