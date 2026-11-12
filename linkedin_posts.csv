@@ -9132,3 +9132,31 @@ Run the sensitive workloads where the data lives, on-device or offline, whenever
 Being public makes a vendor more transparent. It does not make it less of a dependency.
 
 What is the one clause in a model vendor's terms that would force you to re-architect?",#AI #LLM #Anthropic #MachineLearning #AIEngineering
+529,China AI Law Fast-Track,"China's planning agency says it will speed up a comprehensive AI law.
+
+The Taipei Times and the South China Morning Post both report it.
+
+I am not going to guess the final text. Nobody outside the drafting room knows it.
+
+But the direction is clear, and engineers should read it before lawyers do.
+
+Reports point to disclosure of risks and reporting of incidents.
+
+That turns evaluation, monitoring and logging from ""nice to have"" into the product.
+
+In a defence deployment I worked on, the model was never the hard part.
+
+The hard part was proving what it was tested on, how often it was wrong, and what happens when it drifts.
+
+My bias: run models where the data is. When inference is on-device or inside your perimeter, your logs are actually yours.
+
+This quarter, I would do four things:
+
+Freeze your evaluation set.
+Log model version and outcome on every call.
+Define what an ""incident"" is before you have one.
+Map every external model in your path.
+
+Announcements are not statutes. But the era of shipping first and explaining later is ending.
+
+Could your team reproduce last month's accuracy number tomorrow? Tell me in the comments.",#AI #LLM #AIRegulation #MLOps #ResponsibleAI
