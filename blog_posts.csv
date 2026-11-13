@@ -2353,3 +2353,32 @@ One caution. Announcements are not statutes. A commitment to speed up drafting i
 But direction is what engineers should be reading. The era of shipping a model and explaining it later is ending, whichever capital writes the rule first.
 
 Takeaway: build as if you will be asked to prove it, because soon you will be.",#AI #LLM #AIRegulation #MLOps #ResponsibleAI
+2026-11-13,531,Nemotron 3.5 Lightning Active Parameters,"Hot take: Nemotron 3.5 Lightning shows active parameters, not total, decide where a model can run",https://pranaymahendrakar.com/blog/hot-take-nemotron-35-lightning-shows-active-parameters-not-total-decid,"Hot take: the number on the model card that matters for deployment is not the parameter count. It is the active parameter count.
+
+Nvidia's Nemotron 3.5 Lightning is listed as a 30B model with 3B active, written 30B A3B. Both the OpenRouter listing and the getdeploying model page describe it as an open-weight release under the OpenMDW 1.1 licence. One third-party guide estimates it needs roughly 19 GB of GPU memory at 4-bit. I have not checked that figure myself, so treat it as an estimate and test on your own hardware.
+
+Here is why that shape interests me. A mixture-of-experts model with 3B active parameters spends the compute of a small model on each token. You still have to hold all the weights in memory, but that is a much easier problem than serving a dense 30B model at the same speed.
+
+My bias is no secret. Models should run where the data is: on-device, offline, under your control. In the defence and automotive work I have been part of, the question was never whether the model was clever enough. The question was whether it could run inside the boundary where the data lived, on the hardware the customer already had, with no network call to a third party.
+
+That is a hardware budgeting question, and this release moves the line. A model in the 20 GB range at 4-bit is within reach of a single workstation-class GPU. That is a very different procurement conversation from a multi-GPU node.
+
+I also want to be careful about what an open licence does and does not give you. Open weights let you inspect, fine-tune, and host the model yourself. They do not tell you whether it is good at your task. I have shipped enough systems to know that a benchmark table and a production workload are different things. Evaluate on your own data, in your own language mix, before you commit.
+
+That last point matters more for Indic languages than most teams admit. In my own research on hallucination in Indic languages, the failure modes did not show up in the headline English benchmarks. A cheap, fast model that hallucinates confidently in the language your users speak is not cheap. It is expensive in a way that arrives later.
+
+So here is the checklist I would run on any model like this:
+
+First, measure real memory use at the quantisation you plan to ship, with your real context length. KV cache growth is where estimates quietly fall apart.
+
+Second, measure latency under your actual concurrency, not a single request.
+
+Third, run a hallucination and drift check on your own domain data, and keep running it after deployment. This is the reason I built tools like hallucination-detector and model-drift-detector.
+
+Fourth, read the licence with your lawyer in the room. OpenMDW is not a licence most teams have seen before.
+
+Fifth, decide up front what happens when the model is wrong. Retrieval, verification, a human in the loop. The model size does not remove that requirement.
+
+Prices on hosted endpoints for this model vary between providers, and I did not find an official Nvidia price list, so I will not quote numbers. That variation is itself a hint: when a model is small enough and open enough, the hosting layer becomes a commodity and you get to choose.
+
+The takeaway: stop asking how big the model is. Ask how much of it runs per token, how much memory it holds, and whether it can live next to your data. That is the spec that decides whether your AI is a product or a dependency.",#AI #LLM #OpenSource #OnDeviceAI #Nvidia

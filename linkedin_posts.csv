@@ -9184,3 +9184,30 @@ Keep a smaller fallback model that runs on-device.
 Nvidia will be fine. The question is whether your roadmap survives the next surprise at your supplier.
 
 If your main GPU vendor vanished tomorrow, how many weeks until your product is back up? Tell me in the comments.",#AI #Nvidia #MachineLearning #OnDeviceAI #AIInfrastructure
+531,Nemotron 3.5 Lightning Active Parameters,"Hot take: the spec that matters on a model card is not total parameters. It is active parameters.
+
+Nvidia's Nemotron 3.5 Lightning is listed as 30B total, 3B active.
+It is open-weight, under the OpenMDW 1.1 licence, per the OpenRouter and getdeploying listings.
+
+One guide estimates about 19 GB of GPU memory at 4-bit.
+I have not verified that myself, so test it on your own hardware.
+
+Why I care: my bias is that models should run where the data is.
+On-device, offline, under your control.
+
+In the defence and automotive work I have been part of, the question was never ""is it clever enough?""
+It was ""can it run inside the boundary, on hardware the customer already has?""
+
+A model in that memory range changes the procurement conversation.
+Single workstation GPU, not a multi-GPU node.
+
+But open weights are not a quality guarantee.
+Benchmarks are not your workload.
+Evaluate on your own data and your own languages, then keep monitoring after you ship.
+
+Cheap and fast is not cheap if it hallucinates confidently in your users' language.
+
+Stop asking how big the model is.
+Ask how much runs per token, how much memory it holds, and whether it can live next to your data.
+
+What is the smallest model you have actually put into production, and what made you trust it?",#AI #LLM #OpenSource #OnDeviceAI #Nvidia
