@@ -9211,3 +9211,24 @@ Stop asking how big the model is.
 Ask how much runs per token, how much memory it holds, and whether it can live next to your data.
 
 What is the smallest model you have actually put into production, and what made you trust it?",#AI #LLM #OpenSource #OnDeviceAI #Nvidia
+532,Shared AI Training Opt-Out,"Four AI giants agreed on one opt-out. Only one of them has started honouring it.
+
+On 30 October, Google, Microsoft, OpenAI and Anthropic backed a shared robots.txt token for AI training preferences.
+
+The rollout is uneven. Anthropic says it has started. Microsoft says 1 February 2027. Google says early 2027. OpenAI says ""in the coming months"", with no date.
+
+It is also voluntary. The underlying document is an individual IETF draft, not an adopted standard. And a preference applies based on the robots.txt in effect when the content was fetched, so it does not clearly reach what was already collected.
+
+So a signal is not a control.
+
+In the defence and automotive systems I have worked on, we never relied on an upstream promise to protect data. The boundary was enforced by where the model ran and what it could reach. That is why I lean towards on-device, offline, under your control.
+
+If you publish content or run a data pipeline, my advice:
+
+Add the token, but keep your existing crawler-specific blocks.
+Log who actually fetches you.
+Treat compliance dates as intentions until you see behaviour.
+
+A standard that nobody is forced to follow is a request, not a policy.
+
+Has your team changed its robots.txt for AI crawlers, and did you see any difference in traffic?",#AI #LLM #DataGovernance #AIRegulation #MachineLearning

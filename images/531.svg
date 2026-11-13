@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#10B981" stop-opacity="0.25"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="790" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="560" height="56" rx="28" fill="none" stroke="#10B981" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#10B981">ACTIVE PARAMETERS</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="120" fill="#F5F7FA">30B total.</text>
+<text x="80" y="420" font-size="120" fill="#10B981">3B active.</text>
+</g>
+<g fill="#10B981">
+<rect x="700" y="660" width="260" height="240" opacity="0.35"/>
+<rect x="700" y="840" width="260" height="60"/>
+</g>
+<path d="M680 900H980" stroke="#94A3B8" stroke-width="4"/>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">Big on the card.</text>
+<text x="80" y="615">Small per token.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Ask what actually runs.</text>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#10B981"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>
