@@ -2382,3 +2382,42 @@ Fifth, decide up front what happens when the model is wrong. Retrieval, verifica
 Prices on hosted endpoints for this model vary between providers, and I did not find an official Nvidia price list, so I will not quote numbers. That variation is itself a hint: when a model is small enough and open enough, the hosting layer becomes a commodity and you get to choose.
 
 The takeaway: stop asking how big the model is. Ask how much of it runs per token, how much memory it holds, and whether it can live next to your data. That is the spec that decides whether your AI is a product or a dependency.",#AI #LLM #OpenSource #OnDeviceAI #Nvidia
+2026-11-14,533,Paris Call AI Safety,A voluntary AI safety pledge is only as good as the evidence behind it,https://pranaymahendrakar.com/blog/a-voluntary-ai-safety-pledge-is-only-as-good-as-the-evidence-behind-it,"A voluntary AI safety pledge is only as good as the evidence a developer can produce when someone asks for it.
+
+On 9 November, at a meeting Macron hosted on the opening day of the Paris Peace Forum, a group of governments, companies and civil society groups agreed the Paris Call for AI Safety and Security. The Next Web and Bernama both report it. Named company signatories include OpenAI, Anthropic, Microsoft and Mistral. Reports differ on how many governments signed, so I am not going to quote a number.
+
+Reports also agree on something else. The Call carries no financial penalties and no judicial enforcement. Compliance is at the developer's discretion. That is a critic's reading, but it matches how the text is described everywhere I looked.
+
+My take: that is not a reason to dismiss it. It is a reason to ask what a pledge like this would look like when it meets a real system.
+
+I have shipped AI systems into automotive, defence and education settings. In a defence deployment I worked on, nobody asked whether the team believed in safety. They asked whether the system could be shown to behave within limits, on the hardware it actually ran on, with no network to phone home to. Intent counted for nothing. Evidence counted for everything.
+
+That is the gap I see in voluntary frameworks. A line like ""we will keep frontier systems under human control"" is easy to sign. It is hard to turn into something an engineer can test.
+
+Here is what turning it into something testable takes in practice.
+
+First, a defined scope. What counts as the system being shut down or restricted? A model that stops answering is not the same as an agent that stops acting. If the scope is vague, every deployment can claim it complies.
+
+Second, logs you control. If the only record of what a model did sits inside a vendor's cloud, then the safety claim is the vendor's word. When the model runs where the data is, on-device or inside your own perimeter, you hold the evidence yourself.
+
+Third, checks that run without the vendor's help. Hallucination checks, drift checks, bias audits. I have spent a lot of time on tooling like this, including open-source packages for hallucination detection and model drift. The lesson is always the same. A check that only the model's maker can run is a promise, not a control.
+
+Fourth, a way to say no. Safety commitments mean little if the deployer cannot pause, roll back or isolate a system without asking permission from the party being audited.
+
+None of this needs a treaty. It needs engineering habits that exist whether or not anyone signs anything.
+
+I also want to be fair to the Call. Reporting says it follows an initiative launched by Norway and Finland in September to bring frontier AI under more oversight, which France later joined. Getting governments and the labs in one room, on the record, has value. Voluntary norms often come before binding rules, and the first draft of a norm is rarely the last.
+
+But there is a risk. A signature is cheap, and a press photo is cheaper. If the commitments stay at the level of principle, the companies that already invest in evaluation will keep doing it, and the ones that do not will sign anyway.
+
+So what should a team do this week, whatever Paris produces?
+
+Write down which of your systems can be paused without the vendor. Write down which logs you own. Write down which safety checks you can run yourself, on your own data, offline if you have to. If those lists are short, that is your real safety posture, regardless of who signed what.
+
+I keep coming back to the same bias. Models should run where the data is, under your control. Not because it is fashionable, but because control is the only thing that makes a safety claim verifiable by the person who is accountable for it.
+
+The Paris Call may turn out to matter. It will matter more if it pushes the industry from statements to artefacts: tests, logs, shutdown procedures that someone other than the developer can inspect.
+
+I am not going to predict what the final text of any follow-up will demand. Nobody outside the room knows. But I know what I would want to see if I were the one signing off a deployment.
+
+Takeaway: a safety pledge you cannot test is a press release. Build the part you can test.",#AI #AISafety #AIRegulation #LLM #OnDeviceAI

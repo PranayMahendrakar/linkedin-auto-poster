@@ -9232,3 +9232,28 @@ Treat compliance dates as intentions until you see behaviour.
 A standard that nobody is forced to follow is a request, not a policy.
 
 Has your team changed its robots.txt for AI crawlers, and did you see any difference in traffic?",#AI #LLM #DataGovernance #AIRegulation #MachineLearning
+533,Paris Call AI Safety,"Hot take: a voluntary AI safety pledge is only as good as the evidence behind it.
+
+On 9 November, Macron hosted the meeting that agreed the Paris Call for AI Safety and Security.
+
+The Next Web and Bernama both report it. OpenAI, Anthropic, Microsoft and Mistral are named among the signatories.
+
+Both also point to the catch. No financial penalties. No judicial enforcement. Compliance is at the developer's discretion.
+
+I have shipped AI into defence, automotive and education settings. Nobody in a defence deployment asked whether we believed in safety.
+
+They asked whether we could show the system stayed within limits, on the hardware it ran on, with no cloud to lean on.
+
+So here is my checklist for any pledge:
+
+Which systems can you pause without asking the vendor?
+Which logs do you own?
+Which safety checks can you run yourself, offline if needed?
+
+If those lists are short, that is your real safety posture, whoever signed what.
+
+Getting governments and labs on the record has value. But a signature is cheap.
+
+A safety pledge you cannot test is a press release. Build the part you can test.
+
+Which of those three lists is shortest in your team?",#AI #AISafety #AIRegulation #LLM #OnDeviceAI
