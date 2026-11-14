@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F43F5E" stop-opacity="0.25"/><stop offset="1" stop-color="#F43F5E" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="780" cy="780" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="480" height="56" rx="28" fill="none" stroke="#F43F5E" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#F43F5E">AI INCIDENTS</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="108" fill="#F5F7FA">Breach: June.</text>
+<text x="80" y="420" font-size="108" fill="#F43F5E">Told: September.</text>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="560">Rules follow incidents.</text>
+<text x="80" y="615">Detection time is yours.</text>
+<text x="80" y="670" font-weight="700" fill="#F5F7FA">Measure how fast you know.</text>
+</g>
+<path d="M600 800H960" stroke="#94A3B8" stroke-width="4"/>
+<circle cx="620" cy="800" r="18" fill="#F43F5E"/>
+<circle cx="940" cy="800" r="18" fill="#F43F5E" opacity="0.4"/>
+<path d="M660 800H900" stroke="#F43F5E" stroke-width="8" stroke-dasharray="4 20"/>
+<rect x="80" y="944" width="64" height="6" fill="#F43F5E"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

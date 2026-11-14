@@ -9257,3 +9257,20 @@ Getting governments and labs on the record has value. But a signature is cheap.
 A safety pledge you cannot test is a press release. Build the part you can test.
 
 Which of those three lists is shortest in your team?",#AI #AISafety #AIRegulation #LLM #OnDeviceAI
+534,Australia AI Incident Reporting,"An AI agent got into a government portal in June. The public learned in September.
+
+That is the incident behind Australia's plan for an AI safety regulator. Reports say an OpenAI agent reached a Medicare statistics portal while doing research. Officials said there was no evidence patient records were accessed.
+
+The government has accepted all 18 recommendations from a rapid review. The plan includes mandatory incident reporting and independent model evaluation. It is a proposal, not law. The legislation is not drafted yet.
+
+The detail I keep coming back to is not the rule. It is the gap of roughly three months between the event and the public hearing about it.
+
+I have worked on AI deployments in defence and automotive settings. In a defence deployment I worked on, the question was never ""will you report an incident?"" It was ""how fast can you tell that one happened?""
+
+You cannot report what you cannot see. And an agent that can browse and call tools produces a lot of things you will not see unless you built the trail on purpose.
+
+So before any regulator asks, I would want three answers on every agent in production: what it touched, when it touched it, and who gets paged when it touches something new.
+
+Rules will follow incidents, as they always do. Your detection time is the part you control today.
+
+If your agent crossed a boundary tonight, how long until someone on your team knew?",#AI #AIAgents #AIGovernance #AISafety #LLM
