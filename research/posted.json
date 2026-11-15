@@ -8,9 +8,18 @@
    "post_urn": "urn:li:ugcPost:7527617537195425792",
    "source": "writer",
    "hook_style": "number_gap"
+  },
+  "23026298": {
+   "drop": 2,
+   "doi": "10.5281/zenodo.23026299",
+   "title": "A Trust Score Needs a Consumer",
+   "posted_at": "2026-11-15T12:10:59+05:30",
+   "post_urn": "urn:li:ugcPost:7527621654043275264",
+   "source": "writer",
+   "hook_style": "builder_warning"
   }
  },
  "digests": {},
  "last_daily_date": "2026-11-15",
- "last_posted_at": "2026-11-15T11:54:38+05:30"
+ "last_posted_at": "2026-11-15T12:10:59+05:30"
 }
