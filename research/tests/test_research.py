@@ -9,7 +9,7 @@ import os
 import re
 import tempfile
 import unittest
-from datetime import date, datetime
+from datetime import date, datetime, time, timedelta
 
 from research import catalog, compose, config, digest, pdfs, schedule, state
 from research.validate import validate
@@ -111,6 +111,11 @@ class ScheduleTests(unittest.TestCase):
         self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 17, 40), ledger)[0])
         ledger["last_daily_date"] = "2026-11-16"
         self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 13, 0), ledger)[0])
+
+    def test_nothing_automatic_before_start_date(self):
+        first = datetime.combine(config.SCHEDULE_START, time(12, 30), config.IST)
+        self.assertIsNone(schedule.decide(first - timedelta(days=1), state.empty_ledger())[0])
+        self.assertEqual(schedule.decide(first, state.empty_ledger())[0], "daily")
 
     def test_gap_after_news_post(self):
         news = self.at(2026, 11, 16, 11, 40)

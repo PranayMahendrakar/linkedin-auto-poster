@@ -104,6 +104,6 @@ A separate module in `research/` posts Pranay's own research papers, one a day a
 
 **Manual runs:** Actions → **Research Paper Poster** → Run workflow. **Dry run** is ticked by default: it builds the post and fetches the PDF without posting, and the run's artifact holds `preview.md` and the PDF. Untick it to post now. Pick `digest` for the weekly roundup, or give a concept id, record id or DOI to post a specific paper.
 
-**Schedule:** the workflow wakes every 20 minutes from 11:39 to 17:19 IST and `research/schedule.py` decides. The daily paper goes out on the first wake-up after 12:00 (until 17:30), the roundup after 16:00 on Sundays (until 17:45), and neither goes out within an hour of another post, so they never compete with the 9 AM and 6 PM news posts. Times live in `research/config.py`.
+**Schedule:** the workflow wakes every 20 minutes from 11:39 to 17:19 IST and `research/schedule.py` decides. The daily paper goes out on the first wake-up after 12:00 (until 17:30), the roundup after 16:00 on Sundays (until 17:45), and neither goes out within an hour of another post, so they never compete with the 9 AM and 6 PM news posts. Times live in `research/config.py`, along with `SCHEDULE_START`, the first day automatic posts go out (manual runs ignore it).
 
 **Tests:** `python -m unittest discover -s research/tests -t .`

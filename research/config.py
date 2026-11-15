@@ -7,7 +7,7 @@ LINKEDIN_ACCESS_TOKEN secret.
 """
 
 import os
-from datetime import time, timedelta, timezone
+from datetime import date, time, timedelta, timezone
 
 # ---- Whose papers -----------------------------------------------------------
 # Papers are picked by ORCID, never by name: a name search on Zenodo also
@@ -25,6 +25,7 @@ HTTP_TIMEOUT = 60
 
 # ---- Schedule (IST) ---------------------------------------------------------
 IST = timezone(timedelta(hours=5, minutes=30), "IST")
+SCHEDULE_START = date(2026, 11, 16)   # automatic posts begin this day; manual runs ignore it
 DAILY_SLOT = time(12, 0)          # one paper a day, any time from 12:00 ...
 DAILY_LAST_CALL = time(17, 30)    # ... until 17:30; after that the day is skipped
 DIGEST_WEEKDAY = 6                # Sunday (Monday is 0)

@@ -45,6 +45,8 @@ def decide(now, ledger, news_last=None):
     """('daily' | 'digest' | None, reason)."""
     now = now.astimezone(config.IST)
     t, today = now.time(), now.date()
+    if today < config.SCHEDULE_START:
+        return None, f"automatic posting starts on {config.SCHEDULE_START:%d %B %Y}"
 
     daily_open = config.DAILY_SLOT <= t < config.DAILY_LAST_CALL
     daily_due = daily_open and ledger.get("last_daily_date") != today.isoformat()
