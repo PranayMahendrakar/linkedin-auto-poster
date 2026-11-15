@@ -9289,3 +9289,20 @@ Caveats are real. ""On-device"" here means a laptop or desktop with serious memo
 My plan would be local for sensitive work, hosted fallback for hard cases, and measure disagreements before widening scope.
 
 Where would you draw the line between local and cloud models in your stack?",#AI #LLM #OpenSource #OnDeviceAI #EdgeAI
+536,Entry-Level Hiring Squeeze,"AI isn't firing junior engineers. It's quietly not hiring them.
+
+The layoff numbers look calm. Challenger, Gray & Christmas, as reported by Tech.co, counted total layoffs through August down 41% year on year, with hiring plans up 37%.
+
+But the same report cites Stanford research putting employment for 22-25-year-olds in the most AI-exposed jobs about 19% below trend. The New York Times reports economists are cautious about blaming AI, since low hiring overall could explain part of it.
+
+So the honest reading is: nobody is being replaced in bulk. The bottom rung is just getting skipped.
+
+Here is what I saw in the AI systems I have helped ship, including defence and automotive work. The model never did the hard part. The hard part was the engineer who knew why the output was wrong, and that judgement is learned on small, boring tasks.
+
+If teams stop hiring juniors, they are cancelling the pipeline that produces their future seniors.
+
+My advice to juniors: ship something real, with evals and a failure log. A demo is not proof.
+
+My advice to hiring managers: hire fewer juniors if you must, but pair each one with real review work, not just a code assistant.
+
+Are you still hiring juniors? What changed in how you train them?",#AI #FutureOfWork #SoftwareEngineering #Hiring #MachineLearning
