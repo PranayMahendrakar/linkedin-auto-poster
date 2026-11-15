@@ -1,0 +1,13 @@
+{
+ "concept_id": "23041726",
+ "hook_style": "contrast",
+ "body": "A drifted class and a brand-new class can produce the exact same stream.\n\nWithout labels, nothing in the inputs tells you which one you are looking at. In this paper I argue that every method that appears to separate them imports an assumption, and that you cannot check that assumption from the same unlabelled data.\n\nIt matters because the two errors cost different things. Treat drift as novelty and you split a known class into spurious new ones. Treat novelty as drift and a new attack family gets filed under a known label.\n\nI sorted the assumptions the literature uses into five routes: freezing the known-class conditionals, bounding the drift, imposing geometric separation, waiting for labels, and fixing the label hierarchy by fiat. The two most explicit routes each get their answer by freezing the variable the other lets move.\n\nThe measurements are thin. In one 2026 study, not mine, entropy and energy scores separated drifted known samples from drifted novel ones with 60 to 76 percent accuracy even at an oracle threshold. Its own method reached novel-sample AUROC of 91.5 to 97.5 on two CIFAR benchmarks, but 57.4 to 64.5 on two harder ones.\n\nNo located benchmark scores the attribution itself. Until one does, treat a drift-or-novelty verdict as an assumption, not a measurement.\n\nThe full paper is attached below.",
+ "question": "In your streaming system, what tells you a surprising input is a drifted class and not a new one?",
+ "hashtags": [
+  "#AI",
+  "#MachineLearning",
+  "#ConceptDrift",
+  "#NoveltyDetection"
+ ],
+ "written_at": "2026-11-15T12:08:08+05:30"
+}

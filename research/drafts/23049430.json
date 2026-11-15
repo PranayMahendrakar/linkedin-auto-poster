@@ -1,0 +1,13 @@
+{
+ "concept_id": "23049430",
+ "hook_style": "number_gap",
+ "body": "GPT-4 names the next letter of a scrambled alphabet almost perfectly. The gap between two letters: 10.8%.\n\nThose numbers come from different labs, so it is a juxtaposition, not a controlled test. But they sit in the middle of a live argument, and I wrote a paper reading all three rounds of it.\n\nIn 2023 a model was reported to match college students on letter-string analogies. Two critiques showed it collapses when the alphabet is permuted. The original authors replied that the failure is just counting, and that GPT-4 does fine once it can run code.\n\nTwo things stood out. The decisive result is for a model plus a code interpreter, while the title claim is still about language models. And \"counting\" hides two operations. Producing a one-step successor works. Recognising the relation between two letters mostly does not: 10.8% in Webb et al.'s interval probe.\n\nIf the trouble is recognising the relation, analogy theory calls that inference. If it is representing the order, that is encoding, which the theory also counts as part of analogy. Either way, \"auxiliary\" is not yet earned.\n\nTakeaway: before you read a capacity claim off a counterfactual task, fix how the task decomposes.\n\nThe full paper is attached below.",
+ "question": "When a model fails a variant of a task, how do you decide which sub-step actually failed?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AnalogicalReasoning",
+  "#AIEvaluation"
+ ],
+ "written_at": "2026-11-15T12:08:08+05:30"
+}

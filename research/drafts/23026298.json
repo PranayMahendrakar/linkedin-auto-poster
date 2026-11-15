@@ -1,0 +1,13 @@
+{
+ "concept_id": "23026298",
+ "hook_style": "builder_warning",
+ "body": "If your agent reads a trust label, an attacker can write that label.\n\nThat is the narrow claim I defend in a paper on per-source trust scores for LLM agents. The popular claim, that a model cannot act on a trust score at all, is false. Four consumers exist: admission before the model, annotation in the prompt, modulation inside the forward pass, and gates on actions after it.\n\nThe problem is what each was tested against. Every graded discount the model reads that I located was evaluated against sources that err, or against attacks fixed in advance. Never against an attacker who adapts to it.\n\nThe attacker can write all three inputs. The label: Chang et al. forged chat-template role tags inside tool output and raised attack success from 5.18% to 32.05% on AgentDojo. The count: Schuster et al. found that repeating a low-credibility source reverses a model's preference. The evidence: Xia and Wang captured a graded router with a single fabricated episode.\n\nThe defences that report guarantees use a discrete gate enforced by code outside the model, not a weight the model reads.\n\nTakeaway: discount by score for sources that make mistakes. Gate for sources that attack.\n\nThe full paper is attached below.",
+ "question": "Where does your agent consume a trust value: before the model, in the prompt, or after it?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AISafety",
+  "#PromptInjection"
+ ],
+ "written_at": "2026-11-15T12:08:08+05:30"
+}
