@@ -51,18 +51,17 @@ def to_hashtag(phrase):
 
 
 def normalize_hashtags(tags):
-    """Dedupe (case-insensitive), drop invalid ones, add the series signature, cap the count."""
+    """The paper's topic tags (deduped, valid, at most MAX_TOPIC_HASHTAGS), then the fixed research tags."""
+    fixed = {t.lower() for t in config.FIXED_HASHTAGS}
     out, seen = [], set()
     for tag in list(tags or []):
         tag = tag.strip()
         if not tag.startswith("#"):
             tag = "#" + tag
-        if HASHTAG_RE.match(tag) and tag.lower() not in seen and tag.lower() != config.SIGNATURE_HASHTAG.lower():
+        if HASHTAG_RE.match(tag) and tag.lower() not in seen and tag.lower() not in fixed:
             out.append(tag)
             seen.add(tag.lower())
-    out = out[:config.MAX_HASHTAGS - 1]
-    out.append(config.SIGNATURE_HASHTAG)
-    return out
+    return out[:config.MAX_TOPIC_HASHTAGS] + list(config.FIXED_HASHTAGS)
 
 
 def month_year(iso_day):
@@ -133,8 +132,7 @@ def template_draft(paper, drop):
     head = f"{opener}\n\n{paper['title']}"
     fixed = len(head) + len(link_block(paper)) + 200            # hashtags and spacing
     abstract = excerpt(paper["abstract"], max(300, min(1300, config.COMMENTARY_BUDGET - fixed)))
-    tags = [t for t in (to_hashtag(k) for k in paper.get("keywords") or []) if t][:3]
-    tags = ["#AI"] + tags + ["#Research"] if not tags else tags + ["#Research", "#OpenScience"]
+    tags = ["#AI"] + [t for t in (to_hashtag(k) for k in paper.get("keywords") or []) if t][:3]
     return {
         "concept_id": paper["id"],
         "hook_style": "template",
