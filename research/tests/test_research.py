@@ -99,6 +99,15 @@ class LedgerTests(unittest.TestCase):
         self.assertEqual([p["id"] for p in order], ["5", "2", "4"])
         self.assertEqual(state.next_drop(ledger), 2)
 
+    def test_start_from_leaves_out_older_papers_unless_prioritised(self):
+        papers = [dict(sample_paper(), id=str(i), record_id=str(i + 100), doi=f"10.1/{i}",
+                       published=f"2026-09-{26 + i:02d}") for i in range(1, 5)]   # 27, 28, 29, 30 Sep
+        ledger = state.empty_ledger()
+        order = state.upcoming(papers, ledger, {"start_from": "2026-09-29"})
+        self.assertEqual([p["id"] for p in order], ["3", "4"])
+        order = state.upcoming(papers, ledger, {"start_from": "2026-09-29", "priority": ["1"]})
+        self.assertEqual([p["id"] for p in order], ["1", "3", "4"])
+
 
 class ScheduleTests(unittest.TestCase):
     def at(self, y, m, d, hh, mm):
