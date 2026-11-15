@@ -11,7 +11,7 @@ from datetime import date, timedelta
 from research import config
 from research.compose import escape_little, hashtag_markup, normalize_hashtags
 
-TAGS = ["#AI", "#MachineLearning", "#Research", "#OpenScience"]
+TAGS = ["#AI", "#MachineLearning"]          # the fixed research tags are added after these
 
 
 def week_range(day):

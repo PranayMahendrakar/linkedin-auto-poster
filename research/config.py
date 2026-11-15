@@ -43,8 +43,10 @@ DOC_MAX_BYTES = 100 * 1024 * 1024
 DOC_MAX_PAGES = 300
 
 # ---- Hashtags -----------------------------------------------------------------
-SIGNATURE_HASHTAG = "#LifeOfResearch"
-MAX_HASHTAGS = 6                  # including the signature
+# Every research post ends with these, after the paper's own topic tags.
+FIXED_HASHTAGS = ["#Research", "#ResearchPaper", "#OpenScience", "#LifeOfResearch"]
+SIGNATURE_HASHTAG = FIXED_HASHTAGS[-1]
+MAX_TOPIC_HASHTAGS = 4            # topic tags per post, before the fixed ones (8 in all)
 
 # ---- Files ------------------------------------------------------------------
 HERE = os.path.dirname(os.path.abspath(__file__))

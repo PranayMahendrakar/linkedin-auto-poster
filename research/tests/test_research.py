@@ -146,10 +146,10 @@ class ComposeTests(unittest.TestCase):
     def test_escape_and_hashtags(self):
         self.assertEqual(compose.escape_little("a (b) #c_d*"), "a \\(b\\) \\#c\\_d\\*")
         self.assertEqual(compose.hashtag_markup("#AI"), "{hashtag|\\#|AI}")
-        tags = compose.normalize_hashtags(["#AI", "#ai", "LLM", "#bad tag", "#X1", "#Y2", "#Z3", "#W4"])
-        self.assertEqual(tags[0], "#AI")
+        tags = compose.normalize_hashtags(["#AI", "#ai", "LLM", "#bad tag", "#research", "#X1", "#Y2", "#Z3"])
+        self.assertEqual(tags, ["#AI", "#LLM", "#X1", "#Y2"] + config.FIXED_HASHTAGS)
         self.assertEqual(tags[-1], config.SIGNATURE_HASHTAG)
-        self.assertLessEqual(len(tags), config.MAX_HASHTAGS)
+        self.assertEqual(compose.normalize_hashtags([]), config.FIXED_HASHTAGS)
         self.assertEqual(compose.to_hashtag("ECG biometrics"), "#ECGBiometrics")
 
     def test_assemble_has_link_and_escapes(self):

@@ -86,7 +86,7 @@ To change the times, edit `SLOTS` in `post_schedule.py`. The writer's cron lines
 
 ## Research Papers (12 PM IST)
 
-A separate module in `research/` posts Pranay's own research papers, one a day at **12:00 IST**, starting from the oldest. Each post is a written hook and summary with **the paper's PDF attached** as a LinkedIn document, plus its Life of Research link, DOI and hashtags. On **Sundays at 4 PM IST** a text roundup lists every paper published that week, with links. The news posting above is unchanged.
+A separate module in `research/` posts Pranay's own research papers, one a day at **12:00 IST**, starting from the oldest. Each post is a written hook and summary with **the paper's PDF attached** as a LinkedIn document, plus its Life of Research link, DOI and hashtags: up to 4 for the paper's topic, then the same research tags on every post, `#Research #ResearchPaper #OpenScience #LifeOfResearch` (`FIXED_HASHTAGS` in `research/config.py`). On **Sundays at 4 PM IST** a text roundup lists every paper published that week, with links. The news posting above is unchanged.
 
 **Which papers:** every Zenodo record under ORCID `0009-0003-7224-029X` (never a name search, which also finds other people), minus records titled "DUPLICATE". Each is matched to its Life of Research page by DOI; a paper Life of Research doesn't have yet links to its DOI instead. `research/catalog.json` is the queue, refreshed on every run.
 

@@ -93,7 +93,8 @@ used recently; don't repeat the most recent one, and vary them over a week.
 
 ## Hashtags
 
-3 to 5, without the series tag (the module adds `#LifeOfResearch`):
+3 to 5 topic tags. The module always adds `#Research #ResearchPaper
+#OpenScience #LifeOfResearch` after them, so don't use those:
 - one broad: `#AI`, `#MachineLearning` or `#ArtificialIntelligence`
 - one or two for the field: `#LLM`, `#AISafety`, `#NLP`, `#ComputerVision`, `#Biometrics`…
 - one niche tag from the paper's keywords, CamelCase: `#MultiIntentDetection`
