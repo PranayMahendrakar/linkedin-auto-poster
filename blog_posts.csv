@@ -2421,3 +2421,28 @@ The Paris Call may turn out to matter. It will matter more if it pushes the indu
 I am not going to predict what the final text of any follow-up will demand. Nobody outside the room knows. But I know what I would want to see if I were the one signing off a deployment.
 
 Takeaway: a safety pledge you cannot test is a press release. Build the part you can test.",#AI #AISafety #AIRegulation #LLM #OnDeviceAI
+2026-11-15,535,Edge0 On-Device 145B,Hot take: a 145B model on a laptop matters less for its benchmark than for where the data stays,,"Edge0 released two open-weight models this week, Edge0-145B and Edge0-120B, and the headline is a 145B-class model that runs on a single high-memory laptop. The project's GitHub repository and independent write-ups on DEV Community and Activepieces both describe it. The company says peak memory is around 29GB and that about 10B parameters are active per step.
+
+Most of the conversation will be about the benchmark claim. The company reports it beats a frontier hosted model on a coding benchmark. Those numbers are company-reported and I have not seen them independently reproduced, so I am not going to repeat them as fact. Treat them as a marketing figure until someone else runs them.
+
+What I care about is the other claim: cloud-level capability, offline, on hardware you already own.
+
+I have spent years arguing that models should run where the data is. In a defence deployment I worked on, the question was never ""which model scores highest"". It was ""can this system run with no network at all"". In an offline multilingual avatar project for an automotive client, the same constraint applied. Data could not leave the device, and latency could not depend on a connection.
+
+For those projects, we had to pick a model small enough to fit and then spend months making it good enough. That trade-off was the whole job. A 100B-class model that fits in 29GB moves that line a long way.
+
+The engineering idea is worth understanding too. It is a mixture-of-experts design where groups of experts share large matrices to cut memory, and weights are streamed from fast storage instead of living entirely in RAM. That is the same lesson every production system teaches: memory bandwidth and placement decide what you can ship, not parameter count on a slide.
+
+Now the caveats, because there are real ones.
+
+First, ""on-device"" here means a laptop or desktop with serious memory, not a phone. Reports say Linux and Windows need an NVIDIA GPU with CUDA 13 and at least 16GB of GPU memory, and the Mac path needs Apple Silicon with plenty of unified memory. The smaller 35B model is the phone-oriented one. If your fleet is ordinary hardware, this is not for you yet.
+
+Second, licensing is unclear across sources. One lists Apache 2.0 for the code, another lists a community model licence for the weights. Those can differ. Read the model card before you build a product on it.
+
+Third, a benchmark win on terminal tasks says little about your domain. Hallucination in low-resource Indic languages, for example, is exactly the kind of failure a coding leaderboard will never show you. I would want to test it on my own evaluation set before trusting it anywhere near a real workflow.
+
+So how would I use it? Not as a drop-in replacement. I would use it as a local reviewer and drafting model inside a boundary where the data is sensitive. I would keep a hosted fallback for the hard cases, log every disagreement, and measure before widening its scope.
+
+The pattern I expect to see is a split. Sensitive and latency-bound work moves local. Rare, hard reasoning stays in the cloud. The skill is routing between them with evidence.
+
+The takeaway: the interesting number in this release is not a benchmark score. It is 29GB, because that is the size of a model you can keep under your own control.",#AI #LLM #OpenSource #OnDeviceAI #EdgeAI

@@ -9274,3 +9274,18 @@ So before any regulator asks, I would want three answers on every agent in produ
 Rules will follow incidents, as they always do. Your detection time is the part you control today.
 
 If your agent crossed a boundary tonight, how long until someone on your team knew?",#AI #AIAgents #AIGovernance #AISafety #LLM
+535,Edge0 On-Device 145B,"A 145B-class open-weight model that runs on one laptop. That is the Edge0 release this week.
+
+The GitHub repo and independent write-ups both describe it. Company figures say around 29GB peak memory, about 10B parameters active per step.
+
+The benchmark win over a frontier model is company-reported. I would not repeat it until someone else reproduces it.
+
+What matters to me is the 29GB.
+
+I have always argued that models should run where the data is. In defence and automotive work, the first question was never the leaderboard. It was whether the system could run with no network.
+
+Caveats are real. ""On-device"" here means a laptop or desktop with serious memory or an NVIDIA GPU, not a phone. And the licence reads differently across sources, so check the model card.
+
+My plan would be local for sensitive work, hosted fallback for hard cases, and measure disagreements before widening scope.
+
+Where would you draw the line between local and cloud models in your stack?",#AI #LLM #OpenSource #OnDeviceAI #EdgeAI
