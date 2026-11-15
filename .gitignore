@@ -210,3 +210,6 @@ __marimo__/
 
 # LinkedIn writer working files (context, drafts, previews, transcript)
 writer/out/
+
+# Research poster working files (downloaded PDFs, paper text, previews)
+research/out/

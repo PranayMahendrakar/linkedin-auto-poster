@@ -83,3 +83,27 @@ To change the times, edit `SLOTS` in `post_schedule.py`. The writer's cron lines
 | category | Yes | Topic label |
 | post_text | Yes | The post content |
 | hashtags | No | Hashtags (appended to post) |
+
+## Research Papers (12 PM IST)
+
+A separate module in `research/` posts Pranay's own research papers, one a day at **12:00 IST**, starting from the oldest. Each post is a written hook and summary with **the paper's PDF attached** as a LinkedIn document, plus its Life of Research link, DOI and hashtags. On **Sundays at 4 PM IST** a text roundup lists every paper published that week, with links. The news posting above is unchanged.
+
+**Which papers:** every Zenodo record under ORCID `0009-0003-7224-029X` (never a name search, which also finds other people), minus records titled "DUPLICATE". Each is matched to its Life of Research page by DOI; a paper Life of Research doesn't have yet links to its DOI instead. `research/catalog.json` is the queue, refreshed on every run.
+
+**Who writes the text:** the **Research Writer** workflow (`research_writer.yml`, about 05:00 IST) runs Claude on `research/RESEARCH_RUN.md`, keeping about a week of posts written ahead in `research/drafts/<concept_id>.json`. Every draft is checked before it is saved and again before it is posted: every number must appear in the paper, review papers can't be described as the author's own experiments, and there are no engagement-bait phrases, links or emoji in the body. If a draft is missing or fails, a plain template post built from the title and abstract goes out instead, so a day is never missed.
+
+| File | What it is |
+|------|------------|
+| `research/catalog.json` | The queue: papers in posting order (auto-updated) |
+| `research/posted.json` | What has been posted, keyed by Zenodo concept id (auto-updated) |
+| `research/drafts/` | Upcoming posts. Edit one on GitHub to change it before it goes out |
+| `research/overrides.json` | `skip`: papers never to post. `priority`: papers to post next, in order |
+| `research/RESEARCH_RUN.md` | The writing brief: voice, hook styles, rules |
+
+**Secrets:** none new. It uses the same `LINKEDIN_ACCESS_TOKEN` and `CLAUDE_CODE_OAUTH_TOKEN`.
+
+**Manual runs:** Actions → **Research Paper Poster** → Run workflow. **Dry run** is ticked by default: it builds the post and fetches the PDF without posting, and the run's artifact holds `preview.md` and the PDF. Untick it to post now. Pick `digest` for the weekly roundup, or give a concept id, record id or DOI to post a specific paper.
+
+**Schedule:** the workflow wakes every 20 minutes from 11:39 to 17:19 IST and `research/schedule.py` decides. The daily paper goes out on the first wake-up after 12:00 (until 17:30), the roundup after 16:00 on Sundays (until 17:45), and neither goes out within an hour of another post, so they never compete with the 9 AM and 6 PM news posts. Times live in `research/config.py`, along with `SCHEDULE_START`, the first day automatic posts go out (manual runs ignore it).
+
+**Tests:** `python -m unittest discover -s research/tests -t .`

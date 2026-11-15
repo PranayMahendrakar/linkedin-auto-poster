@@ -1,0 +1,105 @@
+name: Research Paper Poster
+
+# Posts one of Pranay's research papers at 12:00 IST every day (oldest first,
+# the paper's own PDF attached), and a "this week's papers" text roundup on
+# Sundays at 16:00.
+#
+# Like the news poster, it doesn't trust exact cron times: it wakes every 20
+# minutes through the afternoon and research/schedule.py decides by the clock
+# in India. (Cron is UTC: 06:09-11:49 UTC is 11:39-17:19 IST.)
+#
+# Secret: LINKEDIN_ACCESS_TOKEN, the same one the news poster uses.
+
+on:
+  schedule:
+    - cron: '9,29,49 6-11 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'What to post'
+        type: choice
+        options: [daily, digest]
+        default: daily
+      dry_run:
+        description: 'Dry run: build the post and fetch the PDF, post nothing'
+        type: boolean
+        default: true
+      paper:
+        description: 'Optional: a specific paper (Zenodo concept id, record id or DOI)'
+        required: false
+        default: ''
+
+concurrency:
+  group: research-poster
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Is a research post due?
+        id: due
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual run: ${{ inputs.mode }} now."
+            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+          else
+            python -m research.schedule
+          fi
+
+      - name: Install dependencies
+        if: steps.due.outputs.mode != 'none'
+        run: pip install -q -r research/requirements.txt
+
+      - name: Post
+        if: steps.due.outputs.mode != 'none'
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          MODE: ${{ steps.due.outputs.mode }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          PAPER: ${{ inputs.paper }}
+        run: |
+          args="--mode $MODE"
+          [ "$DRY_RUN" = "true" ] && args="$args --dry-run"
+          [ -n "$PAPER" ] && args="$args --paper $PAPER"
+          python -m research.post_research $args
+
+      - name: Keep the post text and PDF
+        if: always() && steps.due.outputs.mode != 'none'
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-post-${{ github.run_id }}
+          path: research/out/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Commit progress
+        if: steps.due.outputs.mode != 'none' && !(github.event_name == 'workflow_dispatch' && inputs.dry_run)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add research/posted.json research/catalog.json
+          git diff --staged --quiet && exit 0
+          git commit -m "Research post progress [skip ci]"
+          # The writers push to this repo too; retry so progress is never lost
+          # (a lost push would repost the same paper next time).
+          for attempt in 1 2 3 4; do
+            if git pull --rebase --quiet && git push --quiet; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying"
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push research/posted.json. The next run will repeat this post unless it is pushed."
+          exit 1

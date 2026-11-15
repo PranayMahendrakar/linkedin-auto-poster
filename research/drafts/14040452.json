@@ -1,0 +1,8 @@
+{
+ "concept_id": "14040452",
+ "hook_style": "number_gap",
+ "body": "An LLM recognises emotional patterns 94% of the time. Ask it to reason about those emotions and it drops to 67%.\n\nThat gap is the paradox I wrote this paper about.\n\nModels have become fluent in the language of emotion. They produce replies that sound caring, fitting and well-timed. But fluency and understanding are different skills, and a reply can sound right while missing what the person actually meant.\n\nIn the paper I introduce EmotiScope, a framework that tests both levels separately: surface-level emotional pattern recognition, and deeper emotional reasoning. I ran it across multiple model architectures and cultural contexts, because emotion is not expressed the same way everywhere.\n\nMy takeaway for anyone shipping LLMs in customer support, health or education: an empathetic-sounding answer is not evidence of emotional understanding. Measure the reasoning, not the tone.\n\nThe full paper is attached below.",
+ "question": "Where have you seen an AI sound kind but get the situation wrong?",
+ "hashtags": ["#AI", "#LLM", "#EmotionalIntelligence", "#AIEvaluation"],
+ "written_at": "2026-11-15T00:00:00+05:30"
+}
