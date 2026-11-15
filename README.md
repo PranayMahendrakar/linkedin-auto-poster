@@ -97,7 +97,7 @@ A separate module in `research/` posts Pranay's own research papers, one a day a
 | `research/catalog.json` | The queue: papers in posting order (auto-updated) |
 | `research/posted.json` | What has been posted, keyed by Zenodo concept id (auto-updated) |
 | `research/drafts/` | Upcoming posts. Edit one on GitHub to change it before it goes out |
-| `research/overrides.json` | `skip`: papers never to post. `priority`: papers to post next, in order |
+| `research/overrides.json` | `start_from`: post only papers published on or after this date (currently 2026-09-29). `skip`: papers never to post. `priority`: papers to post next, in order |
 | `research/RESEARCH_RUN.md` | The writing brief: voice, hook styles, rules |
 
 **Secrets:** none new. It uses the same `LINKEDIN_ACCESS_TOKEN` and `CLAUDE_CODE_OAUTH_TOKEN`.

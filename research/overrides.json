@@ -1,5 +1,6 @@
 {
- "_help": "skip: papers never to post. priority: papers to post next, in this order. Use the Zenodo concept id, record id or DOI. Edit a post's text in research/drafts/<concept_id>.json.",
+ "_help": "start_from: post only papers published on or after this day (YYYY-MM-DD), oldest first. skip: papers never to post. priority: papers to post next, in this order (these go out even if older than start_from). Use the Zenodo concept id, record id or DOI. Edit a post's text in research/drafts/<concept_id>.json.",
+ "start_from": "2026-09-29",
  "skip": [],
  "priority": []
 }

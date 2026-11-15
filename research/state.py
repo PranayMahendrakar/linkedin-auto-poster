@@ -79,7 +79,7 @@ def week_key(day):
 # ============ OVERRIDES ============
 def load_overrides(path=None):
     path = path or config.OVERRIDES_FILE
-    data = {"skip": [], "priority": []}
+    data = {"skip": [], "priority": [], "start_from": ""}
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             data.update(json.load(f))
@@ -95,14 +95,19 @@ def _matches(paper, ref):
 
 
 def upcoming(papers, ledger, overrides, limit=None):
-    """Unposted papers in posting order: priority list first, then oldest first."""
+    """Unposted papers in posting order: priority list first, then oldest first.
+
+    start_from (YYYY-MM-DD) leaves out papers published before that day,
+    unless they are named in the priority list.
+    """
     posted = set(ledger["papers"])
     skip = overrides.get("skip") or []
+    start_from = (overrides.get("start_from") or "").strip()
     pool = [p for p in papers if p["id"] not in posted and not any(_matches(p, s) for s in skip)]
     ordered = []
     for ref in overrides.get("priority") or []:
         for p in pool:
             if _matches(p, ref) and p not in ordered:
                 ordered.append(p)
-    ordered += [p for p in pool if p not in ordered]
+    ordered += [p for p in pool if p not in ordered and (not start_from or p["published"] >= start_from)]
     return ordered[:limit] if limit else ordered
