@@ -1,6 +1,16 @@
 {
- "papers": {},
+ "papers": {
+  "14040452": {
+   "drop": 1,
+   "doi": "10.5281/zenodo.14040453",
+   "title": "The Emotional Intelligence Paradox in Large Language Models",
+   "posted_at": "2026-11-15T11:54:38+05:30",
+   "post_urn": "urn:li:ugcPost:7527617537195425792",
+   "source": "writer",
+   "hook_style": "number_gap"
+  }
+ },
  "digests": {},
- "last_daily_date": null,
- "last_posted_at": null
+ "last_daily_date": "2026-11-15",
+ "last_posted_at": "2026-11-15T11:54:38+05:30"
 }
