@@ -9324,3 +9324,26 @@ My rule:
 A rank is a measurement taken with one ruler. Change the ruler and you change the rank.
 
 Do you have a private eval, or are you still choosing models from someone else's chart?",#AI #LLM #Benchmarks #MachineLearning #OpenWeights
+538,Open-Weight Testing Rules,"Hot take: the fight over open-weight models and pre-release testing is really a fight over where your data can live.
+
+Reports say the White House's voluntary testing framework has exempted open-weight models. Other reports say pressure is building to end that exemption. The details are inconsistent across coverage, so I'm treating it as unsettled.
+
+Here is what I can say from building systems.
+
+On a defence deployment I worked on, a hosted API was never an option. On an offline automotive avatar, there was no network at all. Open weights were the only thing that fit.
+
+There is a big difference between two ideas:
+
+Access: the government tests a model before launch and the developer publishes what was found.
+
+Approval: release needs a sign-off.
+
+I'm fine with the first. The second is a veto, and for open weights it is a very hard one.
+
+If strong open models get scarce, sensitive data moves to hosted endpoints. That is a worse security outcome.
+
+What I want: evidence over permission. Tell deployers what was tested and what failed.
+
+Models should run where the data is.
+
+Which would you rather see: mandatory testing access, or a sign-off gate? Tell me why.",#AI #LLM #OpenSource #AIRegulation #OnDeviceAI
