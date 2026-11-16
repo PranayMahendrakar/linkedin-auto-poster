@@ -1,0 +1,13 @@
+{
+ "concept_id": "23072847",
+ "hook_style": "myth_buster",
+ "body": "Multi-agent debate is sold on diverse viewpoints. At equal calls, a plain vote beat it.\n\nIn one replication on GSM8K that I reviewed (Huang et al., 2024), self-consistency with nine samples scored 88.2 percent. Debate with nine responses scored 83.0.\n\nI wrote a paper auditing the published results that hold compute constant. The pattern is consistent: at matched cost, most of the reported gain from debate and persona schemes disappears, and a vote over the agents' independent first answers explains most of what remains.\n\nThe positive results are real, but they are not diversity results. The strongest one uses a single model in every role. The large agentic gains track whether the task decomposes. That is division of labour, not independent judgement.\n\n\"Multi-agent\" names four different mechanisms: voting, synthesis by an aggregator, decomposition and viewpoint diversity. Matched-cost comparisons against self-consistency isolate only the first.\n\nWhat does help is model heterogeneity. At equal numbers of calls, mixed-model debate beats single-model debate.\n\nBefore adding agents, run the baseline: the same model, the same budget, and a vote.\n\nThe full paper is attached below.",
+ "question": "Has a multi-agent setup in your own work ever beaten a plain majority vote at the same cost?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#MultiAgentSystems",
+  "#SelfConsistency"
+ ],
+ "written_at": "2026-11-16T08:25:52+05:30"
+}

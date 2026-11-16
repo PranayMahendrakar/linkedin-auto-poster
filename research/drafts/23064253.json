@@ -1,0 +1,13 @@
+{
+ "concept_id": "23064253",
+ "hook_style": "contrast",
+ "body": "Surviving distillation is not the same as finding the teacher.\n\nA leading fingerprint benchmark scores its distillation rows with a weight fingerprint at AUC 1.000, and that perfect score says nothing about the teacher.\n\nI went through the published fingerprinting results for a paper on model lineage. \"Derived from\" hides three relations: weight descent, training-signal descent through distillation, and which checkpoint sits behind an API endpoint.\n\nTake DeepSeek-R1-Distill-Qwen-14B. It has two parents. Qwen2.5-14B is its weight parent. DeepSeek-R1 is its teacher. In LeaFBench (Shao et al., 2025), that row is scored against Qwen2.5-14B. A weight fingerprint should pass, and it does. But that shows weights surviving a fine-tune, not the teacher being found, which is what an owner means by \"survives distillation\".\n\nRobustness also depends on who is adversarial. An evading host wants a missed match. A provider swapping in a cheaper model wants a false match, and the cheapest swap is a quantized or fine-tuned copy that a lineage fingerprint is built to accept.\n\nThis is an inference from published results, not a new measurement. Every figure is credited to its source.\n\nWhen you read a robustness claim, ask: robust to what, against which parent, and against which adversary?\n\nThe full paper is attached below.",
+ "question": "If you audit or serve models, which of the three relations (weights, teacher, served checkpoint) do you actually need to verify?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#ModelFingerprinting",
+  "#LLMAuditing"
+ ],
+ "written_at": "2026-11-16T08:25:52+05:30"
+}

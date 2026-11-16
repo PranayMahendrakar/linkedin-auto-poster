@@ -1,0 +1,13 @@
+{
+ "concept_id": "23086062",
+ "hook_style": "number_gap",
+ "body": "One corrupted reasoning step reached the answer 3.9% of the time on GSM8K. On hard arithmetic: 64.5%.\n\nThose are Jia and Mu's numbers (2026), not mine. I found them while writing a paper that reads published work on how errors compound in LLM reasoning.\n\nThe textbook model says a chain succeeds with the product of its step accuracies. At 95% per step, fifty steps succeed 7.7% of the time. But that rule needs every step to matter, errors to be independent, and failure to be permanent. The published measurements break all three, and how they break tracks how hard the task is for the model. Easy task: the model silently ignores the bad step. Hard task: it follows it.\n\nThe same unit question hits conformal guarantees. Exchangeability fails between the steps of a chain. The careful methods avoid that by calibrating whole reasoning instances. Then the guarantee holds only on average, only for the annotation used, and not under the shift an agent loop creates.\n\nSo \"do errors compound?\" and \"does the guarantee hold?\" are both unanswerable until you say the unit of independence.\n\nThis is a synthesis of published results. No new data were collected.\n\nThe full paper is attached below.",
+ "question": "When you evaluate an agent, do you calibrate per step, per task, or over the stream of tasks it actually meets?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#UncertaintyQuantification",
+  "#ConformalPrediction"
+ ],
+ "written_at": "2026-11-16T08:25:52+05:30"
+}
