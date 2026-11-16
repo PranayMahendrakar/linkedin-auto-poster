@@ -9306,3 +9306,21 @@ My advice to juniors: ship something real, with evals and a failure log. A demo 
 My advice to hiring managers: hire fewer juniors if you must, but pair each one with real review work, not just a code assistant.
 
 Are you still hiring juniors? What changed in how you train them?",#AI #FutureOfWork #SoftwareEngineering #Hiring #MachineLearning
+537,Benchmark Version Reshuffle,"Same model. Same weights. Fourth place became ninth.
+
+Kimi K3.1 Pro launched in October scoring 55 on the Artificial Analysis Intelligence Index, ranked fourth overall. On October 27 the index moved to v5. The model's score became 46 and its rank dropped to ninth.
+
+Nothing about the model changed. The test did. v5 added new coding and science tasks, removed others, and moved about 60% of the evaluation onto private test sets.
+
+That is a good thing for the benchmark. It is a bad thing if your model choice was a screenshot of a leaderboard.
+
+In my own work shipping AI systems, including a defence deployment, the model that topped a public ranking was rarely the one that held up on the client's data. Our private eval set made the call, every time.
+
+My rule:
+- Treat a leaderboard as a shortlist, not a decision.
+- Pin the benchmark version next to any score you quote.
+- Keep a small private eval built from your own failures, and re-run it on every model swap.
+
+A rank is a measurement taken with one ruler. Change the ruler and you change the rank.
+
+Do you have a private eval, or are you still choosing models from someone else's chart?",#AI #LLM #Benchmarks #MachineLearning #OpenWeights

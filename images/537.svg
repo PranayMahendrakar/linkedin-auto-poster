@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.25"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="780" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="420" height="56" rx="28" fill="none" stroke="#F59E0B" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#F59E0B">LLM BENCHMARKS</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="120" fill="#F5F7FA">4th to 9th.</text>
+<text x="80" y="420" font-size="120" fill="#F59E0B">Same model.</text>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="540">The benchmark changed version.</text>
+<text x="80" y="595">The model did not.</text>
+<text x="80" y="650" font-weight="700" fill="#F5F7FA">Build your own eval.</text>
+</g>
+<rect x="640" y="800" width="60" height="120" fill="#F59E0B" opacity="0.35"/>
+<rect x="720" y="760" width="60" height="160" fill="#F59E0B" opacity="0.55"/>
+<rect x="800" y="840" width="60" height="80" fill="#F59E0B"/>
+<rect x="880" y="880" width="60" height="40" fill="#F59E0B" opacity="0.35"/>
+<rect x="80" y="944" width="64" height="6" fill="#F59E0B"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>
