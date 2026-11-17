@@ -2477,3 +2477,26 @@ Clear scope. If open models are brought in, say precisely which capability thres
 None of this is settled, and I would rather say so than pretend to certainty. Check the primary documents before you build a compliance plan around any single report.
 
 Takeaway: the question is not open versus closed. It is whether the rules reward evidence or only permission, and whether you will still be allowed to run the model next to your data.",#AI #LLM #OpenSource #AIRegulation #OnDeviceAI
+2026-11-17,539,Open Coding Model Benchmarks,"Hot take: a half-point benchmark lead on an open coding model is noise, not a result",https://pranaymahendrakar.com/blog/hot-take-a-half-point-benchmark-lead-on-an-open-coding-model-is-noise-,"A lead of under half a point on one benchmark is not a result. It is rounding. Yet that is the headline on Ripple-65B Preview, the open-weight coding model Ricursive Intelligence released on November 4.
+
+Here is what the reports agree on. It is a 65B dense Transformer under Apache 2.0, aimed at agentic coding, with a self-reported score of 80.52 on TerminalBench 2.1 against 80.1 for the nearest open rival. The company also says it fits on consumer-class hardware. Every one of those numbers comes from the company. I have not seen an independent evaluation yet, and commentators have already pointed out that ""state of the art"" is narrowed to US open-weight models.
+
+I am not dismissing the release. A dense model that small, with the weights and a quantized variant available, is genuinely useful. Dense matters because memory behaviour is predictable. You know what you are loading and what it costs to run.
+
+But I have shipped enough systems to distrust leaderboard margins. In the defence and automotive work I have done, the benchmark was never the deciding factor. What decided it was how the model behaved on our data, with our tool schemas, under our latency budget and without a network connection. A 0.4 point gap on a public suite tells you almost nothing about that.
+
+Agentic coding benchmarks are especially fragile. Scores shift with the harness, the prompt scaffold, the timeout settings and the tool definitions. Change any of them and a half-point lead can flip. Preview status adds to that: the post-training was described as relatively light, so behaviour may move between checkpoints.
+
+So here is how I would treat this release.
+
+First, download it and run it yourself. Apache 2.0 means you can. Take fifty real tasks from your own repositories, not a public suite, and score pass or fail with a harness you control.
+
+Second, measure what you actually pay for: memory footprint at your context length, tokens per second on your hardware, and failure modes when a tool call goes wrong.
+
+Third, pin the checkpoint. If it is a preview, assume it will change, and keep a regression set so you notice when it does.
+
+This is the part of the open-weight story I care about. The point of a model you can run locally is that you can verify it locally. Trusting a vendor's table defeats the purpose. If the weights are on your disk, the evaluation should be too.
+
+Models should run where the data is, and they should be judged there as well.
+
+The takeaway: treat a benchmark margin smaller than your own test-set noise as a tie, and let your own evaluation break it.",#AI #LLM #OpenSource #MachineLearning #AIEngineering

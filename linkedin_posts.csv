@@ -9347,3 +9347,25 @@ What I want: evidence over permission. Tell deployers what was tested and what f
 Models should run where the data is.
 
 Which would you rather see: mandatory testing access, or a sign-off gate? Tell me why.",#AI #LLM #OpenSource #AIRegulation #OnDeviceAI
+539,Open Coding Model Benchmarks,"A 0.4 point benchmark lead is not a result. It's rounding.
+
+Ricursive Intelligence just released Ripple-65B Preview: a 65B dense, Apache 2.0, open-weight coding model.
+
+The company reports 80.52 on TerminalBench 2.1 vs 80.1 for the nearest open rival.
+
+Every figure is self-reported. I haven't seen an independent evaluation yet.
+
+The release itself is useful. A small dense model with weights you can download is easy to reason about.
+
+But in the defence and automotive systems I've worked on, the leaderboard never decided anything.
+
+What decided it: behaviour on our data, our tool schemas, our latency budget, with no network.
+
+My approach:
+- Run 50 real tasks from your own repos
+- Measure memory, tokens/sec and failure modes on your hardware
+- Pin the checkpoint, because a preview will change
+
+If the weights are on your disk, the evaluation should be too.
+
+Where do you draw the line: how big does a benchmark gap need to be before it changes your decision?",#AI #LLM #OpenSource #MachineLearning #AIEngineering
