@@ -17,9 +17,18 @@
    "post_urn": "urn:li:ugcPost:7527621654043275264",
    "source": "writer",
    "hook_style": "builder_warning"
+  },
+  "23041726": {
+   "drop": 3,
+   "doi": "10.5281/zenodo.23041727",
+   "title": "Drift or New Class?",
+   "posted_at": "2026-11-17T18:26:56+05:30",
+   "post_urn": "urn:li:ugcPost:7528441040345841664",
+   "source": "writer",
+   "hook_style": "contrast"
   }
  },
  "digests": {},
- "last_daily_date": "2026-11-15",
- "last_posted_at": "2026-11-15T12:10:59+05:30"
+ "last_daily_date": "2026-11-17",
+ "last_posted_at": "2026-11-17T18:26:56+05:30"
 }

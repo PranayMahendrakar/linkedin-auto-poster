@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-15T12:10:49+05:30",
+ "generated_at": "2026-11-17T18:26:46+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 154,
+ "count": 158,
  "papers": [
   {
    "id": "14040452",
@@ -4144,9 +4144,9 @@
    "pdf_name": "a-clause-boundary-is-not-a-composition.pdf",
    "pdf_size": 404895,
    "zenodo_url": "https://zenodo.org/records/24221454",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24221454"
+   "lor_url": "https://lifeofresearch.com/preprints/228",
+   "lor_id": 228,
+   "link": "https://lifeofresearch.com/preprints/228"
   },
   {
    "id": "24235209",
@@ -4172,9 +4172,120 @@
    "pdf_name": "a-relocated-dependency-is-not-a-vanished-one.pdf",
    "pdf_size": 387136,
    "zenodo_url": "https://zenodo.org/records/24235210",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24235210"
+   "lor_url": "https://lifeofresearch.com/preprints/229",
+   "lor_id": 229,
+   "link": "https://lifeofresearch.com/preprints/229"
+  },
+  {
+   "id": "24247220",
+   "record_id": "24247221",
+   "doi": "10.5281/zenodo.24247221",
+   "title": "A Verified Guess Is Not a Reversed Fact: What Test-Time Thinking Repairs in the Latent Generalization of Fine-Tuned Knowledge, Why Its Gains Follow the Forward Paths a Query Leaves Open, and the Candidate-Pool Controls That Would Separate Inversion From Search",
+   "short_title": "A Verified Guess Is Not a Reversed Fact",
+   "abstract": "A language model fine-tuned on new facts often cannot use them the way it uses the same facts placed in its context: it fails to answer reversed questions and to chain two trained facts into a conclusion. A 2026 study trained a reasoning model with reinforcement learning to think over its own fine-tuned knowledge, reported that thinking repairs many of these failures and transfers to knowledge on which no reinforcement learning was run, and found one exception: pure reversals, where thinking does not invert a stored fact but reaches above-chance accuracy by proposing candidates and checking each in the trained direction. In this analysis the author reviews and synthesises published results to show that the exception is the rule seen from its other side. Test-time thinking can traverse an association only in the direction in which it was stored, so its gains track whether the query leaves a forward path to the answer. On the author's arithmetic from the study's own figure, thinking closes 56 to 88 percent of the gap between fine-tuning and in-context learning on the three holdouts where such a path exists, and 10 to 31 percent on the two where the answer can be reached only through a reverse key. Where no path exists, a reasoning model can still turn inversion into search, but search succeeds only as far as three things allow: a candidate pool small and salient enough to enumerate, coverage of that pool within the trace, and a verifier that does not accept wrong candidates. The published record bears on each: verification of facts is learned before generation, yet it can affirm both an old and a new answer, and longer reasoning raises hallucination when it raises the attempt rate. The paper consolidates the measured values in Table 1 and Figure 1, states the decision structure as Algorithm 1, and specifies the pool-size, direction-swap and oracle-verifier controls that would separate inversion from search.",
+   "keywords": [
+    "reversal curse",
+    "latent generalization",
+    "test-time compute",
+    "in-context learning",
+    "parametric knowledge",
+    "self-verification",
+    "knowledge injection"
+   ],
+   "published": "2026-11-15",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24247221/files/a-verified-guess-is-not-a-reversed-fact.pdf/content",
+   "pdf_name": "a-verified-guess-is-not-a-reversed-fact.pdf",
+   "pdf_size": 392774,
+   "zenodo_url": "https://zenodo.org/records/24247221",
+   "lor_url": "https://lifeofresearch.com/preprints/231",
+   "lor_id": 231,
+   "link": "https://lifeofresearch.com/preprints/231"
+  },
+  {
+   "id": "24265553",
+   "record_id": "24265554",
+   "doi": "10.5281/zenodo.24265554",
+   "title": "Advice Is Not Effort: When a Language Model's Stated Preferences Predict Its Behaviour, Why the Answer Turns on the Channel a Preference Must Travel and the Kind of Preference Asked About, and the Positive Control a Null Result Owes",
+   "short_title": "Advice Is Not Effort",
+   "abstract": "Language models give coherent answers when asked which of two outcomes they prefer, and a growing literature asks whether those answers predict what the models then do. The results look contradictory. A 2026 study of five frontier models found that preferences over 72 entities of an undisclosed type, presented in the prompts as donation recipients, predicted donation advice almost perfectly (Spearman rho .94 to .98) and predicted refusal rates well, but predicted reading-comprehension accuracy weakly and in both directions, and agentic task success not at all. A second 2026 study found that offering models outcomes they rank highly does not improve the quality of their writing, while a plain exhortation to try harder does. In this analysis the author reviews and synthesises published results to show that the contradiction dissolves once two variables that the question leaves implicit are named. The first is the channel by which a preference would reach behaviour: selection among options the model is asked to choose between, withholding of help, or modulation of effort. The second is the kind of preference: an elicited taste over external objects, a commitment installed by post-training, or a stake in the model's own training or deployment. Elicited tastes reach selection and, more weakly, withholding; on effort, the published evidence is an accuracy difference of under one point on one benchmark, running in opposite directions in different models, and a controlled null. Trained commitments and self-regarding stakes do reach effort, in documented sandbagging and in quality that falls when success would serve a harmful cause. The paper also shows that the strongest correlations come from behaviour measured in nearly the same format as the preference, which the attitude-behaviour literature predicts without any appeal to motive. It consolidates the measured values in Table 1 and Figure 1, states an audit for preference-behaviour claims as Algorithm 1, and specifies seven tests, the first of which is a positive control that any null result on the effort channel owes.",
+   "keywords": [
+    "revealed preference",
+    "value-action gap",
+    "language model values",
+    "utility engineering",
+    "sandbagging",
+    "attitude-behaviour consistency",
+    "measurement validity",
+    "alignment evaluation"
+   ],
+   "published": "2026-11-16",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24265554/files/advice-is-not-effort.pdf/content",
+   "pdf_name": "advice-is-not-effort.pdf",
+   "pdf_size": 391828,
+   "zenodo_url": "https://zenodo.org/records/24265554",
+   "lor_url": "https://lifeofresearch.com/preprints/230",
+   "lor_id": 230,
+   "link": "https://lifeofresearch.com/preprints/230"
+  },
+  {
+   "id": "24282460",
+   "record_id": "24282461",
+   "doi": "10.5281/zenodo.24282461",
+   "title": "An Output Is Not a Memory Until Something Reads It Back: Where the Key Lives in Implicit-Memory Channels of Stateless Language Models, Why Steganography Evaluations and Temporal-Backdoor Results Disagree, and the Loop Audit That Would Locate a Deployment's Risk",
+   "short_title": "An Output Is Not a Memory Until Something Reads It Back",
+   "abstract": "Language models are usually described as stateless between requests, and a 2026 position paper argues that the description fails whenever a model's outputs come back to it as inputs: a model can write state into what it produces and recover that state later, with no memory module anywhere in the system. Its demonstration, a \"time bomb\" backdoor that accumulates eight hidden conditions across interactions before it fires, works today under both prompting and fine-tuning. A separate line of evaluation reports that frontier models can barely hide a short message from a monitor, rarely coordinate on a hiding scheme with another copy of themselves, and show no substantial capability to strategise across contexts without shared memory. In this analysis the author reviews and synthesises published results to show that the two literatures do not conflict, because they measure different places where the encoding scheme, the key, can live. Every strong result in print for a state written and read back through context receives its key from a prompt or from weights trained for the purpose; every setting in which the model must arrive at the key itself, with nothing shared but its weights, has produced weak results; and results with the key supplied in a prompt range from weak to strong, depending on the model and the monitor. The paper decomposes a hidden-state channel into re-entry, key, write, survival and read links, consolidates the published values for each in one table, and compounds the anchor's own single-interaction accuracies to show that, if errors were independent across hops, a state carried across eight hops would arrive intact between 19 and 46 percent of the time for its best prompted and fine-tuned models. It argues that cryptographic results on undetectable steganography bound the operator who controls decoding rather than the model, that the self-addressed case is easier than inter-agent collusion through gradient updates while in context the shared weights have been shown to produce only a coarse preference for the model's own outputs, not to carry a specific trait or state, and that paraphrase ceilings measured in bits per kilobyte do not protect against triggers that need eight bits. The paper closes with a loop audit and the tests that would settle what remains open.",
+   "keywords": [
+    "implicit memory",
+    "temporal backdoors",
+    "LLM steganography",
+    "covert channels",
+    "self-recognition",
+    "subliminal learning",
+    "paraphrase defences",
+    "AI control"
+   ],
+   "published": "2026-11-16",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24282461/files/an-output-is-not-a-memory.pdf/content",
+   "pdf_name": "an-output-is-not-a-memory.pdf",
+   "pdf_size": 367792,
+   "zenodo_url": "https://zenodo.org/records/24282461",
+   "lor_url": "https://lifeofresearch.com/preprints/233",
+   "lor_id": 233,
+   "link": "https://lifeofresearch.com/preprints/233"
+  },
+  {
+   "id": "24294849",
+   "record_id": "24294850",
+   "doi": "10.5281/zenodo.24294850",
+   "title": "Calibrated Against Which Label? What Temperature Scaling Certifies When Annotators Disagree, Why a Majority Vote and an Annotator Distribution Each Make the Other's Calibrated Model Look Wrong, and the Target a Calibration Claim Has to Declare",
+   "short_title": "Calibrated Against Which Label?",
+   "abstract": "Post-hoc calibration is usually fitted and scored against one label per item, and where annotators disagree that label is a majority vote. A 2026 study argues that this is a structural error: temperature scaling fitted to votes settles on temperatures that are too low, looks calibrated against the votes, and stays overconfident against the distribution of annotator labels, with errors that grow with annotation entropy; the best calibrator it fits to the annotator distribution, Dirichlet-Soft, cuts true-label calibration error by 55 to 87 percent. In this analysis the author reviews and synthesises published results to show that the finding is correct and that its framing is one-sided. Calibration is a relation between a forecast and a named random variable, and under disagreement there are at least four candidates: the vote, the label of a randomly drawn annotator, the label of a member of a target population, and an outcome fixed by later evidence. Each result in this literature is calibrated against a different one. A model that reproduces the human distribution exactly is badly miscalibrated against the majority, by the same logic that makes vote-fitted temperature scaling miscalibrated against annotators. The annotator distribution is not a clean target either: re-collecting 100 labels per item changed the majority label on a quarter to a third of low-agreement NLI items; adjudication traced most disagreements in one retinal grading study to missed lesions and artifacts; and the two medical benchmarks in the 2026 study use synthetic annotators whose confusion depends only on the consensus class. Re-reading that study's tables, the author finds that when temperature scaling is refitted to annotator labels, ECE falls by 48 to 87 percent while the soft-target Brier score falls by 2 to 11 percent. The paper consolidates the measured values in Table 1 and Figure 1, states a target-declaration procedure as Algorithm 1, and specifies six tests that would say which target a deployment should be calibrated to and how much of the measured gap survives it.",
+   "keywords": [
+    "confidence calibration",
+    "temperature scaling",
+    "annotator disagreement",
+    "human label variation",
+    "proper scoring rules",
+    "soft labels",
+    "reference standard",
+    "uncertainty quantification"
+   ],
+   "published": "2026-11-17",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24294850/files/calibrated-against-which-label.pdf/content",
+   "pdf_name": "calibrated-against-which-label.pdf",
+   "pdf_size": 395433,
+   "zenodo_url": "https://zenodo.org/records/24294850",
+   "lor_url": "https://lifeofresearch.com/preprints/234",
+   "lor_id": 234,
+   "link": "https://lifeofresearch.com/preprints/234"
   }
  ]
 }
