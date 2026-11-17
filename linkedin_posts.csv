@@ -9369,3 +9369,18 @@ My approach:
 If the weights are on your disk, the evaluation should be too.
 
 Where do you draw the line: how big does a benchmark gap need to be before it changes your decision?",#AI #LLM #OpenSource #MachineLearning #AIEngineering
+540,Off-Balance-Sheet Chip Debt,"$40 billion of chip debt that never appears on the borrower's balance sheet.
+
+In November, Bloomberg reported that SpaceX was preparing to sell part of a roughly $40 billion financing for Nvidia chips. A special purpose vehicle buys the chips and issues asset-backed securities. The reported aim is to protect SpaceX's investment-grade rating.
+
+The chips are the collateral. The debt sits off the books.
+
+I'm not criticising the structure. It is legal and inventive. But it changes how I read AI capacity numbers.
+
+On the AI systems I've shipped, the hardest line item was never the model. It was keeping hardware useful long enough to pay for itself. GPUs age fast, and a note that outlives its chip is a bad note.
+
+So when a vendor promises guaranteed capacity, ask who owns the hardware and who is carrying the debt. If that financing market tightens, your roadmap inherits the problem.
+
+My bias stays the same: models should run where the data is, on hardware you control. Fewer moving parts in the financing chain.
+
+When you pick an AI vendor, do you ever ask how their compute is paid for?",#AI #Nvidia #AIInfrastructure #AIStrategy #MachineLearning
