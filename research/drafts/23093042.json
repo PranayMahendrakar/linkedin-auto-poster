@@ -1,0 +1,13 @@
+{
+ "concept_id": "23093042",
+ "hook_style": "myth_buster",
+ "body": "Experts rated AI research ideas more novel than expert-written ones. Then they saw the finished work.\n\nIn Si et al.'s blind study, model ideas scored 5.64 on novelty against 4.84 for the experts' ideas. After 43 researchers each spent over 100 hours executing randomly assigned ideas, the model ideas' novelty scores fell by 1.049 points. The expert ideas barely moved.\n\nA third group asked 13 experts to look for prior work instead of rating novelty. They judged 24% of 50 model-generated research documents to be paraphrased or substantially borrowed.\n\nIn my paper I argue the lesson is not \"models can't be novel\". It is that \"novel\" depends on who is refereeing. I went through the published evidence on four referees: a literature search, a reader's judgement, what the field published later, and an executed outcome.\n\nThe search check fails mainly at retrieval. Handed the source paper, a model matched it 88.8% of the time (Gupta and Pruthi's number). Retrieving it through Semantic Scholar, 51.3%. When retrieval misses, the check reports novelty.\n\nOnly the outcome referee is independent of the proposer and the field, and it needs the objective handed to it. Choosing the objective is the hard part.\n\nSo when a pipeline says \"novel\", ask: according to what?\n\nThe full paper is attached below.",
+ "question": "When a tool told you an idea was novel, how did you check it?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AIResearch",
+  "#NoveltyAssessment"
+ ],
+ "written_at": "2026-11-17T10:40:23+05:30"
+}

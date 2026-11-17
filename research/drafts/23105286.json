@@ -1,0 +1,14 @@
+{
+ "concept_id": "23105286",
+ "hook_style": "builder_warning",
+ "body": "If your LLM agents share a memory, one bad record can fail the whole team at once.\n\nThat is the second cost of pooling. The first is quieter. Teams are sold on error correction, which needs agents to err independently, and they mostly don't. In Kim et al.'s evaluation of more than 350 models, two models that are both wrong give the same answer 60% of the time on one leaderboard dataset. Kohli measured nine frontier judges from seven model families and found they are worth about 2.18 independent votes.\n\nSo I wrote a paper arguing that pooling spends independence twice: gradually, as agents condition on the same records, and through a concentrated channel, where one admitted record reaches every agent that retrieves it. Published attacks exploit this. Zou et al. report a 90% attack success rate from five crafted passages in a knowledge base of millions. Whether model diversity protects against it has not been measured.\n\nThis paper ran no experiments. It consolidates the published evidence and names four conditions that decide whether pooling pays: whether agents commit before reading, whether something outside the team's shared error checks what is admitted, whether the readout uses disagreement, and how isolated subgroups are.\n\nBefore you add a shared memory, decide who checks the writes.\n\nThe full paper is attached below.",
+ "question": "Who or what checks the writes to your agents' shared memory today?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#MultiAgentSystems",
+  "#AgentMemory",
+  "#AISafety"
+ ],
+ "written_at": "2026-11-17T10:40:23+05:30"
+}
