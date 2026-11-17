@@ -1,15 +1,17 @@
 """
 Decide whether a research post is due now, by the clock in India.
 
-GitHub starts scheduled runs late and sometimes skips them, so the workflow
-wakes every 20 minutes through the afternoon and asks this script:
+GitHub runs only 3-5 of a workflow's 72 daily scheduled wake-ups, often hours
+late. So the workflow wakes every 20 minutes all day and after the repo's
+other workflows finish, and asks this script, whose windows are long enough
+that some wake-up always lands in them:
 
-    12:00-17:30 IST  daily paper, once a day, on the first wake-up after 12:00
-    16:00-17:45 IST  Sunday "this week's papers" roundup, once a week
+    12:00-midnight IST  daily paper, once a day, on the first wake-up after 12:00
+    16:00-midnight IST  Sunday "this week's papers" roundup, once a week
 
 Neither goes out within an hour of another post (this module's or the news
-poster's), so two posts never compete in the feed. A missed slot is skipped,
-not sent at night.
+poster's), so two posts never compete in the feed. Nothing is posted between
+midnight and noon.
 
     python -m research.schedule      # prints the decision; sets step output mode=daily|digest|none
 

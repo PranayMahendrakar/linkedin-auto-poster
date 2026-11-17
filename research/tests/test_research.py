@@ -117,9 +117,13 @@ class ScheduleTests(unittest.TestCase):
         ledger = state.empty_ledger()
         self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 11, 50), ledger)[0])
         self.assertEqual(schedule.decide(self.at(2026, 11, 16, 12, 9), ledger)[0], "daily")
-        self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 17, 40), ledger)[0])
+        # GitHub's late wake-ups: these are the real times it ran on 15 and 16 Nov.
+        self.assertEqual(schedule.decide(self.at(2026, 11, 16, 19, 44), ledger)[0], "daily")
+        self.assertEqual(schedule.decide(self.at(2026, 11, 16, 21, 5), ledger)[0], "daily")
+        self.assertIsNone(schedule.decide(self.at(2026, 11, 17, 0, 30), ledger)[0])   # never after midnight
         ledger["last_daily_date"] = "2026-11-16"
         self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 13, 0), ledger)[0])
+        self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 22, 0), ledger)[0])
 
     def test_nothing_automatic_before_start_date(self):
         first = datetime.combine(config.SCHEDULE_START, time(12, 30), config.IST)
@@ -138,6 +142,8 @@ class ScheduleTests(unittest.TestCase):
         self.assertEqual(schedule.decide(self.at(2026, 11, 22, 16, 9), ledger)[0], "digest")
         ledger["digests"]["2026-W47"] = {"posted_at": "x", "post_urn": "u", "papers": []}
         self.assertIsNone(schedule.decide(self.at(2026, 11, 22, 16, 29), ledger)[0])
+        late = state.empty_ledger() | {"last_daily_date": "2026-11-22"}
+        self.assertEqual(schedule.decide(self.at(2026, 11, 22, 21, 30), late)[0], "digest")
         saturday = state.empty_ledger() | {"last_daily_date": "2026-11-21"}
         self.assertIsNone(schedule.decide(self.at(2026, 11, 21, 16, 9), saturday)[0])
 
