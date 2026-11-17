@@ -1,18 +1,24 @@
 name: Research Paper Poster
 
-# Posts one of Pranay's research papers at 12:00 IST every day (oldest first,
+# Posts one of Pranay's research papers a day from 12:00 IST (oldest first,
 # the paper's own PDF attached), and a "this week's papers" text roundup on
-# Sundays at 16:00.
+# Sundays from 16:00.
 #
-# Like the news poster, it doesn't trust exact cron times: it wakes every 20
-# minutes through the afternoon and research/schedule.py decides by the clock
-# in India. (Cron is UTC: 06:09-11:49 UTC is 11:39-17:19 IST.)
+# GitHub runs only 3-5 of the 72 scheduled wake-ups a day, often hours late.
+# So, like the news poster, it never relies on an exact time: it wakes every
+# 20 minutes all day AND each time the other workflows in this repo finish,
+# and research/schedule.py decides by the clock in India. The windows run to
+# midnight, so any wake-up after noon posts that day's paper.
 #
 # Secret: LINKEDIN_ACCESS_TOKEN, the same one the news poster uses.
 
 on:
   schedule:
-    - cron: '9,29,49 6-11 * * *'
+    - cron: '17,37,57 * * * *'
+  # Extra wake-ups: these run several times a day on their own schedules.
+  workflow_run:
+    workflows: ["LinkedIn Auto-Poster", "LinkedIn Writer", "Research Writer"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
