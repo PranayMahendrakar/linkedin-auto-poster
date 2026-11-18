@@ -8,7 +8,7 @@ Between the two steps the workflow runs Claude Code on RESEARCH_RUN.md, which
 writes out/drafts/<concept_id>.json for each paper in out/context.md.
 
 Saved drafts live in research/drafts/, one JSON file per paper. You can edit
-any of them on GitHub before it goes out at 12:00 IST; the poster re-checks
+any of them on GitHub before it goes out at 07:00 IST; the poster re-checks
 the draft at posting time and falls back to the template post if it no
 longer passes.
 """
@@ -99,7 +99,7 @@ def prepare():
     context = "\n".join([
         "# Research writer context",
         "",
-        f"Date: {datetime.now(config.IST):%d %B %Y} (posts go out at 12:00 IST, one a day, in this order)",
+        f"Date: {datetime.now(config.IST):%d %B %Y} (posts go out at 07:00 IST, one a day, in this order)",
         f"Recently used hook styles, oldest first (don't repeat the last one; vary them): {', '.join(styles) or 'none yet'}",
         "",
         *[s + "\n" for s in sections],

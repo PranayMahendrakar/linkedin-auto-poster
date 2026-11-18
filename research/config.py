@@ -27,15 +27,15 @@ HTTP_TIMEOUT = 60
 IST = timezone(timedelta(hours=5, minutes=30), "IST")
 SCHEDULE_START = date(2026, 11, 16)   # automatic posts begin this day; manual runs ignore it
 # GitHub runs only a handful of the scheduled wake-ups each day, hours late, so
-# the windows are long (like the news poster's): a wake-up any time in the
-# window posts, and nothing goes out between midnight and noon.
-DAILY_SLOT = time(12, 0)          # one paper a day, any time from 12:00 ...
-DAILY_LAST_CALL = time(23, 59)    # ... until midnight
+# a wake-up up to 5 h early waits inside the run for 07:00, and a late one
+# still posts any time until midnight. Nothing goes out between midnight and 07:00.
+DAILY_SLOT = time(7, 0)           # one paper every morning at 07:00 ...
+DAILY_LAST_CALL = time(23, 59)    # ... or as soon after as GitHub wakes the poster
 DIGEST_WEEKDAY = 6                # Sunday (Monday is 0)
 DIGEST_SLOT = time(16, 0)
 DIGEST_LAST_CALL = time(23, 59)
 MIN_GAP_MINUTES = 60              # never post within an hour of another post
-MAX_WAIT_MINUTES = 300            # a run that wakes early waits up to 5 h for its slot (07:00 -> 12:00)
+MAX_WAIT_MINUTES = 300            # a run that wakes early waits up to 5 h for its slot (02:00 -> 07:00)
 
 # ---- LinkedIn -----------------------------------------------------------------
 LINKEDIN_API = "https://api.linkedin.com"

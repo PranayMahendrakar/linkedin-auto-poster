@@ -84,9 +84,9 @@ To change the times, edit `SLOTS` in `post_schedule.py`. The writer's cron lines
 | post_text | Yes | The post content |
 | hashtags | No | Hashtags (appended to post) |
 
-## Research Papers (12 PM IST)
+## Research Papers (7 AM IST)
 
-A separate module in `research/` posts Pranay's own research papers, one a day from **12:00 IST**, starting from the oldest. Each post is a written hook and summary with **the paper's PDF attached** as a LinkedIn document, plus its Life of Research link, DOI and hashtags: up to 4 for the paper's topic, then the same research tags on every post, `#Research #ResearchPaper #OpenScience #LifeOfResearch` (`FIXED_HASHTAGS` in `research/config.py`). On **Sundays from 4 PM IST** a text roundup lists every paper published that week, with links. The news posting above is unchanged.
+A separate module in `research/` posts Pranay's own research papers, one **every morning at 7:00 IST**, oldest first. Each post is a written hook and summary with **the paper's PDF attached** as a LinkedIn document, plus its Life of Research link, DOI and hashtags: up to 4 for the paper's topic, then the same research tags on every post, `#Research #ResearchPaper #OpenScience #LifeOfResearch` (`FIXED_HASHTAGS` in `research/config.py`). On **Sundays from 4 PM IST** a text roundup lists every paper published that week, with links. The news posting above is unchanged.
 
 **Which papers:** every Zenodo record under ORCID `0009-0003-7224-029X` (never a name search, which also finds other people), minus records titled "DUPLICATE". Each is matched to its Life of Research page by DOI; a paper Life of Research doesn't have yet links to its DOI instead. `research/catalog.json` is the queue, refreshed on every run.
 
@@ -102,8 +102,8 @@ A separate module in `research/` posts Pranay's own research papers, one a day f
 
 **Secrets:** none new. It uses the same `LINKEDIN_ACCESS_TOKEN` and `CLAUDE_CODE_OAUTH_TOKEN`.
 
-**Manual runs:** Actions → **Research Paper Poster** → Run workflow. **Dry run** is ticked by default: it builds the post and fetches the PDF without posting, and the run's artifact holds `preview.md` and the PDF. Untick it to post now. Pick `auto` to follow the schedule instead (it waits for 12:00 and the one-hour gap, then posts), `digest` for the weekly roundup, or give a concept id, record id or DOI to post a specific paper.
+**Manual runs:** Actions → **Research Paper Poster** → Run workflow. **Dry run** is ticked by default: it builds the post and fetches the PDF without posting, and the run's artifact holds `preview.md` and the PDF. Untick it to post now. Pick `auto` to follow the schedule instead (it waits for 7:00 and the one-hour gap, then posts), `digest` for the weekly roundup, or give a concept id, record id or DOI to post a specific paper.
 
-**Schedule:** GitHub runs only 3-5 of a workflow's scheduled wake-ups a day, often hours late, so the research poster wakes every 20 minutes all day *and* each time the news poster, the LinkedIn writer or the research writer finishes; `research/schedule.py` decides. The daily paper goes out on the first wake-up after 12:00 IST (any time until midnight), the roundup on the first after 16:00 on Sundays (until midnight), and neither goes out within an hour of another post, so they don't compete with the news posts. Nothing posts between midnight and noon. A wake-up that comes early (from 07:00) or inside that hour doesn't give up: it waits inside the run, up to 5 hours, and posts as soon as the slot opens. Times live in `research/config.py`, along with `SCHEDULE_START`, the first day automatic posts go out (manual runs ignore it).
+**Schedule:** GitHub runs only 3-5 of a workflow's scheduled wake-ups a day, often hours late, so the research poster wakes every 20 minutes all day *and* each time the news poster, the LinkedIn writer or the research writer finishes; `research/schedule.py` decides. The daily paper goes out at 7:00 IST, or on the first wake-up after it (any time until midnight), the roundup on the first after 16:00 on Sundays (until midnight), and neither goes out within an hour of another post, so they don't compete with the news posts. Nothing posts between midnight and 7:00. A wake-up that comes early (from 2:00) or inside that hour doesn't give up: it waits inside the run, up to 5 hours, and posts as soon as the slot opens. Times live in `research/config.py`, along with `SCHEDULE_START`, the first day automatic posts go out (manual runs ignore it).
 
 **Tests:** `python -m unittest discover -s research/tests -t .`
