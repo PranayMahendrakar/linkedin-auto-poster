@@ -35,6 +35,7 @@ DIGEST_WEEKDAY = 6                # Sunday (Monday is 0)
 DIGEST_SLOT = time(16, 0)
 DIGEST_LAST_CALL = time(23, 59)
 MIN_GAP_MINUTES = 60              # never post within an hour of another post
+MAX_WAIT_MINUTES = 300            # a run that wakes early waits up to 5 h for its slot (07:00 -> 12:00)
 
 # ---- LinkedIn -----------------------------------------------------------------
 LINKEDIN_API = "https://api.linkedin.com"

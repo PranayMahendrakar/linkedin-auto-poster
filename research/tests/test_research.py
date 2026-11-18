@@ -135,6 +135,47 @@ class ScheduleTests(unittest.TestCase):
         self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 12, 9), state.empty_ledger(), news)[0])
         self.assertEqual(schedule.decide(self.at(2026, 11, 16, 12, 49), state.empty_ledger(), news)[0], "daily")
 
+    def test_next_due_waits_for_noon_and_for_the_gap(self):
+        ledger = state.empty_ledger()
+        # 18 Nov: woke at 08:36 -> wait until noon (within 5 h).
+        mode, when = schedule.next_due(self.at(2026, 11, 18, 8, 36), ledger, None, config.MAX_WAIT_MINUTES)
+        self.assertEqual(mode, "daily")
+        self.assertEqual((when.hour, when.minute >= 0), (12, True))
+        self.assertLess(when, self.at(2026, 11, 18, 12, 6))
+        # 18 Nov: woke at 12:37, one minute after the news post -> post at about 13:37.
+        news = self.at(2026, 11, 18, 12, 36)
+        mode, when = schedule.next_due(self.at(2026, 11, 18, 12, 37), ledger, news, config.MAX_WAIT_MINUTES)
+        self.assertEqual(mode, "daily")
+        self.assertTrue(self.at(2026, 11, 18, 13, 36) <= when <= self.at(2026, 11, 18, 13, 42))
+        # 05:27 is more than 5 h before noon -> nothing to wait for in this run.
+        self.assertEqual(schedule.next_due(self.at(2026, 11, 18, 5, 27), ledger, None, config.MAX_WAIT_MINUTES), (None, None))
+        # Already posted today -> nothing.
+        done = state.empty_ledger() | {"last_daily_date": "2026-11-18"}
+        self.assertEqual(schedule.next_due(self.at(2026, 11, 18, 13, 0), done, None, config.MAX_WAIT_MINUTES), (None, None))
+
+    def test_wait_until_due_replays_18_nov(self):
+        """Woke at 12:37, news posted at 12:36: the run waits and posts at about 13:37."""
+        from unittest import mock
+        clock = {"now": self.at(2026, 11, 18, 12, 37)}
+
+        class FakeDatetime(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return clock["now"]
+
+        def fake_sleep(seconds):
+            clock["now"] += timedelta(seconds=seconds)
+
+        news = self.at(2026, 11, 18, 12, 36)
+        with mock.patch.object(schedule, "datetime", FakeDatetime), \
+             mock.patch.object(schedule.time, "sleep", fake_sleep), \
+             mock.patch.object(schedule, "pull_latest", lambda: None), \
+             mock.patch.object(schedule.state, "load_ledger", state.empty_ledger), \
+             mock.patch.object(schedule, "news_last_posted", lambda path=None: news):
+            mode, _ = schedule.wait_until_due(config.MAX_WAIT_MINUTES)
+        self.assertEqual(mode, "daily")
+        self.assertTrue(self.at(2026, 11, 18, 13, 36) <= clock["now"] <= self.at(2026, 11, 18, 13, 50), clock["now"])
+
     def test_sunday_digest_after_daily(self):
         ledger = state.empty_ledger()
         ledger["last_daily_date"] = "2026-11-22"
