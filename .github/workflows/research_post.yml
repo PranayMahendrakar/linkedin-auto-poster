@@ -8,7 +8,9 @@ name: Research Paper Poster
 # So, like the news poster, it never relies on an exact time: it wakes every
 # 20 minutes all day AND each time the other workflows in this repo finish,
 # and research/schedule.py decides by the clock in India. The windows run to
-# midnight, so any wake-up after noon posts that day's paper.
+# midnight, so any wake-up after noon posts that day's paper, and a wake-up
+# from 07:00 that is early, or lands in the hour after another post, waits in
+# the run and posts when the slot opens instead of giving up.
 #
 # Secret: LINKEDIN_ACCESS_TOKEN, the same one the news poster uses.
 
@@ -22,9 +24,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'What to post'
+        description: 'daily / digest: post now. auto: follow the schedule (waits for 12:00 and the gap, then posts)'
         type: choice
-        options: [daily, digest]
+        options: [daily, digest, auto]
         default: daily
       dry_run:
         description: 'Dry run: build the post and fetch the PDF, post nothing'
@@ -45,7 +47,9 @@ permissions:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # A wake-up that comes before noon or inside the one-hour gap waits in the
+    # run (up to 5 h) instead of exiting; public repos don't pay for minutes.
+    timeout-minutes: 330
 
     steps:
       - uses: actions/checkout@v4
@@ -54,14 +58,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Is a research post due?
+      - name: Is a research post due? (waits for the slot if it is close)
         id: due
+        timeout-minutes: 310
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.mode }}" != "auto" ]; then
             echo "Manual run: ${{ inputs.mode }} now."
             echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
           else
-            python -m research.schedule
+            python -m research.schedule --wait
           fi
 
       - name: Install dependencies
