@@ -1,0 +1,13 @@
+{
+ "concept_id": "23112894",
+ "hook_style": "number_gap",
+ "body": "A self-teaching model's own labels were right 79.0% of the time. Three rounds later: 63.0%.\n\nThose are R-Zero's numbers (Huang et al., 2025), not mine. They sit at the centre of a paper I wrote on what \"the agent generates its own goals\" really means.\n\nThe phrase bundles four things: the goal space, the selector that picks the next goal, the success test, and the referee. I audited 28 published systems to see where each one sits.\n\nThe selector is the agent's own in all 28. But the goal space is always bounded by something the designers wrote or chose: a prompt, a seed list, an output format, a task menu. And the success test is supplied by the designer in at least 13 of the 28.\n\nWhen the model grades itself, the selector pushes it toward hard goals, which is exactly where its own grading is least accurate. In R-Zero, the authors checked 200 questions per round against GPT-4o, and accuracy fell as the questions got harder.\n\nA foundation model in the loop relocates the goal space into a pretraining corpus and a prompt. It does not remove it.\n\nIf you build self-improving systems, ask who owns the goal space and the success test before you say \"autonomous\".\n\nThe full paper is attached below.",
+ "question": "In a self-improving loop you have built or studied, who decided what counted as success?",
+ "hashtags": [
+  "#AI",
+  "#MachineLearning",
+  "#LLM",
+  "#AutotelicAgents"
+ ],
+ "written_at": "2026-11-18T10:07:36+05:30"
+}
