@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-17T18:26:46+05:30",
+ "generated_at": "2026-11-18T13:41:52+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 158,
+ "count": 160,
  "papers": [
   {
    "id": "14040452",
@@ -4286,6 +4286,62 @@
    "lor_url": "https://lifeofresearch.com/preprints/234",
    "lor_id": 234,
    "link": "https://lifeofresearch.com/preprints/234"
+  },
+  {
+   "id": "24315099",
+   "record_id": "24315100",
+   "doi": "10.5281/zenodo.24315100",
+   "title": "A Null Citation Gap Is Not a Missing Reward: What Field-Level Comparisons of Papers With and Without Shared Data and Code Certify About the Incentive to Share, Why a Transportation Null and an Astrophysics Advantage Can Both Hold, and the Design That Would Price the Return",
+   "short_title": "A Null Citation Gap Is Not a Missing Reward",
+   "abstract": "Whether sharing data and code earns authors more citations is now contested in print. A 2026 study that used a large language model to label 10,724 transportation papers reports no citation difference for either practice and concludes that authors lack a direct incentive, while studies of PLOS, French and astrophysics corpora report data-sharing advantages of 4 to 32 percent and disagree about code. In this analysis the author reviews and synthesises published results to show that these findings answer different questions. The author separates four quantities reported as one \"citation advantage\": a cross-sectional association, the causal return to an author who shares, the effect of a journal policy, and the return that runs through reuse, each indexed by a citation window. From the transportation study's own agreement tables, the author reconstructs the classifier's confusion counts and derives attenuation factors of about 0.60 to 0.66 for the data-repository label and 0.71 to 0.99 for the code label. Its interval for papers that both cite data and link a repository therefore cannot exclude the published data advantages, while its interval for a repository without a data citation excludes the two largest, near 25 and 32 percent, even after that correction, and is compatible only with the smaller ones; its code interval excludes the published code advantages, but comes from a specification whose listed controls omit publication year, in a corpus where code-sharing papers are younger. Quasi-experimental evidence on the incentive is thin and split, and the only randomised trials, on open access, found no citation advantage. The paper consolidates 24 published estimates in one table, states a procedure for reading a null of this kind, and proposes a validation-corrected, window-indexed design that would price the return to sharing within a single field.",
+   "keywords": [
+    "open science",
+    "data sharing",
+    "code sharing",
+    "citation advantage",
+    "research incentives",
+    "measurement error",
+    "LLM annotation",
+    "bibliometrics"
+   ],
+   "published": "2026-11-17",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24315100/files/a-null-citation-gap-is-not-a-missing-reward.pdf/content",
+   "pdf_name": "a-null-citation-gap-is-not-a-missing-reward.pdf",
+   "pdf_size": 390420,
+   "zenodo_url": "https://zenodo.org/records/24315100",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24315100"
+  },
+  {
+   "id": "24326759",
+   "record_id": "24326760",
+   "doi": "10.5281/zenodo.24326760",
+   "title": "Two Answers Are Not Two Memories: What the Evidence for Intra-Memory Knowledge Conflict Certifies, Why Head Interventions That Settle Trained-In Conflicts Lose Their Grip on Real Entities, and the Controls That Would Separate Competing Stores From Unstable Retrieval",
+   "short_title": "Two Answers Are Not Two Memories",
+   "abstract": "A language model that gives different answers to the same factual question is commonly said to hold an intra-memory knowledge conflict: two incompatible facts about one subject, both written into its weights by contradictory training data. In this analysis the author reviews and synthesises published results to show that the evidence offered for this construct does not, in most cases, distinguish it from four other states that produce the same spread of answers: a single stored fact retrieved unreliably, no adequate stored fact at all, a fact that genuinely has several correct values, and interference between true facts that share a cue. Where conflict is deliberately trained in, it behaves as the construct says: a 2026 mechanistic study finds it resolved in the last layers, and its most robust head-level intervention steers it at success rates of 0.84 to 0.99. On real entities the same intervention reaches 0.48 to 0.78, heads that back only one answer become scarcer, and filtering down to those heads lowers zero-ablation success in all four models, where on synthetic conflicts it raised it, and costs clean-model patching 0.08 to 0.20. The author shows that this synthetic-versus-real contrast bundles at least four differences, including the similarity of the competing answers, which alone predicts the loss of single-answer heads. On natural data, semantic entropy, the main behavioural instrument, does not rise with how often a fact has changed, in the original study or its reproduction, and, with the reproduction's corrected scoring, the models tested answer only about one question in five to one in eight correctly without context. The paper consolidates 25 published values in a table and a figure, states what each reading predicts, gives a procedure for classifying an observed inconsistency, and specifies the factorial injection design and the corpus, ranking and paraphrase tests that would settle which reading a given conflict belongs to.",
+   "keywords": [
+    "knowledge conflict",
+    "intra-memory conflict",
+    "parametric knowledge",
+    "mechanistic interpretability",
+    "activation patching",
+    "attention heads",
+    "semantic entropy",
+    "factual recall"
+   ],
+   "published": "2026-11-18",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24326760/files/two-answers-are-not-two-memories.pdf/content",
+   "pdf_name": "two-answers-are-not-two-memories.pdf",
+   "pdf_size": 384026,
+   "zenodo_url": "https://zenodo.org/records/24326760",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24326760"
   }
  ]
 }

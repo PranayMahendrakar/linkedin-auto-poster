@@ -26,9 +26,18 @@
    "post_urn": "urn:li:ugcPost:7528441040345841664",
    "source": "writer",
    "hook_style": "contrast"
+  },
+  "23049430": {
+   "drop": 4,
+   "doi": "10.5281/zenodo.23049431",
+   "title": "Three Rounds on Emergent Analogy",
+   "posted_at": "2026-11-18T13:42:01+05:30",
+   "post_urn": "urn:li:ugcPost:7528731726324502528",
+   "source": "writer",
+   "hook_style": "number_gap"
   }
  },
  "digests": {},
- "last_daily_date": "2026-11-17",
- "last_posted_at": "2026-11-17T18:26:56+05:30"
+ "last_daily_date": "2026-11-18",
+ "last_posted_at": "2026-11-18T13:42:01+05:30"
 }
