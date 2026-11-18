@@ -115,7 +115,8 @@ class ScheduleTests(unittest.TestCase):
 
     def test_daily_window(self):
         ledger = state.empty_ledger()
-        self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 11, 50), ledger)[0])
+        self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 6, 50), ledger)[0])
+        self.assertEqual(schedule.decide(self.at(2026, 11, 16, 7, 0), ledger)[0], "daily")
         self.assertEqual(schedule.decide(self.at(2026, 11, 16, 12, 9), ledger)[0], "daily")
         # GitHub's late wake-ups: these are the real times it ran on 15 and 16 Nov.
         self.assertEqual(schedule.decide(self.at(2026, 11, 16, 19, 44), ledger)[0], "daily")
@@ -135,20 +136,23 @@ class ScheduleTests(unittest.TestCase):
         self.assertIsNone(schedule.decide(self.at(2026, 11, 16, 12, 9), state.empty_ledger(), news)[0])
         self.assertEqual(schedule.decide(self.at(2026, 11, 16, 12, 49), state.empty_ledger(), news)[0], "daily")
 
-    def test_next_due_waits_for_noon_and_for_the_gap(self):
+    def test_next_due_waits_for_7am_and_for_the_gap(self):
         ledger = state.empty_ledger()
-        # 18 Nov: woke at 08:36 -> wait until noon (within 5 h).
+        # Real wake-ups on 18 Nov: 05:01 and 05:27 -> wait in the run until 07:00.
+        for hh, mm in ((5, 1), (5, 27), (2, 30)):
+            mode, when = schedule.next_due(self.at(2026, 11, 18, hh, mm), ledger, None, config.MAX_WAIT_MINUTES)
+            self.assertEqual(mode, "daily")
+            self.assertTrue(self.at(2026, 11, 18, 7, 0) <= when < self.at(2026, 11, 18, 7, 5), when)
+        # 08:36 is after 07:00 -> due straight away.
         mode, when = schedule.next_due(self.at(2026, 11, 18, 8, 36), ledger, None, config.MAX_WAIT_MINUTES)
-        self.assertEqual(mode, "daily")
-        self.assertEqual((when.hour, when.minute >= 0), (12, True))
-        self.assertLess(when, self.at(2026, 11, 18, 12, 6))
+        self.assertEqual((mode, when), ("daily", self.at(2026, 11, 18, 8, 36)))
         # 18 Nov: woke at 12:37, one minute after the news post -> post at about 13:37.
         news = self.at(2026, 11, 18, 12, 36)
         mode, when = schedule.next_due(self.at(2026, 11, 18, 12, 37), ledger, news, config.MAX_WAIT_MINUTES)
         self.assertEqual(mode, "daily")
         self.assertTrue(self.at(2026, 11, 18, 13, 36) <= when <= self.at(2026, 11, 18, 13, 42))
-        # 05:27 is more than 5 h before noon -> nothing to wait for in this run.
-        self.assertEqual(schedule.next_due(self.at(2026, 11, 18, 5, 27), ledger, None, config.MAX_WAIT_MINUTES), (None, None))
+        # 01:30 is more than 5 h before 07:00 -> nothing to wait for in this run.
+        self.assertEqual(schedule.next_due(self.at(2026, 11, 18, 1, 30), ledger, None, config.MAX_WAIT_MINUTES), (None, None))
         # Already posted today -> nothing.
         done = state.empty_ledger() | {"last_daily_date": "2026-11-18"}
         self.assertEqual(schedule.next_due(self.at(2026, 11, 18, 13, 0), done, None, config.MAX_WAIT_MINUTES), (None, None))

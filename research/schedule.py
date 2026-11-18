@@ -6,14 +6,14 @@ late. So the workflow wakes every 20 minutes all day and after the repo's
 other workflows finish, and asks this script, whose windows are long enough
 that some wake-up always lands in them:
 
-    12:00-midnight IST  daily paper, once a day, on the first wake-up after 12:00
+    07:00-midnight IST  daily paper, once a day: at 07:00, or on the first wake-up after it
     16:00-midnight IST  Sunday "this week's papers" roundup, once a week
 
 Neither goes out within an hour of another post (this module's or the news
 poster's), so two posts never compete in the feed. Nothing is posted between
-midnight and noon.
+midnight and 07:00.
 
-A wake-up that comes early (from 07:00) or inside the one-hour gap doesn't
+A wake-up that comes early (from 02:00) or inside the one-hour gap doesn't
 give up: with --wait it sleeps inside the run (up to MAX_WAIT_MINUTES) and
 posts as soon as the slot opens.
 
@@ -104,7 +104,7 @@ def wait_until_due(max_minutes):
     """Sleep inside this run until a post is due, re-checking every 10 minutes.
 
     GitHub wakes this workflow only a few times a day, so a wake-up that comes
-    early (before noon) or during the one-hour gap after another post waits
+    early (up to 5 h before 07:00) or during the one-hour gap after another post waits
     here and posts, instead of exiting and hoping for another wake-up.
     """
     deadline = datetime.now(config.IST) + timedelta(minutes=max_minutes)

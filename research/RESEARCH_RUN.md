@@ -8,7 +8,7 @@ metadata, abstract and the path of its full text (`out/papers/<id>.txt`).
 For **each** paper, read the full text, then write one draft to
 `out/drafts/<concept_id>.json` in the format at the end of this brief.
 
-Each post goes out at 12:00 IST with **the paper's own PDF attached** as a
+Each post goes out at 07:00 IST with **the paper's own PDF attached** as a
 LinkedIn document: people see its first page in the feed and can page through
 the whole paper without leaving LinkedIn. You write only the text. The module
 adds the Life of Research link, the DOI and the hashtags.

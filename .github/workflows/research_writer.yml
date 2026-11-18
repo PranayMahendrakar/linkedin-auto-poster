@@ -2,7 +2,7 @@ name: Research Writer
 
 # Claude writes the post text for the next research papers,
 # keeping about a week written ahead (research/drafts/). Runs early each
-# morning so the 12:00 IST post always has a draft; up to 3 papers a run.
+# morning; drafts are kept a week ahead, so the 07:00 IST post always has one. Up to 3 papers a run.
 #
 # Secret: CLAUDE_CODE_OAUTH_TOKEN, the same one the news writer uses.
 

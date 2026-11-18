@@ -1,6 +1,6 @@
 name: Research Paper Poster
 
-# Posts one of Pranay's research papers a day from 12:00 IST (oldest first,
+# Posts one of Pranay's research papers every morning at 07:00 IST (oldest first,
 # the paper's own PDF attached), and a "this week's papers" text roundup on
 # Sundays from 16:00.
 #
@@ -8,8 +8,8 @@ name: Research Paper Poster
 # So, like the news poster, it never relies on an exact time: it wakes every
 # 20 minutes all day AND each time the other workflows in this repo finish,
 # and research/schedule.py decides by the clock in India. The windows run to
-# midnight, so any wake-up after noon posts that day's paper, and a wake-up
-# from 07:00 that is early, or lands in the hour after another post, waits in
+# midnight, so any wake-up after 07:00 posts that day's paper, and a wake-up
+# from 02:00 that is early, or lands in the hour after another post, waits in
 # the run and posts when the slot opens instead of giving up.
 #
 # Secret: LINKEDIN_ACCESS_TOKEN, the same one the news poster uses.
@@ -24,7 +24,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'daily / digest: post now. auto: follow the schedule (waits for 12:00 and the gap, then posts)'
+        description: 'daily / digest: post now. auto: follow the schedule (waits for 07:00 and the gap, then posts)'
         type: choice
         options: [daily, digest, auto]
         default: daily
@@ -47,7 +47,7 @@ permissions:
 jobs:
   post:
     runs-on: ubuntu-latest
-    # A wake-up that comes before noon or inside the one-hour gap waits in the
+    # A wake-up that comes before 07:00 or inside the one-hour gap waits in the
     # run (up to 5 h) instead of exiting; public repos don't pay for minutes.
     timeout-minutes: 330
 
