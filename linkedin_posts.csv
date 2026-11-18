@@ -9399,3 +9399,28 @@ My bias is well known: models should run where the data is. But ""you can downlo
 Before a model goes on your roadmap, read the LICENSE file the way you read a vendor contract. Because that's what it is.
 
 What's the strangest licence clause you've hit on an ""open"" model?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
+542,US Remote Chip Access Rule,"Hot take: your AI roadmap has a policy dependency you never wrote down.
+
+Reports say the US has issued a new rule treating remote access to advanced chips, through data centres anywhere, like an export.
+
+(Details are still being reported. Check the primary text before acting.)
+
+The pattern is the point.
+""If we can't buy it, we'll rent it"" is no longer a safe assumption.
+
+If you build on someone else's GPUs, a regulator, a cloud provider or a capacity crunch can change your roadmap without asking you.
+
+On a defence deployment I worked on, the real question was never ""is the model good enough?""
+It was ""does it still work when the network or the rules change?""
+
+So the model ran next to the data, on hardware we controlled.
+
+Try this exercise:
+List every model call in your product.
+For each, write what happens if that endpoint is gone for 90 days.
+
+If the core feature just stops, that's an architecture decision, not a vendor problem.
+
+Cloud is still right for training and bursty load. But the critical path should live where your data lives.
+
+Which part of your stack would break first if your compute vanished tomorrow?",#AI #ExportControls #LLM #OnDeviceAI #MLOps

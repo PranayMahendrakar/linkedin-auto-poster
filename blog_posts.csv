@@ -2500,3 +2500,24 @@ This is the part of the open-weight story I care about. The point of a model you
 Models should run where the data is, and they should be judged there as well.
 
 The takeaway: treat a benchmark margin smaller than your own test-set noise as a tie, and let your own evaluation break it.",#AI #LLM #OpenSource #MachineLearning #AIEngineering
+2026-11-18,542,US Remote Chip Access Rule,Hot take: the US rule on remote chip access proves compute you rent is compute you can lose,https://pranaymahendrakar.com/blog/hot-take-the-us-rule-on-remote-chip-access-proves-compute-you-rent-is-,"Reports from several outlets say the US Bureau of Industry and Security issued a new interim final rule on November 16. It requires licences for advanced chips going to data centres that could supply computing power to restricted countries, wherever those data centres sit. It also adds licensing for chip shipments to five more countries, including Brazil, and formally repeals the Biden-era AI Diffusion Rule.
+
+I would not treat the details as settled. Coverage mostly comes from news and law-firm summaries, and at least one report says the rule text had not yet appeared in the Federal Register. Thresholds, effective dates and the transition window are worth checking against the primary document before anyone acts on them.
+
+What I will say with confidence is the pattern. For years the working assumption was that if you could not buy the hardware, you could rent it. This rule is aimed squarely at that assumption. Remote access is now treated like an export.
+
+That matters well beyond the countries named. Every team that builds on someone else's GPUs is building on a policy decision that someone else can change. The change might come from a regulator, a cloud provider or a capacity crunch, and your roadmap will not be consulted.
+
+I have seen this from the practical side. On a defence deployment I worked on, the question was never whether the model was good enough. It was whether the system would keep working when the network, the vendor, or the rules changed. The answer had to be yes, so the model ran on hardware we controlled, next to the data.
+
+The same logic applied to the offline multilingual avatar we built for an automotive client. There was no cloud dependency to lose, so there was nothing a policy shift could take away.
+
+This is not an argument against the cloud. Training big models and bursty workloads still belong there. It is an argument for being honest about which parts of your system are allowed to fail when access disappears.
+
+A simple test: list every model call your product makes, and for each one write down what happens if that endpoint is unreachable for 90 days. Many teams find that the honest answer for their core feature is that it stops.
+
+Smaller models, quantised and tuned for a specific task, have gotten good enough that for a large share of production work, local inference is a real option rather than a compromise. Evaluate it before you need it, not after.
+
+Policy will keep moving, and nobody can predict where it lands next month. Architecture is the part you control.
+
+Takeaway: design as if the compute you rent can be switched off, and keep the critical path where your data already lives.",#AI #ExportControls #LLM #OnDeviceAI #MLOps
