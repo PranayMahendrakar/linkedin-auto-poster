@@ -9384,3 +9384,18 @@ So when a vendor promises guaranteed capacity, ask who owns the hardware and who
 My bias stays the same: models should run where the data is, on hardware you control. Fewer moving parts in the financing chain.
 
 When you pick an AI vendor, do you ever ask how their compute is paid for?",#AI #Nvidia #AIInfrastructure #AIStrategy #MachineLearning
+541,Kimi K3.1 Pro License,"""Open weights"" is not a licence. It's a download link.
+
+In November, Moonshot put the Kimi K3.1 Pro weights on Hugging Face. A 2.8T-parameter mixture-of-experts model, roughly 1.56 TB on disk.
+
+The licence is custom. Reporting on it describes a separate agreement for large model-as-a-service businesses above a revenue threshold, and name display requirements for big commercial products.
+
+None of that is scandalous. But it is not Apache 2.0, and plenty of teams will treat it as if it were.
+
+I've shipped AI into environments where the model had to run offline, inside the customer's perimeter, a defence deployment I worked on among them. In those projects the licence review took as long as the engineering. Nobody asks about the licence when they pick a model off a leaderboard. Legal asks about it six weeks later.
+
+My bias is well known: models should run where the data is. But ""you can download it"" only gets you halfway. ""You can ship it, resell it and fine-tune it for a client"" is the other half, and it lives in a text file.
+
+Before a model goes on your roadmap, read the LICENSE file the way you read a vendor contract. Because that's what it is.
+
+What's the strangest licence clause you've hit on an ""open"" model?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
