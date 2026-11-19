@@ -35,9 +35,18 @@
    "post_urn": "urn:li:ugcPost:7528731726324502528",
    "source": "writer",
    "hook_style": "number_gap"
+  },
+  "23064253": {
+   "drop": 5,
+   "doi": "10.5281/zenodo.23064254",
+   "title": "Fingerprints That Survive What?",
+   "posted_at": "2026-11-19T07:02:23+05:30",
+   "post_urn": "urn:li:ugcPost:7528993544875724800",
+   "source": "writer",
+   "hook_style": "contrast"
   }
  },
  "digests": {},
- "last_daily_date": "2026-11-18",
- "last_posted_at": "2026-11-18T13:42:01+05:30"
+ "last_daily_date": "2026-11-19",
+ "last_posted_at": "2026-11-19T07:02:23+05:30"
 }

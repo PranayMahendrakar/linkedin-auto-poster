@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-18T13:41:52+05:30",
+ "generated_at": "2026-11-19T07:02:14+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 160,
+ "count": 162,
  "papers": [
   {
    "id": "14040452",
@@ -4311,9 +4311,9 @@
    "pdf_name": "a-null-citation-gap-is-not-a-missing-reward.pdf",
    "pdf_size": 390420,
    "zenodo_url": "https://zenodo.org/records/24315100",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24315100"
+   "lor_url": "https://lifeofresearch.com/preprints/238",
+   "lor_id": 238,
+   "link": "https://lifeofresearch.com/preprints/238"
   },
   {
    "id": "24326759",
@@ -4339,9 +4339,65 @@
    "pdf_name": "two-answers-are-not-two-memories.pdf",
    "pdf_size": 384026,
    "zenodo_url": "https://zenodo.org/records/24326760",
+   "lor_url": "https://lifeofresearch.com/preprints/237",
+   "lor_id": 237,
+   "link": "https://lifeofresearch.com/preprints/237"
+  },
+  {
+   "id": "24344792",
+   "record_id": "24344793",
+   "doi": "10.5281/zenodo.24344793",
+   "title": "A Query Update Is Not a Memory Write: What Test-Time Training on a Long Context Changes, Why Its Advantage Over Thinking Tokens Narrows Outside the Setup That Produced It, and the Controls That Would Credit the Gradient",
+   "short_title": "A Query Update Is Not a Memory Write",
+   "abstract": "A recent result recommends that, for long inputs, inference compute be spent on a few gradient steps over the given context rather than on extra thinking tokens: query-only test-time training (qTTT) updates only the attention query projections against a frozen key-value cache, and its authors report double-digit gains for small open models on two long-context suites. In this analysis the author reviews and synthesises published results to show that the recommendation bundles three claims of unequal standing. The diagnosis, that softmax attention dilutes a single relevant key among many near-ties, is a theorem with several independent derivations, but it is one of at least four documented causes of long-context failure, and one of them degrades accuracy even when every irrelevant token is masked out of attention. The impossibility argument against thinking tokens bounds one generated token at a time in one layer, and decoding strategies that recite or re-read the evidence do recover accuracy. qTTT is at least as good as the thinking arm in all 42 benchmark cells of the original report (strictly ahead in 38), yet the headline gains of 12.6 and 14.1 points are measured against no extra compute; against the compute-matched thinking arm they are 6.1 and 8.6, that arm scores below plain decoding in 13 of the 42 cells, and the paper's two compute-matching rules disagree. Two later re-implementations on other models or benchmarks report average gains of about 0.5 to 5.6 points, with losses in four of eight cells in one of them; a third, on the original models and benchmarks, prints baseline and qTTT values that match the original tables to within about a point, so it cannot corroborate them. The author also separates adapting how a retained context is read from writing the context into the weights; the second loses exact recall in the published cases. The paper consolidates 24 rows of published values in a table and a figure, states what each reading predicts, and specifies the matched controls, including a no-gradient temperature arm, that would settle how much of the gain belongs to the gradient.",
+   "keywords": [
+    "long-context language models",
+    "test-time training",
+    "inference-time compute",
+    "attention dilution",
+    "chain-of-thought",
+    "parametric memory",
+    "evaluation methodology",
+    "compute matching"
+   ],
+   "published": "2026-11-18",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24344793/files/a-query-update-is-not-a-memory-write.pdf/content",
+   "pdf_name": "a-query-update-is-not-a-memory-write.pdf",
+   "pdf_size": 392493,
+   "zenodo_url": "https://zenodo.org/records/24344793",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24326760"
+   "link": "https://doi.org/10.5281/zenodo.24344793"
+  },
+  {
+   "id": "24355740",
+   "record_id": "24355741",
+   "doi": "10.5281/zenodo.24355741",
+   "title": "A Sharp Turn Is Not a Phase Transition: What Training-Time Transitions in Small Language Models Establish, Why Threshold Readouts, Fast Crossovers, Developmental Stages and Critical Behaviour Are Reported Under One Name, and the Controls That Would Tell Them Apart",
+   "short_title": "A Sharp Turn Is Not a Phase Transition",
+   "abstract": "A 2025 study trains a 3.6-million-parameter character-level transformer on Tiny Shakespeare and reports a phase transition in the middle of training: around epochs 230 to 250, the dispersion indices of correct and incorrect word counts exchange which one sits near the Poisson value, divergence from a Poisson fit peaks, the unique misspellings rise and then collapse, and mean correct-word length jumps from about 1.5 to 2.5 characters, while the loss curves stay smooth. Its authors read the agreement of these four probes as evidence of a real reorganisation rather than a metric artefact. In this analysis the author reviews and synthesises published results to show that \"phase transition\" is used for four different claims in the training-dynamics literature, and that the anchor's evidence supports only the weakest. The four are: a threshold readout, where a nonlinear score turns sharply while the quantity beneath it moves smoothly; a fast crossover, where smooth dynamics move quickly between plateaus; a developmental stage, where a new mechanism forms and can be found and intervened on; and a phase transition proper, a singularity that sharpens as a size parameter grows. The paper derives that, when words are counted in fixed 21-word windows, the dispersion flip follows from arithmetic once the share of correct words passes one half, and the divergence pattern follows from fitting a Poisson curve to what is a bounded count. All four probes therefore depend on one underlying share, two of them by identity, and their agreement does not count as independent confirmation. The record elsewhere is stronger: induction heads, syntactic attention and loss-landscape stages are established developmental events, several of them tested causally, and solvable models and percolation theory give transitions in the strict sense, though along data amount, task count, mixture, model size or a hyperparameter, and in no located study along training time in a real language model. The paper consolidates 30 published results in a table and a figure, states a test for each sense, and gives a classification procedure that would say which sense a reported transition has earned.",
+   "keywords": [
+    "phase transitions",
+    "emergence",
+    "training dynamics",
+    "developmental interpretability",
+    "grokking",
+    "in-context learning",
+    "evaluation metrics",
+    "language models"
+   ],
+   "published": "2026-11-19",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24355741/files/a-sharp-turn-is-not-a-phase-transition.pdf/content",
+   "pdf_name": "a-sharp-turn-is-not-a-phase-transition.pdf",
+   "pdf_size": 329188,
+   "zenodo_url": "https://zenodo.org/records/24355741",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24355741"
   }
  ]
 }
