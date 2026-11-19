@@ -9424,3 +9424,21 @@ If the core feature just stops, that's an architecture decision, not a vendor pr
 Cloud is still right for training and bursty load. But the critical path should live where your data lives.
 
 Which part of your stack would break first if your compute vanished tomorrow?",#AI #ExportControls #LLM #OnDeviceAI #MLOps
+543,Grok Text Watermark Default,"A text watermark that is off by default is a setting, not a safeguard.
+
+In October, xAI's Grok API guidance said text from its supported models would be watermarked by default from 7 November. By mid-November the docs said the opposite: watermarking is off, and only a team admin can switch it on, per model.
+
+When it is on, the mark is invisible. A response header, x-watermark, tells you it was applied. Detection is statistical, it gets stronger on longer text, and heavy rewriting or translation weakens it.
+
+So the mark is a hint, not proof. And now it only exists if somebody remembered to turn it on.
+
+On a defence deployment I worked on, we never relied on a vendor flag for anything that mattered. If we needed to know where an output came from, we logged it ourselves: which model, which version, which input, stored next to the data.
+
+That is the habit worth copying. Provenance you control beats provenance a provider might toggle in a docs update.
+
+If you ship AI-generated text to customers, do three things:
+1. Record model, version and timestamp for every generated output.
+2. Check your provider's current docs for the default, not last month's blog post.
+3. Treat any watermark as a bonus signal, never your audit trail.
+
+Do you know, right now, which of your generated outputs you could prove came from a model?",#AI #LLM #AIGovernance #GenerativeAI #MachineLearning
