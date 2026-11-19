@@ -1,0 +1,13 @@
+{
+ "concept_id": "23130395",
+ "hook_style": "builder_warning",
+ "body": "If your self-improving agent grades itself, its task score can't tell you the grader broke.\n\nDouble Ratchet, a 2026 system that evolves its own evaluation metric, ran an ablation I found striking. Switch off its anchor guards and the metric collapses into one that passes 0.97 to 1.00 of everything it grades, against 0.78 to 0.82 with the anchor.\n\nYet the skill loops trained on that always-pass metric reached nearly the same held-out scores. On report generation, 0.841 against 0.812, with the worthless metric slightly ahead. Those are the Double Ratchet authors' numbers, not mine.\n\nSo the check most teams would reach for, did the agent get better, would have accepted a broken evaluator.\n\nIn this paper I analysed the published record. I ran no experiments. A trustworthy acceptance test needs five things: fidelity, integrity, power, coverage and independence. Co-evolving evaluators shrink the external anchor, but none of the systems I read removes it. And moving the anchor outside the loop moves the attack surface to whoever supplies it.\n\n→ Sandboxes and rollback assume the test measures the right thing.\n→ Keep one reference the loop cannot write.\n→ Validate evaluators against it, not against task score.\n\nThe full paper is attached below.",
+ "question": "In your agent or eval loop, what is the one component the proposer has no write access to?",
+ "hashtags": [
+  "#AI",
+  "#AISafety",
+  "#LLM",
+  "#EvaluatorValidity"
+ ],
+ "written_at": "2026-11-19T09:49:40+05:30"
+}

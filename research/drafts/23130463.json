@@ -1,0 +1,13 @@
+{
+ "concept_id": "23130463",
+ "hook_style": "contrast",
+ "body": "An unseen class is wasted budget or the whole point. The benchmark decides which, not the data.\n\nActive learning picks what a human should label. When the pool contains classes the model has never seen, two literatures give opposite orders under near-identical names.\n\nOpen-set active learning counts every queried unknown as waste. Active category discovery treats unknowns as the reason to query at all. In this paper I read the two against each other.\n\nThe filtering camp's own results undercut its framing. Leading methods target a query precision of 0.6, which means about 40 percent of each query is unknown, and accuracy barely moves when that target varies.\n\nWhat separates the camps is a price. In the one published sweep (MQ-Net's, not my experiment), confidence sampling scored 91.05 when an unknown query cost 0.5, tied with SIMILAR, a purity-first method. At a price of 4 it fell to 80.06 while CCAL held 87.25. Every benchmark I examined fixes that price at 1 and none measures it.\n\n→ Say which held-out classes count as irrelevant.\n→ Say what an answer about an unknown costs.\n→ Don't compare the two objectives without both.\n\nThe full paper is attached below.",
+ "question": "When you budget annotation, does a label on a class you didn't expect count as a cost or a find?",
+ "hashtags": [
+  "#AI",
+  "#MachineLearning",
+  "#ActiveLearning",
+  "#OpenSetActiveLearning"
+ ],
+ "written_at": "2026-11-19T09:49:40+05:30"
+}
