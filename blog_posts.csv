@@ -2521,3 +2521,32 @@ Smaller models, quantised and tuned for a specific task, have gotten good enough
 Policy will keep moving, and nobody can predict where it lands next month. Architecture is the part you control.
 
 Takeaway: design as if the compute you rent can be switched off, and keep the critical path where your data already lives.",#AI #ExportControls #LLM #OnDeviceAI #MLOps
+2026-11-19,544,AI Overviews Citation Accuracy,Hot take: a citation next to an AI answer is not evidence until someone checks it,https://pranaymahendrakar.com/blog/hot-take-a-citation-next-to-an-ai-answer-is-not-evidence-until-someone,"Hot take: a citation next to an AI answer is not evidence. It is decoration until someone checks it.
+
+A Washington University in St. Louis audit, with a preprint on arXiv (2605.14021) and an Internet Measurement Conference slot, looked at Google AI Overviews. The team broke roughly 7,500 overviews into 98,020 individual claims and checked each one against the page it cited.
+
+About 11% of those claims were not supported by the cited page. Most of that was claims that simply did not appear in the text the researchers could retrieve. A smaller share actually contradicted the source. The authors call 11% an upper bound, because some pages, such as social platforms and paywalled content, were hard to capture.
+
+Reports differ on the exact split between ""absent"" and ""contradicted"", so I would use the paper's own numbers and not a press summary. Another analysis from Oumi, using a different method on whole answers, found far worse rates. The two are not directly comparable, but neither says ""solved"".
+
+One finding stood out to me. Source quality and claim fidelity were largely independent. A credible domain does not mean the model said what the domain said.
+
+I have seen the same pattern building retrieval systems. You can retrieve a perfect document and still generate a sentence that the document does not back. The retrieval step looked healthy. The generation step drifted. If you only measure the first one, you ship a confident system with a hidden error rate.
+
+This is why I treat hallucination detection as a separate stage, not a property of good retrieval. In production RAG work, including a defence deployment I worked on, the useful habit was checking claims, not documents. Split the answer into atomic statements. Test each against the passage it cites. Log the ones that fail.
+
+That is exactly what the WashU team did at scale, and it is what my hallucination-detector and production-rag packages are built around.
+
+A few practical points if you run a RAG system:
+
+Measure claim-level support, not just retrieval hit rate. A document-level metric hides the gap.
+
+Treat ""not found in the source"" and ""contradicts the source"" as different failures. The second is rarer but far more damaging.
+
+Decide what an unsupported claim costs in your domain. In a consumer search box, 11% is an embarrassment. In defence or healthcare, it is a stop-ship defect.
+
+Keep the evidence close. When the model, the documents and the checker all run where the data lives, on-device or inside your own network, you can audit every answer without depending on a vendor's pipeline.
+
+There is also a caveat on the study itself. It is a preprint on US trending queries, and the authors are open about capture limits. I would not quote 11% as a universal rate for AI search. I would quote it as proof that the gap exists and can be measured.
+
+Takeaway: if your AI product shows a citation, you owe your users a check that the citation says what the answer says.",#AI #LLM #RAG #Hallucination #MachineLearning

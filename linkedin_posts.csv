@@ -9442,3 +9442,23 @@ If you ship AI-generated text to customers, do three things:
 3. Treat any watermark as a bonus signal, never your audit trail.
 
 Do you know, right now, which of your generated outputs you could prove came from a model?",#AI #LLM #AIGovernance #GenerativeAI #MachineLearning
+544,AI Overviews Citation Accuracy,"Hot take: a citation next to an AI answer is not evidence.
+
+A Washington University in St. Louis audit took about 7,500 Google AI Overviews and split them into 98,020 individual claims.
+Then they checked each claim against the page it cited.
+
+About 11% were not supported by the cited page.
+The authors call that an upper bound, since some pages were hard to capture. It is a preprint, so treat it with care.
+
+The detail that stuck with me: source quality and claim fidelity were largely independent.
+A credible domain does not mean the model said what the domain said.
+
+I see the same thing in RAG systems.
+Retrieval looks healthy, the document is right, and the generated sentence still drifts from it.
+
+So I check claims, not documents.
+Split the answer into atomic statements. Test each against its cited passage. Log the failures.
+
+If you only measure retrieval hit rate, you ship a confident system with a hidden error rate.
+
+If your product shows a citation, do you actually verify that it backs the sentence next to it?",#AI #LLM #RAG #Hallucination #MachineLearning
