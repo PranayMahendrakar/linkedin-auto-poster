@@ -1,0 +1,14 @@
+{
+ "concept_id": "23138106",
+ "hook_style": "builder_warning",
+ "body": "If your safety plan relies on an early warning, ask who has measured the lead time. Nobody has.\n\nFrontier safety frameworks test models on a schedule and put an alert threshold below each capability threshold. If a model hasn't hit the alert, the plan assumes it won't hit the capability before the next test. I call this the precursor assumption.\n\nI wrote a paper auditing it against the published record. The evidence for smooth scaling is real, but it covers aggregate scores under fixed elicitation. The thresholds are written on single tasks. In Owen's extrapolations, mean error was 6 percentage points for a benchmark aggregate and 18 for individual tasks. Those are his numbers, not mine.\n\nThen there is the record itself. In 2025, two developers applied heightened safeguards because testing could neither confirm nor rule out the capability, and a third added mitigations after an early-warning alert. By April 2026 one developer declared a cyber threshold crossed on an evaluation result. No source I found reports the time between that alert and the crossing.\n\nSo the alert exists, but the lead time it is meant to guarantee has not been measured.\n\nIf you build or rely on threshold-based evaluation, write down the buffer, the interval and the mitigation time in the same unit, and test whether they fit.\n\nThe full paper is attached below.",
+ "question": "If you run capability evaluations, how do you decide how far below the threshold your alert should sit?",
+ "hashtags": [
+  "#AI",
+  "#AISafety",
+  "#LLM",
+  "#FrontierAI",
+  "#CapabilityEvaluations"
+ ],
+ "written_at": "2026-11-20T09:36:42+05:30"
+}
