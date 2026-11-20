@@ -9462,3 +9462,25 @@ Split the answer into atomic statements. Test each against its cited passage. Lo
 If you only measure retrieval hit rate, you ship a confident system with a hidden error rate.
 
 If your product shows a citation, do you actually verify that it backs the sentence next to it?",#AI #LLM #RAG #Hallucination #MachineLearning
+545,AI Agent Identity,"Hot take: the most important thing in Microsoft's new Copilot Autopilot is not the agent. It is the identity.
+
+Microsoft started rolling it out to Frontier customers on 17 November. It is an always-on agent with its own Entra Agent ID, acting within limits set by the user and the organisation.
+
+Its actions are logged under its own name. IT can narrow its access or switch it off.
+
+That is the right design, and most teams skip it.
+
+In the AI systems I have shipped across automotive, defence and education, the hardest question was never model quality. It was ""who did this, and can we prove it?""
+
+Shared service accounts make that question unanswerable.
+
+Give every agent its own credential and you get three things:
+- Attribution for every action
+- Least privilege you can tighten later
+- A kill switch that stops one agent, not ten
+
+One caveat: identity tells you who acted, not whether the action was right. You still need evals and a human in the loop where mistakes are expensive.
+
+Build the identity model before the prompt. Prompts change weekly. Accountability does not.
+
+How are you identifying your agents in production today?",#AI #AIAgents #LLM #AIGovernance #EnterpriseAI

@@ -2550,3 +2550,30 @@ Keep the evidence close. When the model, the documents and the checker all run w
 There is also a caveat on the study itself. It is a preprint on US trending queries, and the authors are open about capture limits. I would not quote 11% as a universal rate for AI search. I would quote it as proof that the gap exists and can be measured.
 
 Takeaway: if your AI product shows a citation, you owe your users a check that the citation says what the answer says.",#AI #LLM #RAG #Hallucination #MachineLearning
+2026-11-20,545,AI Agent Identity,Hot take: an AI agent without its own identity is a shared password with a language model attached,https://pranaymahendrakar.com/blog/hot-take-an-ai-agent-without-its-own-identity-is-a-shared-password-wit,"Microsoft began rolling out Copilot Autopilot to its Frontier preview customers on 17 November: an always-on agent that runs in the background, has its own Entra Agent ID, and acts inside limits set by the user and the organisation. The interesting part is not the agent. It is the identity.
+
+Microsoft's own announcement says Autopilot's actions are logged under its own name, that IT can narrow its access or switch it off, and that consequential actions stay under human control. Independent coverage, including Forkast's write-up, describes the same shape: an agent that authenticates as itself rather than borrowing a person's credentials, with sensitive steps gated behind sign-off. Access is limited to Frontier tenants with the right licences, so this is a preview, not general availability.
+
+I think this is the right design, and it is the part most teams skip.
+
+In the AI systems I have shipped across automotive, defence and education, the hardest conversation was never about model quality. It was ""who did this, and can we prove it?"" When an agent acts under a shared service account or a user's token, the audit trail turns into guesswork. You cannot revoke one agent without breaking everything else that uses the same credential. You cannot answer a security review.
+
+Giving every agent its own identity fixes three things at once.
+
+First, attribution. Every action is traceable to a specific agent, not ""the integration user"".
+
+Second, least privilege. You scope permissions to what that agent needs, and you can shrink them later without a migration.
+
+Third, a kill switch. Turning off one identity should stop one agent, cleanly.
+
+None of this needs a big vendor. If you build agents yourself, you can do it today. Issue each agent its own credential. Log every tool call with that identity. Put an approval step in front of anything irreversible or external. Treat the approval gate as a product feature, not a compliance afterthought.
+
+There is a caveat. An agent identity tells you who acted. It does not tell you the action was correct. A well-audited agent can still do the wrong thing, confidently, and log it perfectly. Identity is the floor for accountability, not the ceiling. You still need evals, constrained tool permissions and a human in the loop where mistakes are expensive.
+
+I would also be careful with the details. Most third-party coverage repeats Microsoft's own announcements, the documentation is still moving, and licensing requirements are not consistent across pages. Read the primary docs before you plan around it.
+
+This also connects to something I keep saying. The closer a model and its agents run to your data, under your control, the easier these questions become. When the agent, its identity and its logs live in your own environment, accountability is a configuration problem, not a trust exercise. That holds whether the environment is a Microsoft tenant, a private cloud or an offline, on-device deployment.
+
+If you are building agents this quarter, start with the identity model before the prompt. Prompts change weekly. The question of who is allowed to do what, and who can prove it afterwards, is the part that survives.
+
+Takeaway: an agent without its own identity is a shared password with a language model attached.",#AI #AIAgents #LLM #AIGovernance #EnterpriseAI
