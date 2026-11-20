@@ -44,9 +44,18 @@
    "post_urn": "urn:li:ugcPost:7528993544875724800",
    "source": "writer",
    "hook_style": "contrast"
+  },
+  "23072847": {
+   "drop": 6,
+   "doi": "10.5281/zenodo.23072848",
+   "title": "Perspectives Without Independence",
+   "posted_at": "2026-11-20T07:01:33+05:30",
+   "post_urn": "urn:li:ugcPost:7529355720396374016",
+   "source": "writer",
+   "hook_style": "myth_buster"
   }
  },
  "digests": {},
- "last_daily_date": "2026-11-19",
- "last_posted_at": "2026-11-19T07:02:23+05:30"
+ "last_daily_date": "2026-11-20",
+ "last_posted_at": "2026-11-20T07:01:33+05:30"
 }

@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-19T07:02:14+05:30",
+ "generated_at": "2026-11-20T07:01:23+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 162,
+ "count": 164,
  "papers": [
   {
    "id": "14040452",
@@ -4367,9 +4367,9 @@
    "pdf_name": "a-query-update-is-not-a-memory-write.pdf",
    "pdf_size": 392493,
    "zenodo_url": "https://zenodo.org/records/24344793",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24344793"
+   "lor_url": "https://lifeofresearch.com/preprints/243",
+   "lor_id": 243,
+   "link": "https://lifeofresearch.com/preprints/243"
   },
   {
    "id": "24355740",
@@ -4395,9 +4395,65 @@
    "pdf_name": "a-sharp-turn-is-not-a-phase-transition.pdf",
    "pdf_size": 329188,
    "zenodo_url": "https://zenodo.org/records/24355741",
+   "lor_url": "https://lifeofresearch.com/preprints/244",
+   "lor_id": 244,
+   "link": "https://lifeofresearch.com/preprints/244"
+  },
+  {
+   "id": "24372086",
+   "record_id": "24372087",
+   "doi": "10.5281/zenodo.24372087",
+   "title": "A Learned Inverse Is Not a Lifted Curse: What Training Transformers on a Family Knowledge Graph Shows About the Reversal Curse, Why Its Bilinear Geometry Answers a Relation-Level Question the Original Curse Did Not Ask, and the Controls That Would Carry It to Pretrained Models",
+   "short_title": "A Learned Inverse Is Not a Lifted Curse",
+   "abstract": "A 2025 study trained decoder-only transformers from scratch on a synthetic family knowledge graph and reported that, under strong weight decay, some models infer withheld parent relations from the child relations they did see, that a bilinear probe in the style of the RESCAL knowledge-graph model reads their middle layers at above 95 percent, and that the same models propagate a single fine-tuned edit to its logical consequences while models without the structure do not. Its authors conclude that the reversal curse is an artifact of how knowledge is encoded rather than an inherent limitation. In this analysis the author reviews and synthesises published results to show that the experiment is real and that it answers a different question from the one the reversal curse posed. The curse, as first reported, concerns a single fact whose reverse appears nowhere and one of whose terms is not an entity the model represents in any other role; the anchor's test asks for an inverse relation between two entities that each appear in four to eight training facts, each repeated about 20,000 times, after the same inverse pair has been demonstrated on 5,000 other entities. Knowledge-graph completion learned years ago that this is the easiest pattern in relational data: a rule that only reads inverse pairs reached 96.4 percent filtered Hits@1 on WN18. What remains genuinely contested is why next-token transformers learn that relation-level rule in some from-scratch studies and fail almost completely in others with the same design logic, and the published differences include the regularisation strength the anchor varies. The paper derives that a bilinear score yields the inverse by transposition only when subject and object are read through the same encoding, a property the anchor's probe assumes rather than tests. It argues that the probe-to-editing correlation (R squared 0.939) does not separate geometry from the generalising solution that produces both. It consolidates 25 published results in a table and a figure, states a procedure for reading reversal and propagation claims, and names six measurements that would settle the open part.",
+   "keywords": [
+    "reversal curse",
+    "knowledge editing",
+    "relational representation",
+    "bilinear models",
+    "knowledge graph completion",
+    "grokking",
+    "probing",
+    "language models"
+   ],
+   "published": "2026-11-19",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24372087/files/a-learned-inverse-is-not-a-lifted-curse.pdf/content",
+   "pdf_name": "a-learned-inverse-is-not-a-lifted-curse.pdf",
+   "pdf_size": 381720,
+   "zenodo_url": "https://zenodo.org/records/24372087",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24355741"
+   "link": "https://doi.org/10.5281/zenodo.24372087"
+  },
+  {
+   "id": "24382474",
+   "record_id": "24382475",
+   "doi": "10.5281/zenodo.24382475",
+   "title": "A Benchmark Hit Is Not an Exposure: What Published Vision-Language Geolocation Accuracy Says About Location Privacy, Why One Model Locates 61 Percent of One Photo Set to a Kilometre and Fewer Than 12 Percent of Another to a Hundred, and the Exposure Estimand a Privacy Claim Needs",
+   "short_title": "A Benchmark Hit Is Not an Exposure",
+   "abstract": "Since 2024 a growing literature has argued that general-purpose vision-language models can work out where a photograph was taken well enough to make image geolocation an immediate privacy risk, and a second literature has begun building defences against it. In this analysis the author reviews and synthesises published results to show that the direction of that claim survives the evidence but its usual support does not: the accuracies quoted for it are properties of particular photo sets, adversaries and distance thresholds, and none of them is the quantity a privacy claim is about. The same model places 61 percent of a curated, text-rich stock-photo set within one kilometre, about 23 percent of a public Flickr benchmark, and fewer than 12 percent of sampled street-level images within one hundred kilometres. One video-frame benchmark reports 65.6 percent within a kilometre for clips from one platform and 6.4 percent for clips from another. The obvious deflation, that benchmark images were seen in training, does not explain the capability: on photographs collected by the authors and not drawn from any public source, frontier models still name the city about 60 percent of the time, and freshly taken photographs of Seoul are located about as well as Street View images of the same city. The author separates five variables that published results leave unfixed (image population, harm radius, adversary configuration, counterfactual baseline, and the unit of exposure), shows that defences are mostly scored against a fixed adversary although a published photograph must resist every later one, and proposes an exposure protocol that states each variable before a number is reported.",
+   "keywords": [
+    "image geolocation",
+    "vision-language models",
+    "location privacy",
+    "threat models",
+    "benchmark validity",
+    "contextual integrity",
+    "adversarial perturbation",
+    "privacy evaluation"
+   ],
+   "published": "2026-11-20",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24382475/files/a-benchmark-hit-is-not-an-exposure.pdf/content",
+   "pdf_name": "a-benchmark-hit-is-not-an-exposure.pdf",
+   "pdf_size": 384021,
+   "zenodo_url": "https://zenodo.org/records/24382475",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24382475"
   }
  ]
 }
