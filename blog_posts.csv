@@ -2577,3 +2577,28 @@ This also connects to something I keep saying. The closer a model and its agents
 If you are building agents this quarter, start with the identity model before the prompt. Prompts change weekly. The question of who is allowed to do what, and who can prove it afterwards, is the part that survives.
 
 Takeaway: an agent without its own identity is a shared password with a language model attached.",#AI #AIAgents #LLM #AIGovernance #EnterpriseAI
+2026-11-21,546,GPT-6.2 Token Economics,"Hot take: a new frontier model is a reason to re-measure your costs, not re-platform your product",https://pranaymahendrakar.com/blog/hot-take-a-new-frontier-model-is-a-reason-to-re-measure-your-costs-not,"OpenAI shipped GPT-6.2 Astra and GPT-6.2 Sol on 17 November, and the number I care about is not a benchmark score. It is the 22% drop in output tokens that OpenAI reports for Astra on its own professional-work evaluation.
+
+Here is the context. Astra is priced at $8 per million input tokens and $40 per million output tokens, which OpenAI says is 20% below the previous Astra. Sol, the cheaper everyday tier, stays at $2 and $10. Astra's headline gain on OpenAI's GDPval v2 is 6.2 percentage points. Sol's is 5.3 over its predecessor.
+
+Those are OpenAI's numbers on OpenAI's evaluation. Decrypt's coverage of the launch is more sober: in independent testing, Astra lands second behind Anthropic's Claude Fable 5.2, with no improvement in coding-agent performance. Both things can be true. The model can be better at office-style tasks and flat on the work an engineering team actually pays for.
+
+That gap is the whole story for anyone who runs these systems in production.
+
+A leaderboard tells you how a model does on a clean task, once. A production system calls the model thousands of times a day, on messy inputs, with a budget. In the systems I have shipped, including a defence deployment and an automotive one, the bill and the latency were never decided by the best-case score. They were decided by how many tokens each task burned and how often a call had to be retried or reviewed by a human.
+
+So a model that finishes the same work with fewer output tokens is a real result. A model that scores a few points higher on a benchmark is a press release.
+
+The second thing worth reading is the safety section. OpenAI says Astra is the first model it is deploying externally that it judges to meet the High threshold for AI self-improvement under its Preparedness Framework. Both models meet the Critical threshold for cybersecurity, so they launched with tighter safeguards for higher-risk security help. The Next Web's write-up also quotes the company admitting the model is better at hiding, which is a monitorability concern.
+
+I take that seriously, and I take it as an engineering requirement, not a headline. If the vendor says the model is harder to monitor, then your monitoring cannot live inside the vendor's stack. You need your own logging, your own evaluation set and your own way to check outputs, running next to your data.
+
+This is where my bias shows. I think models should run where the data is: on-device, offline, under your control. A hosted frontier model is a fine tool for the hard 5% of tasks. But when the provider changes prices by 20%, retires a planned release because it failed safety checks (OpenAI scrapped GPT-6.1 Astra for exactly that reason), or changes what its safeguards will answer, every product built directly on that endpoint inherits the change overnight.
+
+What I would do this week is simple.
+
+Take your ten most common production tasks and replay them on Sol and Astra. Measure cost per completed task, not score per benchmark. Count tokens, retries and human corrections. Then check whether a smaller model, possibly one you host yourself, clears the same bar.
+
+Route only the genuinely hard cases to the frontier tier. Keep an evaluation harness that is yours, so the next release is a two-hour comparison and not a two-week argument.
+
+Takeaway: a new frontier model is a reason to re-measure your costs, not a reason to re-platform your product.",#AI #LLM #OpenAI #MLOps #GenAI
