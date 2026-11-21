@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-20T07:01:23+05:30",
+ "generated_at": "2026-11-21T07:05:23+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 164,
+ "count": 166,
  "papers": [
   {
    "id": "14040452",
@@ -4423,9 +4423,9 @@
    "pdf_name": "a-learned-inverse-is-not-a-lifted-curse.pdf",
    "pdf_size": 381720,
    "zenodo_url": "https://zenodo.org/records/24372087",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24372087"
+   "lor_url": "https://lifeofresearch.com/preprints/255",
+   "lor_id": 255,
+   "link": "https://lifeofresearch.com/preprints/255"
   },
   {
    "id": "24382474",
@@ -4451,9 +4451,65 @@
    "pdf_name": "a-benchmark-hit-is-not-an-exposure.pdf",
    "pdf_size": 384021,
    "zenodo_url": "https://zenodo.org/records/24382475",
+   "lor_url": "https://lifeofresearch.com/preprints/254",
+   "lor_id": 254,
+   "link": "https://lifeofresearch.com/preprints/254"
+  },
+  {
+   "id": "24398948",
+   "record_id": "24398949",
+   "doi": "10.5281/zenodo.24398949",
+   "title": "A Second Sample Is Not a Second Signal: What the One-Sample Semantic Entropy Result Measures, Why the Sampling Premium Is Mostly a Disagreement About the Baseline, and the Matched Comparison That Would Settle It",
+   "short_title": "A Second Sample Is Not a Second Signal",
+   "abstract": "Semantic entropy detects confabulations in language models by drawing several answers, grouping them by meaning and measuring how spread the meanings are. Because each extra answer costs a full generation, a line of work asks how few samples will do. A 2025 Bayesian estimator matches the standard estimator's AUROC with 53 percent of its samples and, in its authors' words, is useful \"even with just one sample\", a result they call counterintuitive because with one sample no comparison of meanings takes place. In this analysis the author reviews and synthesises published results to show that the one-sample result is a likelihood result, and that the wider question it raises, how much a second sample adds, has no settled answer because the literature has not fixed what the second sample is compared against. Under one protocol, ten samples beat the log-probability of a low-temperature answer by 3 to 27 AUROC points depending on model and dataset. Under another, the log-probability of the greedy answer outperforms the sampling-based measures in 13 of 18 settings. Laid side by side on TriviaQA and SVAMP, the two papers' mean discrete semantic-entropy scores differ by less than one point, while their mean single-sequence scores differ by about 17 and 27 points, so most of the disagreement about the sampling premium is a disagreement about the baseline. Correctness labels move the comparison further: two 2025 studies show that the choice of grading function can reorder methods, and one finds that a single judge leaves a standard deviation as large as typical differences between methods. The author separates the conditions under which extra samples carry information a single pass lacks (long answers, several valid answers, reasoning chains) from errors that no number of samples can expose, and proposes a matched-budget protocol that would measure the premium directly.",
+   "keywords": [
+    "semantic entropy",
+    "hallucination detection",
+    "uncertainty quantification",
+    "sequence likelihood",
+    "sample efficiency",
+    "evaluation methodology",
+    "confabulation",
+    "language models"
+   ],
+   "published": "2026-11-20",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24398949/files/a-second-sample-is-not-a-second-signal.pdf/content",
+   "pdf_name": "a-second-sample-is-not-a-second-signal.pdf",
+   "pdf_size": 396252,
+   "zenodo_url": "https://zenodo.org/records/24398949",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24382475"
+   "link": "https://doi.org/10.5281/zenodo.24398949"
+  },
+  {
+   "id": "24408405",
+   "record_id": "24408406",
+   "doi": "10.5281/zenodo.24408406",
+   "title": "A Near Neighbour Is Not a Native Feature: What Nearest-Neighbour Novelty Detection Owes to the Space It Measures In, Why the Case For and Against Pretrained Features Turns on Benchmark and Baseline More Than on Where the Features Came From, and the Comparison That Would Separate Scoring Rule From Representation",
+   "short_title": "A Near Neighbour Is Not a Native Feature",
+   "abstract": "A novelty detector is trained on normal data and asked to flag whatever is unlike it. Since 2020 two positions have competed over how such a detector should be built. One holds that the decisive ingredient is a feature space borrowed from a network pretrained on a large external corpus, after which a nearest-neighbour distance is enough, and that self-supervised or reconstruction-based detectors trained only on the normal data are outclassed. The other holds that detectors trained in-domain, such as autoencoders whose novelty score combines the reconstructions of an input's nearest latent neighbours with the distance to them, are competitive without any pretrained network and transfer to domains, such as radio-telescope spectrograms, that look nothing like natural photographs. In this analysis the author reviews and synthesises published results to show that the two positions are answering a question neither benchmark design isolates. A published comparison of two detectors almost always changes at least three things at once: the space in which distance is measured, the rule that turns distance into a score, and the kind of novelty the benchmark plants, while a fourth factor, the evaluation (metric, baseline implementation, hyperparameter selection), decides which of the three gets the credit. On one industrial benchmark, published image-level results for detectors that all use ImageNet features and a distance or density score range from 75.0 to 99.1 AUROC, a spread several times larger than the 3.3-point margin by which the nearest-latent-neighbour autoencoder beats its own re-implementation of the pretrained baseline. On one natural-image benchmark, supervised ImageNet features with a simple density score are reported at 80.0, 86.2 and 92.5 AUROC by three groups. Off the pretraining distribution the verdict flips with the dataset: in one seven-dataset medical study a plain autoencoder beats frozen ImageNet features on two datasets and loses by up to 36 points elsewhere, and an autoencoder whose residual is measured in pretrained feature space beats both on most. The paper consolidates nineteen published results in a table and a figure, states a procedure for crediting a novelty-detection gain to a representation's origin rather than to the scoring rule or the evaluation, and names the studies that would settle what remains open.",
+   "keywords": [
+    "novelty detection",
+    "anomaly detection",
+    "nearest neighbours",
+    "autoencoders",
+    "pretrained representations",
+    "transfer learning",
+    "evaluation methodology",
+    "model selection"
+   ],
+   "published": "2026-11-21",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24408406/files/a-near-neighbour-is-not-a-native-feature.pdf/content",
+   "pdf_name": "a-near-neighbour-is-not-a-native-feature.pdf",
+   "pdf_size": 416288,
+   "zenodo_url": "https://zenodo.org/records/24408406",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24408406"
   }
  ]
 }
