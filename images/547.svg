@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.25"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="800" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="520" height="56" rx="28" fill="none" stroke="#F59E0B" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#F59E0B">AI CHIP EXPORT RULES</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="100" fill="#F5F7FA">Selling GPUs:</text>
+<text x="80" y="420" font-size="100" fill="#F59E0B">know your buyer.</text>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="540">The test is the customer,</text>
+<text x="80" y="595">not the chip.</text>
+<text x="80" y="650" font-weight="700" fill="#F5F7FA">Keep the trail.</text>
+</g>
+<g fill="none" stroke="#F59E0B" stroke-width="6" stroke-linecap="round">
+<line x1="725" y1="780" x2="725" y2="870"/>
+<line x1="725" y1="780" x2="640" y2="870"/>
+<line x1="725" y1="780" x2="810" y2="870"/>
+</g>
+<circle cx="725" cy="780" r="26" fill="#F59E0B"/>
+<circle cx="725" cy="870" r="18" fill="#F59E0B" opacity="0.7"/>
+<circle cx="640" cy="870" r="18" fill="#F59E0B" opacity="0.5"/>
+<circle cx="810" cy="870" r="18" fill="#F59E0B" opacity="0.35"/>
+<rect x="80" y="944" width="64" height="6" fill="#F59E0B"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

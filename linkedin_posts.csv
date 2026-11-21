@@ -9506,3 +9506,23 @@ My advice: replay your ten most common tasks on Sol and Astra. Measure cost per 
 A new model is a reason to re-measure, not to re-platform.
 
 What is the one metric you track per task in production?",#AI #LLM #OpenAI #MLOps #GenAI
+547,Compute Customer Vetting,"Hot take: in AI infrastructure, ""who is the customer?"" is now a compliance question, not a sales question.
+
+In November, US Treasury Secretary Scott Bessent said anyone at Nvidia should be held accountable for chip leakage to China. His test was not the chip. It was whether Nvidia knew its customers and tried to stop sales to pass-through shell companies.
+
+The case behind it: Megaspeed, a Singapore-based buyer reported to have bought more than $4 billion of Nvidia chips. US officials suspect some reached China. Megaspeed denies it. Nothing is proven.
+
+Then came new licence rules for advanced chips shipped to five countries. Data centres renting out compute to Chinese customers now need US permission too.
+
+So the burden has moved from the box to the buyer.
+
+I've worked on AI deployments in defence, and the lesson there was simple: know exactly who runs the system, where, and for what. Not just at signing. Continuously.
+
+If you resell, host or rent GPU capacity, three things are worth doing now:
+- Record who the end user really is
+- Re-check them when their usage changes
+- Be able to show that trail to a regulator
+
+This is also an argument for running models where you control the data and the hardware. Fewer intermediaries, fewer unanswered questions.
+
+If an auditor asked tomorrow who is behind your compute, could you answer in an hour?",#AI #ExportControls #AIInfrastructure #Compliance #GPU
