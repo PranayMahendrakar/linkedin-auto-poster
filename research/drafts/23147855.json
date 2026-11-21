@@ -1,0 +1,14 @@
+{
+ "concept_id": "23147855",
+ "hook_style": "contrast",
+ "body": "An anomaly detector that flags something new has not told you what it is.\n\nThat gap is wider than most of us assume. In one published open-vocabulary video study, novel categories were detected at 88.2 AUC on UCF-Crime. The same model named them correctly 37.1 percent of the time, even with every right name in the vocabulary. Those are that study's numbers, not mine.\n\nIn my paper I argue that \"explanation\" in anomaly detection hides three separate claims:\n\n→ A score claim: which parts of the input raised the score. The detector can check it.\n→ A deviation claim: in what respect the input differs from the reference data. The reference data can check it.\n→ A name claim: what the thing actually is. Only a label, a benchmark description or a person can check it.\n\nI assembled published results rather than running new experiments. One finding stuck with me: a detector can flag an image correctly while the names it generated for it are wrong. And I found no study that measures, on the same instances, whether the name is right and whether it names what the detector responded to.\n\nIf your system shows users a name next to an alert, validate that name against ground truth. Do not borrow trust from the detection score.\n\nThe full paper is attached below.",
+ "question": "When your detector flags something, who or what tells you what it actually is?",
+ "hashtags": [
+  "#AI",
+  "#MachineLearning",
+  "#ComputerVision",
+  "#AnomalyDetection",
+  "#NoveltyDetection"
+ ],
+ "written_at": "2026-11-21T09:36:52+05:30"
+}
