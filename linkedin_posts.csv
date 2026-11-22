@@ -9553,3 +9553,27 @@ If it holds up, you get no per-minute bill, no audio leaving your network, and n
 Do not ask which speech model tops the chart. Ask which one you can measure on your audio, under your control.
 
 Are you running speech models on-device yet, or still renting them?",#AI #SpeechRecognition #OpenWeights #OnDeviceAI #LLM
+549,Bank AI Agent Liability,"Your AI agent, your liability. Several US banks just wrote that into the contract.
+
+In November, Citi, PNC and Citizens updated their customer terms. They follow JPMorgan and Bank of America.
+
+The gist: if you let a third-party AI agent act in your account, the bank treats what it does as authorised by you. Reportedly, even after a credential leak or hack.
+
+Citi carves out agents the bank provides itself. PNC bars customers from handing agents passwords or one-time codes. Whether these terms hold up against consumer-protection rules is untested. No court or regulator has ruled on it, and I have not read the agreements myself, only the reporting.
+
+Here is what this tells engineers building agents:
+
+Liability is moving to whoever holds the credentials.
+
+In the production systems I have shipped, including a defence deployment, the hard part was never the model. It was deciding who is allowed to do what, and proving it afterwards.
+
+An agent with a raw password is an unbounded permission. An agent with scoped, revocable, logged access is a product.
+
+If you build agents that touch money, do three things:
+- Use delegated, scoped credentials. Never shared passwords.
+- Log every action with the agent's identity, not the user's.
+- Put hard limits on amount and destination, enforced outside the model.
+
+The banks have told you where the risk lands. Design as if it lands on your users, because contractually it now does.
+
+Would you give an AI agent access to your bank account under these terms?",#AI #AIAgents #Fintech #AISecurity #LLM
