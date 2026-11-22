@@ -62,9 +62,18 @@
    "post_urn": "urn:li:ugcPost:7529719112164331520",
    "source": "writer",
    "hook_style": "number_gap"
+  },
+  "23093042": {
+   "drop": 8,
+   "doi": "10.5281/zenodo.23093043",
+   "title": "Problem Choice Without a Referee",
+   "posted_at": "2026-11-22T07:05:42+05:30",
+   "post_urn": "urn:li:ugcPost:7530081540207476737",
+   "source": "writer",
+   "hook_style": "myth_buster"
   }
  },
  "digests": {},
- "last_daily_date": "2026-11-21",
- "last_posted_at": "2026-11-21T07:05:32+05:30"
+ "last_daily_date": "2026-11-22",
+ "last_posted_at": "2026-11-22T07:05:42+05:30"
 }

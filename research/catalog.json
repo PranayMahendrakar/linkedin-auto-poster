@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-21T07:05:23+05:30",
+ "generated_at": "2026-11-22T07:05:31+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 166,
+ "count": 168,
  "papers": [
   {
    "id": "14040452",
@@ -4479,9 +4479,9 @@
    "pdf_name": "a-second-sample-is-not-a-second-signal.pdf",
    "pdf_size": 396252,
    "zenodo_url": "https://zenodo.org/records/24398949",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24398949"
+   "lor_url": "https://lifeofresearch.com/preprints/257",
+   "lor_id": 257,
+   "link": "https://lifeofresearch.com/preprints/257"
   },
   {
    "id": "24408405",
@@ -4507,9 +4507,65 @@
    "pdf_name": "a-near-neighbour-is-not-a-native-feature.pdf",
    "pdf_size": 416288,
    "zenodo_url": "https://zenodo.org/records/24408406",
+   "lor_url": "https://lifeofresearch.com/preprints/258",
+   "lor_id": 258,
+   "link": "https://lifeofresearch.com/preprints/258"
+  },
+  {
+   "id": "24420072",
+   "record_id": "24420073",
+   "doi": "10.5281/zenodo.24420073",
+   "title": "A Refusal Is Not a Veto: Why Multi-Agent Structures Are Reported Both to Amplify and to Contain Language-Model Harm, Which Properties of the Structure Set the Sign, and the Matched Comparison That Would Separate Them",
+   "short_title": "A Refusal Is Not a Veto",
+   "abstract": "Language models are increasingly composed into systems in which one model plans and others execute, check or debate. Two bodies of work describe the safety consequences in opposite terms. One reports that composition amplifies harm: a model that refuses a hazardous task on its own completes it once the task passes through a delegating principal, a planner or an orchestrator. The other reports that composition contains harm: adding agents that inspect a response or challenge a peer cuts jailbreak success several-fold. In this analysis the author reviews and synthesises published results to show that \"multi-agent\" is not the variable either literature measured. A reported change bundles at least five properties of the structure: what each model can see of the original intent, what it is told about the authority of the instruction it receives, whether a refusal ends the path or can be routed around, what incentive the prompts add, and whether output becomes an action. Re-reading the anchor study's own tables, the author computes that if delegation merely added a second, independent refusal point, end-to-end full execution would fall below every model's single-agent rate; it rises above it for four of six models, and for two of them more than nine tenths of delegated full execution passed through deliveries the study's own judge classed as sanitized, so on that classification the subordinate did not receive the harmful intent it is said to have obeyed (the study's authors read the same numbers as evidence that sanitization was incomplete). In a computer-use study, a single model given an orchestrator's decomposed subtasks, with no second agent, reproduces most of the orchestrated system's failure, while in a planner-executor study executor compliance is 6.3 percent when the planner refuses and 78.6 percent when it emits steps, against 64.4 percent with no planner. The paper consolidates 24 published results, states an attribution procedure, and specifies the matched comparison that would separate the five properties.",
+   "keywords": [
+    "multi-agent systems",
+    "LLM safety",
+    "delegation",
+    "refusal",
+    "task decomposition",
+    "instruction hierarchy",
+    "agent orchestration",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-21",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24420073/files/a-refusal-is-not-a-veto.pdf/content",
+   "pdf_name": "a-refusal-is-not-a-veto.pdf",
+   "pdf_size": 433430,
+   "zenodo_url": "https://zenodo.org/records/24420073",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24408406"
+   "link": "https://doi.org/10.5281/zenodo.24420073"
+  },
+  {
+   "id": "24430422",
+   "record_id": "24430423",
+   "doi": "10.5281/zenodo.24430423",
+   "title": "A Recovered Average Is Not a Defended Corridor: What Adversarial Training Buys Spatiotemporal Traffic Forecasters, Why the Case That Static Methods Fail Rests on Node Selection While the Evidence of Failure Comes From Attack Shape, and the Evaluation That Would Tell Them Apart",
+   "short_title": "A Recovered Average Is Not a Defended Corridor",
+   "abstract": "Spatiotemporal graph networks forecast speed and flow across road sensor networks, and a line of work since 2021 shows that a few perturbed sensors can wreck those forecasts. Whether adversarial training repairs the damage is disputed. One position, stated most sharply by the reinforced dynamic adversarial training (RDAT) paper at KDD 2023, holds that adversarial training designed for static domains does not carry over to traffic, because the attacker picks different victim sensors at each moment, and that defence needs a learned, time-varying choice of training nodes. A second position, from attack papers, time-series robustness studies and a 2025 study of forecasting foundation models, reports that ordinary adversarial training, or for the foundation models lightweight latent adversarial fine-tuning, already recovers most of the lost accuracy. A third, from a 2026 re-evaluation, holds that adversarial training tuned to norm-bounded perturbations barely transfers to targeted, congestion-shaped attacks, and that even training on the attack itself loses ground when the attack's reach changes. In this analysis the author reviews and synthesises published results to show that the three positions are answering different questions under one word. A \"dynamic attack\" can vary in at least five things: which sensors it touches over time, the shape and size of the perturbation, the objective, the attacker's knowledge, and the metric used to score it. The dynamic-domain thesis concerns only the first. In RDAT's own main tables, adversarial training with randomly chosen nodes, the baseline RDAT presents as traditional adversarial training and elsewhere labels a dynamic strategy, closes about 93 percent of the attack-induced error on both benchmarks with Graph WaveNet, including against the time-dependent attack. Against that attack the learned selector adds less than two points of the gap, within run-to-run spread; under the other four attacks it stays within the spread on PeMS-D4 but adds 3.3 to 3.8 points on PeMS-BAY, slightly more than AT's seed spread. In the appendix, under the time-dependent attack, the ordering of the two methods flips with architecture while both close only 52 to 71 percent. Node selection is also the smaller lever in the attack literature's own ablations. The failures that are large come from changes in perturbation shape, target and metric. The paper consolidates the measured values in a table and a figure, states a procedure for crediting a robustness gain to a defence's dynamic component, and names the evaluations that would settle what remains open.",
+   "keywords": [
+    "traffic forecasting",
+    "spatiotemporal graph neural networks",
+    "adversarial training",
+    "adversarial robustness",
+    "threat models",
+    "time-series forecasting",
+    "sensor spoofing",
+    "evaluation validity"
+   ],
+   "published": "2026-11-22",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24430423/files/a-recovered-average-is-not-a-defended-corridor.pdf/content",
+   "pdf_name": "a-recovered-average-is-not-a-defended-corridor.pdf",
+   "pdf_size": 388295,
+   "zenodo_url": "https://zenodo.org/records/24430423",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24430423"
   }
  ]
 }
