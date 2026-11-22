@@ -9526,3 +9526,30 @@ If you resell, host or rent GPU capacity, three things are worth doing now:
 This is also an argument for running models where you control the data and the hardware. Fewer intermediaries, fewer unanswered questions.
 
 If an auditor asked tomorrow who is behind your compute, could you answer in an hour?",#AI #ExportControls #AIInfrastructure #Compliance #GPU
+548,Open Speech Model Release,"Hot take: a 0.5B speech model you can run yourself matters more than another leaderboard-topping API.
+
+Reson8 just released Rumble-2-Flash on Hugging Face under Apache 2.0.
+
+40+ languages. Runs with Transformers and vLLM. No custom runtime.
+
+The accuracy numbers are the company's own, and independent tests are still missing. So treat them as a reason to test, not to believe.
+
+What I would test first: silence.
+
+Speech models that invent sentences on silence, music or noise poison everything downstream. Search, summaries, agents.
+
+In offline multilingual work I have done, the model had to live next to the user. No network. Noise handling decided whether it shipped.
+
+Lower-resource languages fail first and fail quietly. A blended error rate hides the language your users actually speak.
+
+My test plan:
+- Real recordings in your languages
+- Word error rate per language, never blended
+- Count insertions on non-speech audio separately
+- Latency on your target hardware, not a cloud GPU
+
+If it holds up, you get no per-minute bill, no audio leaving your network, and no vendor deprecating your endpoint.
+
+Do not ask which speech model tops the chart. Ask which one you can measure on your audio, under your control.
+
+Are you running speech models on-device yet, or still renting them?",#AI #SpeechRecognition #OpenWeights #OnDeviceAI #LLM
