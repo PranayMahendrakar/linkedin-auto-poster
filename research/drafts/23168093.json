@@ -1,0 +1,13 @@
+{
+ "concept_id": "23168093",
+ "hook_style": "myth_buster",
+ "body": "Everyone says drift studies ignore the noise floor. The careful ones didn't.\n\nI wrote a paper on this, and the real problem is different: the floor isn't a number you measure. It's a decision about what counts as \"the same\".\n\nPublished monitors declare three different things. Is the name still pointing at the same model? Is the output distribution the same? Is performance on a task the same? Each has its own floor, and different changes clear it.\n\nIn one study of 36 model-and-stack combinations (Yang, 2026, not my numbers), the same open model reproduced its own answers 97.5 percent of the time at one cloud provider and 64.5 percent at another.\n\nWhen I went through the published evidence, the confirmed changes were mostly announced re-pointings of a name, or provider infrastructure events. A capability change under a pinned identifier, with no announced event and a calibrated floor, was not established by any study I found.\n\nThat is not \"models never change.\" It is the claim the evidence supports least.\n\nIf you monitor an LLM API, declare your null before you collect data:\n→ Did the identifier move?\n→ Did the output distribution move?\n→ Did capability on my task move?\n→ Measure the floor on your own task, not someone else's.\n\nThe full paper is attached below.",
+ "question": "When your LLM pipeline's scores shifted, how did you decide whether the model or your measurement moved?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#LLMEvaluation",
+  "#ModelDrift"
+ ],
+ "written_at": "2026-11-22T08:49:29+05:30"
+}
