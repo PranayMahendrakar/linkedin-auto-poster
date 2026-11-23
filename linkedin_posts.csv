@@ -9577,3 +9577,29 @@ If you build agents that touch money, do three things:
 The banks have told you where the risk lands. Design as if it lands on your users, because contractually it now does.
 
 Would you give an AI agent access to your bank account under these terms?",#AI #AIAgents #Fintech #AISecurity #LLM
+550,FBI ARTEX AI Attacks,"Hot take: the scariest part of the FBI's ARTEX alert is not the AI. It is the workflow.
+
+On 13 November the FBI warned about ARTEX, an open-source pentest framework that criminals now use to automate intrusions from recon to exfiltration.
+
+It plugs into commercial and open-weight models alike.
+Some attacks reportedly reached privileged access in under three hours.
+
+The developer moved to closed source after the abuse. The FBI says the old open version is still widely available, and researchers counted 1,600+ exposed consoles.
+
+So ""the labs will block it"" is not a security plan.
+
+The model is not the moat. The environment is.
+
+In deployments I have worked on, including a closed defence network, the best control was never a clever detector. It was having very little exposed to find.
+
+That is why I keep pushing for models that run where the data is: on-device, offline, no public endpoint.
+
+If you build agents, treat this alert as a checklist:
+Give each agent its own identity.
+Use the narrowest permissions that work.
+Log agent actions separately.
+Audit what is reachable from the internet.
+
+You cannot patch the attacker's tools. You can shrink what they see.
+
+What is the one thing in your AI stack that is exposed and does not need to be?",#AI #CyberSecurity #AIAgents #LLM #OnDeviceAI

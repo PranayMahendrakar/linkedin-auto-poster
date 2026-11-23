@@ -2635,3 +2635,30 @@ If it holds up, the architecture gets simpler. No per-minute API bill, no audio 
 A small model you can inspect, fine-tune and run on your own hardware will beat a bigger one you rent in more situations than the leaderboards suggest.
 
 The takeaway: do not ask which speech model tops the chart. Ask which one you can measure, on your audio, under your control.",#AI #SpeechRecognition #OpenWeights #OnDeviceAI #LLM
+2026-11-23,550,FBI ARTEX AI Attacks,"Hot take: the scariest part of the FBI's ARTEX alert is not the AI, it is the workflow",https://pranaymahendrakar.com/blog/hot-take-the-scariest-part-of-the-fbis-artex-alert-is-not-the-ai-it-is,"Hot take: the scariest thing in the FBI's ARTEX alert is not the AI. It is that the attacker finally has a workflow.
+
+On 13 November the FBI published FLASH-20261113-001 about ARTEX, an open-source autonomous penetration-testing framework that criminals have turned into an attack tool. It chains the phases of an intrusion, from reconnaissance through data exfiltration, and it can be wired to commercial models, open-weight models, or both. The FBI says campaigns go back to at least August, and that in some cases attackers reached privileged access in under three hours.
+
+Then the part I keep coming back to. The developer reportedly moved the project to closed source after the abuse became public. It did not matter. The FBI says the earlier open version is still widely available, community forks exist, and a commercial edition called ARTEX PRO is circulating. Researchers have counted more than 1,600 exposed consoles on the open internet.
+
+Two independent outlets, BleepingComputer and The Record, report the same details, and the FBI's own flash notice is on ic3.gov. I would treat the three-hour figure as the FBI's reported worst case, not an average. One outlet also links the alert to a separate supply-chain breach, and I have not seen that confirmed elsewhere, so I am leaving it out.
+
+Here is why I think this matters for people who build AI systems rather than people who attack them.
+
+The model is not the moat on either side. The framework works with whichever model is available, so a vendor's safety policy on one model does not contain the problem. Once the orchestration code is public, forking and re-hosting is trivial. Anyone who plans their security around ""the frontier labs will block this"" is planning around a control they do not own.
+
+What defenders do own is the environment. In the production deployments I have worked on, including a defence deployment where the network was deliberately small and closed, the most useful security property was never a clever detector. It was that there was very little exposed to find. An agent that automates reconnaissance is only as dangerous as the surface it discovers.
+
+That is also why I keep arguing for running models where the data is. An on-device or offline system has no public endpoint, no shared console, and no long-lived API key sitting in a config file. It is not immune, but an automated attacker has far less to enumerate.
+
+If you are building agents yourself, take the alert as a design review checklist:
+
+Give every agent its own identity and the narrowest permissions that work.
+Log agent actions separately from human ones, so you can tell them apart during an incident.
+Assume your own agent framework will be read by attackers, and do not rely on obscurity.
+Audit what is reachable from the internet. If a management console does not need to be public, it should not be.
+Rotate credentials on a schedule a machine-speed attacker cannot outrun.
+
+The uncomfortable lesson of ARTEX is that closing the source did not close the risk. The tooling is out, it is cheap, and it improves with every new model release.
+
+Takeaway: you cannot patch the attacker's tools, so shrink what those tools can see.",#AI #CyberSecurity #AIAgents #LLM #OnDeviceAI
