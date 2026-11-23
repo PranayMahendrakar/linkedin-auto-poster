@@ -1,0 +1,13 @@
+{
+ "concept_id": "23174117",
+ "hook_style": "number_gap",
+ "body": "A new date barely moves a model. A stated expiry flips the two largest in 47 to 50 of 50 cases.\n\nThat gap, from a study by Ahmed et al. that I cite, is the core of my paper on agent memory.\n\nMost agent memories discount a record by its age. Read as a claim about truth, that is a survival model with one constant rate for every record. \"Was born in Porto\" and \"is staying at this hotel\" are assumed to go stale at the same speed.\n\nThey don't. On FreshQA, accuracy falls by a factor of four or more between answers that almost never change and answers that change within a year. Those are Vu et al.'s numbers, not mine.\n\nPool records with different rates and the hazard falls with age, so a value unchanged for years is evidence it is stable. Time since last confirmation and time held before it point in opposite directions, and one timestamp cannot tell them apart.\n\nThe case I find most neglected: a user moves house and never says so. No contradiction arrives, so no system I located retires the record, and no conversational-memory benchmark I located scores it.\n\nTakeaway: store a validity horizon or a per-fact rate, not just a date.\n\nThe full paper is attached below.",
+ "question": "Which fact your agent remembers about a user would you bet goes stale fastest?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AgentMemory",
+  "#KnowledgeStaleness"
+ ],
+ "written_at": "2026-11-23T09:21:52+05:30"
+}
