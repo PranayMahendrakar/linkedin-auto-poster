@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-22T16:03:46+05:30",
+ "generated_at": "2026-11-23T07:01:33+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 168,
+ "count": 170,
  "papers": [
   {
    "id": "14040452",
@@ -4535,9 +4535,9 @@
    "pdf_name": "a-refusal-is-not-a-veto.pdf",
    "pdf_size": 433430,
    "zenodo_url": "https://zenodo.org/records/24420073",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24420073"
+   "lor_url": "https://lifeofresearch.com/preprints/261",
+   "lor_id": 261,
+   "link": "https://lifeofresearch.com/preprints/261"
   },
   {
    "id": "24430422",
@@ -4563,9 +4563,65 @@
    "pdf_name": "a-recovered-average-is-not-a-defended-corridor.pdf",
    "pdf_size": 388295,
    "zenodo_url": "https://zenodo.org/records/24430423",
+   "lor_url": "https://lifeofresearch.com/preprints/260",
+   "lor_id": 260,
+   "link": "https://lifeofresearch.com/preprints/260"
+  },
+  {
+   "id": "24442237",
+   "record_id": "24442238",
+   "doi": "10.5281/zenodo.24442238",
+   "title": "A Belief Probe Is Not a Coordination Test: What Explicit Epistemic State Buys Language-Model Agents, Why Added Theory of Mind Helps in Some Studies and Hurts in Others, and Where a Symbolic Guard Can Stand In",
+   "short_title": "A Belief Probe Is Not a Coordination Test",
+   "abstract": "Language-model agents are now routinely asked to work together, and when they fail the usual diagnosis is that they lack a model of what their partners know. A 2026 proposal answers that diagnosis with architecture: an explicit epistemic layer over a gossip-style record of who has told whom what, and a symbolic guard that permits an agent's proposed action only when the authoritative state satisfies its precondition. Two published literatures pull against each other on whether such machinery is needed. One reports that current models already pass false-belief and higher-order belief tests at or above adult human levels and carry linearly decodable representations of other agents' beliefs. The other reports that the same models fail to coordinate, and that adding explicit theory-of-mind modules or instructions sometimes helps, sometimes does nothing, and sometimes makes coordination worse. In this analysis the author reviews and synthesises published results to show that the two literatures measure different links in one chain. The paper separates four links, tracking who observed what, inferring a belief from that record, converting a belief into an action or message, and calibrating the model of the partner against the partner's actual behaviour, plus a fifth component, a gate that vetoes invalid actions. Most reported gains from explicit modules come from tracking or conversion, the two links that a symbolic component can take away from the language model; inference, the link the theory-of-mind debate argues over, is close to solved once the record is supplied; and calibration, the link a guard cannot reach, appears to be where the largest remaining failures sit. On one benchmark, GPT-4o, GPT-5 and Claude-3.5-Sonnet each answer more than 95 percent of belief questions correctly but predict the resulting behaviour correctly in only 49.5 to 67.0 percent of cases, and reminding them of their own belief answer raises one model's behaviour accuracy from 67.0 to 96.9 percent. The paper consolidates 25 published results in one table, states an attribution procedure for a reported coordination gain, and identifies what a guard over an authoritative state can and cannot supply when no such state exists outside the testbed.",
+   "keywords": [
+    "theory of mind",
+    "multi-agent coordination",
+    "language-model agents",
+    "epistemic logic",
+    "belief tracking",
+    "neuro-symbolic agents",
+    "symbolic guards",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-22",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24442238/files/a-belief-probe-is-not-a-coordination-test.pdf/content",
+   "pdf_name": "a-belief-probe-is-not-a-coordination-test.pdf",
+   "pdf_size": 409469,
+   "zenodo_url": "https://zenodo.org/records/24442238",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24430423"
+   "link": "https://doi.org/10.5281/zenodo.24442238"
+  },
+  {
+   "id": "24450651",
+   "record_id": "24450652",
+   "doi": "10.5281/zenodo.24450652",
+   "title": "A Composed Policy Is Not a Predicted Run: What Combining Policies Trained on Other Rewards Can Tell About Reinforcement Learning on a New One, Why the Closed Form Covers an Objective Common Recipes Do Not Optimise, and the Null Basis That Would Separate Reward-Specific Prediction From Shared Drift",
+   "short_title": "A Composed Policy Is Not a Predicted Run",
+   "abstract": "Post-training a language model with reinforcement learning is expensive and must be repeated whenever the reward changes. A September 2026 proposal, PoEM, argues that the outcome of such training on a new reward can be predicted without running it, by composing the log-probabilities of policies already trained on other rewards, and reports that these policies span a low-dimensional subspace of log-likelihood space even when their weight updates are nearly orthogonal. In this analysis the author reviews and synthesises published results to show that the composition is exact for one object, the KL-regularised optimum of a linear combination of rewards, and that the policy a training recipe actually produces departs from that object in five documented ways: reward scale discarded by group normalisation and by preference losses, KL penalties implemented in forms whose gradient is disputed or omitted altogether, offline implicit rewards that generalise worse than explicit ones, token-level normalisation where the closed form is sequence-level, and target runs chosen to exclude reward hacking. The paper argues that the reported low rank is measured mostly on responses sampled from the reference model; on the experts' own responses, PoEM's own appendix shows the gap between reward rank and log-ratio rank narrowing on one basis and reversing on another. A growing literature finds that a large part of what reinforcement learning does to a language model is independent of the reward: on reasoning benchmarks, and for some model families, random rewards, entropy minimisation and training-free sharpening of the base model each recover much of the gain. PoEM's own baselines are consistent with this reading: on ten held-out reward models, uniform weights that never see the target reward recover 0.50 of the gain against 0.56 for fitted weights. The paper consolidates 30 published results in a table and a figure, separates three things \"the RL outcome\" can mean, states a seven-step procedure for reading a composed-policy forecast, and proposes a null basis of experts trained on uninformative rewards as the control that would separate reward-specific prediction from shared drift.",
+   "keywords": [
+    "language-model post-training",
+    "KL-regularised policy optimisation",
+    "policy composition",
+    "multi-objective alignment",
+    "decoding-time alignment",
+    "implicit reward",
+    "low-rank structure",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-23",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24450652/files/a-composed-policy-is-not-a-predicted-run.pdf/content",
+   "pdf_name": "a-composed-policy-is-not-a-predicted-run.pdf",
+   "pdf_size": 376670,
+   "zenodo_url": "https://zenodo.org/records/24450652",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24450652"
   }
  ]
 }

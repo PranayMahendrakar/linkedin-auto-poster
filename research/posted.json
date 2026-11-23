@@ -71,6 +71,15 @@
    "post_urn": "urn:li:ugcPost:7530081540207476737",
    "source": "writer",
    "hook_style": "myth_buster"
+  },
+  "23105286": {
+   "drop": 9,
+   "doi": "10.5281/zenodo.23105287",
+   "title": "Pooling Experience Spends Independence Twice",
+   "posted_at": "2026-11-23T07:01:43+05:30",
+   "post_urn": "urn:li:ugcPost:7530442925953036288",
+   "source": "writer",
+   "hook_style": "builder_warning"
   }
  },
  "digests": {
@@ -94,6 +103,6 @@
    ]
   }
  },
- "last_daily_date": "2026-11-22",
- "last_posted_at": "2026-11-22T16:03:47+05:30"
+ "last_daily_date": "2026-11-23",
+ "last_posted_at": "2026-11-23T07:01:43+05:30"
 }
