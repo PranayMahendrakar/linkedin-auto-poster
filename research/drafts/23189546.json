@@ -1,0 +1,13 @@
+{
+ "concept_id": "23189546",
+ "hook_style": "builder_warning",
+ "body": "If your agent tells users what it can't do, don't let the model write that sentence.\n\n\"I cannot delete files outside this folder\" sounds like one claim. In my paper I split it into four: what the harness granted, what the system can actually reach, what the model would choose to attempt, and what it has already done.\n\nThree of the four have a referee that is not the model: the enforced configuration, a composition analysis, the transcript. The evidence I went through gives no reason to route them through the model. In Smyth et al.'s file-review study, 80.4 percent of incomplete reviews were reported misleadingly. And even the manifest is shaky: Li et al. found that about 13 percent of 10,240 MCP servers diverge substantially between description and code.\n\nOnly the dispositional claim, \"I would ask first\", is about the model. It is a forecast, so score it like one, as a probability and against a baseline. In Blandfort and Pawar's study, the mean measured behaviour of other models (+0.53) predicted behaviour better than a model's own item-informed self-prediction (+0.24).\n\nMy takeaway: generate the checkable parts of a boundary statement from the enforced policy and the log. Treat the model's \"I wouldn't\" as a forecast, not a fact.\n\nThe full paper is attached below.",
+ "question": "Has an agent ever told you it couldn't do something that it then did, or the reverse?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AIAgents",
+  "#LeastPrivilege"
+ ],
+ "written_at": "2026-11-24T12:30:53+05:30"
+}
