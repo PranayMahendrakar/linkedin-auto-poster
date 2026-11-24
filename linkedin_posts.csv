@@ -9603,3 +9603,24 @@ Audit what is reachable from the internet.
 You cannot patch the attacker's tools. You can shrink what they see.
 
 What is the one thing in your AI stack that is exposed and does not need to be?",#AI #CyberSecurity #AIAgents #LLM #OnDeviceAI
+551,AI Postings Versus Software Jobs,"AI job postings are up 91%. Software postings are still 27.5% below pre-pandemic.
+
+Two datasets, two different stories, and both are true.
+
+Dice's October data, covering over 7 million US tech postings, shows AI and ML roles up 91% year over year, against 20% for tech overall.
+
+Indeed Hiring Lab's analysis, published in July, found software development postings had rebounded but sat about 27.5% below their pre-pandemic level. Senior roles drove 71% of the rebound between May 2025 and May 2026.
+
+So the market is not shrinking. It is re-sorting.
+
+Demand is moving toward people who can ship AI into production and who have the experience to be trusted with it.
+
+I have seen this from the inside. Across the AI systems I have shipped, including a defence deployment, the hard part was never calling a model. It was evaluation, failure handling, and running it offline where the data lives.
+
+If you are early in your career, a demo notebook will not set you apart. A small system you deployed, monitored and can explain when it breaks will.
+
+If you are hiring, ""AI experience"" on a posting means little until you ask what they kept running.
+
+The label on the job is changing. The need for engineers who can own a system in production is not.
+
+What is the one production skill you would hire for first?",#AI #MachineLearning #AIEngineering #TechCareers #LLM
