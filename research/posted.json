@@ -80,6 +80,15 @@
    "post_urn": "urn:li:ugcPost:7530442925953036288",
    "source": "writer",
    "hook_style": "builder_warning"
+  },
+  "23112894": {
+   "drop": 10,
+   "doi": "10.5281/zenodo.23112895",
+   "title": "Whose Goals? Autotelic Agents Generate Goals Within Spaces They Are Given",
+   "posted_at": "2026-11-24T07:01:09+05:30",
+   "post_urn": "urn:li:ugcPost:7530805174219759616",
+   "source": "writer",
+   "hook_style": "number_gap"
   }
  },
  "digests": {
@@ -103,6 +112,6 @@
    ]
   }
  },
- "last_daily_date": "2026-11-23",
- "last_posted_at": "2026-11-23T07:01:43+05:30"
+ "last_daily_date": "2026-11-24",
+ "last_posted_at": "2026-11-24T07:01:09+05:30"
 }

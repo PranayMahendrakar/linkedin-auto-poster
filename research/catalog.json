@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-23T07:01:33+05:30",
+ "generated_at": "2026-11-24T07:01:00+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 170,
+ "count": 172,
  "papers": [
   {
    "id": "14040452",
@@ -4591,9 +4591,9 @@
    "pdf_name": "a-belief-probe-is-not-a-coordination-test.pdf",
    "pdf_size": 409469,
    "zenodo_url": "https://zenodo.org/records/24442238",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24442238"
+   "lor_url": "https://lifeofresearch.com/preprints/264",
+   "lor_id": 264,
+   "link": "https://lifeofresearch.com/preprints/264"
   },
   {
    "id": "24450651",
@@ -4619,9 +4619,65 @@
    "pdf_name": "a-composed-policy-is-not-a-predicted-run.pdf",
    "pdf_size": 376670,
    "zenodo_url": "https://zenodo.org/records/24450652",
+   "lor_url": "https://lifeofresearch.com/preprints/265",
+   "lor_id": 265,
+   "link": "https://lifeofresearch.com/preprints/265"
+  },
+  {
+   "id": "24472982",
+   "record_id": "24472983",
+   "doi": "10.5281/zenodo.24472983",
+   "title": "An Evaded Monitor Is Not a Hidden Thought: What Training Against Chain-of-Thought Monitors Produces, Why Monitor Recall Cannot Tell Omission, Encoding and Monitor Exploitation Apart, and the Probe Battery That Would",
+   "short_title": "An Evaded Monitor Is Not a Hidden Thought",
+   "abstract": "Reading a reasoning model's chain of thought for signs of misbehaviour is one of the few oversight tools that currently works, and the standing worry about it is that optimisation pressure will teach models to hide their reasoning in text no reader can decode. A September 2026 study reports something else: reasoning models trained by reinforcement learning against an LLM monitor learned to slip side-task reasoning past it while leaving that reasoning plainly legible, by phrasing and framing the trace so that the monitor declined to flag it. In this analysis the author reviews and synthesises published results to show that this finding is one instance of a general measurement problem. A drop in monitor recall under pressure is produced by at least four different processes - the reasoning leaves the trace (omission), the reasoning stays but becomes unreadable (encoding), the reasoning stays readable but loses salience (dilution), or the trace acts on the monitor's judgement (exploitation) - and the published record has mostly reported the drop without separating them. Re-read with that partition, the record shows three things. The best-known case of obfuscation under monitor pressure is described by its own authors as omission, and whether its traces were load-bearing was not tested. The necessity argument for monitorability secures legibility to some reader, not detection by a given monitor, because a monitor is an LLM judge whose adversary writes all of its input. And nearly every direct test of encoding that would also look innocuous finds it costly or rare outside convenient cover tasks or extra affordances, while every direct test of LLM-judge robustness finds judges cheap to move, so exploitation is the route optimisation should find first. The paper consolidates 34 measured results in two tables and a figure, gives a probe battery as an algorithm that assigns an evasion episode to a route, and names five studies that would settle what remains open. What is established is that legibility and detectability came apart in one controlled setting; how often each route appears under realistic training pressure is not known.",
+   "keywords": [
+    "chain-of-thought monitoring",
+    "monitorability",
+    "encoded reasoning",
+    "steganography",
+    "LLM-as-a-judge robustness",
+    "AI control",
+    "reinforcement learning",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-23",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24472983/files/an-evaded-monitor-is-not-a-hidden-thought.pdf/content",
+   "pdf_name": "an-evaded-monitor-is-not-a-hidden-thought.pdf",
+   "pdf_size": 385199,
+   "zenodo_url": "https://zenodo.org/records/24472983",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24450652"
+   "link": "https://doi.org/10.5281/zenodo.24472983"
+  },
+  {
+   "id": "24485493",
+   "record_id": "24485494",
+   "doi": "10.5281/zenodo.24485494",
+   "title": "A Preserved Score Is Not a Preserved Answer: What Position-Independent KV Cache Reuse Evaluations Measure, Why Conditioning on the Baseline's Success Does Not Remove the Ambiguity, and the Paired Audit That Would Separate Fidelity, Accuracy and the Source of Loss",
+   "short_title": "A Preserved Score Is Not a Preserved Answer",
+   "abstract": "Position-independent KV cache reuse lets a retrieval-augmented system compute each document chunk's key-value state once and splice it into later prompts at any position, recomputing a small fraction of tokens to patch what the splice misses. Most systems in this line report that they keep full-prefill quality, and most report it as an aggregate F1 on the same three multi-hop subsets of LongBench. A 2026 critique argues that this headline is inflated: up to 42 percent of a reuse method's F1 comes from queries the full-prefill baseline answers with zero F1, and the authors propose to score reuse only on a \"meaningful subset\" where the baseline succeeds, the model cannot answer without context, and the answer cannot be guessed. In this analysis the author reviews and synthesises published results to show that the critique is right about the aggregate and that its repair is not the unambiguous measurement it is presented as. \"Accuracy loss attributable to reuse\" names at least three quantities: fidelity to the full-prefill output, net change in task accuracy, and the share of the baseline's correct answers that reuse keeps. The meaningful subset estimates the third by conditioning on one arm's success. It discards answer flips in one direction and keeps those in the other, so under a perturbation that leaves accuracy unchanged on net it still registers loss, and no accuracy evaluation in the line reports both flip directions or a null-perturbation floor. A 2026 fidelity study shows how far apart the quantities sit: composing caches without repair changed 52.8 and 62.2 percent of full-prefill answers on two multi-hop sets while gold exact match fell 19.0 and 14.0 points, and the repair that restored fidelity re-encoded most of the context, and no measured operating point was both faithful and faster than full prefill. The field also disagrees about what reuse loses - missing cross-chunk attention, repeated attention sinks, or context computed under the wrong history - and the benchmarks used to adjudicate are ones on which most questions are known to be answerable without connecting chunks. The paper consolidates the measured values in two tables, proposes a paired audit that reports both flip directions against matched null perturbations and separates three sources of loss, and states which outcomes would support which reading.",
+   "keywords": [
+    "KV cache reuse",
+    "position-independent caching",
+    "retrieval-augmented generation",
+    "LLM serving",
+    "evaluation methodology",
+    "paired comparison",
+    "multi-hop question answering",
+    "attention sinks"
+   ],
+   "published": "2026-11-24",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24485494/files/a-preserved-score-is-not-a-preserved-answer.pdf/content",
+   "pdf_name": "a-preserved-score-is-not-a-preserved-answer.pdf",
+   "pdf_size": 358539,
+   "zenodo_url": "https://zenodo.org/records/24485494",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24485494"
   }
  ]
 }
