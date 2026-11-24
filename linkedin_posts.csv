@@ -9624,3 +9624,26 @@ If you are hiring, ""AI experience"" on a posting means little until you ask wha
 The label on the job is changing. The need for engineers who can own a system in production is not.
 
 What is the one production skill you would hire for first?",#AI #MachineLearning #AIEngineering #TechCareers #LLM
+552,Open-Weight Model Policy,"Hot take: open weights are now a policy question, not just a licensing detail.
+
+The US-China Economic and Security Review Commission's 2026 annual report says China uses open-weight releases to make its AI the global default.
+
+I will leave the geopolitics to others.
+
+What I care about is the architecture.
+
+In a defence deployment I worked on, the model had to run offline on hardware the customer owned. It felt restrictive at first. It became the best decision in the project.
+
+Every dependency was visible. Every part was replaceable.
+
+So here is my checklist:
+
+1. Keep a model bill of materials: source, version, license, hash.
+2. Put a thin interface between your app and the model.
+3. Evaluate on your own data, not someone else's leaderboard.
+
+A downloaded checkpoint is a third-party binary. Treat it like one.
+
+The model is a replaceable part. The architecture that lets you replace it is the product.
+
+Can your team answer ""what model, from where, and how fast can we swap it?"" in one meeting?",#AI #OpenWeights #LLM #AIGovernance #OnDeviceAI

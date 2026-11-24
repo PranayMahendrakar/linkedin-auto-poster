@@ -2662,3 +2662,34 @@ Rotate credentials on a schedule a machine-speed attacker cannot outrun.
 The uncomfortable lesson of ARTEX is that closing the source did not close the risk. The tooling is out, it is cheap, and it improves with every new model release.
 
 Takeaway: you cannot patch the attacker's tools, so shrink what those tools can see.",#AI #CyberSecurity #AIAgents #LLM #OnDeviceAI
+2026-11-24,552,Open-Weight Model Policy,"Hot take: open weights are now a policy question, and your architecture is your answer",https://pranaymahendrakar.com/blog/hot-take-open-weights-are-now-a-policy-question-and-your-architecture-,"This month the US-China Economic and Security Review Commission released its 2026 annual report. A recurring theme: China releases models with open weights so that its AI becomes the global default. Coverage from outlets like the South China Morning Post and Computerworld reads it the same way.
+
+I am not going to argue geopolitics. I want to talk about what this means for people who ship systems.
+
+Open weights are no longer just a licensing detail. They are becoming a policy variable, and policy variables change under you. If your product depends on a model that a procurement rule, an export rule or a customer's legal team can suddenly object to, you have a roadmap risk that no benchmark will show you.
+
+Here is the practical part. In the AI systems I have shipped over the years, across automotive, defence and education, the question that decided the architecture was almost never ""which model is best this month."" It was ""where does this run, who controls it, and what happens when we have to swap it.""
+
+In a defence deployment I worked on, the model had to run offline, on hardware the customer owned. That constraint felt painful at the start. It turned out to be the best design decision in the project, because every dependency was visible and replaceable.
+
+That is my bias, and I will say it plainly: models should run where the data is. On-device, offline, under your control.
+
+Open weights help with that, but only if you treat them correctly. A downloaded checkpoint is not a trusted component. It is a binary from a third party. Treat it like one.
+
+Three things I would do this quarter.
+
+First, keep a model bill of materials. For every model in production, record where the weights came from, which version, which license, and which hash. If a customer asks ""what is inside this product,"" you should answer in minutes, not weeks.
+
+Second, put a thin abstraction between your application and the model. Prompts, tool schemas and output parsers should not be welded to one vendor's quirks. When I build retrieval pipelines, I keep the model behind a narrow interface so a swap is a config change plus an evaluation run, not a rewrite.
+
+Third, build your own evaluation set from your own data. Public leaderboards tell you how a model does on someone else's problems. A held-out set from your domain tells you whether a replacement is safe. This is also where hallucination checks matter, especially in Indic languages, where models that look strong in English can fall apart.
+
+Notice what this list does not say. It does not say ban open weights, and it does not say avoid them. Open weights are why a small team in Bengaluru can build something serious without asking anyone's permission. That openness is worth defending.
+
+But openness without discipline is just a different kind of lock-in. You trade a vendor you can call for a supply chain you never audited.
+
+The teams that will be calm when the rules shift are the ones who can answer three questions today. What model are we running? Where did it come from? How fast can we replace it?
+
+If you cannot answer those in one meeting, that is your project for next week, not the next model release.
+
+Takeaway: the model is a replaceable part. The architecture that lets you replace it is the product.",#AI #OpenWeights #LLM #AIGovernance #OnDeviceAI
