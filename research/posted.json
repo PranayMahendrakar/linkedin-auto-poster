@@ -89,6 +89,15 @@
    "post_urn": "urn:li:ugcPost:7530805174219759616",
    "source": "writer",
    "hook_style": "number_gap"
+  },
+  "23130395": {
+   "drop": 11,
+   "doi": "10.5281/zenodo.23130396",
+   "title": "The Evaluator Is the Bottleneck",
+   "posted_at": "2026-11-25T07:04:53+05:30",
+   "post_urn": "urn:li:ugcPost:7531168498400722944",
+   "source": "writer",
+   "hook_style": "builder_warning"
   }
  },
  "digests": {
@@ -112,6 +121,6 @@
    ]
   }
  },
- "last_daily_date": "2026-11-24",
- "last_posted_at": "2026-11-24T07:01:09+05:30"
+ "last_daily_date": "2026-11-25",
+ "last_posted_at": "2026-11-25T07:04:53+05:30"
 }

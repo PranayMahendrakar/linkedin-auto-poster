@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-24T07:01:00+05:30",
+ "generated_at": "2026-11-25T07:04:43+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 172,
+ "count": 174,
  "papers": [
   {
    "id": "14040452",
@@ -4647,9 +4647,9 @@
    "pdf_name": "an-evaded-monitor-is-not-a-hidden-thought.pdf",
    "pdf_size": 385199,
    "zenodo_url": "https://zenodo.org/records/24472983",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24472983"
+   "lor_url": "https://lifeofresearch.com/preprints/276",
+   "lor_id": 276,
+   "link": "https://lifeofresearch.com/preprints/276"
   },
   {
    "id": "24485493",
@@ -4675,9 +4675,65 @@
    "pdf_name": "a-preserved-score-is-not-a-preserved-answer.pdf",
    "pdf_size": 358539,
    "zenodo_url": "https://zenodo.org/records/24485494",
+   "lor_url": "https://lifeofresearch.com/preprints/274",
+   "lor_id": 274,
+   "link": "https://lifeofresearch.com/preprints/274"
+  },
+  {
+   "id": "24502640",
+   "record_id": "24502641",
+   "doi": "10.5281/zenodo.24502641",
+   "title": "A Stricter Filter Is Not a Sharper One: What Pseudo-Label Filtering on Noisy Police Radio Shows About Internal Confidence and LLM Judges, Why Unmatched Retention Decides the Comparison, and the Risk-Coverage Audit That Would Rank the Selectors",
+   "short_title": "A Stricter Filter Is Not a Sharper One",
+   "abstract": "Pseudo-labelling adapts a pretrained speech recogniser to a new domain by training it on its own transcripts of unlabelled audio, and it works only if the bad transcripts can be removed first. A 2026 study of broadcast police radio reports that the recogniser's own confidence signals, average token log-probability and the STAR score, \"fail to distinguish between high and low quality BPC pseudo-labels\", and that a text-only LLM judge asked whether each transcript is plausible police radio does better. In this analysis the author reviews and synthesises published results to show that this comparison, as run, cannot carry that conclusion, and to state what would. Three features of the design decide the outcome before any discrimination is measured. The log-probability filter used a fixed threshold borrowed from a decoding heuristic and discarded under two of roughly 24 hours, while the judge discarded roughly a quarter to a third; no ranking metric and no matched-retention comparison was reported. The STAR arm used STAR's token reweighting but not its utterance-level filter. And the reference the study treats as an oracle sits below the inter-annotator disagreement measured on the same Chicago corpus (median 25.9 to 28.9 percent WER between human transcribers). Read against the wider record, internal confidence does degrade out of domain, but unevenly and in a way that depends on the metric: a prevalence-sensitive score falls sharply on every shifted set, while the equal error rate of a raw softmax baseline worsens toward chance on one shifted corpus and improves on another. Confidence used as a ranking with a percentile cut, or replaced by perturbation and multi-model agreement, has repeatedly selected useful pseudo-labels under noise and domain shift. A plausibility judge reads text alone, so it is structurally blind to the fluent hallucinations that matter most in police audio, and under iteration it became easier to satisfy while retained-label error rose. The paper consolidates the measured values in two tables, proposes a seven-step risk-coverage audit with an outcome table that says which reading each result would support, and names the comparison that would settle whether internal and external selectors are substitutes or complements.",
+   "keywords": [
+    "automatic speech recognition",
+    "pseudo-labelling",
+    "self-training",
+    "confidence estimation",
+    "LLM-as-a-judge",
+    "domain adaptation",
+    "selective prediction",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-24",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24502641/files/a-stricter-filter-is-not-a-sharper-one.pdf/content",
+   "pdf_name": "a-stricter-filter-is-not-a-sharper-one.pdf",
+   "pdf_size": 347082,
+   "zenodo_url": "https://zenodo.org/records/24502641",
+   "lor_url": "https://lifeofresearch.com/preprints/275",
+   "lor_id": 275,
+   "link": "https://lifeofresearch.com/preprints/275"
+  },
+  {
+   "id": "24517679",
+   "record_id": "24517680",
+   "doi": "10.5281/zenodo.24517680",
+   "title": "A Winning Transcript Is Not a Located Bottleneck: What Replacing an Image With Its Caption or Code Measures, Why the Same Gain Is Read as a Perception Failure and as a Selection Failure, and the Information-Matched Ladder That Would Tell Them Apart",
+   "short_title": "A Winning Transcript Is Not a Located Bottleneck",
+   "abstract": "When a multimodal language model is handed a caption or the plotting code of an image instead of the image itself, it often answers more questions correctly. A 2026 study reports gains of 10.2 to 23.6 points for two Qwen3.5 models on chart, math and general visual question answering, and reads the gain as evidence of a bottleneck that sits between perception and reasoning: the model sees the right evidence but selects the wrong evidence. A 2025 geometry study reports the same kind of gain and reads it the opposite way, as proof that perception is the bottleneck. In this analysis the author reviews and synthesises published results to show that the gain, taken alone, cannot locate a bottleneck at all. A symbolic view differs from its image in at least five ways: the information it states, the extraction errors it removes, the channel it uses, the reasoning it makes easier to apply, and the visual tokens it takes out of the context. Every one of the competing accounts predicts the gain. The size and sign of the gain also change with who wrote the transcript. Dataset code and captions give gains of 10 to 24 points, and weaker models reading a frontier model's captions gain 15 to 58, but a peer model reading the same captions gains 3 points on one task and loses 6 on another. When the text is the model's own caption, the gap runs from -32.4 points, where a fixed answerer reads question-blind captions, to +17.5 points for an open model on a geometry task, leaving aside two cells whose image baselines collapsed. A weaker model's caption costs a strong model 45.9 points on one version of a geometry benchmark and gains it 2.4 points on the other. When information is held equivalent across channels, the remaining text advantage ranges from about 1 point for rendered math in recent models to 29 points for isomorphic problem formats. The attention evidence offered for the selection reading is correlational, is computed over generated tokens that differ between conditions, and moves mainly through the distracting tokens. The paper consolidates the measured values in a table and a figure, sets out what each account predicts under four manipulations and a trace-level test, and gives an information-matched ladder, stated as an algorithm, that would apportion the gap among information, extraction, channel and use.",
+   "keywords": [
+    "multimodal large language models",
+    "visual reasoning",
+    "perception bottleneck",
+    "modality gap",
+    "symbolic views",
+    "evaluation methodology",
+    "attention analysis",
+    "on-policy self-distillation"
+   ],
+   "published": "2026-11-25",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24517680/files/a-winning-transcript-is-not-a-located-bottleneck.pdf/content",
+   "pdf_name": "a-winning-transcript-is-not-a-located-bottleneck.pdf",
+   "pdf_size": 489004,
+   "zenodo_url": "https://zenodo.org/records/24517680",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24485494"
+   "link": "https://doi.org/10.5281/zenodo.24517680"
   }
  ]
 }
