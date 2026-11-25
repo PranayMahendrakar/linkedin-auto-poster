@@ -1,0 +1,13 @@
+{
+ "concept_id": "23199459",
+ "hook_style": "myth_buster",
+ "body": "Matching human agreement doesn't show an LLM judge works. A null model scored 86.5% on AlpacaEval 2.0.\n\nThat null model emits one constant response, unrelated to the instruction. It is Zheng et al.'s result, not mine, and it shows what judge validation can miss.\n\nThe usual evidence is that a judge agrees with human labels as often as humans agree with each other. On MT-Bench, GPT-4 agreed with experts 85% of the time against 81% between the experts (Zheng et al., 2023). Then the judge gets used to rank models, filter data and supply reward.\n\nIn this paper I argue that agreement certifies only substitution on that item population. A simple two-loading model shows why: a judge sharing the labelers' shortcuts can match one that tracks quality. A predictor reading only surface form recovers 67.4% of MT-Bench's human votes (Chen et al., 2026).\n\nChecked against real outcomes, the picture changes. In one A/B-test study, judges agreed with each other at kappa 0.74 to 0.88 and with real outcomes at about 0.2 (Dooskin and Squoosh, 2026, exploratory).\n\nMy takeaway: validate a judge for a specific use, not in general. Agreement tells you it can replace the labelers. It doesn't tell you decisions made with it turn out well.\n\nThe full paper is attached below.",
+ "question": "Which check have you used to validate an LLM judge beyond agreement with human labels?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AIEvaluation",
+  "#LLMasaJudge"
+ ],
+ "written_at": "2026-11-25T11:03:17+05:30"
+}
