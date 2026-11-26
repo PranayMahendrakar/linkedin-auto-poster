@@ -98,6 +98,15 @@
    "post_urn": "urn:li:ugcPost:7531168498400722944",
    "source": "writer",
    "hook_style": "builder_warning"
+  },
+  "23130463": {
+   "drop": 12,
+   "doi": "10.5281/zenodo.23130464",
+   "title": "Spend the Budget on the Known or the Unknown?",
+   "posted_at": "2026-11-26T07:05:48+05:30",
+   "post_urn": "urn:li:ugcPost:7531531116667813889",
+   "source": "writer",
+   "hook_style": "contrast"
   }
  },
  "digests": {
@@ -121,6 +130,6 @@
    ]
   }
  },
- "last_daily_date": "2026-11-25",
- "last_posted_at": "2026-11-25T07:04:53+05:30"
+ "last_daily_date": "2026-11-26",
+ "last_posted_at": "2026-11-26T07:05:48+05:30"
 }

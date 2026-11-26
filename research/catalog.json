@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-25T07:04:43+05:30",
+ "generated_at": "2026-11-26T07:05:38+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 174,
+ "count": 176,
  "papers": [
   {
    "id": "14040452",
@@ -4731,9 +4731,65 @@
    "pdf_name": "a-winning-transcript-is-not-a-located-bottleneck.pdf",
    "pdf_size": 489004,
    "zenodo_url": "https://zenodo.org/records/24517680",
+   "lor_url": "https://lifeofresearch.com/preprints/283",
+   "lor_id": 283,
+   "link": "https://lifeofresearch.com/preprints/283"
+  },
+  {
+   "id": "24537484",
+   "record_id": "24537485",
+   "doi": "10.5281/zenodo.24537485",
+   "title": "A Different Route Is Not a Different Destination: What Controlled On- Versus Off-Policy Distillation Rules Out About Forgetting, Sparsity and Generalisation, Why Its Null Does Not Carry Over to the Gap Between Fine-Tuning and Reinforcement Learning, and the Target-Matched Comparison That Would Assign the Credit",
+   "short_title": "A Different Route Is Not a Different Destination",
+   "abstract": "Reinforcement learning on a language model's own samples has been credited with three advantages over supervised fine-tuning: it forgets less of what the model already knew, it changes fewer parameters, and it generalises further. A September 2026 study tests the common cause behind all three, the use of on-policy data, in a setting built to isolate it. It distils a stronger teacher into a weaker student, crosses student-sampled against teacher-sampled trajectories with forward against reverse KL, and sweeps the learning rate. Rollout source barely moves final accuracy, forgetting or update sparsity; the learning rate moves forgetting and sparsity, and KL direction moves accuracy. In this analysis the author reviews and synthesises published results to show that this null is sound for what it varies and cannot be carried over to the fine-tuning versus reinforcement learning comparison it is read against. \"On-policy\" names at least seven separable properties, and the distillation design varies one of them: whose prefixes the loss is computed on. With a fixed teacher and a full-vocabulary loss, both arms share a single minimiser, the teacher's next-token distribution at every visited prefix, so the rollout source can change the route but not the destination. The retention evidence on the other side comes from comparisons in which the training target moves with the model along with the prefixes: supervised fine-tuning on samples the model itself produced, regenerated during training, forgets mildly or not at all, while the same kind of samples drawn once from the starting model forget badly. Because regenerating a fine-tuning sample changes prefixes and target together, that evidence implicates the pair rather than prefix source alone, and the distillation arms, whose teacher is frozen, never vary the target. The sparsity evidence is dominated by step size and numerical precision; off-policy preference methods are as sparse as on-policy ones in the checkpoints usually cited. The one on-policy benefit the distillation study does find, transfer to harder task variants, is the one imitation-learning theory predicts from prefix source alone. The paper consolidates the measured values in a table and a figure, sets out a property ledger and an attribution procedure, and specifies the target-matched and step-matched comparisons that would settle what remains open.",
+   "keywords": [
+    "on-policy learning",
+    "knowledge distillation",
+    "catastrophic forgetting",
+    "parameter-update sparsity",
+    "reinforcement learning from verifiable rewards",
+    "supervised fine-tuning",
+    "post-training",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-25",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24537485/files/a-different-route-is-not-a-different-destination.pdf/content",
+   "pdf_name": "a-different-route-is-not-a-different-destination.pdf",
+   "pdf_size": 354476,
+   "zenodo_url": "https://zenodo.org/records/24537485",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24517680"
+   "link": "https://doi.org/10.5281/zenodo.24537485"
+  },
+  {
+   "id": "24545380",
+   "record_id": "24545381",
+   "doi": "10.5281/zenodo.24545381",
+   "title": "A Likelihood Ratio Is Not a Whole Reading: What Class-Conditional Guard Models Change About Shortcuts, Calibration and Position, Why the Generative-Classifier Evidence Does Not Transfer to a Discriminatively Trained Ratio, and the Matched Comparison That Would Assign the Gains",
+   "short_title": "A Likelihood Ratio Is Not a Whole Reading",
+   "abstract": "Guard models screen the prompts sent to a language model and the responses it returns, and almost all of them are trained to emit one verdict token. A 2026 proposal argues that this objective is the root of three familiar failures - reliance on shortcut cues, overconfidence, and sensitivity to where the evidence sits in the input - and replaces it with a class-conditional score: a masked diffusion model reconstructs the moderated text under a \"safe\" and an \"unsafe\" hypothesis, and the difference of the two log-likelihoods is the verdict. Among thirteen guards on the authors' held-out benchmarks, the resulting guard posts the best average F1 and the lowest calibration error. In this analysis the author reviews and synthesises published results to show that the measured gains are real but that the attribution to the objective is not yet earned. Four things change at once in that comparison: the training loss, the backbone and its attention mask, the training data and fine-tuning regime, and the inference compute. The loss that is actually optimised is a binary cross-entropy on the likelihood difference, which is a discriminative loss over a generative parameterisation; the argument that generative classifiers avoid shortcuts because they must model every feature was established for pure class-conditional training, and in the strongest text evidence for it adding an unconditional generative term to a discriminative loss did not help. The one same-backbone ablation reads a verdict from weights never trained to produce one, so it isolates a readout, not an objective. The generative-classifier record outside guards is two-sided, and the side favouring generative models is weakest for pretrained models fine-tuned on ample data, which is the guard setting. A documented refusal-cue shortcut sits in one of the two training sets, and nothing in a class-conditional model stops it from being learned. The paper consolidates the measured values in two tables and a figure, separates what each published number can and cannot support, and specifies a factorial audit - objective, backbone, data and readout varied one at a time, with threshold sweeps, post-hoc calibration and cue-insertion tests - stating which outcome would support which reading.",
+   "keywords": [
+    "guard models",
+    "content moderation",
+    "generative classifiers",
+    "masked diffusion language models",
+    "shortcut learning",
+    "calibration",
+    "LLM safety",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-26",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24545381/files/a-likelihood-ratio-is-not-a-whole-reading.pdf/content",
+   "pdf_name": "a-likelihood-ratio-is-not-a-whole-reading.pdf",
+   "pdf_size": 372088,
+   "zenodo_url": "https://zenodo.org/records/24545381",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24545381"
   }
  ]
 }
