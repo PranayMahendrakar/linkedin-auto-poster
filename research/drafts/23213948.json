@@ -1,0 +1,14 @@
+{
+ "concept_id": "23213948",
+ "hook_style": "contrast",
+ "body": "A defence that learns what is normal cannot tell an attack from growth.\n\nIn continual learning, change is the job. Poisoning and a legitimate shift both reach the defender as data it doesn't yet explain.\n\nI wrote a paper on what a defence built on the system's own history can certify. I went through the published evidence, and the answer is narrower than either side claims.\n\nEvery positive guarantee I located holds the benign distribution fixed, bounds how far it can move, or assumes attacks are rare. None survives unbounded legitimate drift plus a persistent minority attacker. Slow attacks simply become the new normal.\n\nWhat works has a reference the update loop cannot rewrite. FLTrust gives the server 100 clean labelled examples, and its authors report error near the no-attack baseline with up to 90 percent of clients malicious. That is their best case.\n\nThe catch is staleness. In an Android malware study by Chen and colleagues, F1 fell from 0.99 to 0.76 after six months without new labels. Their method held a mean F1 of 89 percent with 50 analyst labels a month.\n\nTakeaway: don't ask whether an update is unusual. Ask whether it makes the model worse on data it cannot touch, then budget for keeping that data fresh.\n\nThe full paper is attached below.",
+ "question": "If you run a model that keeps learning in production, what do you hold outside the update loop to tell drift from damage?",
+ "hashtags": [
+  "#AI",
+  "#MachineLearning",
+  "#AISafety",
+  "#DataPoisoning",
+  "#ContinualLearning"
+ ],
+ "written_at": "2026-11-26T10:45:08+05:30"
+}
