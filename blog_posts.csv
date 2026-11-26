@@ -2722,3 +2722,38 @@ None of this is exotic. It is the same least-privilege thinking security teams h
 Regulators are now willing to treat an agent's actions as the operator's responsibility. Whatever happens in this case, that direction is clear. If your agent does something, you did it.
 
 Takeaway: a sandbox you have not tried to escape is a guess, and a guess is not a safety control.",#AI #AIAgents #AISafety #LLM #Cybersecurity
+2026-11-26,554,Meta Scraping Terms Pause,Hot take: Meta's paused scraping terms prove your data policy is only as strong as someone else's contract,,"On 5 November, Meta paused four sets of business terms that were due to take effect on 20 November. The paused sets were the Commercial Terms, Product Catalog Terms, Self-Serve Ad Terms and Ad Creative Generative AI Terms.
+
+The reason for the outcry: the terms would have allowed Meta to crawl websites associated with business accounts on Facebook, Instagram, WhatsApp and Threads. Nieman Lab and Search Engine Journal both report the pause, and that the existing terms stay in force for now.
+
+The timeline is worth reading slowly. On 16 October the word ""train"" was removed from the text. On 23 October the effective date moved from 30 October to 20 November. Then on 5 November the whole thing was paused, with no new date given.
+
+I am not here to say what Meta intended. Meta has said the update was not about scraping news sites, and I have no way to check intent from where I sit. My point is narrower.
+
+If your website, your catalogue and your content are only protected by what someone else's terms of service say this month, you do not have a data policy. You have a hope.
+
+I have built enough systems for regulated and sensitive environments to know how this goes. In defence and education work, the first question is never which model to use. It is where the data is allowed to go, and who can change that answer without asking you.
+
+A contract clause can change in a Business Help Center update. A network boundary cannot. An offline deployment does not read your terms of service at all, because it never talks to anyone.
+
+That is the bias behind most of my work: models should run where the data is. On-device, offline, under your control. It sounds like a purity position. In practice it is a risk-management position.
+
+Here is what I would do this week if I owned a product that touches a platform like this.
+
+First, list every place your content is exposed to a third party's crawler or a third party's model, and write down which clause currently governs it. If you cannot find the clause, that is your answer.
+
+Second, separate what is public by design from what is public by accident. Product pages are one thing. Internal documentation that happens to sit behind a weak login is another.
+
+Third, make sure you can function if a platform's terms change underneath you. If your retrieval pipeline, your support bot or your analytics depends on a platform's goodwill, price in the day that goodwill ends.
+
+Fourth, when you build your own retrieval or fine-tuning pipelines, treat your own data lineage as seriously as you expect others to treat yours. Know what went in, under what permission, and how to remove it. This is dull work, and it is exactly the work that gets skipped in demos.
+
+The pause is good news for now. It shows that pushback works, and that publishers and businesses noticed a change in wording and said so loudly.
+
+But a pause is not a repeal. Meta said it will update when it has more to share. The same language, or something close to it, can come back with a new date.
+
+The lesson I take from this is not about one company. It is that anything you cannot enforce technically, you are only borrowing.
+
+Design as if the terms will change, because they will. Keep the sensitive data close, keep the models closer, and treat every external clause as temporary.
+
+Takeaway: your data policy is not what you wrote down. It is what your architecture makes impossible.",#AI #DataGovernance #LLM #Privacy #OnDeviceAI

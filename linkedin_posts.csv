@@ -9670,3 +9670,26 @@ Also notice someone was counting those incidents. Could you produce that number 
 If not, you have a hope, not a platform.
 
 Where is your agent boundary weakest right now? Tell me in the comments.",#AI #AIAgents #AISafety #LLM #Cybersecurity
+554,Meta Scraping Terms Pause,"Hot take: your data policy is only as strong as someone else's contract.
+
+On 5 November, Meta paused four sets of business terms due on 20 November.
+
+They would have let Meta crawl websites tied to business accounts on Facebook, Instagram, WhatsApp and Threads.
+
+The word ""train"" was removed on 16 October. The date slipped from 30 October to 20 November. Then the pause, with no new date.
+
+I won't guess at intent. Meta says it was not about news sites.
+
+But a pause is not a repeal.
+
+In the sensitive systems I have worked on, the first question was never which model. It was where the data is allowed to go, and who can change that answer without asking you.
+
+A clause can change overnight. A network boundary cannot.
+
+Offline deployments never read your terms of service, because they never talk to anyone.
+
+This week: list every place a third party can crawl or train on your content, and write down the clause that governs each one. If you can't find it, that is your answer.
+
+Anything you cannot enforce technically, you are only borrowing.
+
+Which of your data flows depend on a contract you don't control?",#AI #DataGovernance #LLM #Privacy #OnDeviceAI
