@@ -1,0 +1,14 @@
+{
+ "concept_id": "23225366",
+ "hook_style": "number_gap",
+ "body": "Llama 3 flagged 52% of one benchmark for a gain under 2 points, and 95% of another for 41.\n\nThose are Natural Questions and BIG-Bench Hard, and the figures are from the Llama 3 report, not mine. Same detector, wildly different payoff.\n\nAlmost every model report now runs the same ritual: flag the items that overlap the training data, rescore on the clean remainder, and if the gap is small, say the headline numbers stand.\n\nIn this paper I argue that the clean-subset gap estimates neither exposure nor inflation. A short derivation shows it recovers the true inflation only if unflagged items carry none, and flagged items would have scored like unflagged ones anyway. The published record contradicts both.\n\nExposure to some items raises scores on items never seen. Contamination can fade during pretraining and resurface after post-training. And in the GPT-4 report, the text-only model scored higher on the non-contaminated LSAT subset (167) than on the full exam (161), which inflation alone cannot explain. Those are OpenAI's figures.\n\nSo a small gap is not proof of a clean score. Before you run a contamination check, state which claim it protects, then pick a reference that can actually estimate the inflation, such as fresh matched items.\n\nThe full paper is attached below.",
+ "question": "When you read a model report's contamination section, what would make you trust its conclusion?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#MachineLearning",
+  "#BenchmarkContamination",
+  "#EvaluationValidity"
+ ],
+ "written_at": "2026-11-27T10:43:11+05:30"
+}
