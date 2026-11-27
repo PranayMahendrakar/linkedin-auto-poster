@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-26T07:05:38+05:30",
+ "generated_at": "2026-11-27T07:04:28+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 176,
+ "count": 178,
  "papers": [
   {
    "id": "14040452",
@@ -4759,9 +4759,9 @@
    "pdf_name": "a-different-route-is-not-a-different-destination.pdf",
    "pdf_size": 354476,
    "zenodo_url": "https://zenodo.org/records/24537485",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24537485"
+   "lor_url": "https://lifeofresearch.com/preprints/286",
+   "lor_id": 286,
+   "link": "https://lifeofresearch.com/preprints/286"
   },
   {
    "id": "24545380",
@@ -4787,9 +4787,65 @@
    "pdf_name": "a-likelihood-ratio-is-not-a-whole-reading.pdf",
    "pdf_size": 372088,
    "zenodo_url": "https://zenodo.org/records/24545381",
+   "lor_url": "https://lifeofresearch.com/preprints/285",
+   "lor_id": 285,
+   "link": "https://lifeofresearch.com/preprints/285"
+  },
+  {
+   "id": "24565010",
+   "record_id": "24565011",
+   "doi": "10.5281/zenodo.24565011",
+   "title": "A Residue Is Not a Recurrence: What 'Reinforcement Learning Alone' Shows About Information Carried in a Streamed KV Cache After Context Compaction, Why Presence, Use, Channel and Benefit Are Separate Claims, and the Re-Prefill and Cache-Swap Controls That Would Tell Them Apart",
+   "short_title": "A Residue Is Not a Recurrence",
+   "abstract": "Long-horizon language-model agents keep their memory bounded by compaction: past turns are deleted, sometimes replaced by a summary, and the agent carries on. There are two ways to carry on. A re-prefill pipeline rebuilds the cache from the text that survived, so the agent's state is exactly what it can read. A streaming pipeline keeps the cached keys and values of the surviving tokens, which were computed while the deleted turns were still visible, so the state also holds a residue of what was deleted. A September 2026 study makes streaming cheap to train with reinforcement learning, and reports, against an earlier summary-masking method that used supervised fine-tuning first, that reinforcement learning alone is enough for the streamed cache to act as a recurrent state. In this analysis the author reviews and synthesises published results to show that this sentence joins four claims of unequal standing. Presence, that the retained keys and values encode deleted content, is architectural: the earlier method's own toy-model probes find it unchanged across training, and it holds for any eviction that does not recompute. Use, that the policy's outputs depend on that residue, is what training adds, and the streaming study's controlled recall task shows reinforcement learning can add it when a reward scores recall directly and chance success is 20 percent; its supervised arm recalls perfectly from 16 decoded tokens, while its reinforcement-learning arm varies by tens of points across seeds at 16, 32 and 256 tokens. Channel, that the information travels in the residue rather than in visible tokens, is established only for the supervised arm, whose decoded sequence is fixed; the reinforcement-learning arm samples its own sequence, which could carry a code. Benefit, that the residue raises task return, is not shown for agents: matched streaming and re-prefill training runs differ in both directions across strategies, under confounds that prevent crediting the residue, while a 15.3-point loss from removing the residue was measured on a model trained with it. The paper consolidates the measured values in a table and a figure, sets out a ledger of where deleted information can survive, and specifies an attribution procedure with re-prefill, sequence-swap and cache-swap controls that would separate the four claims.",
+   "keywords": [
+    "context compaction",
+    "KV cache",
+    "agentic reinforcement learning",
+    "long-horizon agents",
+    "latent state",
+    "chain-of-thought monitorability",
+    "steganography",
+    "evaluation methodology"
+   ],
+   "published": "2026-11-26",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24565011/files/a-residue-is-not-a-recurrence.pdf/content",
+   "pdf_name": "a-residue-is-not-a-recurrence.pdf",
+   "pdf_size": 333113,
+   "zenodo_url": "https://zenodo.org/records/24565011",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24545381"
+   "link": "https://doi.org/10.5281/zenodo.24565011"
+  },
+  {
+   "id": "24573053",
+   "record_id": "24573054",
+   "doi": "10.5281/zenodo.24573054",
+   "title": "A Portable Encoder Is Not a Portable Rule: What Frozen Earth-Observation Embeddings Carry Across Regions, Why Recovery From a Few Target Labels Does Not Locate a Cross-Region Loss, and the Controls That Would Separate Readout, Shift and Place",
+   "short_title": "A Portable Encoder Is Not a Portable Rule",
+   "abstract": "Global embedding products such as AlphaEarth Foundations and TESSERA are meant to be used frozen, with a small classifier fitted to local labels, and they are judged almost entirely by how well that local classifier does. A September 2026 wildfire study shows that the embeddings' advantage over Sentinel-2 index summaries inside a fire is mostly lost when the probe is fitted on fires in other regions and applied to a new one, that eight labelled blocks of the new fire restore it, and that the probe directions fitted in different fires are close to orthogonal; from this it concludes that the representation is not the cause. An August 2026 study of the same AlphaEarth product finds the reverse ordering: in Victoria, Australia, embedding models transferred to nearby regions far better than models on physical variables. In this analysis the author reviews and synthesises published results to show that the two studies, and the product papers behind them, use the word transfer for three different properties - an encoder that supports a good local rule anywhere, a rule that survives a move to a new region, and a rule that survives a move to a later year - and that the published evidence supports the first, contradicts an unconditional form of the second, and is a single pair of fires for the third. Recovery from a few target labels establishes only that the target is linearly separable in the embedding; that is predicted equally by regional differences in what burns, by differences in what the control pixels are, and by a high-dimensional probe fitting the place a particular fire happened to cover. The wildfire study's own tables add a fact its conclusion leaves out: with identical labels, the index summaries lose 0.055 AUC on transfer and the embeddings 0.148 to 0.176, so the extra loss is attached to the descriptor, not to the task. The paper consolidates the measured values in a table and a figure, sets out four accounts of a lost margin with the evidence that bears on each, and specifies an attribution procedure - coordinate and placebo-footprint controls, composition-matched backgrounds, a pooled shared-rule ceiling and a physical-anchoring check - that would say which account holds.",
+   "keywords": [
+    "geospatial foundation models",
+    "Earth-observation embeddings",
+    "spatial transferability",
+    "linear probing",
+    "distribution shift",
+    "wildfire susceptibility",
+    "evaluation methodology",
+    "domain adaptation"
+   ],
+   "published": "2026-11-27",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24573054/files/a-portable-encoder-is-not-a-portable-rule.pdf/content",
+   "pdf_name": "a-portable-encoder-is-not-a-portable-rule.pdf",
+   "pdf_size": 321081,
+   "zenodo_url": "https://zenodo.org/records/24573054",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24573054"
   }
  ]
 }
