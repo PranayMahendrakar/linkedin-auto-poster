@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.25"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="800" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="400" height="56" rx="28" fill="none" stroke="#F59E0B" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#F59E0B">AI POWER DEMAND</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="110" fill="#F5F7FA">The limit isn't</text>
+<text x="80" y="420" font-size="110" fill="#F59E0B">chips. It's power.</text>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="540">EIA expects record US power use</text>
+<text x="80" y="595">in 2026 and again in 2027.</text>
+<text x="80" y="650" font-weight="700" fill="#F5F7FA">Measure watts per task.</text>
+</g>
+<g fill="none" stroke="#F59E0B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M640 950 V870"/><path d="M720 950 V810"/><path d="M800 950 V740"/><path d="M880 950 V670"/>
+<path d="M780 560 L730 660 H790 L750 740"/>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#F59E0B"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>

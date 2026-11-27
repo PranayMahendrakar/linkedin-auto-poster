@@ -9714,3 +9714,24 @@ So before buying a new AI security tool:
 The AI part is new. The weaknesses it exploits are not.
 
 What is the one boring security fix your team keeps postponing?",#AI #Cybersecurity #LLM #InfoSec #OnDeviceAI
+556,AI Power Demand,"The next AI bottleneck isn't a chip. It's the power bill.
+
+The US Energy Information Administration expects American electricity use to hit record highs in both 2026 and 2027. Reporting ties much of that growth to AI data centers.
+
+Most teams I talk to still plan around GPU availability. Few plan around watts.
+
+In a defence deployment I worked on, the model had to run offline on hardware the customer owned, inside a fixed power budget. That constraint forced better decisions than any benchmark did.
+
+We picked the smallest model that passed our own evaluation. We cached what we could. We stopped calling a large model for tasks a small one handled fine.
+
+Here is what I would do now:
+
+1. Track energy and cost per completed task, not per token.
+2. Route easy requests to small models, hard ones to big models.
+3. Ask whether the workload needs a data centre at all, or can run on-device.
+
+Cheap tokens can hide an expensive grid. The teams that treat power as a design input will ship the cheaper product.
+
+The model is not the only thing you are renting. You are renting electricity too.
+
+Does your team know what one completed AI task costs in energy? Tell me in the comments.",#AI #LLM #OnDeviceAI #MachineLearning #AIInfrastructure
