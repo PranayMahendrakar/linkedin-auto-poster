@@ -2757,3 +2757,36 @@ The lesson I take from this is not about one company. It is that anything you ca
 Design as if the terms will change, because they will. Keep the sensitive data close, keep the models closer, and treat every external clause as temporary.
 
 Takeaway: your data policy is not what you wrote down. It is what your architecture makes impossible.",#AI #DataGovernance #LLM #Privacy #OnDeviceAI
+2026-11-27,555,NCSC AI Cyber Intrusion,Hot take: the UK's AI cyber warning is really a patching and architecture problem,https://pranaymahendrakar.com/blog/hot-take-the-uks-ai-cyber-warning-is-really-a-patching-and-architectur,"On 3 November the UK's National Cyber Security Centre published an assessment of AI and cyber intrusion, looking out to 2028. Its headline judgement: it is highly likely that AI-powered malware will be used in a ransomware attack against UK critical national infrastructure by then.
+
+Most of the coverage stopped at that sentence. The more useful part is the one underneath it.
+
+The NCSC describes AI as a force multiplier. It speeds up and scales the attack methods that already exist. It does not, in their assessment, run end-to-end attacks on its own. The scenarios are also labelled plausible possibilities, not predictions.
+
+I think that framing is exactly right, and it changes what defenders should do on Monday morning.
+
+If AI is a multiplier, then the attacker's advantage grows wherever your basics are weak. Unpatched systems. Flat networks. Credentials that live too long. Services that talk to the internet because nobody ever asked whether they should. A faster attacker finds those gaps sooner. That is all.
+
+I have worked on deployments in defence and on research platforms with thousands of users. The pattern is consistent. The incidents that hurt were almost never exotic. They were an ordinary weakness that sat open longer than anyone intended.
+
+So here is my opinion: do not buy a new AI security product because of this report. First shrink the time between ""a flaw is known"" and ""a flaw is closed"". That number is your real exposure, and AI-assisted attackers are compressing the other side of it.
+
+The second thing is architecture. I have a long-standing bias that models and data should run where the data lives: on-device, offline, under your control. Security is the strongest argument for it.
+
+Every external API call in a sensitive workflow is a trust boundary. Every boundary needs a contract, monitoring and an incident plan. An offline system has fewer boundaries. When I built an offline multilingual avatar system for an automotive client, one of the quiet benefits was that there was no inference endpoint on the internet to attack. We did not have to defend something we had not exposed.
+
+That is not a universal answer. Plenty of workloads need hosted models, and a locally run model still needs patching and access control. But the default should be to justify the exposure, not to assume it.
+
+Third, treat your own AI systems as part of the attack surface. If you deploy agents, they hold credentials and take actions. A compromised or manipulated agent is an intruder with a badge. Scope its permissions as tightly as you would a new contractor's, log what it does, and rehearse turning it off.
+
+Fourth, assume the attacker's tooling will get cheaper. Detection that depends on an adversary being slow or sloppy will age badly. Build for behaviour you can see regardless of who or what is typing: unusual access patterns, unexpected data movement, privileges used at odd times.
+
+A word of caution on my own claims. The report is an assessment of what is likely, written by analysts working with uncertainty. I would not quote any date from it as a forecast. I would read it as a pressure test: if your organisation looks fragile under the baseline scenario, it was already fragile.
+
+What I like about the NCSC's tone is that it avoids the sci-fi version of the story. There is no superintelligent hacker here. There is a steady rise in speed and scale against defences that were already behind. That is a more boring story, and a more fixable one.
+
+If you run infrastructure, or build software that does, the work is unglamorous. Patch faster. Segment harder. Cut the number of places data leaves your control. Give every automated system the least access it needs.
+
+The AI part of AI-powered attacks is new. The weaknesses it exploits are not.
+
+Takeaway: the best defence against AI-assisted attackers is the boring discipline you were already supposed to have, applied faster and with fewer external dependencies.",#AI #Cybersecurity #LLM #InfoSec #OnDeviceAI

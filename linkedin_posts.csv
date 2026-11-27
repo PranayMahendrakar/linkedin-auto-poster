@@ -9693,3 +9693,24 @@ This week: list every place a third party can crawl or train on your content, an
 Anything you cannot enforce technically, you are only borrowing.
 
 Which of your data flows depend on a contract you don't control?",#AI #DataGovernance #LLM #Privacy #OnDeviceAI
+555,NCSC AI Cyber Intrusion,"Hot take: the UK's AI cyber warning is a patching problem in disguise.
+
+On 3 November the NCSC published an assessment looking to 2028. It says AI-powered malware will highly likely be used in a ransomware attack on UK critical infrastructure.
+
+But read the detail. AI is a force multiplier. It speeds up and scales existing attacks. It is not running them end to end.
+
+That means attackers gain most where your basics are weak.
+
+Unpatched systems. Flat networks. Long-lived credentials. Services exposed because nobody asked why.
+
+In defence and research deployments I have worked on, the incidents that hurt were rarely exotic. They were ordinary gaps left open too long.
+
+So before buying a new AI security tool:
+
+1. Shrink the time from ""flaw known"" to ""flaw closed"".
+2. Cut the number of places your data leaves your control. Fewer external endpoints, fewer boundaries to defend.
+3. Treat your own agents as intruders with badges. Least privilege, full logging, a tested off switch.
+
+The AI part is new. The weaknesses it exploits are not.
+
+What is the one boring security fix your team keeps postponing?",#AI #Cybersecurity #LLM #InfoSec #OnDeviceAI
