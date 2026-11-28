@@ -9735,3 +9735,26 @@ Cheap tokens can hide an expensive grid. The teams that treat power as a design 
 The model is not the only thing you are renting. You are renting electricity too.
 
 Does your team know what one completed AI task costs in energy? Tell me in the comments.",#AI #LLM #OnDeviceAI #MachineLearning #AIInfrastructure
+557,Olala Mini Runtime Support,"Open weights you can't load in your usual runtime are only half open.
+
+In November, OVHcloud announced Olala mini 7A1B. 7 billion parameters, about 1 billion active per token, Apache 2.0, weights on Hugging Face. On paper, that is exactly what I want: a small model you can run yourself.
+
+Then read the model card. The GGUF files say upstream llama.cpp, Ollama and LM Studio cannot load the architecture. You need OVH's own fork, or their vLLM image.
+
+The model is open. The path to running it is not yet.
+
+To be fair, the numbers are attractive. OVHcloud reports 160 tokens per second on a single mid-range GPU and 50 on a plain CPU. It also pulled its 4-bit build because it measurably hurt quality, which is the kind of honesty I like to see.
+
+But a fork is a dependency. Someone has to patch it, scan it and keep it alive.
+
+In the offline and on-premise deployments I have worked on, nobody asked how open the licence was first. They asked whether it would run on the approved stack, with no internet, and who would support it in two years.
+
+So before you pick a model, test three things:
+
+1. Does it load in a runtime you already trust?
+2. Who maintains the code path if the vendor loses interest?
+3. Does the quantised version hold up on your own data?
+
+A licence tells you what you may do. A runtime tells you what you can do.
+
+Would you adopt a model that needs a vendor fork, or wait for upstream support?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111A2E"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#8B5CF6" stop-opacity="0.25"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="800" cy="800" r="320" fill="url(#glow)"/>
+<rect x="80" y="64" width="290" height="56" rx="28" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+<text x="110" y="101" font-family="Inter, DejaVu Sans, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#8B5CF6">OPEN WEIGHTS</text>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-weight="800">
+<text x="80" y="290" font-size="110" fill="#F5F7FA">Open licence.</text>
+<text x="80" y="420" font-size="110" fill="#8B5CF6">Closed runtime.</text>
+</g>
+<g font-family="Inter, DejaVu Sans, sans-serif" font-size="38" fill="#94A3B8">
+<text x="80" y="540">Apache 2.0, but llama.cpp</text>
+<text x="80" y="595">and Ollama cannot load it.</text>
+<text x="80" y="650" font-weight="700" fill="#F5F7FA">Test the runtime first.</text>
+</g>
+<g fill="none" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="620" y="760" width="120" height="120" rx="16"/><rect x="800" y="760" width="120" height="120" rx="16" stroke-dasharray="14 14"/><path d="M745 820 H795"/>
+</g>
+<rect x="80" y="944" width="64" height="6" fill="#8B5CF6"/>
+<text x="80" y="1000" font-family="Inter, DejaVu Sans, sans-serif" font-size="26" letter-spacing="3" fill="#94A3B8">PRANAY MAHENDRAKAR</text>
+</svg>
