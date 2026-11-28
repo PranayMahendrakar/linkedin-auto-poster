@@ -116,6 +116,15 @@
    "post_urn": "urn:li:ugcPost:7531893212354097152",
    "source": "writer",
    "hook_style": "builder_warning"
+  },
+  "23147855": {
+   "drop": 14,
+   "doi": "10.5281/zenodo.23147856",
+   "title": "Detectors Say 'Different', Not 'What'",
+   "posted_at": "2026-11-28T07:04:32+05:30",
+   "post_urn": "urn:li:ugcPost:7532255577796812800",
+   "source": "writer",
+   "hook_style": "contrast"
   }
  },
  "digests": {
@@ -139,6 +148,6 @@
    ]
   }
  },
- "last_daily_date": "2026-11-27",
- "last_posted_at": "2026-11-27T07:04:38+05:30"
+ "last_daily_date": "2026-11-28",
+ "last_posted_at": "2026-11-28T07:04:32+05:30"
 }

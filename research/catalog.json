@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-27T07:04:28+05:30",
+ "generated_at": "2026-11-28T07:04:23+05:30",
  "orcid": "0009-0003-7224-029X",
- "count": 178,
+ "count": 180,
  "papers": [
   {
    "id": "14040452",
@@ -4815,9 +4815,9 @@
    "pdf_name": "a-residue-is-not-a-recurrence.pdf",
    "pdf_size": 333113,
    "zenodo_url": "https://zenodo.org/records/24565011",
-   "lor_url": "",
-   "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24565011"
+   "lor_url": "https://lifeofresearch.com/preprints/287",
+   "lor_id": 287,
+   "link": "https://lifeofresearch.com/preprints/287"
   },
   {
    "id": "24573053",
@@ -4843,9 +4843,65 @@
    "pdf_name": "a-portable-encoder-is-not-a-portable-rule.pdf",
    "pdf_size": 321081,
    "zenodo_url": "https://zenodo.org/records/24573054",
+   "lor_url": "https://lifeofresearch.com/preprints/288",
+   "lor_id": 288,
+   "link": "https://lifeofresearch.com/preprints/288"
+  },
+  {
+   "id": "24593787",
+   "record_id": "24593788",
+   "doi": "10.5281/zenodo.24593788",
+   "title": "A Selected Score Is Not a Held-Out Score: What Agent-Designed and Meta-Learned Optimizers Show About Leaving the Problems They Were Built On, Why Selection on the Reported Test Set and a Re-Run Design Loop Do Not Measure Transfer, and the Protocol That Would",
+   "short_title": "A Selected Score Is Not a Held-Out Score",
+   "abstract": "Optimizers are now designed by machines in three ways: a neural policy meta-trained over a distribution of problems, a program search over update rules, and, since 2025, a coding agent that rewrites an optimizer's source and keeps what scores well. Every one of these lines justifies itself by generalization, and a September 2026 system makes the claim in its strongest form: a pair of language-model agents, one of which edits the other and itself, evolves a learning-assisted optimizer from a naive template, beats hand-made and meta-learned baselines on held-out benchmark functions, and is said to adapt quickly to new optimization domains. In this analysis the author reviews and synthesises published results to show that the word generalization covers four different claims - in-distribution performance, zero-shot transfer of a fixed designed optimizer to unseen problems of the same suite, transfer to a different suite or domain, and transfer of the designing procedure itself - and that the evidence for each is gathered under different conditions. Two conditions decide most of the disputes. The first is whether the problems used to report a result were also used to select it: in the September 2026 system the candidate optimizers were scored on the test set during the 100-step design loop, which makes that set a selection set, and the program-search and adaptive-data-analysis literatures both document what reuse of that kind does to an estimate. The second is whether baselines received tuning and budget comparable to the designed method, which the deep-learning optimizer literature shows can reverse a ranking. The paper consolidates the published values in a table and a figure, finds that five of sixteen test functions carry essentially all of the system's average lead over CMA-ES, sets the results where designed optimizers did travel against those where their generality was overstated, and specifies a protocol - separate design, selection and sealed test sets, an out-of-suite test, matched baseline budgets, design-run replication and a cold-start control - that would let a generalization claim be credited.",
+   "keywords": [
+    "automated algorithm design",
+    "meta-black-box optimization",
+    "learned optimizers",
+    "LLM-driven program search",
+    "generalization",
+    "benchmarking methodology",
+    "test-set reuse",
+    "self-improving agents"
+   ],
+   "published": "2026-11-27",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24593788/files/a-selected-score-is-not-a-held-out-score.pdf/content",
+   "pdf_name": "a-selected-score-is-not-a-held-out-score.pdf",
+   "pdf_size": 367090,
+   "zenodo_url": "https://zenodo.org/records/24593788",
    "lor_url": "",
    "lor_id": null,
-   "link": "https://doi.org/10.5281/zenodo.24573054"
+   "link": "https://doi.org/10.5281/zenodo.24593788"
+  },
+  {
+   "id": "24613038",
+   "record_id": "24613039",
+   "doi": "10.5281/zenodo.24613039",
+   "title": "An Equivalent Schema Is Not an Equivalent Task: What Tool-Schema Sensitivity Measures in Language-Model Agents, Why Invariance Training and Interface Adaptation Prescribe Opposite Fixes for the Same Variance, and the Decomposition That Would Assign It",
+   "short_title": "An Equivalent Schema Is Not an Equivalent Task",
+   "abstract": "A language-model agent acts through a tool schema, and the same set of executable actions can be exposed through many schemas. Two literatures have measured what happens when the schema changes, and they draw opposite conclusions. One holds that an agent which has learned a task should succeed equally under every functionally equivalent schema, calls the measured variation a bias of the agent, and trains against it. The other holds that the interface should be fitted to the model, and reports large gains from renaming tools toward pretraining conventions, regrouping them, or replacing JSON calls with code or natural language. In this analysis the author reviews and synthesises published results to show that both conclusions rest on one ambiguous quantity. Equivalence is usually defined by reachable states, but schemas that reach the same states can demand different numbers of calls, decisions, carried state, visible tools and information, and can be scored by checkers that are not themselves invariant. The paper separates a measured interface effect into four components - form fidelity, task demand, information and scorer - plus a residual. On the published evidence, transformations that only relabel or reorder a schema move most current models by a few points, while the large effects come from transformations that change demand, and the training results that look like a failure to generalise follow the same line. Invariance is the right criterion only for the residual; adapting the interface is legitimate for deployment claims and must be disclosed for capability claims. The paper consolidates the measured values in a table and a figure, states the assignment procedure as an algorithm, and names the controls that would settle the open part.",
+   "keywords": [
+    "tool use",
+    "function calling",
+    "LLM agents",
+    "agent-computer interface",
+    "schema bias",
+    "measurement invariance",
+    "benchmarking methodology",
+    "Model Context Protocol"
+   ],
+   "published": "2026-11-28",
+   "subtype": "preprint",
+   "is_review": true,
+   "pdf_url": "https://zenodo.org/api/records/24613039/files/an-equivalent-schema-is-not-an-equivalent-task.pdf/content",
+   "pdf_name": "an-equivalent-schema-is-not-an-equivalent-task.pdf",
+   "pdf_size": 423145,
+   "zenodo_url": "https://zenodo.org/records/24613039",
+   "lor_url": "",
+   "lor_id": null,
+   "link": "https://doi.org/10.5281/zenodo.24613039"
   }
  ]
 }
