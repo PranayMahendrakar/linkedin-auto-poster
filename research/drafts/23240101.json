@@ -1,0 +1,14 @@
+{
+ "concept_id": "23240101",
+ "hook_style": "contrast",
+ "body": "The 50% agent horizon is solid. The 99% horizon is a guess that swings by a factor of about eight.\n\nThat is the gap I wrote this paper about, and it matters because the time horizon is now the number behind most forecasts of autonomous AI capability.\n\nThree accounts of why agents fail on longer tasks sit behind it: a logistic curve across tasks (Kwa et al.), a constant failure rate per minute of human time (Ord), and per-step accuracy that degrades as a run goes on (Sinha et al.). People read them as rivals. I argue they describe three different levels of the same data, and the link between the levels is the classic problem of unobserved heterogeneity.\n\nThe consequence is two-sided. Every account is calibrated to the 50 percent point, so the trend barely depends on which is right. But holding the 50 percent horizon fixed, curves that all match the published 80 percent ratios place the 99 percent horizon anywhere from about one hundredth to about one eight-hundredth of it.\n\nIf you plan a deployment around a horizon claim, ask at what reliability it was measured, and whether the number was measured or extrapolated. The paper also sets out a reading procedure and six measurements that would settle the open part.\n\nThe full paper is attached below.",
+ "question": "When you set a reliability bar for an agent in production, how do you decide what task length it can actually handle?",
+ "hashtags": [
+  "#AI",
+  "#LLM",
+  "#AIAgents",
+  "#CapabilityForecasting",
+  "#SurvivalAnalysis"
+ ],
+ "written_at": "2026-11-28T10:18:46+05:30"
+}
