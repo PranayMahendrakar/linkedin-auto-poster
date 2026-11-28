@@ -9758,3 +9758,20 @@ So before you pick a model, test three things:
 A licence tells you what you may do. A runtime tells you what you can do.
 
 Would you adopt a model that needs a vendor fork, or wait for upstream support?",#AI #LLM #OpenWeights #OnDeviceAI #MachineLearning
+558,EU AI Act Delay,"Hot take: a delayed AI compliance deadline is not a delayed risk.
+
+The EU's Digital Omnibus pushes high-risk AI Act obligations from August 2026 to December 2027. Parliament approved it in June, with the stated reason that standards were not ready.
+
+Many teams will read that as a breather.
+
+I read it as free time to build what auditors will ask for anyway.
+
+You cannot reconstruct an evaluation history after the fact. You cannot invent last March's drift data.
+
+So run hallucination checks, bias audits and regression sets on every release. Write down your failure cases while they are fresh. Keep your data close, because every external API is a gap in your evidence trail.
+
+And remember that buyers in sensitive sectors ask for this evidence at procurement, not at the statutory deadline.
+
+The team that has it ready wins the contract. The team waiting for the law loses it quietly.
+
+What evaluation evidence could your team hand over tomorrow if a customer asked?",#AI #AIRegulation #EUAIAct #LLM #MLOps

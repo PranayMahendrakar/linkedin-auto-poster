@@ -2790,3 +2790,34 @@ If you run infrastructure, or build software that does, the work is unglamorous.
 The AI part of AI-powered attacks is new. The weaknesses it exploits are not.
 
 Takeaway: the best defence against AI-assisted attackers is the boring discipline you were already supposed to have, applied faster and with fewer external dependencies.",#AI #Cybersecurity #LLM #InfoSec #OnDeviceAI
+2026-11-28,558,EU AI Act Delay,"Hot take: a delayed EU AI Act deadline is not a delayed risk, it is free time to build your evidence trail",https://pranaymahendrakar.com/blog/hot-take-a-delayed-eu-ai-act-deadline-is-not-a-delayed-risk-it-is-free,"Hot take: a delayed compliance deadline is not a delayed risk, and teams treating the EU AI Act postponement as a breather are making a mistake.
+
+Here is what happened, as far as I can verify. The European Commission proposed the Digital Omnibus on AI in November 2025, pushing the high-risk obligations from 2 August 2026 to 2 December 2027. Council and Parliament negotiators reached a provisional deal in May 2026. Parliament gave its final approval in June, by 423 votes to 57 with 174 abstentions. The reason given was simple: the technical standards were not ready.
+
+I have not found confirmation of the Council's formal adoption, so I will not claim the matter is closed. If you ship into Europe, check the current legal status with your counsel.
+
+But the legal detail is not my point. My point is what a delay does to engineering teams.
+
+When a deadline moves, the work moves with it, usually to the bottom of the backlog. I have seen this pattern in every regulated domain I have worked in. Automotive, defence and education each have their own audit culture, and in each of them the teams that struggled were never the ones with the strictest rules. They were the ones that started late.
+
+The obligations in the high-risk category are not exotic. Document how the system was built. Measure its accuracy and its failure modes. Log what it does. Keep a human able to intervene. None of that is paperwork you can produce in a quarter if you never collected the evidence while building.
+
+Evidence is the hard part. You cannot reconstruct an evaluation history after the fact. You cannot invent the drift data from eight months ago. If your model's behaviour changed in March, either you recorded that or you did not.
+
+So my advice is to use the extra time differently from how the headline suggests.
+
+First, build evaluation into the pipeline now. Regression sets, hallucination checks and bias audits should run on every release, not once before a review. This is why I wrote tooling for hallucination detection, drift monitoring and fairness auditing in the first place. The tools matter less than the habit.
+
+Second, decide where your data lives. A system that runs on-device or inside your own perimeter is far easier to document and to audit than one that calls three external APIs whose behaviour changes without notice. Every external dependency is a gap in your evidence trail.
+
+Third, write down your failure cases while they are fresh. In my research on hallucination in Indic languages, the most useful artefact was never the headline accuracy number. It was the catalogue of where the model failed and why. A regulator, a customer or a safety reviewer will ask for exactly that.
+
+Fourth, treat standards as a moving target and build to the principle. Standards were late because the field is hard to standardise, not because the questions are unclear. Can you show the system does what you say? Can you show what happens when it does not?
+
+There is also a commercial angle. Customers in sensitive sectors do not wait for a statutory deadline. A defence or enterprise buyer asks for your evaluation evidence in the procurement stage, not in 2027. The team that has it ready wins the contract. The team waiting for the law loses it quietly.
+
+Critics have also pointed out that some high-risk systems placed on the market before the new date may never have to comply. That may be true on paper. It does not make those systems safer. It just means the only pressure left is the one you apply yourself.
+
+I would rather be the engineer who over-prepared for a rule that slipped than the one explaining to a customer why nothing was measured.
+
+Takeaway: a postponed deadline is free time to build the evidence trail, so spend it before someone asks you for it.",#AI #AIRegulation #EUAIAct #LLM #MLOps
